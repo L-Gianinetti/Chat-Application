@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.cmdAjouter = new System.Windows.Forms.Button();
-            this.cmbContacts = new System.Windows.Forms.ComboBox();
+            this.cboContacts = new System.Windows.Forms.ComboBox();
             this.lstParticipants = new System.Windows.Forms.ListBox();
             this.lblContacts = new System.Windows.Forms.Label();
             this.lblParticipants = new System.Windows.Forms.Label();
@@ -46,13 +46,13 @@
             this.cmdAjouter.Text = "Ajouter";
             this.cmdAjouter.UseVisualStyleBackColor = true;
             // 
-            // cmbContacts
+            // cboContacts
             // 
-            this.cmbContacts.FormattingEnabled = true;
-            this.cmbContacts.Location = new System.Drawing.Point(223, 168);
-            this.cmbContacts.Name = "cmbContacts";
-            this.cmbContacts.Size = new System.Drawing.Size(121, 21);
-            this.cmbContacts.TabIndex = 9;
+            this.cboContacts.FormattingEnabled = true;
+            this.cboContacts.Location = new System.Drawing.Point(223, 168);
+            this.cboContacts.Name = "cboContacts";
+            this.cboContacts.Size = new System.Drawing.Size(121, 21);
+            this.cboContacts.TabIndex = 9;
             // 
             // lstParticipants
             // 
@@ -108,7 +108,7 @@
             this.Controls.Add(this.cmdValider);
             this.Controls.Add(this.cmdAnnuler);
             this.Controls.Add(this.cmdAjouter);
-            this.Controls.Add(this.cmbContacts);
+            this.Controls.Add(this.cboContacts);
             this.Controls.Add(this.lstParticipants);
             this.Controls.Add(this.lblContacts);
             this.Controls.Add(this.lblParticipants);
@@ -123,7 +123,7 @@
         #endregion
 
         private System.Windows.Forms.Button cmdAjouter;
-        private System.Windows.Forms.ComboBox cmbContacts;
+        private System.Windows.Forms.ComboBox cboContacts;
         private System.Windows.Forms.ListBox lstParticipants;
         private System.Windows.Forms.Label lblContacts;
         private System.Windows.Forms.Label lblParticipants;

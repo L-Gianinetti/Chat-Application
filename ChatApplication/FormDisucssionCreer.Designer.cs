@@ -32,7 +32,7 @@
             this.lblContacts = new System.Windows.Forms.Label();
             this.lblNom = new System.Windows.Forms.Label();
             this.lstParticipants = new System.Windows.Forms.ListBox();
-            this.cmbContacts = new System.Windows.Forms.ComboBox();
+            this.cboContacts = new System.Windows.Forms.ComboBox();
             this.cmdAjouter = new System.Windows.Forms.Button();
             this.cmdAnnuler = new System.Windows.Forms.Button();
             this.cmdCreer = new System.Windows.Forms.Button();
@@ -75,13 +75,13 @@
             this.lstParticipants.Size = new System.Drawing.Size(120, 95);
             this.lstParticipants.TabIndex = 3;
             // 
-            // cmbContacts
+            // cboContacts
             // 
-            this.cmbContacts.FormattingEnabled = true;
-            this.cmbContacts.Location = new System.Drawing.Point(404, 177);
-            this.cmbContacts.Name = "cmbContacts";
-            this.cmbContacts.Size = new System.Drawing.Size(121, 21);
-            this.cmbContacts.TabIndex = 4;
+            this.cboContacts.FormattingEnabled = true;
+            this.cboContacts.Location = new System.Drawing.Point(404, 177);
+            this.cboContacts.Name = "cboContacts";
+            this.cboContacts.Size = new System.Drawing.Size(121, 21);
+            this.cboContacts.TabIndex = 4;
             // 
             // cmdAjouter
             // 
@@ -138,7 +138,7 @@
             this.Controls.Add(this.cmdCreer);
             this.Controls.Add(this.cmdAnnuler);
             this.Controls.Add(this.cmdAjouter);
-            this.Controls.Add(this.cmbContacts);
+            this.Controls.Add(this.cboContacts);
             this.Controls.Add(this.lstParticipants);
             this.Controls.Add(this.lblNom);
             this.Controls.Add(this.lblContacts);
@@ -156,7 +156,7 @@
         private System.Windows.Forms.Label lblContacts;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.ListBox lstParticipants;
-        private System.Windows.Forms.ComboBox cmbContacts;
+        private System.Windows.Forms.ComboBox cboContacts;
         private System.Windows.Forms.Button cmdAjouter;
         private System.Windows.Forms.Button cmdAnnuler;
         private System.Windows.Forms.Button cmdCreer;

@@ -41,15 +41,15 @@
             this.cmdACreer = new System.Windows.Forms.Button();
             this.cmdADiscussions = new System.Windows.Forms.Button();
             this.grbDemandes = new System.Windows.Forms.GroupBox();
-            this.lblRemarque = new System.Windows.Forms.Label();
-            this.lblDiscussions = new System.Windows.Forms.Label();
-            this.lblGroupes = new System.Windows.Forms.Label();
-            this.cmbDiscussions = new System.Windows.Forms.ComboBox();
-            this.cmbGroupes = new System.Windows.Forms.ComboBox();
-            this.cmdAccepterDiscussion = new System.Windows.Forms.Button();
-            this.cmdRefuserDiscussion = new System.Windows.Forms.Button();
-            this.cmdAccepterGroupe = new System.Windows.Forms.Button();
             this.cmdRefuserGroupe = new System.Windows.Forms.Button();
+            this.cmdAccepterGroupe = new System.Windows.Forms.Button();
+            this.cmdRefuserDiscussion = new System.Windows.Forms.Button();
+            this.cmdAccepterDiscussion = new System.Windows.Forms.Button();
+            this.cboGroupes = new System.Windows.Forms.ComboBox();
+            this.cboDiscussions = new System.Windows.Forms.ComboBox();
+            this.lblGroupes = new System.Windows.Forms.Label();
+            this.lblDiscussions = new System.Windows.Forms.Label();
+            this.lblRemarque = new System.Windows.Forms.Label();
             this.grbMenu.SuspendLayout();
             this.grbActions.SuspendLayout();
             this.grbDemandes.SuspendLayout();
@@ -179,8 +179,8 @@
             this.grbDemandes.Controls.Add(this.cmdAccepterGroupe);
             this.grbDemandes.Controls.Add(this.cmdRefuserDiscussion);
             this.grbDemandes.Controls.Add(this.cmdAccepterDiscussion);
-            this.grbDemandes.Controls.Add(this.cmbGroupes);
-            this.grbDemandes.Controls.Add(this.cmbDiscussions);
+            this.grbDemandes.Controls.Add(this.cboGroupes);
+            this.grbDemandes.Controls.Add(this.cboDiscussions);
             this.grbDemandes.Controls.Add(this.lblGroupes);
             this.grbDemandes.Controls.Add(this.lblDiscussions);
             this.grbDemandes.Controls.Add(this.lblRemarque);
@@ -190,6 +190,76 @@
             this.grbDemandes.TabIndex = 4;
             this.grbDemandes.TabStop = false;
             this.grbDemandes.Text = "Demandes";
+            // 
+            // cmdRefuserGroupe
+            // 
+            this.cmdRefuserGroupe.Location = new System.Drawing.Point(507, 297);
+            this.cmdRefuserGroupe.Name = "cmdRefuserGroupe";
+            this.cmdRefuserGroupe.Size = new System.Drawing.Size(75, 23);
+            this.cmdRefuserGroupe.TabIndex = 8;
+            this.cmdRefuserGroupe.Text = "Refuser";
+            this.cmdRefuserGroupe.UseVisualStyleBackColor = true;
+            // 
+            // cmdAccepterGroupe
+            // 
+            this.cmdAccepterGroupe.Location = new System.Drawing.Point(401, 297);
+            this.cmdAccepterGroupe.Name = "cmdAccepterGroupe";
+            this.cmdAccepterGroupe.Size = new System.Drawing.Size(75, 23);
+            this.cmdAccepterGroupe.TabIndex = 7;
+            this.cmdAccepterGroupe.Text = "Accepter";
+            this.cmdAccepterGroupe.UseVisualStyleBackColor = true;
+            // 
+            // cmdRefuserDiscussion
+            // 
+            this.cmdRefuserDiscussion.Location = new System.Drawing.Point(507, 150);
+            this.cmdRefuserDiscussion.Name = "cmdRefuserDiscussion";
+            this.cmdRefuserDiscussion.Size = new System.Drawing.Size(75, 23);
+            this.cmdRefuserDiscussion.TabIndex = 6;
+            this.cmdRefuserDiscussion.Text = "Refuser";
+            this.cmdRefuserDiscussion.UseVisualStyleBackColor = true;
+            // 
+            // cmdAccepterDiscussion
+            // 
+            this.cmdAccepterDiscussion.Location = new System.Drawing.Point(401, 150);
+            this.cmdAccepterDiscussion.Name = "cmdAccepterDiscussion";
+            this.cmdAccepterDiscussion.Size = new System.Drawing.Size(75, 23);
+            this.cmdAccepterDiscussion.TabIndex = 5;
+            this.cmdAccepterDiscussion.Text = "Accepter";
+            this.cmdAccepterDiscussion.UseVisualStyleBackColor = true;
+            // 
+            // cboGroupes
+            // 
+            this.cboGroupes.FormattingEnabled = true;
+            this.cboGroupes.Location = new System.Drawing.Point(26, 253);
+            this.cboGroupes.Name = "cboGroupes";
+            this.cboGroupes.Size = new System.Drawing.Size(399, 21);
+            this.cboGroupes.TabIndex = 4;
+            // 
+            // cboDiscussions
+            // 
+            this.cboDiscussions.FormattingEnabled = true;
+            this.cboDiscussions.Location = new System.Drawing.Point(26, 104);
+            this.cboDiscussions.Name = "cboDiscussions";
+            this.cboDiscussions.Size = new System.Drawing.Size(399, 21);
+            this.cboDiscussions.TabIndex = 3;
+            // 
+            // lblGroupes
+            // 
+            this.lblGroupes.AutoSize = true;
+            this.lblGroupes.Location = new System.Drawing.Point(12, 216);
+            this.lblGroupes.Name = "lblGroupes";
+            this.lblGroupes.Size = new System.Drawing.Size(53, 13);
+            this.lblGroupes.TabIndex = 2;
+            this.lblGroupes.Text = "Groupes :";
+            // 
+            // lblDiscussions
+            // 
+            this.lblDiscussions.AutoSize = true;
+            this.lblDiscussions.Location = new System.Drawing.Point(6, 82);
+            this.lblDiscussions.Name = "lblDiscussions";
+            this.lblDiscussions.Size = new System.Drawing.Size(69, 13);
+            this.lblDiscussions.TabIndex = 1;
+            this.lblDiscussions.Text = "Discussions :";
             // 
             // lblRemarque
             // 
@@ -201,76 +271,6 @@
             this.lblRemarque.TabIndex = 0;
             this.lblRemarque.Text = "Vous avez été ajouté aux discussions suivantes, veuillez les accepter pour pouvoi" +
     "r y participer :";
-            // 
-            // lblDiscussions
-            // 
-            this.lblDiscussions.AutoSize = true;
-            this.lblDiscussions.Location = new System.Drawing.Point(6, 82);
-            this.lblDiscussions.Name = "lblDiscussions";
-            this.lblDiscussions.Size = new System.Drawing.Size(69, 13);
-            this.lblDiscussions.TabIndex = 1;
-            this.lblDiscussions.Text = "Discussions :";
-            // 
-            // lblGroupes
-            // 
-            this.lblGroupes.AutoSize = true;
-            this.lblGroupes.Location = new System.Drawing.Point(12, 216);
-            this.lblGroupes.Name = "lblGroupes";
-            this.lblGroupes.Size = new System.Drawing.Size(53, 13);
-            this.lblGroupes.TabIndex = 2;
-            this.lblGroupes.Text = "Groupes :";
-            // 
-            // cmbDiscussions
-            // 
-            this.cmbDiscussions.FormattingEnabled = true;
-            this.cmbDiscussions.Location = new System.Drawing.Point(26, 104);
-            this.cmbDiscussions.Name = "cmbDiscussions";
-            this.cmbDiscussions.Size = new System.Drawing.Size(399, 21);
-            this.cmbDiscussions.TabIndex = 3;
-            // 
-            // cmbGroupes
-            // 
-            this.cmbGroupes.FormattingEnabled = true;
-            this.cmbGroupes.Location = new System.Drawing.Point(26, 253);
-            this.cmbGroupes.Name = "cmbGroupes";
-            this.cmbGroupes.Size = new System.Drawing.Size(399, 21);
-            this.cmbGroupes.TabIndex = 4;
-            // 
-            // cmdAccepterDiscussion
-            // 
-            this.cmdAccepterDiscussion.Location = new System.Drawing.Point(401, 150);
-            this.cmdAccepterDiscussion.Name = "cmdAccepterDiscussion";
-            this.cmdAccepterDiscussion.Size = new System.Drawing.Size(75, 23);
-            this.cmdAccepterDiscussion.TabIndex = 5;
-            this.cmdAccepterDiscussion.Text = "Accepter";
-            this.cmdAccepterDiscussion.UseVisualStyleBackColor = true;
-            // 
-            // cmdRefuserDiscussion
-            // 
-            this.cmdRefuserDiscussion.Location = new System.Drawing.Point(507, 150);
-            this.cmdRefuserDiscussion.Name = "cmdRefuserDiscussion";
-            this.cmdRefuserDiscussion.Size = new System.Drawing.Size(75, 23);
-            this.cmdRefuserDiscussion.TabIndex = 6;
-            this.cmdRefuserDiscussion.Text = "Refuser";
-            this.cmdRefuserDiscussion.UseVisualStyleBackColor = true;
-            // 
-            // cmdAccepterGroupe
-            // 
-            this.cmdAccepterGroupe.Location = new System.Drawing.Point(401, 297);
-            this.cmdAccepterGroupe.Name = "cmdAccepterGroupe";
-            this.cmdAccepterGroupe.Size = new System.Drawing.Size(75, 23);
-            this.cmdAccepterGroupe.TabIndex = 7;
-            this.cmdAccepterGroupe.Text = "Accepter";
-            this.cmdAccepterGroupe.UseVisualStyleBackColor = true;
-            // 
-            // cmdRefuserGroupe
-            // 
-            this.cmdRefuserGroupe.Location = new System.Drawing.Point(507, 297);
-            this.cmdRefuserGroupe.Name = "cmdRefuserGroupe";
-            this.cmdRefuserGroupe.Size = new System.Drawing.Size(75, 23);
-            this.cmdRefuserGroupe.TabIndex = 8;
-            this.cmdRefuserGroupe.Text = "Refuser";
-            this.cmdRefuserGroupe.UseVisualStyleBackColor = true;
             // 
             // FrmDiscussionDemandes
             // 
@@ -308,11 +308,11 @@
         private System.Windows.Forms.Label lblGroupes;
         private System.Windows.Forms.Label lblDiscussions;
         private System.Windows.Forms.Label lblRemarque;
-        private System.Windows.Forms.ComboBox cmbDiscussions;
+        private System.Windows.Forms.ComboBox cboDiscussions;
         private System.Windows.Forms.Button cmdRefuserGroupe;
         private System.Windows.Forms.Button cmdAccepterGroupe;
         private System.Windows.Forms.Button cmdRefuserDiscussion;
         private System.Windows.Forms.Button cmdAccepterDiscussion;
-        private System.Windows.Forms.ComboBox cmbGroupes;
+        private System.Windows.Forms.ComboBox cboGroupes;
     }
 }

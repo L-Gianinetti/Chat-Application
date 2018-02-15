@@ -46,11 +46,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormArchives.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormArchives.Designer.cs">
+      <DependentUpon>FormArchives.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormConnexion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormConnexion.Designer.cs">
       <DependentUpon>FormConnexion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormContacts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormContacts.Designer.cs">
+      <DependentUpon>FormContacts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormContactsAjouter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormContactsAjouter.Designer.cs">
+      <DependentUpon>FormContactsAjouter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormContactsDemandes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormContactsDemandes.Designer.cs">
+      <DependentUpon>FormContactsDemandes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormContactsModifier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormContactsModifier.Designer.cs">
+      <DependentUpon>FormContactsModifier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDiscussionAjouter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDiscussionAjouter.Designer.cs">
+      <DependentUpon>FormDiscussionAjouter.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDiscussionDemandes.cs">
       <SubType>Form</SubType>
@@ -69,6 +105,12 @@
     </Compile>
     <Compile Include="FormDiscussions.Designer.cs">
       <DependentUpon>FormDiscussions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDiscussionSupprimer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDiscussionSupprimer.Designer.cs">
+      <DependentUpon>FormDiscussionSupprimer.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDisucssionCreer.cs">
       <SubType>Form</SubType>
@@ -102,8 +144,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormArchives.resx">
+      <DependentUpon>FormArchives.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormConnexion.resx">
       <DependentUpon>FormConnexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormContacts.resx">
+      <DependentUpon>FormContacts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormContactsAjouter.resx">
+      <DependentUpon>FormContactsAjouter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormContactsDemandes.resx">
+      <DependentUpon>FormContactsDemandes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormContactsModifier.resx">
+      <DependentUpon>FormContactsModifier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDiscussionAjouter.resx">
+      <DependentUpon>FormDiscussionAjouter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDiscussionDemandes.resx">
       <DependentUpon>FormDiscussionDemandes.cs</DependentUpon>
@@ -113,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDiscussions.resx">
       <DependentUpon>FormDiscussions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDiscussionSupprimer.resx">
+      <DependentUpon>FormDiscussionSupprimer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDisucssionCreer.resx">
       <DependentUpon>FormDisucssionCreer.cs</DependentUpon>

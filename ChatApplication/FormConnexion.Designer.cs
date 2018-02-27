@@ -125,6 +125,7 @@
             this.cmdSEnregistrer.TabIndex = 0;
             this.cmdSEnregistrer.Text = "S\'enregistrer";
             this.cmdSEnregistrer.UseVisualStyleBackColor = true;
+            this.cmdSEnregistrer.Click += new System.EventHandler(this.cmdSEnregistrer_Click);
             // 
             // frmConnexion
             // 

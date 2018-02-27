@@ -35,15 +35,15 @@
             this.cmdPhoto = new System.Windows.Forms.Button();
             this.cmdValider = new System.Windows.Forms.Button();
             this.grbPhoto = new System.Windows.Forms.GroupBox();
-            this.grbInformations = new System.Windows.Forms.GroupBox();
-            this.txtNom = new System.Windows.Forms.TextBox();
-            this.txtPrenom = new System.Windows.Forms.TextBox();
-            this.txtPseudo = new System.Windows.Forms.TextBox();
-            this.txtDescription = new System.Windows.Forms.TextBox();
             this.ptbPhoto = new System.Windows.Forms.PictureBox();
+            this.grbInformations = new System.Windows.Forms.GroupBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.txtPseudo = new System.Windows.Forms.TextBox();
+            this.txtPrenom = new System.Windows.Forms.TextBox();
+            this.txtNom = new System.Windows.Forms.TextBox();
             this.grbPhoto.SuspendLayout();
-            this.grbInformations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).BeginInit();
+            this.grbInformations.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblNom
@@ -95,6 +95,7 @@
             // 
             // cmdValider
             // 
+            this.cmdValider.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdValider.Location = new System.Drawing.Point(286, 281);
             this.cmdValider.Name = "cmdValider";
             this.cmdValider.Size = new System.Drawing.Size(100, 23);
@@ -112,6 +113,14 @@
             this.grbPhoto.TabIndex = 8;
             this.grbPhoto.TabStop = false;
             this.grbPhoto.Text = "Photo de profil";
+            // 
+            // ptbPhoto
+            // 
+            this.ptbPhoto.Location = new System.Drawing.Point(9, 19);
+            this.ptbPhoto.Name = "ptbPhoto";
+            this.ptbPhoto.Size = new System.Drawing.Size(102, 99);
+            this.ptbPhoto.TabIndex = 7;
+            this.ptbPhoto.TabStop = false;
             // 
             // grbInformations
             // 
@@ -131,19 +140,13 @@
             this.grbInformations.TabStop = false;
             this.grbInformations.Text = "Informations du profil";
             // 
-            // txtNom
+            // txtDescription
             // 
-            this.txtNom.Location = new System.Drawing.Point(175, 34);
-            this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(100, 20);
-            this.txtNom.TabIndex = 8;
-            // 
-            // txtPrenom
-            // 
-            this.txtPrenom.Location = new System.Drawing.Point(175, 70);
-            this.txtPrenom.Name = "txtPrenom";
-            this.txtPrenom.Size = new System.Drawing.Size(100, 20);
-            this.txtPrenom.TabIndex = 9;
+            this.txtDescription.Location = new System.Drawing.Point(175, 161);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(174, 106);
+            this.txtDescription.TabIndex = 11;
             // 
             // txtPseudo
             // 
@@ -153,21 +156,19 @@
             this.txtPseudo.Size = new System.Drawing.Size(100, 20);
             this.txtPseudo.TabIndex = 10;
             // 
-            // txtDescription
+            // txtPrenom
             // 
-            this.txtDescription.Location = new System.Drawing.Point(175, 161);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(174, 106);
-            this.txtDescription.TabIndex = 11;
+            this.txtPrenom.Location = new System.Drawing.Point(175, 70);
+            this.txtPrenom.Name = "txtPrenom";
+            this.txtPrenom.Size = new System.Drawing.Size(100, 20);
+            this.txtPrenom.TabIndex = 9;
             // 
-            // ptbPhoto
+            // txtNom
             // 
-            this.ptbPhoto.Location = new System.Drawing.Point(9, 19);
-            this.ptbPhoto.Name = "ptbPhoto";
-            this.ptbPhoto.Size = new System.Drawing.Size(102, 99);
-            this.ptbPhoto.TabIndex = 7;
-            this.ptbPhoto.TabStop = false;
+            this.txtNom.Location = new System.Drawing.Point(175, 34);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(100, 20);
+            this.txtNom.TabIndex = 8;
             // 
             // frmEnregistrement2
             // 
@@ -179,9 +180,9 @@
             this.Name = "frmEnregistrement2";
             this.Text = "Enregistrement";
             this.grbPhoto.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).EndInit();
             this.grbInformations.ResumeLayout(false);
             this.grbInformations.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).EndInit();
             this.ResumeLayout(false);
 
         }

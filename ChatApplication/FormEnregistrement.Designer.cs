@@ -39,6 +39,8 @@
             this.chkMotDePasseConfirme = new System.Windows.Forms.CheckBox();
             this.grbEnregistrement = new System.Windows.Forms.GroupBox();
             this.cmdSuivant = new System.Windows.Forms.Button();
+            this.lblPseudoExistant = new System.Windows.Forms.Label();
+            this.cmdTest = new System.Windows.Forms.Button();
             this.grbEnregistrement.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,6 +78,7 @@
             this.txtIdentifiant.Name = "txtIdentifiant";
             this.txtIdentifiant.Size = new System.Drawing.Size(100, 20);
             this.txtIdentifiant.TabIndex = 3;
+            this.txtIdentifiant.TextChanged += new System.EventHandler(this.txtIdentifiant_TextChanged);
             // 
             // txtMotDePasse
             // 
@@ -127,6 +130,8 @@
             // 
             // grbEnregistrement
             // 
+            this.grbEnregistrement.Controls.Add(this.cmdTest);
+            this.grbEnregistrement.Controls.Add(this.lblPseudoExistant);
             this.grbEnregistrement.Controls.Add(this.cmdSuivant);
             this.grbEnregistrement.Controls.Add(this.lblIdentifiant);
             this.grbEnregistrement.Controls.Add(this.chkIdentifiant);
@@ -152,6 +157,28 @@
             this.cmdSuivant.TabIndex = 9;
             this.cmdSuivant.Text = "Suivant";
             this.cmdSuivant.UseVisualStyleBackColor = true;
+            this.cmdSuivant.Click += new System.EventHandler(this.cmdSuivant_Click);
+            // 
+            // lblPseudoExistant
+            // 
+            this.lblPseudoExistant.AutoSize = true;
+            this.lblPseudoExistant.Location = new System.Drawing.Point(211, 73);
+            this.lblPseudoExistant.Name = "lblPseudoExistant";
+            this.lblPseudoExistant.Size = new System.Drawing.Size(111, 13);
+            this.lblPseudoExistant.TabIndex = 10;
+            this.lblPseudoExistant.Text = "Pseudo déjà existant !";
+            this.lblPseudoExistant.Visible = false;
+            this.lblPseudoExistant.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // cmdTest
+            // 
+            this.cmdTest.Location = new System.Drawing.Point(531, 49);
+            this.cmdTest.Name = "cmdTest";
+            this.cmdTest.Size = new System.Drawing.Size(75, 23);
+            this.cmdTest.TabIndex = 11;
+            this.cmdTest.Text = "test";
+            this.cmdTest.UseVisualStyleBackColor = true;
+            this.cmdTest.Click += new System.EventHandler(this.cmdTest_Click);
             // 
             // frmEnregistrement
             // 
@@ -180,5 +207,7 @@
         private System.Windows.Forms.CheckBox chkMotDePasseConfirme;
         private System.Windows.Forms.GroupBox grbEnregistrement;
         private System.Windows.Forms.Button cmdSuivant;
+        private System.Windows.Forms.Label lblPseudoExistant;
+        private System.Windows.Forms.Button cmdTest;
     }
 }

@@ -21,5 +21,19 @@ namespace ChatApplication
         {
 
         }
+
+        private void cmdSEnregistrer_Click(object sender, EventArgs e)
+        {
+            frmEnregistrement frmEnregistrement = new frmEnregistrement();
+            frmEnregistrement.ShowDialog();
+
+            frmEnregistrement2 frmEnregistrement2 = new frmEnregistrement2();
+
+            DialogResult res = frmEnregistrement2.DialogResult;
+            if( res == DialogResult.OK)
+            {
+
+            }
+        }
     }
 }

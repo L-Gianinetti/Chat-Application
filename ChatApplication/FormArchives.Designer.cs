@@ -36,9 +36,9 @@
             this.cmdProfil = new System.Windows.Forms.Button();
             this.cmdContacts = new System.Windows.Forms.Button();
             this.grbArchives = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.cmdReimporter = new System.Windows.Forms.Button();
             this.cmdSupprimer = new System.Windows.Forms.Button();
+            this.cmdReimporter = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.grbMenu.SuspendLayout();
             this.grbArchives.SuspendLayout();
             this.SuspendLayout();
@@ -124,13 +124,14 @@
             this.grbArchives.TabStop = false;
             this.grbArchives.Text = "Archives";
             // 
-            // listBox1
+            // cmdSupprimer
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(7, 20);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(386, 433);
-            this.listBox1.TabIndex = 0;
+            this.cmdSupprimer.Location = new System.Drawing.Point(395, 76);
+            this.cmdSupprimer.Name = "cmdSupprimer";
+            this.cmdSupprimer.Size = new System.Drawing.Size(75, 23);
+            this.cmdSupprimer.TabIndex = 2;
+            this.cmdSupprimer.Text = "Supprimer";
+            this.cmdSupprimer.UseVisualStyleBackColor = true;
             // 
             // cmdReimporter
             // 
@@ -141,14 +142,14 @@
             this.cmdReimporter.Text = "Réimporter";
             this.cmdReimporter.UseVisualStyleBackColor = true;
             // 
-            // cmdSupprimer
+            // listBox1
             // 
-            this.cmdSupprimer.Location = new System.Drawing.Point(395, 76);
-            this.cmdSupprimer.Name = "cmdSupprimer";
-            this.cmdSupprimer.Size = new System.Drawing.Size(75, 23);
-            this.cmdSupprimer.TabIndex = 2;
-            this.cmdSupprimer.Text = "Supprimer";
-            this.cmdSupprimer.UseVisualStyleBackColor = true;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(7, 20);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(386, 433);
+            this.listBox1.TabIndex = 0;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // FrmArchives
             // 

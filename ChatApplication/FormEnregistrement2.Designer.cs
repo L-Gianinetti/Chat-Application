@@ -41,6 +41,7 @@
             this.txtPseudo = new System.Windows.Forms.TextBox();
             this.txtPrenom = new System.Windows.Forms.TextBox();
             this.txtNom = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.grbPhoto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).BeginInit();
             this.grbInformations.SuspendLayout();
@@ -72,7 +73,6 @@
             this.lblPseudo.Size = new System.Drawing.Size(74, 13);
             this.lblPseudo.TabIndex = 3;
             this.lblPseudo.Text = "Pseudonyme :";
-            this.lblPseudo.Click += new System.EventHandler(this.lblPseudo_Click);
             // 
             // lblDescription
             // 
@@ -82,7 +82,6 @@
             this.lblDescription.Size = new System.Drawing.Size(66, 13);
             this.lblDescription.TabIndex = 4;
             this.lblDescription.Text = "Description :";
-            this.lblDescription.Click += new System.EventHandler(this.label5_Click);
             // 
             // cmdPhoto
             // 
@@ -92,6 +91,7 @@
             this.cmdPhoto.TabIndex = 6;
             this.cmdPhoto.Text = "Parcourir...";
             this.cmdPhoto.UseVisualStyleBackColor = true;
+            this.cmdPhoto.Click += new System.EventHandler(this.cmdPhoto_Click);
             // 
             // cmdValider
             // 
@@ -102,6 +102,7 @@
             this.cmdValider.TabIndex = 7;
             this.cmdValider.Text = "Valider mon profil";
             this.cmdValider.UseVisualStyleBackColor = true;
+            this.cmdValider.Click += new System.EventHandler(this.cmdValider_Click);
             // 
             // grbPhoto
             // 
@@ -170,15 +171,20 @@
             this.txtNom.Size = new System.Drawing.Size(100, 20);
             this.txtNom.TabIndex = 8;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // frmEnregistrement2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 503);
+            this.ClientSize = new System.Drawing.Size(475, 503);
             this.Controls.Add(this.grbInformations);
             this.Controls.Add(this.grbPhoto);
             this.Name = "frmEnregistrement2";
             this.Text = "Enregistrement";
+            this.Load += new System.EventHandler(this.frmEnregistrement2_Load);
             this.grbPhoto.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).EndInit();
             this.grbInformations.ResumeLayout(false);
@@ -201,5 +207,6 @@
         private System.Windows.Forms.TextBox txtPrenom;
         private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.PictureBox ptbPhoto;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

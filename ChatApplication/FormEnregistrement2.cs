@@ -52,10 +52,6 @@ namespace ChatApplication
             Console.WriteLine(result);
         }
 
-        private void frmEnregistrement2_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void cmdValider_Click(object sender, EventArgs e)
         {
@@ -64,6 +60,10 @@ namespace ChatApplication
             userEnregistrement.Pseudo = txtPseudo.Text;
             userEnregistrement.Description = txtDescription.Text;
             userEnregistrement.MotDePasse = motPasse;
+            userEnregistrement.Photo = txtPseudo.Text + ".png";
+
+            string cheminImage = connexionBD.CheminDocumentation() + userEnregistrement.Photo;
+            ptbPhoto.Image.Save(cheminImage);
 
             connexionBD.ajoutUser(userEnregistrement);
         }

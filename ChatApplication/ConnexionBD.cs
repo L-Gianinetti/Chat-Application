@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Security.Cryptography;
 //Librairie MySQL ajoutée dans les références
 using MySql.Data.MySqlClient;
 namespace ChatApplication
@@ -67,8 +67,60 @@ namespace ChatApplication
             return _pseudoRetourne;
         }
 
+        public string HashMotDePasse(User user)
+        {
+        //https://stackoverflow.com/questions/4181198/how-to-hash-a-password/10402129#10402129
+            string savedPasswordHash;
+            // Création du sel
+            byte[] sel;
+            new RNGCryptoServiceProvider().GetBytes(sel = new byte[16]);
+
+            //
+            var pbkdf2 = new Rfc2898DeriveBytes(user.MotDePasse, sel, 10000);
+            byte[] hash = pbkdf2.GetBytes(20);
+
+            //
+            byte[] hashBytes = new byte[36];
+            Array.Copy(sel, 0, hashBytes, 0, 16);
+            Array.Copy(hash, 0, hashBytes, 16, 20);
+
+            //
+            return  savedPasswordHash = Convert.ToBase64String(hashBytes);
+        }
+
+        public bool VerifMotDePasse(string motDePasse, User user)
+        {
+            //https://stackoverflow.com/questions/4181198/how-to-hash-a-password/10402129#10402129
+            string motDePasseHash = motDePasse;
+            bool motsDePasseCorrects = true;
+            byte[] hashBytes = Convert.FromBase64String(motDePasseHash);
+
+            byte[] sel = new byte[16];
+            Array.Copy(hashBytes, 0, sel, 0, 16);
+
+            var pbkdf2 = new Rfc2898DeriveBytes(user.MotDePasse, sel, 10000);
+            byte[] hash = pbkdf2.GetBytes(20);
+
+            for (int i=0;i < 20; i++)
+            {
+                if(hashBytes[i+16] != hash[i])
+                {
+                    motsDePasseCorrects = false;
+                }
+                else
+                {
+                    motsDePasseCorrects = true;
+                }
+            }
+
+
+            return motsDePasseCorrects;
+        }
         public void ajoutUser(User user)
         {
+            string motDePasse = HashMotDePasse(user);
+           
+            
             //ouverture de la connexion SQL
             this.connection.Open();
 
@@ -76,19 +128,87 @@ namespace ChatApplication
             MySqlCommand cmd = this.connection.CreateCommand();
 
             //Requête SQL
-            cmd.CommandText = "INSERT INTO user(userName,userFirstName,userPseudonym,userDescription,userPassword) VALUES(@userName,@userFirstName,@userPseudonym,@userDescription,@userPassword)";
+            cmd.CommandText = "INSERT INTO user(userName,userFirstName,userPseudonym,userDescription,userPassword,userPhoto) VALUES(@userName,@userFirstName,@userPseudonym,@userDescription,@userPassword,@userPhoto)";
 
             // utilisation de l'objet user passé en paramètre
             cmd.Parameters.AddWithValue("@userName", user.Nom);
             cmd.Parameters.AddWithValue("@userFirstName", user.Prenom);
             cmd.Parameters.AddWithValue("@userPseudonym", user.Pseudo);
             cmd.Parameters.AddWithValue("@userDescription", user.Description);
-            cmd.Parameters.AddWithValue("@userPassword", user.MotDePasse);
-
+            cmd.Parameters.AddWithValue("@userPassword", motDePasse);
+            cmd.Parameters.AddWithValue("@userPhoto", user.Photo);
             //Exécution de la commande SQL
             cmd.ExecuteNonQuery();
 
             this.connection.Close();
+        }
+
+        public string CheminDocumentation()
+        {
+
+            //ouverture de la connexion SQL
+            this.connection.Open();
+
+            //Création d'une commande SQL en fonction de l'object connection
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            //Requête SQL
+            cmd.CommandText = "SELECT path from Documentation";
+
+            //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+
+            string path = "";
+
+            var cmdReader = cmd.ExecuteReader();
+            if (cmdReader.Read())
+            {
+                path = String.Format("{0}", cmdReader[0]);
+            }
+
+            this.connection.Close();
+
+            return path;
+        }
+        public bool connexionUser(User user)
+        {
+            bool userExistant;
+            
+            //ouverture de la connexion SQL
+            this.connection.Open();
+
+            //Création d'une commande SQL en fonction de l'object connection
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+
+
+            //Requête SQL
+            cmd.CommandText = "SELECT userPassword from user where userPseudonym =\"" + user.Pseudo + "\"";
+
+
+            //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+
+            string mdp = "";
+
+
+            var cmdReader = cmd.ExecuteReader();
+            if (cmdReader.Read())
+            {
+                 mdp = String.Format("{0}", cmdReader[0]);
+            }
+            if (VerifMotDePasse(mdp, user))
+            {
+                userExistant = true;
+            }
+            else
+            {
+                userExistant = false;
+            }
+
+            this.connection.Close();
+
+            return userExistant;
         }
     }
 }

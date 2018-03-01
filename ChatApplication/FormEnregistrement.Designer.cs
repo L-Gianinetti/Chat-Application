@@ -77,13 +77,13 @@
             this.txtIdentifiant.Name = "txtIdentifiant";
             this.txtIdentifiant.Size = new System.Drawing.Size(100, 20);
             this.txtIdentifiant.TabIndex = 3;
-            this.txtIdentifiant.Text = "d";
             this.txtIdentifiant.TextChanged += new System.EventHandler(this.txtIdentifiant_TextChanged);
             // 
             // txtMotDePasse
             // 
             this.txtMotDePasse.Location = new System.Drawing.Point(211, 100);
             this.txtMotDePasse.Name = "txtMotDePasse";
+            this.txtMotDePasse.PasswordChar = '*';
             this.txtMotDePasse.Size = new System.Drawing.Size(100, 20);
             this.txtMotDePasse.TabIndex = 4;
             this.txtMotDePasse.TextChanged += new System.EventHandler(this.txtMotDePasse_TextChanged);
@@ -92,6 +92,7 @@
             // 
             this.txtMotDePasseConfirme.Location = new System.Drawing.Point(211, 206);
             this.txtMotDePasseConfirme.Name = "txtMotDePasseConfirme";
+            this.txtMotDePasseConfirme.PasswordChar = '*';
             this.txtMotDePasseConfirme.Size = new System.Drawing.Size(100, 20);
             this.txtMotDePasseConfirme.TabIndex = 5;
             this.txtMotDePasseConfirme.TextChanged += new System.EventHandler(this.txtMotDePasseConfirme_TextChanged);

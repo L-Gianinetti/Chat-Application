@@ -23,7 +23,17 @@ CREATE TABLE IF NOT EXISTS `ChatApplication`.`User` (
   `userPseudonym` VARCHAR(45) NOT NULL,
   `userDescription` TEXT(1000) NULL,
   `userPassword` VARCHAR(100) NOT NULL,
+  `userPhoto` VARCHAR(60) NULL,
   PRIMARY KEY (`idUser`))
+ENGINE = InnoDB;
+
+--
+-- Table `ChatApplication`.`Documentation`
+--
+CREATE TABLE IF NOT EXISTS `ChatApplication`.`Documentation` (
+	`idDocumentation` INT NOT NULL AUTO_INCREMENT,
+    `path` VARCHAR(100) NOT NULL,
+    PRIMARY KEY (`idDocumentation`))
 ENGINE = InnoDB;
 
 
@@ -201,6 +211,9 @@ insert into User (idUser, userName, userFirstName, userPseudonym, userDescriptio
 insert into User (idUser, userName, userFirstName, userPseudonym, userDescription, userPassword) values (8, 'Jaffa', 'Dorrie', 'djaffa7', 'Morbi porttitor lorem id ligula.', 'mcZS8hOso');
 insert into User (idUser, userName, userFirstName, userPseudonym, userDescription, userPassword) values (9, 'Dickey', 'Chloette', 'cdickey8', 'Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius.', 'exOq68pY');
 insert into User (idUser, userName, userFirstName, userPseudonym, userDescription, userPassword) values (10, 'Chavrin', 'Lorant', 'lchavrin9', 'In sagittis dui vel nisl. Duis ac nibh.', 'uZBFt4wz');
+
+-- Documentation
+insert into Documentation(idDocumentation, Path) values (1, "P:\\ProjetProgrammation\\Chat\\ChatApplication\\Photos\\");
 
 -- Contact
 insert into Contact (idContact, contactNote, fkUser) values (1, 'Sed ante. Vivamus tortor. Duis mattis egestas metus.', 3);

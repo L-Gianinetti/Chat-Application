@@ -25,7 +25,7 @@ namespace ChatApplication
         }
         #endregion
 
-        public Administrateur(string nom, string prenom, string pseudo, string description, string nomDiscussion) : base(nom, prenom, pseudo, description)
+        public Administrateur(string nom, string prenom, string pseudo, string description, string nomDiscussion, string photo) : base(nom, prenom, pseudo, description, photo)
         {
             _nomDiscussion = nomDiscussion;
         }

@@ -13,6 +13,7 @@ namespace ChatApplication
         protected string _pseudo;
         protected string _description;
         protected string _motDePasse;
+        protected string _photo;
 
         #region accesseurs
 
@@ -81,14 +82,27 @@ namespace ChatApplication
             }
         }
 
+        public string Photo
+        {
+            get
+            {
+                return _photo;
+            }
+            set
+            {
+                _photo = value;
+            }
+        }
+
         #endregion
 
-        public User(string nom, string prenom, string pseudo, string description)
+        public User(string nom, string prenom, string pseudo, string description, string photo)
         {
             _nom = nom;
             _prenom = prenom;
             _pseudo = pseudo;
             _description = description;
+            _photo = photo;
         }
         public User(string pseudo)
         {

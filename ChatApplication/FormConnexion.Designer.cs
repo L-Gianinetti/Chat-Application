@@ -92,11 +92,13 @@
             this.cmdConnexion.TabIndex = 5;
             this.cmdConnexion.Text = "Connexion";
             this.cmdConnexion.UseVisualStyleBackColor = true;
+            this.cmdConnexion.Click += new System.EventHandler(this.cmdConnexion_Click);
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(195, 60);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(100, 20);
             this.txtPassword.TabIndex = 4;
             // 

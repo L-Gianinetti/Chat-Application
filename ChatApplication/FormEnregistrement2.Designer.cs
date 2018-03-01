@@ -120,6 +120,7 @@
             this.ptbPhoto.Location = new System.Drawing.Point(9, 19);
             this.ptbPhoto.Name = "ptbPhoto";
             this.ptbPhoto.Size = new System.Drawing.Size(102, 99);
+            this.ptbPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbPhoto.TabIndex = 7;
             this.ptbPhoto.TabStop = false;
             // 
@@ -184,7 +185,6 @@
             this.Controls.Add(this.grbPhoto);
             this.Name = "frmEnregistrement2";
             this.Text = "Enregistrement";
-            this.Load += new System.EventHandler(this.frmEnregistrement2_Load);
             this.grbPhoto.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).EndInit();
             this.grbInformations.ResumeLayout(false);

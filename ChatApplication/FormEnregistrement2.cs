@@ -49,7 +49,6 @@ namespace ChatApplication
 
                 
             }
-            Console.WriteLine(result);
         }
 
 

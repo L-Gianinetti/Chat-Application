@@ -21,11 +21,12 @@ namespace ChatApplication
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if(Properties.Settings.Default.Identifiant != string.Empty)
+            if (Properties.Settings.Default.Identifiant != string.Empty)
             {
                 txtIdentifiant.Text = Properties.Settings.Default.Identifiant;
             }
         }
+
 
         private void cmdSEnregistrer_Click(object sender, EventArgs e)
         {
@@ -50,6 +51,8 @@ namespace ChatApplication
             {
                 frmDiscussions frmDiscussions = new frmDiscussions();
                 frmDiscussions.ShowDialog();
+                Properties.Settings.Default.UserActif = txtIdentifiant.Text;
+                Properties.Settings.Default.Save();
             }
             else
             {
@@ -61,6 +64,8 @@ namespace ChatApplication
                  Properties.Settings.Default.Identifiant = txtIdentifiant.Text;
                 Properties.Settings.Default.Save();
             }
+
+            
         }
     }
 }

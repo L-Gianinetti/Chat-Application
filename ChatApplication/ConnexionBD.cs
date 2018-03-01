@@ -210,5 +210,139 @@ namespace ChatApplication
 
             return userExistant;
         }
+
+        public string InfoProfilPseudo(User user)
+        {
+            //ouverture de la connexion SQL
+            this.connection.Open();
+
+            //Création d'une commande SQL en fonction de l'object connection
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            //Requête SQL
+            cmd.CommandText = "SELECT userPseudonym from user where userPseudonym =\"" + user.Pseudo + "\"";
+
+            //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+
+            string pseudo = "";
+
+            var cmdReader = cmd.ExecuteReader();
+            while (cmdReader.Read())
+            {
+                pseudo = cmdReader.GetString(0);
+            }
+
+            this.connection.Close();
+
+            return pseudo;
+        }
+
+        public string InfoProfilPrenom(User user)
+        {
+            //ouverture de la connexion SQL
+            this.connection.Open();
+
+            //Création d'une commande SQL en fonction de l'object connection
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            //Requête SQL
+            cmd.CommandText = "SELECT userFirstName from user where userPseudonym =\"" + user.Pseudo + "\"";
+
+            //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+
+            string prenom = "";
+
+            var cmdReader = cmd.ExecuteReader();
+            while (cmdReader.Read())
+            {
+                prenom = cmdReader.GetString(0);
+            }
+
+            this.connection.Close();
+
+            return prenom;
+        }
+
+        public string InfoProfilNom(User user)
+        {
+            //ouverture de la connexion SQL
+            this.connection.Open();
+
+            //Création d'une commande SQL en fonction de l'object connection
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            //Requête SQL
+            cmd.CommandText = "SELECT userName from user where userPseudonym =\"" + user.Pseudo + "\"";
+
+            //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+
+            string nom = "";
+
+            var cmdReader = cmd.ExecuteReader();
+            while (cmdReader.Read())
+            {
+                nom = cmdReader.GetString(0);
+            }
+            this.connection.Close();
+
+            return nom;
+        }
+
+        public string InfoProfilDescription(User user)
+        {
+            //ouverture de la connexion SQL
+            this.connection.Open();
+
+            //Création d'une commande SQL en fonction de l'object connection
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            //Requête SQL
+            cmd.CommandText = "SELECT userDescription from user where userPseudonym =\"" + user.Pseudo + "\"";
+
+            //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+
+            string description = "";
+
+            var cmdReader = cmd.ExecuteReader();
+
+            while (cmdReader.Read())
+            {
+                description = cmdReader.GetString(0);
+            }
+            this.connection.Close();
+
+            return description;
+        }
+
+        public string InfoProfilPhoto(User user)
+        {
+            //ouverture de la connexion SQL
+            this.connection.Open();
+
+            //Création d'une commande SQL en fonction de l'object connection
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            //Requête SQL
+            cmd.CommandText = "SELECT userPhoto from user where userPseudonym =\"" + user.Pseudo + "\"";
+
+            //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+
+            string photo = "";
+
+            var cmdReader = cmd.ExecuteReader();
+            while (cmdReader.Read())
+            {
+                photo = cmdReader.GetString(0);
+            }
+
+            this.connection.Close();
+
+            return photo;
+        }
     }
 }

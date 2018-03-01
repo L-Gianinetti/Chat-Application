@@ -29,15 +29,13 @@
         private void InitializeComponent()
         {
             this.grbMenu = new System.Windows.Forms.GroupBox();
-            this.grbProfil = new System.Windows.Forms.GroupBox();
-            this.cmdProfil = new System.Windows.Forms.Button();
-            this.cmdContacts = new System.Windows.Forms.Button();
-            this.cmdDeconnexion = new System.Windows.Forms.Button();
-            this.cmdArchives = new System.Windows.Forms.Button();
             this.cmdQuitter = new System.Windows.Forms.Button();
             this.cmdDiscussions = new System.Windows.Forms.Button();
-            this.grbPhoto = new System.Windows.Forms.GroupBox();
-            this.ptbPhoto = new System.Windows.Forms.PictureBox();
+            this.cmdDeconnexion = new System.Windows.Forms.Button();
+            this.cmdArchives = new System.Windows.Forms.Button();
+            this.cmdProfil = new System.Windows.Forms.Button();
+            this.cmdContacts = new System.Windows.Forms.Button();
+            this.grbProfil = new System.Windows.Forms.GroupBox();
             this.grbInformations = new System.Windows.Forms.GroupBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtPseudo = new System.Windows.Forms.TextBox();
@@ -48,12 +46,15 @@
             this.cmdValider = new System.Windows.Forms.Button();
             this.lblPseudo = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
+            this.grbPhoto = new System.Windows.Forms.GroupBox();
             this.cmdPhoto = new System.Windows.Forms.Button();
+            this.ptbPhoto = new System.Windows.Forms.PictureBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.grbMenu.SuspendLayout();
             this.grbProfil.SuspendLayout();
+            this.grbInformations.SuspendLayout();
             this.grbPhoto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).BeginInit();
-            this.grbInformations.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbMenu
@@ -70,53 +71,6 @@
             this.grbMenu.TabIndex = 0;
             this.grbMenu.TabStop = false;
             this.grbMenu.Text = "Menu";
-            // 
-            // grbProfil
-            // 
-            this.grbProfil.Controls.Add(this.grbInformations);
-            this.grbProfil.Controls.Add(this.grbPhoto);
-            this.grbProfil.Location = new System.Drawing.Point(129, 25);
-            this.grbProfil.Name = "grbProfil";
-            this.grbProfil.Size = new System.Drawing.Size(572, 508);
-            this.grbProfil.TabIndex = 1;
-            this.grbProfil.TabStop = false;
-            this.grbProfil.Text = "Mon profil";
-            // 
-            // cmdProfil
-            // 
-            this.cmdProfil.Location = new System.Drawing.Point(6, 36);
-            this.cmdProfil.Name = "cmdProfil";
-            this.cmdProfil.Size = new System.Drawing.Size(89, 23);
-            this.cmdProfil.TabIndex = 0;
-            this.cmdProfil.Text = "Mon profil";
-            this.cmdProfil.UseVisualStyleBackColor = true;
-            // 
-            // cmdContacts
-            // 
-            this.cmdContacts.Location = new System.Drawing.Point(6, 88);
-            this.cmdContacts.Name = "cmdContacts";
-            this.cmdContacts.Size = new System.Drawing.Size(89, 23);
-            this.cmdContacts.TabIndex = 1;
-            this.cmdContacts.Text = "Contacts";
-            this.cmdContacts.UseVisualStyleBackColor = true;
-            // 
-            // cmdDeconnexion
-            // 
-            this.cmdDeconnexion.Location = new System.Drawing.Point(7, 243);
-            this.cmdDeconnexion.Name = "cmdDeconnexion";
-            this.cmdDeconnexion.Size = new System.Drawing.Size(88, 23);
-            this.cmdDeconnexion.TabIndex = 2;
-            this.cmdDeconnexion.Text = "Déconnexion";
-            this.cmdDeconnexion.UseVisualStyleBackColor = true;
-            // 
-            // cmdArchives
-            // 
-            this.cmdArchives.Location = new System.Drawing.Point(7, 195);
-            this.cmdArchives.Name = "cmdArchives";
-            this.cmdArchives.Size = new System.Drawing.Size(88, 23);
-            this.cmdArchives.TabIndex = 3;
-            this.cmdArchives.Text = "Archives";
-            this.cmdArchives.UseVisualStyleBackColor = true;
             // 
             // cmdQuitter
             // 
@@ -136,24 +90,52 @@
             this.cmdDiscussions.Text = "Discussions";
             this.cmdDiscussions.UseVisualStyleBackColor = true;
             // 
-            // grbPhoto
+            // cmdDeconnexion
             // 
-            this.grbPhoto.Controls.Add(this.cmdPhoto);
-            this.grbPhoto.Controls.Add(this.ptbPhoto);
-            this.grbPhoto.Location = new System.Drawing.Point(6, 19);
-            this.grbPhoto.Name = "grbPhoto";
-            this.grbPhoto.Size = new System.Drawing.Size(560, 160);
-            this.grbPhoto.TabIndex = 0;
-            this.grbPhoto.TabStop = false;
-            this.grbPhoto.Text = "Photo";
+            this.cmdDeconnexion.Location = new System.Drawing.Point(7, 243);
+            this.cmdDeconnexion.Name = "cmdDeconnexion";
+            this.cmdDeconnexion.Size = new System.Drawing.Size(88, 23);
+            this.cmdDeconnexion.TabIndex = 2;
+            this.cmdDeconnexion.Text = "Déconnexion";
+            this.cmdDeconnexion.UseVisualStyleBackColor = true;
             // 
-            // ptbPhoto
+            // cmdArchives
             // 
-            this.ptbPhoto.Location = new System.Drawing.Point(6, 19);
-            this.ptbPhoto.Name = "ptbPhoto";
-            this.ptbPhoto.Size = new System.Drawing.Size(150, 135);
-            this.ptbPhoto.TabIndex = 0;
-            this.ptbPhoto.TabStop = false;
+            this.cmdArchives.Location = new System.Drawing.Point(7, 195);
+            this.cmdArchives.Name = "cmdArchives";
+            this.cmdArchives.Size = new System.Drawing.Size(88, 23);
+            this.cmdArchives.TabIndex = 3;
+            this.cmdArchives.Text = "Archives";
+            this.cmdArchives.UseVisualStyleBackColor = true;
+            // 
+            // cmdProfil
+            // 
+            this.cmdProfil.Location = new System.Drawing.Point(6, 36);
+            this.cmdProfil.Name = "cmdProfil";
+            this.cmdProfil.Size = new System.Drawing.Size(89, 23);
+            this.cmdProfil.TabIndex = 0;
+            this.cmdProfil.Text = "Mon profil";
+            this.cmdProfil.UseVisualStyleBackColor = true;
+            // 
+            // cmdContacts
+            // 
+            this.cmdContacts.Location = new System.Drawing.Point(6, 88);
+            this.cmdContacts.Name = "cmdContacts";
+            this.cmdContacts.Size = new System.Drawing.Size(89, 23);
+            this.cmdContacts.TabIndex = 1;
+            this.cmdContacts.Text = "Contacts";
+            this.cmdContacts.UseVisualStyleBackColor = true;
+            // 
+            // grbProfil
+            // 
+            this.grbProfil.Controls.Add(this.grbInformations);
+            this.grbProfil.Controls.Add(this.grbPhoto);
+            this.grbProfil.Location = new System.Drawing.Point(129, 25);
+            this.grbProfil.Name = "grbProfil";
+            this.grbProfil.Size = new System.Drawing.Size(572, 508);
+            this.grbProfil.TabIndex = 1;
+            this.grbProfil.TabStop = false;
+            this.grbProfil.Text = "Mon profil";
             // 
             // grbInformations
             // 
@@ -172,7 +154,6 @@
             this.grbInformations.TabIndex = 10;
             this.grbInformations.TabStop = false;
             this.grbInformations.Text = "Informations";
-            this.grbInformations.Enter += new System.EventHandler(this.grbInformations_Enter);
             // 
             // txtDescription
             // 
@@ -249,6 +230,17 @@
             this.lblDescription.TabIndex = 4;
             this.lblDescription.Text = "Description :";
             // 
+            // grbPhoto
+            // 
+            this.grbPhoto.Controls.Add(this.cmdPhoto);
+            this.grbPhoto.Controls.Add(this.ptbPhoto);
+            this.grbPhoto.Location = new System.Drawing.Point(6, 19);
+            this.grbPhoto.Name = "grbPhoto";
+            this.grbPhoto.Size = new System.Drawing.Size(560, 160);
+            this.grbPhoto.TabIndex = 0;
+            this.grbPhoto.TabStop = false;
+            this.grbPhoto.Text = "Photo";
+            // 
             // cmdPhoto
             // 
             this.cmdPhoto.Location = new System.Drawing.Point(442, 117);
@@ -257,6 +249,20 @@
             this.cmdPhoto.TabIndex = 1;
             this.cmdPhoto.Text = "Parcourir...";
             this.cmdPhoto.UseVisualStyleBackColor = true;
+            this.cmdPhoto.Click += new System.EventHandler(this.cmdPhoto_Click);
+            // 
+            // ptbPhoto
+            // 
+            this.ptbPhoto.Location = new System.Drawing.Point(6, 19);
+            this.ptbPhoto.Name = "ptbPhoto";
+            this.ptbPhoto.Size = new System.Drawing.Size(150, 135);
+            this.ptbPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbPhoto.TabIndex = 0;
+            this.ptbPhoto.TabStop = false;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // frmProfil
             // 
@@ -267,12 +273,13 @@
             this.Controls.Add(this.grbMenu);
             this.Name = "frmProfil";
             this.Text = "Mon profil";
+            this.Load += new System.EventHandler(this.frmProfil_Load);
             this.grbMenu.ResumeLayout(false);
             this.grbProfil.ResumeLayout(false);
-            this.grbPhoto.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).EndInit();
             this.grbInformations.ResumeLayout(false);
             this.grbInformations.PerformLayout();
+            this.grbPhoto.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -300,5 +307,6 @@
         private System.Windows.Forms.Label lblPseudo;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Button cmdPhoto;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

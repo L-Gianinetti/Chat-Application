@@ -106,6 +106,7 @@
             this.cmdProfil.TabIndex = 0;
             this.cmdProfil.Text = "Mon profil";
             this.cmdProfil.UseVisualStyleBackColor = true;
+            this.cmdProfil.Click += new System.EventHandler(this.cmdProfil_Click);
             // 
             // cmdContacts
             // 

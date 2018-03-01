@@ -34,5 +34,17 @@ namespace ChatApplication.Properties {
                 this["Identifiant"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string UserActif {
+            get {
+                return ((string)(this["UserActif"]));
+            }
+            set {
+                this["UserActif"] = value;
+            }
+        }
     }
 }

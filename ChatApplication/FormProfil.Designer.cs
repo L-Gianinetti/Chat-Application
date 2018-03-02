@@ -211,6 +211,7 @@
             this.cmdValider.TabIndex = 7;
             this.cmdValider.Text = "Valider mon profil";
             this.cmdValider.UseVisualStyleBackColor = true;
+            this.cmdValider.Click += new System.EventHandler(this.cmdValider_Click);
             // 
             // lblPseudo
             // 

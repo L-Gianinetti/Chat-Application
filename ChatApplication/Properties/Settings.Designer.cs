@@ -26,24 +26,24 @@ namespace ChatApplication.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Identifiant {
-            get {
-                return ((string)(this["Identifiant"]));
-            }
-            set {
-                this["Identifiant"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string UserActif {
             get {
                 return ((string)(this["UserActif"]));
             }
             set {
                 this["UserActif"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Identifiant {
+            get {
+                return ((string)(this["Identifiant"]));
+            }
+            set {
+                this["Identifiant"] = value;
             }
         }
     }

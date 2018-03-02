@@ -49,19 +49,20 @@ namespace ChatApplication
             user.MotDePasse = txtPassword.Text;
             if (connexionBD.connexionUser(user))
             {
-                frmDiscussions frmDiscussions = new frmDiscussions();
-                frmDiscussions.ShowDialog();
                 Properties.Settings.Default.UserActif = txtIdentifiant.Text;
                 Properties.Settings.Default.Save();
+                frmDiscussions frmDiscussions = new frmDiscussions();
+                frmDiscussions.ShowDialog();
             }
             else
             {
                 MessageBox.Show("Mauvais identifiants !");
             }
             //https://social.msdn.microsoft.com/Forums/en-US/3f2877ab-0bce-4201-9acb-58df601345dc/how-to-do-remember-me-functionality-in-c-windows-application?forum=netfx64bit
+
             if (chkSeSouvenirDeMoi.Checked == true)
             {
-                 Properties.Settings.Default.Identifiant = txtIdentifiant.Text;
+                Properties.Settings.Default.Identifiant = txtIdentifiant.Text;
                 Properties.Settings.Default.Save();
             }
 

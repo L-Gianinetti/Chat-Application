@@ -56,5 +56,18 @@ namespace ChatApplication
             }
         }
 
+        private void cmdValider_Click(object sender, EventArgs e)
+        {
+            user.Nom = txtNom.Text;
+            user.Prenom = txtPrenom.Text;
+            user.Description = txtDescription.Text;
+            user.Pseudo = txtPseudo.Text;
+            user.Photo = txtPseudo.Text + ".png";
+            connexionBD.UpdateProfil(user);
+
+            string cheminImage = connexionBD.CheminDocumentation() + user.Photo;
+            System.IO.File.Delete(cheminImage);
+            ptbPhoto.Image.Save(cheminImage);
+        }
     }
 }

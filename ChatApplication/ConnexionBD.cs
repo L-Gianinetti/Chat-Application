@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 //Librairie MySQL ajoutée dans les références
@@ -90,27 +91,36 @@ namespace ChatApplication
 
         public bool VerifMotDePasse(string motDePasse, User user)
         {
-            //https://stackoverflow.com/questions/4181198/how-to-hash-a-password/10402129#10402129
-            string motDePasseHash = motDePasse;
-            bool motsDePasseCorrects = true;
-            byte[] hashBytes = Convert.FromBase64String(motDePasseHash);
-
-            byte[] sel = new byte[16];
-            Array.Copy(hashBytes, 0, sel, 0, 16);
-
-            var pbkdf2 = new Rfc2898DeriveBytes(user.MotDePasse, sel, 10000);
-            byte[] hash = pbkdf2.GetBytes(20);
-
-            for (int i=0;i < 20; i++)
+            bool motsDePasseCorrects = false;
+            try
             {
-                if(hashBytes[i+16] != hash[i])
+                //https://stackoverflow.com/questions/4181198/how-to-hash-a-password/10402129#10402129
+                string motDePasseHash = motDePasse;
+                
+                byte[] hashBytes = Convert.FromBase64String(motDePasseHash);
+
+                byte[] sel = new byte[16];
+                Array.Copy(hashBytes, 0, sel, 0, 16);
+
+                var pbkdf2 = new Rfc2898DeriveBytes(user.MotDePasse, sel, 10000);
+                byte[] hash = pbkdf2.GetBytes(20);
+
+                for (int i = 0; i < 20; i++)
                 {
-                    motsDePasseCorrects = false;
+                    if (hashBytes[i + 16] != hash[i])
+                    {
+                        motsDePasseCorrects = false;
+                    }
+                    else
+                    {
+                        motsDePasseCorrects = true;
+                    }
                 }
-                else
-                {
-                    motsDePasseCorrects = true;
-                }
+
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Erreur" + e.Message);
             }
 
 
@@ -343,6 +353,23 @@ namespace ChatApplication
             this.connection.Close();
 
             return photo;
+        }
+
+        public void UpdateProfil(User user)
+        {
+            //ouverture de la connexion SQL
+            this.connection.Open();
+
+            //Création d'une commande SQL en fonction de l'object connection
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            //Requête SQL
+            cmd.CommandText = "UPDATE User SET userName =\"" + user.Nom + "\", userFirstName =\"" + user.Prenom + "\", userDescription =\"" + user.Description +"\", userPhoto =\"" + user.Photo + "\" where userPseudonym =\"" + user.Pseudo + "\""  ;
+
+            //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+
+            this.connection.Close();
         }
     }
 }

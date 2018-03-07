@@ -139,6 +139,13 @@ namespace ChatApplication
         {
             frmEnregistrement2 frmEnregistrement2 = new frmEnregistrement2(txtIdentifiant.Text, txtMotDePasse.Text);
             frmEnregistrement2.ShowDialog();
+            DialogResult res = frmEnregistrement2.DialogResult;
+
+            if(res == DialogResult.OK)
+            {
+                frmEnregistrement2.Close();
+            }
+            frmEnregistrement2.Dispose();
         }
 
         private void txtMotDePasseConfirme_TextChanged(object sender, EventArgs e)

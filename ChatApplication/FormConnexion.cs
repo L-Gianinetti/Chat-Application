@@ -37,14 +37,16 @@ namespace ChatApplication
             frmEnregistrement frmEnregistrement = new frmEnregistrement();
             frmEnregistrement.ShowDialog();
 
-            frmEnregistrement2 frmEnregistrement2 = new frmEnregistrement2();
+            //frmEnregistrement2 frmEnregistrement2 = new frmEnregistrement2();
 
-            DialogResult res = frmEnregistrement2.DialogResult;
+            //DialogResult res = frmEnregistrement2.DialogResult;
+            DialogResult res = frmEnregistrement.DialogResult;
             if (res == DialogResult.OK)
             {
                 frmEnregistrement.Close();
-                frmEnregistrement2.Close();
+                //frmEnregistrement2.Close();
             }
+            frmEnregistrement.Dispose();
         }
 
         private void cmdConnexion_Click(object sender, EventArgs e)

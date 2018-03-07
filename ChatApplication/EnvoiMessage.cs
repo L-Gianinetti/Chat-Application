@@ -25,7 +25,6 @@ namespace ChatApplication
             try
             {
                 // Crée un tcpClient
-                // Note, for this client to work you need to have a TcpServer 
                 //connecté à la meme adresse et au meme port que le server spécifié
                 int port = 1234;
                 TcpClient client = new TcpClient(server, port);

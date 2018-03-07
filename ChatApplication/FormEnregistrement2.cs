@@ -66,45 +66,28 @@ namespace ChatApplication
 
         private void cmdValider_Click(object sender, EventArgs e)
         {
+            //Attribution des différents champs à l'utilisateur
             userEnregistrement.Nom = txtNom.Text;
             userEnregistrement.Prenom = txtPrenom.Text;
             userEnregistrement.Pseudo = txtPseudo.Text;
             userEnregistrement.Description = txtDescription.Text;
-            //A VERIFIER
+            //On attribue à l'utilisateur le mdp qu'il a rentré sur frmEnregistrement
             userEnregistrement.MotDePasse = motPasse;
 
+            //Hashage du mdp et reattribution a l'utilisateur
             motPasseApresHash = hashMotDePasse.HashMDP(userEnregistrement);
             userEnregistrement.MotDePasse = motPasseApresHash;
-            //motPasseApresHash = HashTest.Hash(userEnregistrement.MotDePasse);
-            //userEnregistrement.MotDePasse = motPasseApresHash;
-            Console.WriteLine(userEnregistrement.ToString());
-            //string cheminImage = connexionBD.CheminDocumentation() + userEnregistrement.Photo;
-            /*try
-            {
-                ptbPhoto.Image.Save(cheminImage);
-            }
-            catch(Exception er)
-            {
-                MessageBox.Show("Erreur" + er.Message);
-            }*/
-
-            //connexionBD.ajoutUser(userEnregistrement);
-            bool photoExiste = ptbPhoto == null || ptbPhoto.Image == null;
-            /*if (!photoExiste)
-            {
-                userEnregistrement.Photo = imageBytes;
-            }*/
+            
+            //Sera utile pour implémenter la photo de profil
+            //bool photoExiste = ptbPhoto == null || ptbPhoto.Image == null;
 
 
+            //Concaténation et envoi du message au serveur
+            //Utilisation d'un nombre au début de la string pour que le serveur sache quelle(s) action(s) il doit effectuer
             string data = "1" + userEnregistrement.Pseudo + "," + userEnregistrement.MotDePasse + "," + userEnregistrement.Nom + "," + userEnregistrement.Prenom + "," + userEnregistrement.Description;
-            //Send the message
             envoiMessage.Connect("127.0.0.1", data);
 
         }
 
-        private void frmEnregistrement2_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -16,7 +16,7 @@ namespace ChatApplication
         ConnexionBD connexionBD = new ConnexionBD();
 
 
-public frmEnregistrement()
+        public frmEnregistrement()
         {
             InitializeComponent();
         }

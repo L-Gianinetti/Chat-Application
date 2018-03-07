@@ -58,6 +58,7 @@
     <Compile Include="Administrateur.cs" />
     <Compile Include="ConnexionBD.cs" />
     <Compile Include="Discussion.cs" />
+    <Compile Include="EnvoiMessage.cs" />
     <Compile Include="FormArchives.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +155,7 @@
     <Compile Include="FormProfil.Designer.cs">
       <DependentUpon>FormProfil.cs</DependentUpon>
     </Compile>
+    <Compile Include="HashMotDePasse.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

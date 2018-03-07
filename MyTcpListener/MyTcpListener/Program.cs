@@ -97,13 +97,12 @@ namespace MyTcpListener
                                         j++;
                                     }
                                     user.Pseudo = dataConnexion[0];
-                                    Console.WriteLine("X" + user.Pseudo + "X");
 
                                     string mdp = connexionBD.DemandeMotDePasse(user);
 
 
                                     byte[] mdpDemande = System.Text.Encoding.ASCII.GetBytes(mdp);
-                                    stream.Write(mdpDemande, 0, mdp.Length);
+                                    stream.Write(mdpDemande, 0, mdpDemande.Length);
                                     Console.WriteLine("Sent: {0}", mdpDemande);
                                     break;
 

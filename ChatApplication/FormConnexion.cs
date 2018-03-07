@@ -69,6 +69,8 @@ namespace ChatApplication
 
 
             if (hashMotDePasse.connexionUser(txtPassword.Text, reponse) == true)
+            //if(HashTest.Verify(txtPassword.Text, reponse) == true)
+            //if(txtPassword.Text == reponse)
             {
 
                 Properties.Settings.Default.UserActif = txtIdentifiant.Text;

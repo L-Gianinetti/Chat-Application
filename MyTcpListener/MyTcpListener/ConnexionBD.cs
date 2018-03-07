@@ -127,7 +127,7 @@ namespace MyTcpListener
         }
         public void ajoutUser(User user)
         {
-            string motDePasse = HashMotDePasse(user);
+            //string motDePasse = HashMotDePasse(user);
 
 
             //ouverture de la connexion SQL
@@ -144,7 +144,7 @@ namespace MyTcpListener
             cmd.Parameters.AddWithValue("@userFirstName", user.Prenom);
             cmd.Parameters.AddWithValue("@userPseudonym", user.Pseudo);
             cmd.Parameters.AddWithValue("@userDescription", user.Description);
-            cmd.Parameters.AddWithValue("@userPassword", motDePasse);
+            cmd.Parameters.AddWithValue("@userPassword", user.MotDePasse);
             cmd.Parameters.AddWithValue("@userPhoto", user.Photo);
             //Exécution de la commande SQL
             cmd.ExecuteNonQuery();

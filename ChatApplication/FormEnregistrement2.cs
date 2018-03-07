@@ -72,10 +72,11 @@ namespace ChatApplication
             userEnregistrement.Description = txtDescription.Text;
             //A VERIFIER
             userEnregistrement.MotDePasse = motPasse;
+
             motPasseApresHash = hashMotDePasse.HashMDP(userEnregistrement);
             userEnregistrement.MotDePasse = motPasseApresHash;
-
-
+            //motPasseApresHash = HashTest.Hash(userEnregistrement.MotDePasse);
+            //userEnregistrement.MotDePasse = motPasseApresHash;
             Console.WriteLine(userEnregistrement.ToString());
             //string cheminImage = connexionBD.CheminDocumentation() + userEnregistrement.Photo;
             /*try

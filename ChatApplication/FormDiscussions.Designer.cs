@@ -41,10 +41,60 @@
             this.cmdACreer = new System.Windows.Forms.Button();
             this.cmdADiscussions = new System.Windows.Forms.Button();
             this.lstDiscussions = new System.Windows.Forms.ListBox();
-            this.cmdArchiver = new System.Windows.Forms.Button();
-            this.cmdSupprimer = new System.Windows.Forms.Button();
+            this.cmdArchiverDiscussions = new System.Windows.Forms.Button();
+            this.cmdSupprimerDiscussions = new System.Windows.Forms.Button();
+            this.pnlDiscussions = new System.Windows.Forms.Panel();
+            this.pnlContact = new System.Windows.Forms.Panel();
+            this.lstContacts = new System.Windows.Forms.ListBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmdADemandesContacts = new System.Windows.Forms.Button();
+            this.cmdASupprimerContacts = new System.Windows.Forms.Button();
+            this.cmdAModifierContacts = new System.Windows.Forms.Button();
+            this.cmdAAjouterContacts = new System.Windows.Forms.Button();
+            this.pnlProfil = new System.Windows.Forms.Panel();
+            this.grbProfil = new System.Windows.Forms.GroupBox();
+            this.grbInformations = new System.Windows.Forms.GroupBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.txtPseudo = new System.Windows.Forms.TextBox();
+            this.txtPrenom = new System.Windows.Forms.TextBox();
+            this.txtNom = new System.Windows.Forms.TextBox();
+            this.lblNom = new System.Windows.Forms.Label();
+            this.lblPrenom = new System.Windows.Forms.Label();
+            this.cmdValiderProfil = new System.Windows.Forms.Button();
+            this.lblPseudo = new System.Windows.Forms.Label();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.grbPhoto = new System.Windows.Forms.GroupBox();
+            this.cmdPhotoProfil = new System.Windows.Forms.Button();
+            this.ptbPhoto = new System.Windows.Forms.PictureBox();
+            this.pnlArchives = new System.Windows.Forms.Panel();
+            this.grbArchives = new System.Windows.Forms.GroupBox();
+            this.cmdSupprimerArchives = new System.Windows.Forms.Button();
+            this.cmdReimporterArchives = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.pnlContactsListe = new System.Windows.Forms.Panel();
+            this.pnlContactsDemandes = new System.Windows.Forms.Panel();
+            this.grbDemandes = new System.Windows.Forms.GroupBox();
+            this.cmdAccepter = new System.Windows.Forms.Button();
+            this.cmdRefuser = new System.Windows.Forms.Button();
+            this.lstRecues = new System.Windows.Forms.ListBox();
+            this.lstEnvoyees = new System.Windows.Forms.ListBox();
+            this.lblenvoyees = new System.Windows.Forms.Label();
+            this.lblrecues = new System.Windows.Forms.Label();
             this.grbMenu.SuspendLayout();
             this.grbActions.SuspendLayout();
+            this.pnlDiscussions.SuspendLayout();
+            this.pnlContact.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.pnlProfil.SuspendLayout();
+            this.grbProfil.SuspendLayout();
+            this.grbInformations.SuspendLayout();
+            this.grbPhoto.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).BeginInit();
+            this.pnlArchives.SuspendLayout();
+            this.grbArchives.SuspendLayout();
+            this.pnlContactsListe.SuspendLayout();
+            this.pnlContactsDemandes.SuspendLayout();
+            this.grbDemandes.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbMenu
@@ -79,6 +129,7 @@
             this.cmdDiscussions.TabIndex = 5;
             this.cmdDiscussions.Text = "Discussions";
             this.cmdDiscussions.UseVisualStyleBackColor = true;
+            this.cmdDiscussions.Click += new System.EventHandler(this.cmdDiscussions_Click);
             // 
             // cmdDeconnexion
             // 
@@ -97,6 +148,7 @@
             this.cmdArchives.TabIndex = 3;
             this.cmdArchives.Text = "Archives";
             this.cmdArchives.UseVisualStyleBackColor = true;
+            this.cmdArchives.Click += new System.EventHandler(this.cmdArchives_Click);
             // 
             // cmdProfil
             // 
@@ -116,6 +168,7 @@
             this.cmdContacts.TabIndex = 1;
             this.cmdContacts.Text = "Contacts";
             this.cmdContacts.UseVisualStyleBackColor = true;
+            this.cmdContacts.Click += new System.EventHandler(this.cmdContacts_Click);
             // 
             // grbActions
             // 
@@ -123,7 +176,7 @@
             this.grbActions.Controls.Add(this.cmdARechercher);
             this.grbActions.Controls.Add(this.cmdACreer);
             this.grbActions.Controls.Add(this.cmdADiscussions);
-            this.grbActions.Location = new System.Drawing.Point(130, 13);
+            this.grbActions.Location = new System.Drawing.Point(19, 9);
             this.grbActions.Name = "grbActions";
             this.grbActions.Size = new System.Drawing.Size(603, 87);
             this.grbActions.TabIndex = 2;
@@ -169,43 +222,410 @@
             // lstDiscussions
             // 
             this.lstDiscussions.FormattingEnabled = true;
-            this.lstDiscussions.Location = new System.Drawing.Point(130, 107);
+            this.lstDiscussions.Location = new System.Drawing.Point(19, 109);
             this.lstDiscussions.Name = "lstDiscussions";
-            this.lstDiscussions.Size = new System.Drawing.Size(521, 368);
+            this.lstDiscussions.Size = new System.Drawing.Size(521, 329);
             this.lstDiscussions.TabIndex = 3;
             // 
-            // cmdArchiver
+            // cmdArchiverDiscussions
             // 
-            this.cmdArchiver.Location = new System.Drawing.Point(658, 116);
-            this.cmdArchiver.Name = "cmdArchiver";
-            this.cmdArchiver.Size = new System.Drawing.Size(75, 23);
-            this.cmdArchiver.TabIndex = 4;
-            this.cmdArchiver.Text = "Archiver";
-            this.cmdArchiver.UseVisualStyleBackColor = true;
+            this.cmdArchiverDiscussions.Location = new System.Drawing.Point(597, 194);
+            this.cmdArchiverDiscussions.Name = "cmdArchiverDiscussions";
+            this.cmdArchiverDiscussions.Size = new System.Drawing.Size(75, 23);
+            this.cmdArchiverDiscussions.TabIndex = 4;
+            this.cmdArchiverDiscussions.Text = "Archiver";
+            this.cmdArchiverDiscussions.UseVisualStyleBackColor = true;
             // 
-            // cmdSupprimer
+            // cmdSupprimerDiscussions
             // 
-            this.cmdSupprimer.Location = new System.Drawing.Point(658, 147);
-            this.cmdSupprimer.Name = "cmdSupprimer";
-            this.cmdSupprimer.Size = new System.Drawing.Size(75, 23);
-            this.cmdSupprimer.TabIndex = 5;
-            this.cmdSupprimer.Text = "Supprimer";
-            this.cmdSupprimer.UseVisualStyleBackColor = true;
+            this.cmdSupprimerDiscussions.Location = new System.Drawing.Point(597, 223);
+            this.cmdSupprimerDiscussions.Name = "cmdSupprimerDiscussions";
+            this.cmdSupprimerDiscussions.Size = new System.Drawing.Size(75, 23);
+            this.cmdSupprimerDiscussions.TabIndex = 5;
+            this.cmdSupprimerDiscussions.Text = "Supprimer";
+            this.cmdSupprimerDiscussions.UseVisualStyleBackColor = true;
+            // 
+            // pnlDiscussions
+            // 
+            this.pnlDiscussions.Controls.Add(this.grbActions);
+            this.pnlDiscussions.Controls.Add(this.cmdArchiverDiscussions);
+            this.pnlDiscussions.Controls.Add(this.cmdSupprimerDiscussions);
+            this.pnlDiscussions.Controls.Add(this.lstDiscussions);
+            this.pnlDiscussions.Location = new System.Drawing.Point(201, 12);
+            this.pnlDiscussions.Name = "pnlDiscussions";
+            this.pnlDiscussions.Size = new System.Drawing.Size(859, 501);
+            this.pnlDiscussions.TabIndex = 6;
+            // 
+            // pnlContact
+            // 
+            this.pnlContact.Controls.Add(this.pnlContactsDemandes);
+            this.pnlContact.Controls.Add(this.pnlContactsListe);
+            this.pnlContact.Controls.Add(this.groupBox1);
+            this.pnlContact.Location = new System.Drawing.Point(192, 21);
+            this.pnlContact.Name = "pnlContact";
+            this.pnlContact.Size = new System.Drawing.Size(672, 479);
+            this.pnlContact.TabIndex = 6;
+            // 
+            // lstContacts
+            // 
+            this.lstContacts.FormattingEnabled = true;
+            this.lstContacts.Location = new System.Drawing.Point(20, 10);
+            this.lstContacts.Name = "lstContacts";
+            this.lstContacts.Size = new System.Drawing.Size(570, 355);
+            this.lstContacts.TabIndex = 18;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cmdADemandesContacts);
+            this.groupBox1.Controls.Add(this.cmdASupprimerContacts);
+            this.groupBox1.Controls.Add(this.cmdAModifierContacts);
+            this.groupBox1.Controls.Add(this.cmdAAjouterContacts);
+            this.groupBox1.Location = new System.Drawing.Point(13, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(603, 87);
+            this.groupBox1.TabIndex = 17;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Actions";
+            // 
+            // cmdADemandesContacts
+            // 
+            this.cmdADemandesContacts.Location = new System.Drawing.Point(401, 28);
+            this.cmdADemandesContacts.Name = "cmdADemandesContacts";
+            this.cmdADemandesContacts.Size = new System.Drawing.Size(181, 36);
+            this.cmdADemandesContacts.TabIndex = 3;
+            this.cmdADemandesContacts.Text = "Demandes";
+            this.cmdADemandesContacts.UseVisualStyleBackColor = true;
+            this.cmdADemandesContacts.Click += new System.EventHandler(this.cmdADemandesContacts_Click);
+            // 
+            // cmdASupprimerContacts
+            // 
+            this.cmdASupprimerContacts.Location = new System.Drawing.Point(241, 28);
+            this.cmdASupprimerContacts.Name = "cmdASupprimerContacts";
+            this.cmdASupprimerContacts.Size = new System.Drawing.Size(141, 36);
+            this.cmdASupprimerContacts.TabIndex = 2;
+            this.cmdASupprimerContacts.Text = "Supprimer";
+            this.cmdASupprimerContacts.UseVisualStyleBackColor = true;
+            // 
+            // cmdAModifierContacts
+            // 
+            this.cmdAModifierContacts.Location = new System.Drawing.Point(110, 28);
+            this.cmdAModifierContacts.Name = "cmdAModifierContacts";
+            this.cmdAModifierContacts.Size = new System.Drawing.Size(114, 36);
+            this.cmdAModifierContacts.TabIndex = 1;
+            this.cmdAModifierContacts.Text = "Modifier";
+            this.cmdAModifierContacts.UseVisualStyleBackColor = true;
+            // 
+            // cmdAAjouterContacts
+            // 
+            this.cmdAAjouterContacts.Location = new System.Drawing.Point(15, 28);
+            this.cmdAAjouterContacts.Name = "cmdAAjouterContacts";
+            this.cmdAAjouterContacts.Size = new System.Drawing.Size(75, 36);
+            this.cmdAAjouterContacts.TabIndex = 0;
+            this.cmdAAjouterContacts.Text = "Ajouter";
+            this.cmdAAjouterContacts.UseVisualStyleBackColor = true;
+            this.cmdAAjouterContacts.Click += new System.EventHandler(this.cmdAAjouterContacts_Click);
+            // 
+            // pnlProfil
+            // 
+            this.pnlProfil.Controls.Add(this.grbProfil);
+            this.pnlProfil.Location = new System.Drawing.Point(1122, 38);
+            this.pnlProfil.Name = "pnlProfil";
+            this.pnlProfil.Size = new System.Drawing.Size(601, 478);
+            this.pnlProfil.TabIndex = 19;
+            // 
+            // grbProfil
+            // 
+            this.grbProfil.Controls.Add(this.grbInformations);
+            this.grbProfil.Controls.Add(this.grbPhoto);
+            this.grbProfil.Location = new System.Drawing.Point(13, 9);
+            this.grbProfil.Name = "grbProfil";
+            this.grbProfil.Size = new System.Drawing.Size(572, 462);
+            this.grbProfil.TabIndex = 2;
+            this.grbProfil.TabStop = false;
+            this.grbProfil.Text = "Mon profil";
+            // 
+            // grbInformations
+            // 
+            this.grbInformations.Controls.Add(this.txtDescription);
+            this.grbInformations.Controls.Add(this.txtPseudo);
+            this.grbInformations.Controls.Add(this.txtPrenom);
+            this.grbInformations.Controls.Add(this.txtNom);
+            this.grbInformations.Controls.Add(this.lblNom);
+            this.grbInformations.Controls.Add(this.lblPrenom);
+            this.grbInformations.Controls.Add(this.cmdValiderProfil);
+            this.grbInformations.Controls.Add(this.lblPseudo);
+            this.grbInformations.Controls.Add(this.lblDescription);
+            this.grbInformations.Location = new System.Drawing.Point(12, 185);
+            this.grbInformations.Name = "grbInformations";
+            this.grbInformations.Size = new System.Drawing.Size(554, 273);
+            this.grbInformations.TabIndex = 10;
+            this.grbInformations.TabStop = false;
+            this.grbInformations.Text = "Informations";
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Location = new System.Drawing.Point(175, 161);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(174, 106);
+            this.txtDescription.TabIndex = 11;
+            // 
+            // txtPseudo
+            // 
+            this.txtPseudo.Enabled = false;
+            this.txtPseudo.Location = new System.Drawing.Point(175, 111);
+            this.txtPseudo.Name = "txtPseudo";
+            this.txtPseudo.Size = new System.Drawing.Size(100, 20);
+            this.txtPseudo.TabIndex = 10;
+            // 
+            // txtPrenom
+            // 
+            this.txtPrenom.Location = new System.Drawing.Point(175, 70);
+            this.txtPrenom.Name = "txtPrenom";
+            this.txtPrenom.Size = new System.Drawing.Size(100, 20);
+            this.txtPrenom.TabIndex = 9;
+            // 
+            // txtNom
+            // 
+            this.txtNom.Location = new System.Drawing.Point(175, 34);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(100, 20);
+            this.txtNom.TabIndex = 8;
+            // 
+            // lblNom
+            // 
+            this.lblNom.AutoSize = true;
+            this.lblNom.Location = new System.Drawing.Point(6, 37);
+            this.lblNom.Name = "lblNom";
+            this.lblNom.Size = new System.Drawing.Size(35, 13);
+            this.lblNom.TabIndex = 1;
+            this.lblNom.Text = "Nom :";
+            // 
+            // lblPrenom
+            // 
+            this.lblPrenom.AutoSize = true;
+            this.lblPrenom.Location = new System.Drawing.Point(6, 73);
+            this.lblPrenom.Name = "lblPrenom";
+            this.lblPrenom.Size = new System.Drawing.Size(49, 13);
+            this.lblPrenom.TabIndex = 2;
+            this.lblPrenom.Text = "Prénom :";
+            // 
+            // cmdValiderProfil
+            // 
+            this.cmdValiderProfil.Location = new System.Drawing.Point(436, 244);
+            this.cmdValiderProfil.Name = "cmdValiderProfil";
+            this.cmdValiderProfil.Size = new System.Drawing.Size(100, 23);
+            this.cmdValiderProfil.TabIndex = 7;
+            this.cmdValiderProfil.Text = "Valider mon profil";
+            this.cmdValiderProfil.UseVisualStyleBackColor = true;
+            this.cmdValiderProfil.Click += new System.EventHandler(this.cmdValiderProfil_Click);
+            // 
+            // lblPseudo
+            // 
+            this.lblPseudo.AutoSize = true;
+            this.lblPseudo.Location = new System.Drawing.Point(6, 114);
+            this.lblPseudo.Name = "lblPseudo";
+            this.lblPseudo.Size = new System.Drawing.Size(74, 13);
+            this.lblPseudo.TabIndex = 3;
+            this.lblPseudo.Text = "Pseudonyme :";
+            // 
+            // lblDescription
+            // 
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Location = new System.Drawing.Point(6, 164);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(66, 13);
+            this.lblDescription.TabIndex = 4;
+            this.lblDescription.Text = "Description :";
+            // 
+            // grbPhoto
+            // 
+            this.grbPhoto.Controls.Add(this.cmdPhotoProfil);
+            this.grbPhoto.Controls.Add(this.ptbPhoto);
+            this.grbPhoto.Location = new System.Drawing.Point(6, 19);
+            this.grbPhoto.Name = "grbPhoto";
+            this.grbPhoto.Size = new System.Drawing.Size(560, 160);
+            this.grbPhoto.TabIndex = 0;
+            this.grbPhoto.TabStop = false;
+            this.grbPhoto.Text = "Photo";
+            // 
+            // cmdPhotoProfil
+            // 
+            this.cmdPhotoProfil.Location = new System.Drawing.Point(442, 117);
+            this.cmdPhotoProfil.Name = "cmdPhotoProfil";
+            this.cmdPhotoProfil.Size = new System.Drawing.Size(75, 23);
+            this.cmdPhotoProfil.TabIndex = 1;
+            this.cmdPhotoProfil.Text = "Parcourir...";
+            this.cmdPhotoProfil.UseVisualStyleBackColor = true;
+            // 
+            // ptbPhoto
+            // 
+            this.ptbPhoto.Location = new System.Drawing.Point(6, 19);
+            this.ptbPhoto.Name = "ptbPhoto";
+            this.ptbPhoto.Size = new System.Drawing.Size(150, 135);
+            this.ptbPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbPhoto.TabIndex = 0;
+            this.ptbPhoto.TabStop = false;
+            // 
+            // pnlArchives
+            // 
+            this.pnlArchives.Controls.Add(this.grbArchives);
+            this.pnlArchives.Location = new System.Drawing.Point(1107, 567);
+            this.pnlArchives.Name = "pnlArchives";
+            this.pnlArchives.Size = new System.Drawing.Size(859, 529);
+            this.pnlArchives.TabIndex = 2;
+            // 
+            // grbArchives
+            // 
+            this.grbArchives.Controls.Add(this.cmdSupprimerArchives);
+            this.grbArchives.Controls.Add(this.cmdReimporterArchives);
+            this.grbArchives.Controls.Add(this.listBox1);
+            this.grbArchives.Location = new System.Drawing.Point(13, 6);
+            this.grbArchives.Name = "grbArchives";
+            this.grbArchives.Size = new System.Drawing.Size(476, 473);
+            this.grbArchives.TabIndex = 4;
+            this.grbArchives.TabStop = false;
+            this.grbArchives.Text = "Archives";
+            // 
+            // cmdSupprimerArchives
+            // 
+            this.cmdSupprimerArchives.Location = new System.Drawing.Point(395, 76);
+            this.cmdSupprimerArchives.Name = "cmdSupprimerArchives";
+            this.cmdSupprimerArchives.Size = new System.Drawing.Size(75, 23);
+            this.cmdSupprimerArchives.TabIndex = 2;
+            this.cmdSupprimerArchives.Text = "Supprimer";
+            this.cmdSupprimerArchives.UseVisualStyleBackColor = true;
+            // 
+            // cmdReimporterArchives
+            // 
+            this.cmdReimporterArchives.Location = new System.Drawing.Point(395, 36);
+            this.cmdReimporterArchives.Name = "cmdReimporterArchives";
+            this.cmdReimporterArchives.Size = new System.Drawing.Size(75, 23);
+            this.cmdReimporterArchives.TabIndex = 1;
+            this.cmdReimporterArchives.Text = "Réimporter";
+            this.cmdReimporterArchives.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(7, 20);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(386, 433);
+            this.listBox1.TabIndex = 0;
+            // 
+            // pnlContactsListe
+            // 
+            this.pnlContactsListe.Controls.Add(this.lstContacts);
+            this.pnlContactsListe.Location = new System.Drawing.Point(13, 96);
+            this.pnlContactsListe.Name = "pnlContactsListe";
+            this.pnlContactsListe.Size = new System.Drawing.Size(614, 380);
+            this.pnlContactsListe.TabIndex = 19;
+            // 
+            // pnlContactsDemandes
+            // 
+            this.pnlContactsDemandes.Controls.Add(this.grbDemandes);
+            this.pnlContactsDemandes.Location = new System.Drawing.Point(13, 94);
+            this.pnlContactsDemandes.Name = "pnlContactsDemandes";
+            this.pnlContactsDemandes.Size = new System.Drawing.Size(614, 379);
+            this.pnlContactsDemandes.TabIndex = 19;
+            // 
+            // grbDemandes
+            // 
+            this.grbDemandes.Controls.Add(this.cmdAccepter);
+            this.grbDemandes.Controls.Add(this.cmdRefuser);
+            this.grbDemandes.Controls.Add(this.lstRecues);
+            this.grbDemandes.Controls.Add(this.lstEnvoyees);
+            this.grbDemandes.Controls.Add(this.lblenvoyees);
+            this.grbDemandes.Controls.Add(this.lblrecues);
+            this.grbDemandes.Location = new System.Drawing.Point(9, 3);
+            this.grbDemandes.Name = "grbDemandes";
+            this.grbDemandes.Size = new System.Drawing.Size(602, 372);
+            this.grbDemandes.TabIndex = 11;
+            this.grbDemandes.TabStop = false;
+            this.grbDemandes.Text = "Demandes";
+            // 
+            // cmdAccepter
+            // 
+            this.cmdAccepter.Location = new System.Drawing.Point(507, 328);
+            this.cmdAccepter.Name = "cmdAccepter";
+            this.cmdAccepter.Size = new System.Drawing.Size(75, 23);
+            this.cmdAccepter.TabIndex = 13;
+            this.cmdAccepter.Text = "Accepter";
+            this.cmdAccepter.UseVisualStyleBackColor = true;
+            // 
+            // cmdRefuser
+            // 
+            this.cmdRefuser.Location = new System.Drawing.Point(415, 328);
+            this.cmdRefuser.Name = "cmdRefuser";
+            this.cmdRefuser.Size = new System.Drawing.Size(75, 23);
+            this.cmdRefuser.TabIndex = 12;
+            this.cmdRefuser.Text = "Refuser";
+            this.cmdRefuser.UseVisualStyleBackColor = true;
+            // 
+            // lstRecues
+            // 
+            this.lstRecues.FormattingEnabled = true;
+            this.lstRecues.Location = new System.Drawing.Point(183, 173);
+            this.lstRecues.Name = "lstRecues";
+            this.lstRecues.Size = new System.Drawing.Size(120, 95);
+            this.lstRecues.TabIndex = 11;
+            // 
+            // lstEnvoyees
+            // 
+            this.lstEnvoyees.FormattingEnabled = true;
+            this.lstEnvoyees.Location = new System.Drawing.Point(183, 42);
+            this.lstEnvoyees.Name = "lstEnvoyees";
+            this.lstEnvoyees.Size = new System.Drawing.Size(120, 95);
+            this.lstEnvoyees.TabIndex = 10;
+            // 
+            // lblenvoyees
+            // 
+            this.lblenvoyees.AutoSize = true;
+            this.lblenvoyees.Location = new System.Drawing.Point(6, 33);
+            this.lblenvoyees.Name = "lblenvoyees";
+            this.lblenvoyees.Size = new System.Drawing.Size(113, 13);
+            this.lblenvoyees.TabIndex = 8;
+            this.lblenvoyees.Text = "Demandes envoyées :";
+            // 
+            // lblrecues
+            // 
+            this.lblrecues.AutoSize = true;
+            this.lblrecues.Location = new System.Drawing.Point(6, 173);
+            this.lblrecues.Name = "lblrecues";
+            this.lblrecues.Size = new System.Drawing.Size(99, 13);
+            this.lblrecues.TabIndex = 9;
+            this.lblrecues.Text = "Demandes reçues :";
             // 
             // frmDiscussions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(745, 487);
-            this.Controls.Add(this.cmdSupprimer);
-            this.Controls.Add(this.cmdArchiver);
-            this.Controls.Add(this.lstDiscussions);
-            this.Controls.Add(this.grbActions);
+            this.ClientSize = new System.Drawing.Size(1175, 659);
+            this.Controls.Add(this.pnlProfil);
+            this.Controls.Add(this.pnlArchives);
+            this.Controls.Add(this.pnlContact);
+            this.Controls.Add(this.pnlDiscussions);
             this.Controls.Add(this.grbMenu);
             this.Name = "frmDiscussions";
             this.Text = "Mes demandes de discussion";
+            this.Load += new System.EventHandler(this.frmDiscussions_Load);
             this.grbMenu.ResumeLayout(false);
             this.grbActions.ResumeLayout(false);
+            this.pnlDiscussions.ResumeLayout(false);
+            this.pnlContact.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.pnlProfil.ResumeLayout(false);
+            this.grbProfil.ResumeLayout(false);
+            this.grbInformations.ResumeLayout(false);
+            this.grbInformations.PerformLayout();
+            this.grbPhoto.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).EndInit();
+            this.pnlArchives.ResumeLayout(false);
+            this.grbArchives.ResumeLayout(false);
+            this.pnlContactsListe.ResumeLayout(false);
+            this.pnlContactsDemandes.ResumeLayout(false);
+            this.grbDemandes.ResumeLayout(false);
+            this.grbDemandes.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -225,7 +645,44 @@
         private System.Windows.Forms.Button cmdACreer;
         private System.Windows.Forms.Button cmdADiscussions;
         private System.Windows.Forms.ListBox lstDiscussions;
-        private System.Windows.Forms.Button cmdArchiver;
-        private System.Windows.Forms.Button cmdSupprimer;
+        private System.Windows.Forms.Button cmdArchiverDiscussions;
+        private System.Windows.Forms.Button cmdSupprimerDiscussions;
+        private System.Windows.Forms.Panel pnlDiscussions;
+        private System.Windows.Forms.Panel pnlContact;
+        private System.Windows.Forms.ListBox lstContacts;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button cmdADemandesContacts;
+        private System.Windows.Forms.Button cmdASupprimerContacts;
+        private System.Windows.Forms.Button cmdAModifierContacts;
+        private System.Windows.Forms.Button cmdAAjouterContacts;
+        private System.Windows.Forms.Panel pnlProfil;
+        private System.Windows.Forms.GroupBox grbProfil;
+        private System.Windows.Forms.GroupBox grbInformations;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.TextBox txtPseudo;
+        private System.Windows.Forms.TextBox txtPrenom;
+        private System.Windows.Forms.TextBox txtNom;
+        private System.Windows.Forms.Label lblNom;
+        private System.Windows.Forms.Label lblPrenom;
+        private System.Windows.Forms.Button cmdValiderProfil;
+        private System.Windows.Forms.Label lblPseudo;
+        private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.GroupBox grbPhoto;
+        private System.Windows.Forms.Button cmdPhotoProfil;
+        private System.Windows.Forms.PictureBox ptbPhoto;
+        private System.Windows.Forms.Panel pnlArchives;
+        private System.Windows.Forms.GroupBox grbArchives;
+        private System.Windows.Forms.Button cmdSupprimerArchives;
+        private System.Windows.Forms.Button cmdReimporterArchives;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Panel pnlContactsDemandes;
+        private System.Windows.Forms.Panel pnlContactsListe;
+        private System.Windows.Forms.GroupBox grbDemandes;
+        private System.Windows.Forms.Button cmdAccepter;
+        private System.Windows.Forms.Button cmdRefuser;
+        private System.Windows.Forms.ListBox lstRecues;
+        private System.Windows.Forms.ListBox lstEnvoyees;
+        private System.Windows.Forms.Label lblenvoyees;
+        private System.Windows.Forms.Label lblrecues;
     }
 }

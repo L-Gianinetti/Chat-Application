@@ -43,10 +43,10 @@
             this.lblenvoyees = new System.Windows.Forms.Label();
             this.lblrecues = new System.Windows.Forms.Label();
             this.grbDemandes = new System.Windows.Forms.GroupBox();
-            this.lstEnvoyees = new System.Windows.Forms.ListBox();
-            this.lstRecues = new System.Windows.Forms.ListBox();
-            this.cmdRefuser = new System.Windows.Forms.Button();
             this.cmdAccepter = new System.Windows.Forms.Button();
+            this.cmdRefuser = new System.Windows.Forms.Button();
+            this.lstRecues = new System.Windows.Forms.ListBox();
+            this.lstEnvoyees = new System.Windows.Forms.ListBox();
             this.grbActions.SuspendLayout();
             this.grbMenu.SuspendLayout();
             this.grbDemandes.SuspendLayout();
@@ -203,21 +203,14 @@
             this.grbDemandes.TabStop = false;
             this.grbDemandes.Text = "Demandes";
             // 
-            // lstEnvoyees
+            // cmdAccepter
             // 
-            this.lstEnvoyees.FormattingEnabled = true;
-            this.lstEnvoyees.Location = new System.Drawing.Point(183, 42);
-            this.lstEnvoyees.Name = "lstEnvoyees";
-            this.lstEnvoyees.Size = new System.Drawing.Size(120, 95);
-            this.lstEnvoyees.TabIndex = 10;
-            // 
-            // lstRecues
-            // 
-            this.lstRecues.FormattingEnabled = true;
-            this.lstRecues.Location = new System.Drawing.Point(183, 173);
-            this.lstRecues.Name = "lstRecues";
-            this.lstRecues.Size = new System.Drawing.Size(120, 95);
-            this.lstRecues.TabIndex = 11;
+            this.cmdAccepter.Location = new System.Drawing.Point(507, 328);
+            this.cmdAccepter.Name = "cmdAccepter";
+            this.cmdAccepter.Size = new System.Drawing.Size(75, 23);
+            this.cmdAccepter.TabIndex = 13;
+            this.cmdAccepter.Text = "Accepter";
+            this.cmdAccepter.UseVisualStyleBackColor = true;
             // 
             // cmdRefuser
             // 
@@ -228,14 +221,21 @@
             this.cmdRefuser.Text = "Refuser";
             this.cmdRefuser.UseVisualStyleBackColor = true;
             // 
-            // cmdAccepter
+            // lstRecues
             // 
-            this.cmdAccepter.Location = new System.Drawing.Point(507, 328);
-            this.cmdAccepter.Name = "cmdAccepter";
-            this.cmdAccepter.Size = new System.Drawing.Size(75, 23);
-            this.cmdAccepter.TabIndex = 13;
-            this.cmdAccepter.Text = "Accepter";
-            this.cmdAccepter.UseVisualStyleBackColor = true;
+            this.lstRecues.FormattingEnabled = true;
+            this.lstRecues.Location = new System.Drawing.Point(183, 173);
+            this.lstRecues.Name = "lstRecues";
+            this.lstRecues.Size = new System.Drawing.Size(120, 95);
+            this.lstRecues.TabIndex = 11;
+            // 
+            // lstEnvoyees
+            // 
+            this.lstEnvoyees.FormattingEnabled = true;
+            this.lstEnvoyees.Location = new System.Drawing.Point(183, 42);
+            this.lstEnvoyees.Name = "lstEnvoyees";
+            this.lstEnvoyees.Size = new System.Drawing.Size(120, 95);
+            this.lstEnvoyees.TabIndex = 10;
             // 
             // FrmContactsDemandes
             // 

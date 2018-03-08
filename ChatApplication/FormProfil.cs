@@ -12,8 +12,9 @@ namespace ChatApplication
 {
     public partial class frmProfil : Form
     {
-        ConnexionBD connexionBD = new ConnexionBD();
+        //ConnexionBD connexionBD = new ConnexionBD();
         User user = new User();
+        EnvoiMessage envoiMessage = new EnvoiMessage();
         
         public frmProfil()
         {
@@ -24,15 +25,27 @@ namespace ChatApplication
         {
 
             user.Pseudo = Properties.Settings.Default.UserActif;
-            txtPseudo.Text = connexionBD.InfoProfilPseudo(user);
+            string msgProfil = "3" + user.Pseudo;
+            string reponse = envoiMessage.Connect("127.0.0.1", msgProfil);
+            string[] reponses = reponse.Split(',');
+
+            user.Nom = reponses[0];
+            user.Prenom = reponses[1];
+            user.Description = reponses[2];
+
+            txtPseudo.Text = user.Pseudo;
+            txtNom.Text = user.Nom;
+            txtPrenom.Text = user.Prenom;
+            txtDescription.Text = user.Description;
+           /* txtPseudo.Text = connexionBD.InfoProfilPseudo(user);
             txtNom.Text = connexionBD.InfoProfilNom(user);
             txtPrenom.Text = connexionBD.InfoProfilPrenom(user);
-            txtDescription.Text = connexionBD.InfoProfilDescription(user);
+            txtDescription.Text = connexionBD.InfoProfilDescription(user);*/
 
-            string cheminPhoto = connexionBD.CheminDocumentation() + connexionBD.InfoProfilPhoto(user);
+            /*string cheminPhoto = connexionBD.CheminDocumentation() + connexionBD.InfoProfilPhoto(user);
 
             //https://stackoverflow.com/questions/17193825/loading-picturebox-image-from-resource-file-with-path-part-3
-            ptbPhoto.Image = Image.FromFile(cheminPhoto);
+            ptbPhoto.Image = Image.FromFile(cheminPhoto);*/
         }
 
         private void cmdPhoto_Click(object sender, EventArgs e)
@@ -62,12 +75,19 @@ namespace ChatApplication
             user.Prenom = txtPrenom.Text;
             user.Description = txtDescription.Text;
             user.Pseudo = txtPseudo.Text;
-            user.Photo = txtPseudo.Text + ".png";
-            connexionBD.UpdateProfil(user);
+            string msgValidationProfil = "4" + user.Pseudo + "," + user.Nom + "," + user.Prenom + "," + user.Description;
+            string reponse = envoiMessage.Connect("127.0.0.1", msgValidationProfil);
+            if(reponse == "Reussie")
+            {
+                MessageBox.Show("Le profil a été mis à jour");
+            }
+            //user.Photo = txtPseudo.Text + ".png";
 
-            string cheminImage = connexionBD.CheminDocumentation() + user.Photo;
+            //connexionBD.UpdateProfil(user);
+
+            /*string cheminImage = connexionBD.CheminDocumentation() + user.Photo;
             System.IO.File.Delete(cheminImage);
-            ptbPhoto.Image.Save(cheminImage);
+            ptbPhoto.Image.Save(cheminImage);*/
         }
     }
 }

@@ -127,9 +127,6 @@ namespace MyTcpListener
         }
         public void ajoutUser(User user)
         {
-            //string motDePasse = HashMotDePasse(user);
-
-
             //ouverture de la connexion SQL
             this.connection.Open();
 
@@ -151,7 +148,115 @@ namespace MyTcpListener
 
             this.connection.Close();
         }
+        public int getFkUser(User user)
+        {
+            //ouverture de la connexion SQL
+            this.connection.Open();
 
+            //Création d'une commande SQL en fonction de l'object connection
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            //Requête SQL
+            cmd.CommandText = "SELECT idUser from user where userPseudonym =\"" + user.Pseudo + "\"";
+
+
+            //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+
+            string id = string.Empty;
+            int idUser;
+
+            var cmdReader = cmd.ExecuteReader();
+            if (cmdReader.Read())
+            {
+                id = String.Format("{0}", cmdReader[0]);
+            }
+            idUser = int.Parse(id);
+
+            this.connection.Close();
+
+            return idUser;
+        }
+
+        public string getUserPseudo (int fk)
+        {
+            
+            //ouverture de la connexion SQL
+            this.connection.Open();
+
+            //Création d'une commande SQL en fonction de l'object connection
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            //Requête SQL
+            cmd.CommandText = "SELECT userPseudonym from user where idUser =\"" + fk + "\"";
+
+
+            //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+
+            string pseudo = string.Empty;
+
+
+            var cmdReader = cmd.ExecuteReader();
+
+            if(cmdReader.Read())
+            {
+                pseudo = String.Format("{0}", cmdReader[0]);
+            }
+            Console.WriteLine("Demandes de contacts trouvées : {0}", id);
+            return pseudo;
+        }
+
+        public string getDemandesFkUserContact(int fk)
+        {
+            int fkUser = fk;
+            //ouverture de la connexion SQL
+            this.connection.Open();
+
+            //Création d'une commande SQL en fonction de l'object connection
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            //Requête SQL
+            cmd.CommandText = "SELECT fkUserContact from demandescontacts where fkUser =\"" + fk + "\"";
+
+
+            //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+
+            string id = string.Empty;
+        
+
+            var cmdReader = cmd.ExecuteReader();
+            
+            while (cmdReader.Read())
+            {
+                id = String.Format("{0}", cmdReader[0]) + ",";
+            }
+            Console.WriteLine("Demandes de contacts trouvées : {0}", id);
+            return id;
+        }
+        public void ajoutDemandeContact(User user, int fkUser, int fkUserContact)
+        {
+            
+            //ouverture de la connexion SQL
+            this.connection.Open();
+
+            //Création d'une commande SQL en fonction de l'object connection
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            cmd.CommandText = "INSERT INTO demandescontacts(fkUser,fkUserContact, Statut) VALUES(@fkUser, @fkUserContact,@Statut)";
+
+            //utilisation de l'objet contact passé en paramètre
+            cmd.Parameters.AddWithValue("@Statut", "Envoyee");
+            cmd.Parameters.AddWithValue("@fkUser", fkUser);
+            cmd.Parameters.AddWithValue("@fkUserContact", fkUserContact);
+
+            //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+
+            this.connection.Close();
+
+        }
         public string CheminDocumentation()
         {
 

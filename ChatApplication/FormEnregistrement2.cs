@@ -19,7 +19,7 @@ namespace ChatApplication
     public partial class frmEnregistrement2 : Form
     {
         User userEnregistrement = new User();
-        ConnexionBD connexionBD = new ConnexionBD();
+        //ConnexionBD connexionBD = new ConnexionBD();
         EnvoiMessage envoiMessage = new EnvoiMessage();
         HashMotDePasse hashMotDePasse = new HashMotDePasse();
         string motPasse;

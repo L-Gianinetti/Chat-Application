@@ -14,7 +14,7 @@ namespace ChatApplication
 {
     public partial class frmConnexion : Form
     {
-        ConnexionBD connexionBD = new ConnexionBD();
+        //ConnexionBD connexionBD = new ConnexionBD();
         User user = new User();
         HashMotDePasse hashMotDePasse = new HashMotDePasse();
         EnvoiMessage envoiMessage = new EnvoiMessage();

@@ -127,11 +127,14 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `ChatApplication`.`DemandesContacts` (
   `idDemandesContactsEnvoyees` INT NOT NULL AUTO_INCREMENT,
   `fkUser` INT NOT NULL,
+  `fkUserContact` INT NOT NULL,
   `Statut` ENUM('Recue', 'Envoyee') NOT NULL,
   PRIMARY KEY (`idDemandesContactsEnvoyees`),
   INDEX `fk_DemandesContactsEnvoyees_User1_idx` (`fkUser` ASC),
   CONSTRAINT `fk_DemandesContactsEnvoyees_User1`
     FOREIGN KEY (`fkUser`)
+    REFERENCES `ChatApplication`.`User` (`idUser`),
+    FOREIGN KEY (`fkUserContact`)
     REFERENCES `ChatApplication`.`User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)

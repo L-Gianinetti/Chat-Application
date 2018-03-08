@@ -77,6 +77,7 @@
             this.cmdAjouter.TabIndex = 4;
             this.cmdAjouter.Text = "Ajouter";
             this.cmdAjouter.UseVisualStyleBackColor = true;
+            this.cmdAjouter.Click += new System.EventHandler(this.cmdAjouter_Click);
             // 
             // FrmContactsAjouter
             // 

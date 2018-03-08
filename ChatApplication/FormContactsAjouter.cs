@@ -12,9 +12,42 @@ namespace ChatApplication
 {
     public partial class FrmContactsAjouter : Form
     {
+        EnvoiMessage envoiMessage = new EnvoiMessage();
+        string pseudoActif;
+        User user = new User();
+
         public FrmContactsAjouter()
         {
             InitializeComponent();
+        }
+        public FrmContactsAjouter(string pseudo)
+        {
+            InitializeComponent();
+            pseudoActif = pseudo;
+        }
+
+        private void cmdAjouter_Click(object sender, EventArgs e)
+        {
+            string contactExistant = "6" + pseudoActif + "," + txtPseudo.Text;
+
+            string contactExistantTrouve = envoiMessage.Connect("127.0.0.1", contactExistant);
+            if(contactExistantTrouve == txtPseudo.Text)
+            {
+                MessageBox.Show("Demande de contact envoyée!");
+                
+            }
+            else
+            {
+                MessageBox.Show("Contact inexistant!");
+                user = null;
+                
+            }
+        }
+
+        public User ajoutDemande()
+        {
+            user.Pseudo = txtPseudo.Text;
+            return user;
         }
     }
 }

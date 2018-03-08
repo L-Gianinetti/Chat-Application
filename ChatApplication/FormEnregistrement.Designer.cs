@@ -38,6 +38,7 @@
             this.chkMotDePasse = new System.Windows.Forms.CheckBox();
             this.chkMotDePasseConfirme = new System.Windows.Forms.CheckBox();
             this.grbEnregistrement = new System.Windows.Forms.GroupBox();
+            this.cmdVerifier = new System.Windows.Forms.Button();
             this.lblRemarqueMDP = new System.Windows.Forms.Label();
             this.lblRemarque = new System.Windows.Forms.Label();
             this.cmdSuivant = new System.Windows.Forms.Button();
@@ -132,6 +133,7 @@
             // 
             // grbEnregistrement
             // 
+            this.grbEnregistrement.Controls.Add(this.cmdVerifier);
             this.grbEnregistrement.Controls.Add(this.lblRemarqueMDP);
             this.grbEnregistrement.Controls.Add(this.lblRemarque);
             this.grbEnregistrement.Controls.Add(this.cmdSuivant);
@@ -150,6 +152,16 @@
             this.grbEnregistrement.TabIndex = 9;
             this.grbEnregistrement.TabStop = false;
             this.grbEnregistrement.Text = "Enregistrement";
+            // 
+            // cmdVerifier
+            // 
+            this.cmdVerifier.Location = new System.Drawing.Point(418, 270);
+            this.cmdVerifier.Name = "cmdVerifier";
+            this.cmdVerifier.Size = new System.Drawing.Size(75, 23);
+            this.cmdVerifier.TabIndex = 14;
+            this.cmdVerifier.Text = "Vérifier ";
+            this.cmdVerifier.UseVisualStyleBackColor = true;
+            this.cmdVerifier.Click += new System.EventHandler(this.cmdVerifier_Click);
             // 
             // lblRemarqueMDP
             // 
@@ -186,6 +198,7 @@
             this.Controls.Add(this.grbEnregistrement);
             this.Name = "frmEnregistrement";
             this.Text = "Enregistrement";
+            this.Load += new System.EventHandler(this.frmEnregistrement_Load);
             this.grbEnregistrement.ResumeLayout(false);
             this.grbEnregistrement.PerformLayout();
             this.ResumeLayout(false);
@@ -207,5 +220,6 @@
         private System.Windows.Forms.Button cmdSuivant;
         private System.Windows.Forms.Label lblRemarque;
         private System.Windows.Forms.Label lblRemarqueMDP;
+        private System.Windows.Forms.Button cmdVerifier;
     }
 }

@@ -13,8 +13,7 @@ namespace ChatApplication
     public partial class frmEnregistrement : Form
     {
         User user = new User();
-        ConnexionBD connexionBD = new ConnexionBD();
-
+        EnvoiMessage envoiMessage = new EnvoiMessage();
 
         public frmEnregistrement()
         {
@@ -23,7 +22,6 @@ namespace ChatApplication
 
         private void pseudoCorrect()
         {
-            user.Pseudo = txtIdentifiant.Text;
             bool chiffreLettre = true;
 
             //Vérifie si le pseudo contient uniquement des chiffres et des lettres
@@ -34,12 +32,17 @@ namespace ChatApplication
                     chiffreLettre = false;
                 }
             }
-
-
-            if (connexionBD.UserExistant(user) == user.Pseudo)
+            string pseudoAVerifier = "5" + txtIdentifiant.Text;
+            string pseudoTrouve = envoiMessage.Connect("127.0.0.1", pseudoAVerifier);
+            if (pseudoTrouve == txtIdentifiant.Text)
             {
                 lblRemarque.Text = "Pseudo déjà existant !";
                 chkIdentifiant.Checked = false;
+            }
+            else if(pseudoTrouve == "PseudoDisponible")
+            {
+                chkIdentifiant.Checked = true;
+                lblRemarque.Text = "";
             }
             //L'implémentation du foreach qui vérifie que le pseudo contient uniquement des chiffres et des lettres rempli deja ce role
             /*else if (txtIdentifiant.Text.Substring(txtIdentifiant.Text.Length-1, 1) == " ")
@@ -151,20 +154,30 @@ namespace ChatApplication
         private void txtMotDePasseConfirme_TextChanged(object sender, EventArgs e)
         {
             motsDePasseIdentiques();
-            champsRemplisCorrectement();
         }
 
         private void txtIdentifiant_TextChanged(object sender, EventArgs e)
         {
-            pseudoCorrect();
-            champsRemplisCorrectement();
+
+            // champsRemplisCorrectement();
         }
 
         private void txtMotDePasse_TextChanged(object sender, EventArgs e)
         {
             motDePasseConforme();
             motsDePasseIdentiques();
+
+        }
+
+        private void cmdVerifier_Click(object sender, EventArgs e)
+        {
+            pseudoCorrect();
             champsRemplisCorrectement();
+        }
+
+        private void frmEnregistrement_Load(object sender, EventArgs e)
+        {
+            cmdSuivant.Enabled = false;
         }
     }
 }

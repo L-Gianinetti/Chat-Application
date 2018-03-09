@@ -177,6 +177,29 @@ namespace MyTcpListener
 
             return idUser;
         }
+        public string getPseudoDemandes(int id)
+        {
+            //ouverture de la connexion SQL
+            this.connection.Open();
+
+            //Création d'une commande SQL en fonction de l'object connection
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            //Requête SQL
+            cmd.CommandText = "SELECT userPseudonym from user where idUser =\"" + id + "\"";
+
+            string pseudo = string.Empty;
+            //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+            var cmdReader = cmd.ExecuteReader();
+            if (cmdReader.Read())
+            {
+                pseudo = string.Format("{0}", cmdReader[0]);
+            }
+
+            this.connection.Close();
+            return pseudo;
+        }
 
         public string getUserPseudo (int fk)
         {
@@ -203,11 +226,15 @@ namespace MyTcpListener
             {
                 pseudo = String.Format("{0}", cmdReader[0]);
             }
-            Console.WriteLine("Demandes de contacts trouvées : {0}", id);
+            Console.WriteLine("Demandes de contacts trouvées : {0}", pseudo);
+
+            this.connection.Close();
             return pseudo;
         }
 
-        public string getDemandesFkUserContact(int fk)
+        //Il faut que la requête retourne tous les resultats pas seulement le premier
+        //Ne prend que 1 seul fk en paramètres, peut donc pas retourner plusieurs resultats
+        public string getDemandesFkUserContact(int fk, string statut)
         {
             int fkUser = fk;
             //ouverture de la connexion SQL
@@ -217,7 +244,7 @@ namespace MyTcpListener
             MySqlCommand cmd = this.connection.CreateCommand();
 
             //Requête SQL
-            cmd.CommandText = "SELECT fkUserContact from demandescontacts where fkUser =\"" + fk + "\"";
+            cmd.CommandText = "SELECT fkUserContact from demandescontacts where fkUser =\"" + fk + "\" and Statut =\"" + statut +"\";
 
 
             //Exécution de la commande SQL
@@ -227,12 +254,14 @@ namespace MyTcpListener
         
 
             var cmdReader = cmd.ExecuteReader();
-            
             while (cmdReader.Read())
             {
-                id = String.Format("{0}", cmdReader[0]) + ",";
+                id += String.Format("{0}", cmdReader[0]) + ",";
+                
             }
             Console.WriteLine("Demandes de contacts trouvées : {0}", id);
+            this.connection.Close();
+            Console.WriteLine("Retour sql : {0}", id);
             return id;
         }
         public void ajoutDemandeContact(User user, int fkUser, int fkUserContact)

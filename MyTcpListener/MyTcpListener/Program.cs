@@ -199,23 +199,32 @@ namespace MyTcpListener
                                     break;
                                 #endregion
                                 case "7":
+                                    //PRENDRE EN COMPTE LES DEMANDES RECUES/ENVOYEES, AJOUTER DS LA BD LES DEMANDES RECUES LORSQU'ON ENVOIE UNE DEMANDE
+                                    //REGLER LE PROBLEME D'ESPACEMENT DANS LA LISTE DES DEMANDES LORSQUE L'ON EN ENVOIE UNE
+                                    //NETTOYER TOUS LE CODE, REMPLACER LES NOMS DES VARIABLES ET LES NOMS DE METHODES POUR FACILITER LA LISIBILITE
+                                    //FAIRE LA DOCUMENTATION, REGROUPER LES DOCUMENTS DANS LA DOCUMENTATION DU PROJET.
                                     int o = 0;
                                     user.Pseudo = SeparationSwitchDonnes[1];
                                     int fkUser = connexionBD.getFkUser(user);
-                                    string FKDemandesContacts = connexionBD.getDemandesFkUserContact(fkUser);
+                                    string statut = "envoyee";
+                                    string FKDemandesContacts = connexionBD.getDemandesFkUserContact(fkUser, statut);
                                     FKDemandesContacts = FKDemandesContacts.Substring(0, FKDemandesContacts.Length-1);
                                     string[] fkSplit = FKDemandesContacts.Split(',');
+                                    string stringRetournee = string.Empty;
                                     foreach(string donnee in fkSplit)
                                     {
                                         fkSplit[o] = donnee;
                                         fkSplit[o] = connexionBD.getUserPseudo(int.Parse(fkSplit[o]));
-                                        i++;
+                                        stringRetournee += fkSplit[o] + ",";
+                                        Console.WriteLine("fkSplit : {0}", fkSplit[o]);
+                                        o++;
                                     }
-                                    //A TERMINER : AJOUTER LES PSEUDOS TROUVES DANS UNE CHAINE A ENVOYER
-                                    //RECUPERER LA CHAINE, LA DECONCATENER ET L'AJOUTER A LA LISTE.
-                                    Console.WriteLine("FKDemandesContacts : {0}", FKDemandesContacts);
-                                    byte[] PseudoDemandesContactsRetourne = System.Text.Encoding.ASCII.GetBytes(FKDemandesContacts);
-                                    stream.Write(PseudoDemandesContactsRetourne, 0, PseudoDemandesContactsRetourne.Length);
+                                    
+                                    stringRetournee.Substring(0, stringRetournee.Length - 2);
+                                    
+                                    Console.WriteLine("Pseudos demandes contacts trouvés : {0}", stringRetournee);
+                                    byte[] stringRetournee2 = System.Text.Encoding.ASCII.GetBytes(stringRetournee);
+                                    stream.Write(stringRetournee2, 0, stringRetournee2.Length);
                                     
                                     break;
 

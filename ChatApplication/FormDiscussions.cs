@@ -39,7 +39,11 @@ namespace ChatApplication
             foreach(string donnee in reponsesSeparees)
             {
                 reponsesSeparees[i] = donnee;
-                lstEnvoyees.Items.Add(reponsesSeparees[i]);
+                if(!lstEnvoyees.Items.Contains(reponsesSeparees[i]))
+                {
+                    lstEnvoyees.Items.Add(reponsesSeparees[i]);
+                }
+                
                 i++;
             }
             

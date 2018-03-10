@@ -32,7 +32,7 @@ namespace ChatApplication
                     chiffreLettre = false;
                 }
             }
-            string pseudoAVerifier = "5" + txtIdentifiant.Text;
+            string pseudoAVerifier = "05" + txtIdentifiant.Text;
             string pseudoTrouve = envoiMessage.Connect("127.0.0.1", pseudoAVerifier);
             if (pseudoTrouve == txtIdentifiant.Text)
             {

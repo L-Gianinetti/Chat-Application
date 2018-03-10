@@ -84,7 +84,7 @@ namespace ChatApplication
 
             //Concaténation et envoi du message au serveur
             //Utilisation d'un nombre au début de la string pour que le serveur sache quelle(s) action(s) il doit effectuer
-            string data = "1" + userEnregistrement.Pseudo + "," + userEnregistrement.MotDePasse + "," + userEnregistrement.Nom + "," + userEnregistrement.Prenom + "," + userEnregistrement.Description;
+            string data = "01" + userEnregistrement.Pseudo + "," + userEnregistrement.MotDePasse + "," + userEnregistrement.Nom + "," + userEnregistrement.Prenom + "," + userEnregistrement.Description;
             envoiMessage.Connect("127.0.0.1", data);
 
         }

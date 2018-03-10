@@ -236,7 +236,7 @@ namespace MyTcpListener
         //Ne prend que 1 seul fk en paramètres, peut donc pas retourner plusieurs resultats
         public string getDemandesFkUserContact(int fk, string statut)
         {
-            int fkUser = fk;
+            
             //ouverture de la connexion SQL
             this.connection.Open();
 
@@ -244,7 +244,7 @@ namespace MyTcpListener
             MySqlCommand cmd = this.connection.CreateCommand();
 
             //Requête SQL
-            cmd.CommandText = "SELECT fkUserContact from demandescontacts where fkUser =\"" + fk + "\" and Statut =\"" + statut +"\";
+            cmd.CommandText = "SELECT fkUserContact from demandescontacts where fkUser =\"" + fk + "\" and Statut =\"" + statut +"\"";
 
 
             //Exécution de la commande SQL
@@ -264,7 +264,7 @@ namespace MyTcpListener
             Console.WriteLine("Retour sql : {0}", id);
             return id;
         }
-        public void ajoutDemandeContact(User user, int fkUser, int fkUserContact)
+        public void ajoutDemandeContact(int fkUser, int fkUserContact, string statut)
         {
             
             //ouverture de la connexion SQL
@@ -276,7 +276,7 @@ namespace MyTcpListener
             cmd.CommandText = "INSERT INTO demandescontacts(fkUser,fkUserContact, Statut) VALUES(@fkUser, @fkUserContact,@Statut)";
 
             //utilisation de l'objet contact passé en paramètre
-            cmd.Parameters.AddWithValue("@Statut", "Envoyee");
+            cmd.Parameters.AddWithValue("@Statut", statut);
             cmd.Parameters.AddWithValue("@fkUser", fkUser);
             cmd.Parameters.AddWithValue("@fkUserContact", fkUserContact);
 
@@ -532,6 +532,83 @@ namespace MyTcpListener
             cmd.CommandText = "UPDATE User SET userName =\"" + user.Nom + "\", userFirstName =\"" + user.Prenom + "\", userDescription =\"" + user.Description + "\", userPhoto =\"" + user.Photo + "\" where userPseudonym =\"" + user.Pseudo + "\"";
 
             //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+
+            this.connection.Close();
+        }
+
+        public void ContactAccepterAjouterContact(int idUser, int idContact)
+        {
+            this.connection.Open();
+
+            MySqlCommand cmd2 = this.connection.CreateCommand();
+
+            cmd2.CommandText = "INSERT INTO contact(contactNote, fkUser, fkUserContact) VALUES (@contactNote, @fkUser, @fkUserContact)";
+            cmd2.Parameters.AddWithValue("@ContactNote", string.Empty);
+            cmd2.Parameters.AddWithValue("@fkUser", idUser);
+            cmd2.Parameters.AddWithValue("@fkUserContact", idContact);
+
+            cmd2.ExecuteNonQuery();
+            this.connection.Close();
+        }
+
+        public void ContactAccepteSupprimerDemandeRecue(int idUser, int idContact)
+        {
+            //ouverture de la connexion SQL
+            this.connection.Open();
+
+            //Création d'une commande SQL en fonction de l'object connection
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            //Requête SQL
+            cmd.CommandText = "DELETE FROM demandescontacts WHERE fkUser =\"" + idUser + "\" and fkUserContact =\"" + idContact +"\"";
+
+            //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+            this.connection.Close();
+        }
+        public void SupprimerContact(int idUser, int idContact)
+        {
+            //ouverture de la connexion SQL
+            this.connection.Open();
+
+            //Création d'une commande SQL en fonction de l'object connection
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            //Requête SQL
+            cmd.CommandText = "DELETE FROM contact WHERE fkUser =\"" + idUser + "\" and fkUserContact =\"" + idContact + "\"";
+
+            //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+            this.connection.Close();
+        }
+
+        public string SelectionneIdContacts(int idUser)
+        {
+            this.connection.Open();
+
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            cmd.CommandText = "SELECT fkUserContact from contact where fkUser =\"" + idUser + "\"";
+
+            string idList = string.Empty;
+            var cmdReader = cmd.ExecuteReader();
+            while (cmdReader.Read())
+            {
+                idList += String.Format("{0}", cmdReader[0]) + ",";
+            }
+            
+            this.connection.Close();
+            return idList;
+        }
+        public void SupprimerDemandeContact(int idUser, int idContact, string statut)
+        {
+            this.connection.Open();
+
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            cmd.CommandText = "DELETE FROM demandescontacts where fkUser =\"" + idUser + "\" and fkUserContact =\"" + idContact + "\"and Statut =\"" + statut +"\"";
+
             cmd.ExecuteNonQuery();
 
             this.connection.Close();

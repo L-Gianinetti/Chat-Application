@@ -28,7 +28,7 @@ namespace ChatApplication
 
         private void cmdAjouter_Click(object sender, EventArgs e)
         {
-            string contactExistant = "6" + pseudoActif + "," + txtPseudo.Text;
+            string contactExistant = "06" + pseudoActif + "," + txtPseudo.Text;
 
             string contactExistantTrouve = envoiMessage.Connect("127.0.0.1", contactExistant);
             if(contactExistantTrouve == txtPseudo.Text)

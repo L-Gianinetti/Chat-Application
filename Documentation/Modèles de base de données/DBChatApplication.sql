@@ -44,10 +44,13 @@ CREATE TABLE IF NOT EXISTS `ChatApplication`.`Contact` (
   `idContact` INT NOT NULL AUTO_INCREMENT,
   `contactNote` TEXT(300) NULL,
   `fkUser` INT NOT NULL,
+  `fkUserContact` INT NOT NULL,
   PRIMARY KEY (`idContact`),
   INDEX `fk_Contact_User1_idx` (`fkUser` ASC),
   CONSTRAINT `fk_Contact_User1`
     FOREIGN KEY (`fkUser`)
+    REFERENCES `ChatApplication`.`User` (`idUser`),
+    FOREIGN KEY (`fkUserContact`)
     REFERENCES `ChatApplication`.`User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -219,16 +222,7 @@ insert into User (idUser, userName, userFirstName, userPseudonym, userDescriptio
 insert into Documentation(idDocumentation, Path) values (1, "P:\\ProjetProgrammation\\Chat\\ChatApplication\\Photos\\");
 
 -- Contact
-insert into Contact (idContact, contactNote, fkUser) values (1, 'Sed ante. Vivamus tortor. Duis mattis egestas metus.', 3);
-insert into Contact (idContact, contactNote, fkUser) values (2, 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', 1);
-insert into Contact (idContact, contactNote, fkUser) values (3, 'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.', 1);
-insert into Contact (idContact, contactNote, fkUser) values (4, 'Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.', 10);
-insert into Contact (idContact, contactNote, fkUser) values (5, 'Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.', 7);
-insert into Contact (idContact, contactNote, fkUser) values (6, 'Fusce consequat. Nulla nisl. Nunc nisl.', 7);
-insert into Contact (idContact, contactNote, fkUser) values (7, 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.', 10);
-insert into Contact (idContact, contactNote, fkUser) values (8, 'Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', 3);
-insert into Contact (idContact, contactNote, fkUser) values (9, 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.', 10);
-insert into Contact (idContact, contactNote, fkUser) values (10, 'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.', 10);
+
 
 -- Discussion
 insert into Discussion (idDiscussion, discussionName) values (1, 'Flashdog');

@@ -38,7 +38,7 @@ namespace ChatApplication
 
                 // Envoi le message au serveur tcp connecté
                 stream.Write(data, 0, data.Length);
-
+                
                 Console.WriteLine("Sent: {0}", message);
 
                 // Recois la réponse du serveur
@@ -51,6 +51,7 @@ namespace ChatApplication
 
                 // lis la premiere "livraison" du serveur
                 int bytes = stream.Read(data, 0, data.Length);
+                Console.WriteLine(bytes);
                 responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
                 msgRecu = responseData;
                 Console.WriteLine("Received: {0}", responseData);

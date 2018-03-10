@@ -45,6 +45,15 @@
             this.cmdSupprimerDiscussions = new System.Windows.Forms.Button();
             this.pnlDiscussions = new System.Windows.Forms.Panel();
             this.pnlContact = new System.Windows.Forms.Panel();
+            this.pnlContactsDemandes = new System.Windows.Forms.Panel();
+            this.grbDemandes = new System.Windows.Forms.GroupBox();
+            this.cmdAccepter = new System.Windows.Forms.Button();
+            this.cmdRefuser = new System.Windows.Forms.Button();
+            this.lstRecues = new System.Windows.Forms.ListBox();
+            this.lstEnvoyees = new System.Windows.Forms.ListBox();
+            this.lblenvoyees = new System.Windows.Forms.Label();
+            this.lblrecues = new System.Windows.Forms.Label();
+            this.pnlContactsListe = new System.Windows.Forms.Panel();
             this.lstContacts = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmdADemandesContacts = new System.Windows.Forms.Button();
@@ -71,19 +80,13 @@
             this.cmdSupprimerArchives = new System.Windows.Forms.Button();
             this.cmdReimporterArchives = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.pnlContactsListe = new System.Windows.Forms.Panel();
-            this.pnlContactsDemandes = new System.Windows.Forms.Panel();
-            this.grbDemandes = new System.Windows.Forms.GroupBox();
-            this.cmdAccepter = new System.Windows.Forms.Button();
-            this.cmdRefuser = new System.Windows.Forms.Button();
-            this.lstRecues = new System.Windows.Forms.ListBox();
-            this.lstEnvoyees = new System.Windows.Forms.ListBox();
-            this.lblenvoyees = new System.Windows.Forms.Label();
-            this.lblrecues = new System.Windows.Forms.Label();
             this.grbMenu.SuspendLayout();
             this.grbActions.SuspendLayout();
             this.pnlDiscussions.SuspendLayout();
             this.pnlContact.SuspendLayout();
+            this.pnlContactsDemandes.SuspendLayout();
+            this.grbDemandes.SuspendLayout();
+            this.pnlContactsListe.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.pnlProfil.SuspendLayout();
             this.grbProfil.SuspendLayout();
@@ -92,9 +95,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).BeginInit();
             this.pnlArchives.SuspendLayout();
             this.grbArchives.SuspendLayout();
-            this.pnlContactsListe.SuspendLayout();
-            this.pnlContactsDemandes.SuspendLayout();
-            this.grbDemandes.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbMenu
@@ -261,10 +261,95 @@
             this.pnlContact.Controls.Add(this.pnlContactsDemandes);
             this.pnlContact.Controls.Add(this.pnlContactsListe);
             this.pnlContact.Controls.Add(this.groupBox1);
-            this.pnlContact.Location = new System.Drawing.Point(192, 21);
+            this.pnlContact.Location = new System.Drawing.Point(180, 15);
             this.pnlContact.Name = "pnlContact";
             this.pnlContact.Size = new System.Drawing.Size(672, 479);
             this.pnlContact.TabIndex = 6;
+            // 
+            // pnlContactsDemandes
+            // 
+            this.pnlContactsDemandes.Controls.Add(this.grbDemandes);
+            this.pnlContactsDemandes.Location = new System.Drawing.Point(13, 94);
+            this.pnlContactsDemandes.Name = "pnlContactsDemandes";
+            this.pnlContactsDemandes.Size = new System.Drawing.Size(614, 379);
+            this.pnlContactsDemandes.TabIndex = 19;
+            // 
+            // grbDemandes
+            // 
+            this.grbDemandes.Controls.Add(this.cmdAccepter);
+            this.grbDemandes.Controls.Add(this.cmdRefuser);
+            this.grbDemandes.Controls.Add(this.lstRecues);
+            this.grbDemandes.Controls.Add(this.lstEnvoyees);
+            this.grbDemandes.Controls.Add(this.lblenvoyees);
+            this.grbDemandes.Controls.Add(this.lblrecues);
+            this.grbDemandes.Location = new System.Drawing.Point(9, 3);
+            this.grbDemandes.Name = "grbDemandes";
+            this.grbDemandes.Size = new System.Drawing.Size(602, 372);
+            this.grbDemandes.TabIndex = 11;
+            this.grbDemandes.TabStop = false;
+            this.grbDemandes.Text = "Demandes";
+            // 
+            // cmdAccepter
+            // 
+            this.cmdAccepter.Location = new System.Drawing.Point(507, 328);
+            this.cmdAccepter.Name = "cmdAccepter";
+            this.cmdAccepter.Size = new System.Drawing.Size(75, 23);
+            this.cmdAccepter.TabIndex = 13;
+            this.cmdAccepter.Text = "Accepter";
+            this.cmdAccepter.UseVisualStyleBackColor = true;
+            this.cmdAccepter.Click += new System.EventHandler(this.cmdAccepter_Click);
+            // 
+            // cmdRefuser
+            // 
+            this.cmdRefuser.Location = new System.Drawing.Point(415, 328);
+            this.cmdRefuser.Name = "cmdRefuser";
+            this.cmdRefuser.Size = new System.Drawing.Size(75, 23);
+            this.cmdRefuser.TabIndex = 12;
+            this.cmdRefuser.Text = "Refuser";
+            this.cmdRefuser.UseVisualStyleBackColor = true;
+            this.cmdRefuser.Click += new System.EventHandler(this.cmdRefuser_Click);
+            // 
+            // lstRecues
+            // 
+            this.lstRecues.FormattingEnabled = true;
+            this.lstRecues.Location = new System.Drawing.Point(183, 173);
+            this.lstRecues.Name = "lstRecues";
+            this.lstRecues.Size = new System.Drawing.Size(120, 95);
+            this.lstRecues.TabIndex = 11;
+            // 
+            // lstEnvoyees
+            // 
+            this.lstEnvoyees.FormattingEnabled = true;
+            this.lstEnvoyees.Location = new System.Drawing.Point(183, 42);
+            this.lstEnvoyees.Name = "lstEnvoyees";
+            this.lstEnvoyees.Size = new System.Drawing.Size(120, 95);
+            this.lstEnvoyees.TabIndex = 10;
+            // 
+            // lblenvoyees
+            // 
+            this.lblenvoyees.AutoSize = true;
+            this.lblenvoyees.Location = new System.Drawing.Point(6, 33);
+            this.lblenvoyees.Name = "lblenvoyees";
+            this.lblenvoyees.Size = new System.Drawing.Size(113, 13);
+            this.lblenvoyees.TabIndex = 8;
+            this.lblenvoyees.Text = "Demandes envoyées :";
+            // 
+            // lblrecues
+            // 
+            this.lblrecues.AutoSize = true;
+            this.lblrecues.Location = new System.Drawing.Point(6, 173);
+            this.lblrecues.Name = "lblrecues";
+            this.lblrecues.Size = new System.Drawing.Size(99, 13);
+            this.lblrecues.TabIndex = 9;
+            this.lblrecues.Text = "Demandes reçues :";
+            // 
+            // pnlContactsListe
+            // 
+            this.pnlContactsListe.Controls.Add(this.lstContacts);
+            this.pnlContactsListe.Location = new System.Drawing.Point(13, 96);
+            this.pnlContactsListe.Name = "pnlContactsListe";
+            this.pnlContactsListe.Size = new System.Drawing.Size(614, 380);
+            this.pnlContactsListe.TabIndex = 19;
             // 
             // lstContacts
             // 
@@ -305,6 +390,7 @@
             this.cmdASupprimerContacts.TabIndex = 2;
             this.cmdASupprimerContacts.Text = "Supprimer";
             this.cmdASupprimerContacts.UseVisualStyleBackColor = true;
+            this.cmdASupprimerContacts.Click += new System.EventHandler(this.cmdASupprimerContacts_Click);
             // 
             // cmdAModifierContacts
             // 
@@ -513,89 +599,6 @@
             this.listBox1.Size = new System.Drawing.Size(386, 433);
             this.listBox1.TabIndex = 0;
             // 
-            // pnlContactsListe
-            // 
-            this.pnlContactsListe.Controls.Add(this.lstContacts);
-            this.pnlContactsListe.Location = new System.Drawing.Point(13, 96);
-            this.pnlContactsListe.Name = "pnlContactsListe";
-            this.pnlContactsListe.Size = new System.Drawing.Size(614, 380);
-            this.pnlContactsListe.TabIndex = 19;
-            // 
-            // pnlContactsDemandes
-            // 
-            this.pnlContactsDemandes.Controls.Add(this.grbDemandes);
-            this.pnlContactsDemandes.Location = new System.Drawing.Point(13, 94);
-            this.pnlContactsDemandes.Name = "pnlContactsDemandes";
-            this.pnlContactsDemandes.Size = new System.Drawing.Size(614, 379);
-            this.pnlContactsDemandes.TabIndex = 19;
-            // 
-            // grbDemandes
-            // 
-            this.grbDemandes.Controls.Add(this.cmdAccepter);
-            this.grbDemandes.Controls.Add(this.cmdRefuser);
-            this.grbDemandes.Controls.Add(this.lstRecues);
-            this.grbDemandes.Controls.Add(this.lstEnvoyees);
-            this.grbDemandes.Controls.Add(this.lblenvoyees);
-            this.grbDemandes.Controls.Add(this.lblrecues);
-            this.grbDemandes.Location = new System.Drawing.Point(9, 3);
-            this.grbDemandes.Name = "grbDemandes";
-            this.grbDemandes.Size = new System.Drawing.Size(602, 372);
-            this.grbDemandes.TabIndex = 11;
-            this.grbDemandes.TabStop = false;
-            this.grbDemandes.Text = "Demandes";
-            // 
-            // cmdAccepter
-            // 
-            this.cmdAccepter.Location = new System.Drawing.Point(507, 328);
-            this.cmdAccepter.Name = "cmdAccepter";
-            this.cmdAccepter.Size = new System.Drawing.Size(75, 23);
-            this.cmdAccepter.TabIndex = 13;
-            this.cmdAccepter.Text = "Accepter";
-            this.cmdAccepter.UseVisualStyleBackColor = true;
-            // 
-            // cmdRefuser
-            // 
-            this.cmdRefuser.Location = new System.Drawing.Point(415, 328);
-            this.cmdRefuser.Name = "cmdRefuser";
-            this.cmdRefuser.Size = new System.Drawing.Size(75, 23);
-            this.cmdRefuser.TabIndex = 12;
-            this.cmdRefuser.Text = "Refuser";
-            this.cmdRefuser.UseVisualStyleBackColor = true;
-            // 
-            // lstRecues
-            // 
-            this.lstRecues.FormattingEnabled = true;
-            this.lstRecues.Location = new System.Drawing.Point(183, 173);
-            this.lstRecues.Name = "lstRecues";
-            this.lstRecues.Size = new System.Drawing.Size(120, 95);
-            this.lstRecues.TabIndex = 11;
-            // 
-            // lstEnvoyees
-            // 
-            this.lstEnvoyees.FormattingEnabled = true;
-            this.lstEnvoyees.Location = new System.Drawing.Point(183, 42);
-            this.lstEnvoyees.Name = "lstEnvoyees";
-            this.lstEnvoyees.Size = new System.Drawing.Size(120, 95);
-            this.lstEnvoyees.TabIndex = 10;
-            // 
-            // lblenvoyees
-            // 
-            this.lblenvoyees.AutoSize = true;
-            this.lblenvoyees.Location = new System.Drawing.Point(6, 33);
-            this.lblenvoyees.Name = "lblenvoyees";
-            this.lblenvoyees.Size = new System.Drawing.Size(113, 13);
-            this.lblenvoyees.TabIndex = 8;
-            this.lblenvoyees.Text = "Demandes envoyées :";
-            // 
-            // lblrecues
-            // 
-            this.lblrecues.AutoSize = true;
-            this.lblrecues.Location = new System.Drawing.Point(6, 173);
-            this.lblrecues.Name = "lblrecues";
-            this.lblrecues.Size = new System.Drawing.Size(99, 13);
-            this.lblrecues.TabIndex = 9;
-            this.lblrecues.Text = "Demandes reçues :";
-            // 
             // frmDiscussions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -613,6 +616,10 @@
             this.grbActions.ResumeLayout(false);
             this.pnlDiscussions.ResumeLayout(false);
             this.pnlContact.ResumeLayout(false);
+            this.pnlContactsDemandes.ResumeLayout(false);
+            this.grbDemandes.ResumeLayout(false);
+            this.grbDemandes.PerformLayout();
+            this.pnlContactsListe.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.pnlProfil.ResumeLayout(false);
             this.grbProfil.ResumeLayout(false);
@@ -622,10 +629,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).EndInit();
             this.pnlArchives.ResumeLayout(false);
             this.grbArchives.ResumeLayout(false);
-            this.pnlContactsListe.ResumeLayout(false);
-            this.pnlContactsDemandes.ResumeLayout(false);
-            this.grbDemandes.ResumeLayout(false);
-            this.grbDemandes.PerformLayout();
             this.ResumeLayout(false);
 
         }

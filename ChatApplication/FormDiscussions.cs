@@ -222,5 +222,21 @@ namespace ChatApplication
             }
 
         }
+
+        private void cmdAModifierContacts_Click(object sender, EventArgs e)
+        {
+            if(lstContacts.SelectedIndex != -1)
+            {
+                
+                
+                FrmContactsModifier frmContactsModifier = new FrmContactsModifier(txtPseudo.Text, lstContacts.GetItemText(lstContacts.SelectedItem));
+                frmContactsModifier.ShowDialog();
+                DialogResult res = new DialogResult();
+                if(res == DialogResult.OK)
+                {
+                    frmContactsModifier.Close();
+                }
+            }
+        }
     }
 }

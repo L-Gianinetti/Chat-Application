@@ -314,7 +314,7 @@ namespace MyTcpListener
             return path;
         }
 
-        public string DemandeMotDePasse(User user)
+        public string GetMotDePasse(User user)
         {
             //ouverture de la connexion SQL
             this.connection.Open();
@@ -583,6 +583,11 @@ namespace MyTcpListener
             this.connection.Close();
         }
 
+        /// <summary>
+        /// Retourne un string contenant la liste des fkUserContact
+        /// </summary>
+        /// <param name="idUser"></param>
+        /// <returns></returns>
         public string SelectionneIdContacts(int idUser)
         {
             this.connection.Open();
@@ -612,6 +617,52 @@ namespace MyTcpListener
             cmd.ExecuteNonQuery();
 
             this.connection.Close();
+        }
+        public void MettreAJourContact(int idUtilisateur, int idContact, string annotation) 
+        {
+            
+            //ouverture de la connexion SQL
+            this.connection.Open();
+
+            //Création d'une commande SQL en fonction de l'object connection
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            //Requête SQL
+            cmd.CommandText = "UPDATE contact SET fkUser =\"" + idUtilisateur + "\", fkUserContact =\"" + idContact + "\", contactNote =\"" + annotation + "\" where fkUser =\"" + idUtilisateur + "\" and fkUserContact =\"" + idContact +"\"";
+
+            //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+
+            this.connection.Close();
+        }
+        public string InfoContactAnnotation(int idUtilisateur, int idContact)
+        {
+            //ouverture de la connexion SQL
+            this.connection.Open();
+
+            //Création d'une commande SQL en fonction de l'object connection
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            //Requête SQL
+            cmd.CommandText = "SELECT contactNote from contact where fkUser =\"" + idUtilisateur + "\" and fkUserContact =\"" + idContact + "\"";
+
+
+            //Exécution de la commande SQL
+            cmd.ExecuteNonQuery();
+
+            string annotation = string.Empty;
+
+
+            var cmdReader = cmd.ExecuteReader();
+
+            if (cmdReader.Read())
+            {
+                annotation = String.Format("{0}", cmdReader[0]);
+            }
+            
+
+            this.connection.Close();
+            return annotation;
         }
     }
 }

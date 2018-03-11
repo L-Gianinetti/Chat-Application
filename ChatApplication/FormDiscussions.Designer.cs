@@ -400,6 +400,7 @@
             this.cmdAModifierContacts.TabIndex = 1;
             this.cmdAModifierContacts.Text = "Modifier";
             this.cmdAModifierContacts.UseVisualStyleBackColor = true;
+            this.cmdAModifierContacts.Click += new System.EventHandler(this.cmdAModifierContacts_Click);
             // 
             // cmdAAjouterContacts
             // 
@@ -414,7 +415,7 @@
             // pnlProfil
             // 
             this.pnlProfil.Controls.Add(this.grbProfil);
-            this.pnlProfil.Location = new System.Drawing.Point(1122, 38);
+            this.pnlProfil.Location = new System.Drawing.Point(639, 544);
             this.pnlProfil.Name = "pnlProfil";
             this.pnlProfil.Size = new System.Drawing.Size(601, 478);
             this.pnlProfil.TabIndex = 19;
@@ -556,7 +557,7 @@
             // pnlArchives
             // 
             this.pnlArchives.Controls.Add(this.grbArchives);
-            this.pnlArchives.Location = new System.Drawing.Point(1107, 567);
+            this.pnlArchives.Location = new System.Drawing.Point(1087, 79);
             this.pnlArchives.Name = "pnlArchives";
             this.pnlArchives.Size = new System.Drawing.Size(859, 529);
             this.pnlArchives.TabIndex = 2;

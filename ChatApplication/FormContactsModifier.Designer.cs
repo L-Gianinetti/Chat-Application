@@ -36,6 +36,9 @@
             this.cmdProfil = new System.Windows.Forms.Button();
             this.cmdContacts = new System.Windows.Forms.Button();
             this.grbInformations = new System.Windows.Forms.GroupBox();
+            this.lblPhoto = new System.Windows.Forms.Label();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.lblDescription = new System.Windows.Forms.Label();
             this.ptbPhoto = new System.Windows.Forms.PictureBox();
             this.txtPseudo = new System.Windows.Forms.TextBox();
             this.txtPrenom = new System.Windows.Forms.TextBox();
@@ -43,15 +46,12 @@
             this.lblNom = new System.Windows.Forms.Label();
             this.lblPrenom = new System.Windows.Forms.Label();
             this.lblPseudo = new System.Windows.Forms.Label();
-            this.txtDescription = new System.Windows.Forms.TextBox();
-            this.lblDescription = new System.Windows.Forms.Label();
-            this.lblPhoto = new System.Windows.Forms.Label();
             this.grbAnnotation = new System.Windows.Forms.GroupBox();
-            this.lblRemarque = new System.Windows.Forms.Label();
-            this.lblRemarque2 = new System.Windows.Forms.Label();
-            this.txtAnnotation = new System.Windows.Forms.TextBox();
-            this.cmdAnnuler = new System.Windows.Forms.Button();
             this.cmdValider = new System.Windows.Forms.Button();
+            this.cmdAnnuler = new System.Windows.Forms.Button();
+            this.txtAnnotation = new System.Windows.Forms.TextBox();
+            this.lblRemarque2 = new System.Windows.Forms.Label();
+            this.lblRemarque = new System.Windows.Forms.Label();
             this.grbMenu.SuspendLayout();
             this.grbInformations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).BeginInit();
@@ -146,69 +146,14 @@
             this.grbInformations.TabStop = false;
             this.grbInformations.Text = "Informations";
             // 
-            // ptbPhoto
+            // lblPhoto
             // 
-            this.ptbPhoto.Location = new System.Drawing.Point(12, 54);
-            this.ptbPhoto.Name = "ptbPhoto";
-            this.ptbPhoto.Size = new System.Drawing.Size(150, 135);
-            this.ptbPhoto.TabIndex = 11;
-            this.ptbPhoto.TabStop = false;
-            this.ptbPhoto.Click += new System.EventHandler(this.ptbPhoto_Click);
-            // 
-            // txtPseudo
-            // 
-            this.txtPseudo.Enabled = false;
-            this.txtPseudo.Location = new System.Drawing.Point(367, 121);
-            this.txtPseudo.Name = "txtPseudo";
-            this.txtPseudo.Size = new System.Drawing.Size(100, 20);
-            this.txtPseudo.TabIndex = 17;
-            this.txtPseudo.TextChanged += new System.EventHandler(this.txtPseudo_TextChanged);
-            // 
-            // txtPrenom
-            // 
-            this.txtPrenom.Location = new System.Drawing.Point(367, 84);
-            this.txtPrenom.Name = "txtPrenom";
-            this.txtPrenom.Size = new System.Drawing.Size(100, 20);
-            this.txtPrenom.TabIndex = 16;
-            this.txtPrenom.TextChanged += new System.EventHandler(this.txtPrenom_TextChanged);
-            // 
-            // txtNom
-            // 
-            this.txtNom.Location = new System.Drawing.Point(367, 54);
-            this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(100, 20);
-            this.txtNom.TabIndex = 15;
-            this.txtNom.TextChanged += new System.EventHandler(this.txtNom_TextChanged);
-            // 
-            // lblNom
-            // 
-            this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(273, 54);
-            this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(35, 13);
-            this.lblNom.TabIndex = 12;
-            this.lblNom.Text = "Nom :";
-            this.lblNom.Click += new System.EventHandler(this.lblNom_Click);
-            // 
-            // lblPrenom
-            // 
-            this.lblPrenom.AutoSize = true;
-            this.lblPrenom.Location = new System.Drawing.Point(273, 87);
-            this.lblPrenom.Name = "lblPrenom";
-            this.lblPrenom.Size = new System.Drawing.Size(49, 13);
-            this.lblPrenom.TabIndex = 13;
-            this.lblPrenom.Text = "Prénom :";
-            this.lblPrenom.Click += new System.EventHandler(this.lblPrenom_Click);
-            // 
-            // lblPseudo
-            // 
-            this.lblPseudo.AutoSize = true;
-            this.lblPseudo.Location = new System.Drawing.Point(273, 124);
-            this.lblPseudo.Name = "lblPseudo";
-            this.lblPseudo.Size = new System.Drawing.Size(74, 13);
-            this.lblPseudo.TabIndex = 14;
-            this.lblPseudo.Text = "Pseudonyme :";
-            this.lblPseudo.Click += new System.EventHandler(this.lblPseudo_Click);
+            this.lblPhoto.AutoSize = true;
+            this.lblPhoto.Location = new System.Drawing.Point(12, 35);
+            this.lblPhoto.Name = "lblPhoto";
+            this.lblPhoto.Size = new System.Drawing.Size(41, 13);
+            this.lblPhoto.TabIndex = 20;
+            this.lblPhoto.Text = "Photo :";
             // 
             // txtDescription
             // 
@@ -227,14 +172,62 @@
             this.lblDescription.TabIndex = 18;
             this.lblDescription.Text = "Description :";
             // 
-            // lblPhoto
+            // ptbPhoto
             // 
-            this.lblPhoto.AutoSize = true;
-            this.lblPhoto.Location = new System.Drawing.Point(12, 35);
-            this.lblPhoto.Name = "lblPhoto";
-            this.lblPhoto.Size = new System.Drawing.Size(41, 13);
-            this.lblPhoto.TabIndex = 20;
-            this.lblPhoto.Text = "Photo :";
+            this.ptbPhoto.Location = new System.Drawing.Point(12, 54);
+            this.ptbPhoto.Name = "ptbPhoto";
+            this.ptbPhoto.Size = new System.Drawing.Size(150, 135);
+            this.ptbPhoto.TabIndex = 11;
+            this.ptbPhoto.TabStop = false;
+            // 
+            // txtPseudo
+            // 
+            this.txtPseudo.Enabled = false;
+            this.txtPseudo.Location = new System.Drawing.Point(367, 121);
+            this.txtPseudo.Name = "txtPseudo";
+            this.txtPseudo.Size = new System.Drawing.Size(100, 20);
+            this.txtPseudo.TabIndex = 17;
+            // 
+            // txtPrenom
+            // 
+            this.txtPrenom.Location = new System.Drawing.Point(367, 84);
+            this.txtPrenom.Name = "txtPrenom";
+            this.txtPrenom.Size = new System.Drawing.Size(100, 20);
+            this.txtPrenom.TabIndex = 16;
+            // 
+            // txtNom
+            // 
+            this.txtNom.Location = new System.Drawing.Point(367, 54);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(100, 20);
+            this.txtNom.TabIndex = 15;
+            // 
+            // lblNom
+            // 
+            this.lblNom.AutoSize = true;
+            this.lblNom.Location = new System.Drawing.Point(273, 54);
+            this.lblNom.Name = "lblNom";
+            this.lblNom.Size = new System.Drawing.Size(35, 13);
+            this.lblNom.TabIndex = 12;
+            this.lblNom.Text = "Nom :";
+            // 
+            // lblPrenom
+            // 
+            this.lblPrenom.AutoSize = true;
+            this.lblPrenom.Location = new System.Drawing.Point(273, 87);
+            this.lblPrenom.Name = "lblPrenom";
+            this.lblPrenom.Size = new System.Drawing.Size(49, 13);
+            this.lblPrenom.TabIndex = 13;
+            this.lblPrenom.Text = "Prénom :";
+            // 
+            // lblPseudo
+            // 
+            this.lblPseudo.AutoSize = true;
+            this.lblPseudo.Location = new System.Drawing.Point(273, 124);
+            this.lblPseudo.Name = "lblPseudo";
+            this.lblPseudo.Size = new System.Drawing.Size(74, 13);
+            this.lblPseudo.TabIndex = 14;
+            this.lblPseudo.Text = "Pseudonyme :";
             // 
             // grbAnnotation
             // 
@@ -250,31 +243,16 @@
             this.grbAnnotation.TabStop = false;
             this.grbAnnotation.Text = "Annotation";
             // 
-            // lblRemarque
+            // cmdValider
             // 
-            this.lblRemarque.AutoSize = true;
-            this.lblRemarque.Location = new System.Drawing.Point(12, 20);
-            this.lblRemarque.Name = "lblRemarque";
-            this.lblRemarque.Size = new System.Drawing.Size(169, 13);
-            this.lblRemarque.TabIndex = 0;
-            this.lblRemarque.Text = "Ajouter une note pour ce contact :";
-            // 
-            // lblRemarque2
-            // 
-            this.lblRemarque2.AutoSize = true;
-            this.lblRemarque2.Location = new System.Drawing.Point(6, 157);
-            this.lblRemarque2.Name = "lblRemarque2";
-            this.lblRemarque2.Size = new System.Drawing.Size(362, 13);
-            this.lblRemarque2.TabIndex = 1;
-            this.lblRemarque2.Text = "Les contacts annotés seront marqués d\'un double astérisque sur le côté (**)";
-            // 
-            // txtAnnotation
-            // 
-            this.txtAnnotation.Location = new System.Drawing.Point(12, 52);
-            this.txtAnnotation.Multiline = true;
-            this.txtAnnotation.Name = "txtAnnotation";
-            this.txtAnnotation.Size = new System.Drawing.Size(544, 92);
-            this.txtAnnotation.TabIndex = 6;
+            this.cmdValider.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.cmdValider.Location = new System.Drawing.Point(507, 156);
+            this.cmdValider.Name = "cmdValider";
+            this.cmdValider.Size = new System.Drawing.Size(75, 23);
+            this.cmdValider.TabIndex = 8;
+            this.cmdValider.Text = "Valider";
+            this.cmdValider.UseVisualStyleBackColor = true;
+            this.cmdValider.Click += new System.EventHandler(this.cmdValider_Click);
             // 
             // cmdAnnuler
             // 
@@ -285,14 +263,31 @@
             this.cmdAnnuler.Text = "Annuler";
             this.cmdAnnuler.UseVisualStyleBackColor = true;
             // 
-            // cmdValider
+            // txtAnnotation
             // 
-            this.cmdValider.Location = new System.Drawing.Point(507, 156);
-            this.cmdValider.Name = "cmdValider";
-            this.cmdValider.Size = new System.Drawing.Size(75, 23);
-            this.cmdValider.TabIndex = 8;
-            this.cmdValider.Text = "Valider";
-            this.cmdValider.UseVisualStyleBackColor = true;
+            this.txtAnnotation.Location = new System.Drawing.Point(12, 52);
+            this.txtAnnotation.Multiline = true;
+            this.txtAnnotation.Name = "txtAnnotation";
+            this.txtAnnotation.Size = new System.Drawing.Size(544, 92);
+            this.txtAnnotation.TabIndex = 6;
+            // 
+            // lblRemarque2
+            // 
+            this.lblRemarque2.AutoSize = true;
+            this.lblRemarque2.Location = new System.Drawing.Point(6, 157);
+            this.lblRemarque2.Name = "lblRemarque2";
+            this.lblRemarque2.Size = new System.Drawing.Size(362, 13);
+            this.lblRemarque2.TabIndex = 1;
+            this.lblRemarque2.Text = "Les contacts annotés seront marqués d\'un double astérisque sur le côté (**)";
+            // 
+            // lblRemarque
+            // 
+            this.lblRemarque.AutoSize = true;
+            this.lblRemarque.Location = new System.Drawing.Point(12, 20);
+            this.lblRemarque.Name = "lblRemarque";
+            this.lblRemarque.Size = new System.Drawing.Size(169, 13);
+            this.lblRemarque.TabIndex = 0;
+            this.lblRemarque.Text = "Ajouter une note pour ce contact :";
             // 
             // FrmContactsModifier
             // 
@@ -304,6 +299,7 @@
             this.Controls.Add(this.grbMenu);
             this.Name = "FrmContactsModifier";
             this.Text = "Modifier un contact";
+            this.Load += new System.EventHandler(this.FrmContactsModifier_Load);
             this.grbMenu.ResumeLayout(false);
             this.grbInformations.ResumeLayout(false);
             this.grbInformations.PerformLayout();

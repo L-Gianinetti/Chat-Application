@@ -137,6 +137,17 @@ namespace MyTcpListener
             return infosProfil;
 
         }
+        public string RetourneInfoProfilContact(string[] donnee)
+        {
+            contact = RetournePseudoContact(donnee);
+            contact.Nom = connexionBD.InfoProfilNom(contact);
+            contact.Prenom = connexionBD.InfoProfilPrenom(contact);
+            contact.Description = connexionBD.InfoProfilDescription(contact);
+
+            string infosProfil = contact.Nom + "," + contact.Prenom + "," + contact.Description;
+
+            return infosProfil;
+        }
         /// <summary>
         /// Met a jour le profil 
         /// </summary>

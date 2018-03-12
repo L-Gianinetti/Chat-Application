@@ -28,7 +28,7 @@ namespace MyTcpListener
                 try
                 {
                     //Attribution du port et de l'adresse IP
-                    int port = 1234;
+                    int port = 4321;
                     IPAddress localAddr = IPAddress.Parse("127.0.0.1");
 
                     //Attribution du port et de l'adresse au TcpListener
@@ -213,7 +213,7 @@ namespace MyTcpListener
                                 actionUtilisateur.ModificationContact(SeparationSwitchDonnes);
                                 break;
                             case "14":
-                                string infosProfilContact = actionUtilisateur.RetourneInfoProfil(SeparationSwitchDonnes);
+                                string infosProfilContact = actionUtilisateur.RetourneInfoProfilContact(SeparationSwitchDonnes);
                                 string annotation = actionUtilisateur.RetourneAnnotationContact(SeparationSwitchDonnes);
                                 string infosContact = infosProfilContact + "," + annotation;                                                                                                                                                                                     
                                 byte[] reponse14= System.Text.Encoding.ASCII.GetBytes(infosContact);

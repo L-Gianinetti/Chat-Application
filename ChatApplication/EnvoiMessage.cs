@@ -26,7 +26,7 @@ namespace ChatApplication
             {
                 // Crée un tcpClient
                 //connecté à la meme adresse et au meme port que le server spécifié
-                int port = 1234;
+                int port = 4321;
                 TcpClient client = new TcpClient(server, port);
 
                 // Traduit le message ascii envoyé dans un Byte tableau

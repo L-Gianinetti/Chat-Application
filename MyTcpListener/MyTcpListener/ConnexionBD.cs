@@ -117,7 +117,7 @@ namespace MyTcpListener
         /// Est utilisé lorsqu'une demande de contact est acceptée
         /// <param name="idUser"></param>
         /// <param name="idContact"></param>
-        public void ContactAccepteSupprimerDemandeRecue(int idUser, int idContact)
+        public void SupprimerDemandeContact(int idUser, int idContact)
         {
 
             string requete = "DELETE FROM demandescontacts WHERE fkUser =\"" + idUser + "\" and fkUserContact =\"" + idContact + "\"";
@@ -134,7 +134,7 @@ namespace MyTcpListener
             string requete = "DELETE FROM contact WHERE fkUser =\"" + idUser + "\" and fkUserContact =\"" + idContact + "\"";
             UpdateOrDelete(requete);
         }
-
+        /*
         //TODO Vérifier l'utilité de la méthode SupprimerDemandeContact pourquoi pas simplement utilisé la methode ContactAccepteSupprimerDemandeRecue?
         /// <summary>
         /// Supprime une demande de contact selon un statut
@@ -146,7 +146,7 @@ namespace MyTcpListener
         {
             string requete = "DELETE FROM demandescontacts where fkUser =\"" + idUser + "\" and fkUserContact =\"" + idContact + "\"and Statut =\"" + statut + "\"";
             UpdateOrDelete(requete);
-        }
+        }*/
 
         //SELECT
 

@@ -255,10 +255,10 @@ namespace MyTcpListener
             int idUtilisateur = connexionBD.getFkUser(utilisateur);
             int idContact = connexionBD.getFkUser(contact);
 
-            connexionBD.ContactAccepteSupprimerDemandeRecue(idUtilisateur, idContact);
+            connexionBD.SupprimerDemandeContact(idUtilisateur, idContact);
             connexionBD.ContactAccepterAjouterContact(idUtilisateur, idContact);
 
-            connexionBD.ContactAccepteSupprimerDemandeRecue(idContact, idUtilisateur);
+            connexionBD.SupprimerDemandeContact(idContact, idUtilisateur);
             connexionBD.ContactAccepterAjouterContact(idContact, idUtilisateur);
         }
 
@@ -302,13 +302,13 @@ namespace MyTcpListener
         {
             utilisateur = RetournePseudoUtilisateur(donnee);
             contact = RetournePseudoContact(donnee);
-            string statutRecu = "Recue";
-            string statutEnvoyee = "Envoyee";
             int idUtilisateur = connexionBD.getFkUser(utilisateur);
             int idContact = connexionBD.getFkUser(contact);
 
-            connexionBD.SupprimerDemandeContact(idUtilisateur, idContact, statutRecu);
-            connexionBD.SupprimerDemandeContact(idContact, idUtilisateur, statutEnvoyee);
+            //connexionBD.ContactAccepteSupprimerDemandeRecue(idUtilisateur, idContact, statutRecu);
+            //connexionBD.ContactAccepteSupprimerDemandeRecue(idContact, idUtilisateur, statutEnvoyee);
+            connexionBD.SupprimerDemandeContact(idUtilisateur, idContact);
+            connexionBD.SupprimerDemandeContact(idContact, idUtilisateur);
         }
         /// <summary>
         /// Supprime le contact chez les 2 utilisateurs
@@ -337,7 +337,7 @@ namespace MyTcpListener
             
             //int pour séparer les données
             int i = 0;
-            int j = 0;
+            //int j = 0;
             //tableau contenant les données séparement
             string[] donnee = donnees[1].Split(',');
             foreach (string element in donnee)

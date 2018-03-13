@@ -37,7 +37,7 @@ namespace ChatApplication
         {
             int i = 0;
             string demandeRecue = "08" + txtPseudo.Text;
-            string reponseDemandeRecue = envoiMessage.Connect("127.0.0.1", demandeRecue);
+            string reponseDemandeRecue = envoiMessage.Connect(demandeRecue);
             if(reponseDemandeRecue != "PasDemandesRecues")
             {
                 string[] reponsesDemandeRecueSeparee = reponseDemandeRecue.Split(',');
@@ -57,7 +57,7 @@ namespace ChatApplication
         {
             int i = 0;
             string demande = "07" + txtPseudo.Text;
-            string reponse = envoiMessage.Connect("127.0.0.1", demande);
+            string reponse = envoiMessage.Connect(demande);
             if(reponse != "PasDemandesEnvoyees")
             {
                 string[] reponsesSeparees = reponse.Split(',');
@@ -98,7 +98,7 @@ namespace ChatApplication
             int i = 0;
             string message = "10" + txtPseudo.Text;
             
-            string reponse = envoiMessage.Connect("127.0.0.1", message);
+            string reponse = envoiMessage.Connect(message);
             
             if(reponse != "Pas de contact a ajouter")
             {
@@ -133,7 +133,7 @@ namespace ChatApplication
         {
             user.Pseudo = Properties.Settings.Default.UserActif;
             string msgProfil = "03" + user.Pseudo;
-            string reponse = envoiMessage.Connect("127.0.0.1", msgProfil);
+            string reponse = envoiMessage.Connect(msgProfil);
             string[] reponses = reponse.Split(',');
 
             user.Nom = reponses[0];
@@ -153,7 +153,7 @@ namespace ChatApplication
             user.Description = txtDescription.Text;
             user.Pseudo = txtPseudo.Text;
             string msgValidationProfil = "04" + user.Pseudo + "," + user.Nom + "," + user.Prenom + "," + user.Description;
-            string reponse = envoiMessage.Connect("127.0.0.1", msgValidationProfil);
+            string reponse = envoiMessage.Connect(msgValidationProfil);
             if (reponse == "Reussie")
             {
                 MessageBox.Show("Le profil a été mis à jour");
@@ -186,7 +186,7 @@ namespace ChatApplication
 
             string selectedItem = lstRecues.GetItemText(lstRecues.SelectedItem);
             string message = "09" + txtPseudo.Text + "," + selectedItem;
-            string reponse = envoiMessage.Connect("127.0.0.1", message);
+            string reponse = envoiMessage.Connect(message);
 
             MessageBox.Show(reponse);
             lstContacts.Items.Add(selectedItem);
@@ -200,7 +200,7 @@ namespace ChatApplication
             string selectedItem = lstRecues.GetItemText(lstRecues.SelectedItem);
             string message = "11" + txtPseudo.Text + "," + selectedItem;
 
-            string reponse = envoiMessage.Connect("127.0.0.1", message);
+            string reponse = envoiMessage.Connect(message);
             if(reponse == "Demande supprimee")
             {
                 lstRecues.Items.Remove(selectedItem);
@@ -216,7 +216,7 @@ namespace ChatApplication
                 string selectedItem = lstContacts.GetItemText(lstContacts.SelectedItem);
                 string message = "12" + txtPseudo.Text + "," + selectedItem;
 
-                string reponse = envoiMessage.Connect("127.0.0.1", message);
+                string reponse = envoiMessage.Connect( message);
 
                 if(reponse == "Contact supprime")
                 {

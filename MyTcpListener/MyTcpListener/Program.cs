@@ -220,9 +220,26 @@ namespace MyTcpListener
                                 stream.Write(reponse14, 0, reponse14.Length);
                                 break;
                             case "15":
-                                string participants = SeparationSwitchDonnes[1].Substring(0, SeparationSwitchDonnes[1].Length - 3);
-                                int nbrParticipants = int.Parse(SeparationSwitchDonnes[1].Substring(SeparationSwitchDonnes[1].Length - 3, SeparationSwitchDonnes[1].Length - 1));
+                                string participants = SeparationSwitchDonnes[1].Substring(0, SeparationSwitchDonnes[1].Length - 2);
+                                string stringNbrParticipants = SeparationSwitchDonnes[1].Substring(SeparationSwitchDonnes[1].Length -2,2);
+                                int test = int.Parse(stringNbrParticipants.Substring(0, 1));
+                                int test2 = int.Parse(stringNbrParticipants.Substring(1, 1));
+                                int nbrParticipants;
+                                if(test == 0)
+                                {
+                                    nbrParticipants = test2;
+                                }
+                                else
+                                {
+                                    nbrParticipants = int.Parse(stringNbrParticipants);
+                                }
+
+                                
+                                actionUtilisateur.CreerDiscussion(SeparationSwitchDonnes, nbrParticipants);
+                                actionUtilisateur.CreerParticipationDiscussionCreateur(SeparationSwitchDonnes, nbrParticipants);
+                                actionUtilisateur.CreerParticipationDiscussionParticipant(SeparationSwitchDonnes, nbrParticipants);
                                 //TODO ajouter les demandes de contact à tous  les utilisateurs de la discussion et ajouter la demande envoyee a l'utilisateur qui a créé la discussion.
+
                                 break;
                             default:
                                 break;

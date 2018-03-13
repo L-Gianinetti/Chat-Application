@@ -23,8 +23,8 @@ namespace MyTcpListener
             this.connection = new MySqlConnection(connectionString);
         }
 
-        //CONSTRUCTEUR
-        
+        #region CONSTRUCTEURS
+
         public void UpdateOrDelete(string requete)
         {
             //ouverture de la connexion SQL
@@ -84,8 +84,9 @@ namespace MyTcpListener
             this.connection.Close();
             return reponse;
         }
+        #endregion
 
-        //UPDATE
+        #region UPDATE
 
         /// <summary>
         /// Met a jour la table contact
@@ -108,8 +109,9 @@ namespace MyTcpListener
             string requete = "UPDATE User SET userName =\"" + user.Nom + "\", userFirstName =\"" + user.Prenom + "\", userDescription =\"" + user.Description + "\", userPhoto =\"" + user.Photo + "\" where userPseudonym =\"" + user.Pseudo + "\"";
             UpdateOrDelete(requete);
         }
+        #endregion
 
-        //DELETE
+        #region DELETE
 
         /// <summary>
         /// Supprime une demande de contact
@@ -134,8 +136,9 @@ namespace MyTcpListener
             string requete = "DELETE FROM contact WHERE fkUser =\"" + idUser + "\" and fkUserContact =\"" + idContact + "\"";
             UpdateOrDelete(requete);
         }
+        #endregion
 
-        //SELECT
+        #region SELECT
 
         /// <summary>
         /// Sélectionne le champ contactNote de la table contact
@@ -243,6 +246,17 @@ namespace MyTcpListener
             return pseudo;
         }
 
+        /// <summary>
+        /// Utilisé pour ajouter l'administrateur ou les participants a une discussion
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <returns></returns>
+        public string SelectionneIdDiscussion(string nom)
+        {
+            string requete = "SELECT idDiscussion from discussion where discussionName =\"" + nom + "\"";
+            string idDiscussion = SelectSimple(requete);
+            return idDiscussion;
+        }
 
         public string SelectionneIdContacts(int idUser)
         {
@@ -348,9 +362,40 @@ namespace MyTcpListener
 
             return userExistant;
         }
+        #endregion
 
-        //INSERT
+        #region INSERT
+        
 
+
+        //TODO CHANGER LE STATUT QUAND ILS ACCEPTENT LA DEMANDE
+        //TODO SUPPRIMER LA PARTICIPATIONDISCUSSION QUAND ILS REFUSENT LA DEMANDE
+        //TODO CREER UN ADMINISTRATEUR POUR CHAQUE DISCUSSION, L'ADMIN SERA LE CREATEUR
+        //TODO AJOUTER LES DISCUSSION QUAND ILS ACCEPTENT LA DEMANDE
+        //TODO SUPPRIMER LES DISCUSSIONS QUAND ILS LES SUPPRIMENT
+        //TODO AJOUTER DANS ARCHIVES QUAND ILS LES ARCHIVENT
+        //TODO AJOUTER DANS DISCUSSION QUAND ILS LES ACTUALISENT
+        public void CreerParticipationDisucssion(int idUser, int idDiscussion, string statut)
+        {
+            this.connection.Open();
+            MySqlCommand cmd = this.connection.CreateCommand();
+            cmd.CommandText = "INSERT INTO participationdiscussions(fkUser,fkDiscussion,statut) VALUES(@fkUser,@fkDiscussion,@statut)";
+            cmd.Parameters.AddWithValue("@fkUser", idUser);
+            cmd.Parameters.AddWithValue("@fkDiscussion", idDiscussion);
+            cmd.Parameters.AddWithValue("@statut", statut);
+            cmd.ExecuteNonQuery();
+            this.connection.Close();
+        }
+        public void CreerDiscussion(string nom)
+        {
+            this.connection.Open();
+            MySqlCommand cmd = this.connection.CreateCommand();
+            cmd.CommandText = "INSERT INTO discussion(discussionName) VALUES(@discussionName)";
+            cmd.Parameters.AddWithValue("@discussionName", nom);
+            cmd.ExecuteNonQuery();
+            this.connection.Close();
+        }
+     
 
         public void ajoutUser(User user)
         {
@@ -415,7 +460,9 @@ namespace MyTcpListener
             cmd2.ExecuteNonQuery();
             this.connection.Close();
         }
+        #endregion
 
+        #region MOT DE PASSE
         //MOT DE PASSE SUREMENT RIEN A FAIRE LA
 
 
@@ -478,6 +525,7 @@ namespace MyTcpListener
             Console.WriteLine(motsDePasseCorrects);
             return motsDePasseCorrects;
         }
+        #endregion
 
 
 

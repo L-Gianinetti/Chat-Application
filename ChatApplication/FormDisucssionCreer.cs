@@ -31,7 +31,6 @@ namespace ChatApplication
             {
                 participants += lstParticipants.Items[i].ToString() + ",";
             }
-            participants = participants.Substring(0, participants.Length - 2);
             string nbrParticipants = string.Empty;
             //Gérer le nombre de participant
             if(lstParticipants.Items.Count > 9)
@@ -43,21 +42,22 @@ namespace ChatApplication
                 nbrParticipants = "0" + lstParticipants.Items.Count.ToString();
             }
 
-            string creerDiscussion = "15" + utilisateur.Pseudo + "," + participants + nbrParticipants;
+            string creerDiscussion = "15" + utilisateur.Pseudo + "," + participants + txtNom.Text + nbrParticipants;
 
-            string reponseCreerDiscussion = envoiMessage.Connect("127.0.0.1", creerDiscussion);
+            string reponseCreerDiscussion = envoiMessage.Connect(creerDiscussion);
 
         }
 
         private void FrmDisucssionCreer_Load(object sender, EventArgs e)
         {
+            //TODO PENSER A METTRE UN STATUT PUBLIQUE / PRIVE SUR LES DISCUSSIONS
             ckbNom.Checked = false;
             ckbNom.Enabled = false;
             cmdCreer.Enabled = false;
             int i = 0;
             string message = "10" + utilisateur.Pseudo;
 
-            string reponse = envoiMessage.Connect("127.0.0.1", message);
+            string reponse = envoiMessage.Connect(message);
 
             if (reponse != "Pas de contact a ajouter")
             {

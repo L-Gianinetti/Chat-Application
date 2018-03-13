@@ -26,7 +26,7 @@ namespace ChatApplication
 
             user.Pseudo = Properties.Settings.Default.UserActif;
             string msgProfil = "3" + user.Pseudo;
-            string reponse = envoiMessage.Connect("127.0.0.1", msgProfil);
+            string reponse = envoiMessage.Connect(msgProfil);
             string[] reponses = reponse.Split(',');
 
             user.Nom = reponses[0];
@@ -76,7 +76,7 @@ namespace ChatApplication
             user.Description = txtDescription.Text;
             user.Pseudo = txtPseudo.Text;
             string msgValidationProfil = "4" + user.Pseudo + "," + user.Nom + "," + user.Prenom + "," + user.Description;
-            string reponse = envoiMessage.Connect("127.0.0.1", msgValidationProfil);
+            string reponse = envoiMessage.Connect(msgValidationProfil);
             if(reponse == "Reussie")
             {
                 MessageBox.Show("Le profil a été mis à jour");

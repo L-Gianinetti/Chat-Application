@@ -36,7 +36,7 @@ namespace ChatApplication
         private void FrmContactsModifier_Load(object sender, EventArgs e)
         {
             string message = "14" + pseudoUtilisateurActif+ "," + txtPseudo.Text;
-            string reponse = envoiMessage.Connect("127.0.0.1", message);
+            string reponse = envoiMessage.Connect(message);
 
             string[] reponses = reponse.Split(',');
 
@@ -54,7 +54,7 @@ namespace ChatApplication
         private void cmdValider_Click(object sender, EventArgs e)
         {
             string message = "13" +  pseudoUtilisateurActif + "," +txtPseudo.Text + "," + txtAnnotation.Text;
-            string reponse = envoiMessage.Connect("127.0.0.1", message);
+            string reponse = envoiMessage.Connect(message);
         }
     }
 }

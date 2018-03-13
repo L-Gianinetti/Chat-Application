@@ -164,7 +164,7 @@ ENGINE = InnoDB;
 -- Table `ChatApplication`.`ParticipationDiscussions`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ChatApplication`.`ParticipationDiscussions` (
-  `idDemandesDiscussions` INT NOT NULL AUTO_INCREMENT,
+  `idParticipationDiscussions` INT NOT NULL AUTO_INCREMENT,
   `fkUser` INT NOT NULL,
   `fkDiscussion` INT NOT NULL,
   `statut` ENUM('En attente', 'Participe', 'Supprimé') NOT NULL,

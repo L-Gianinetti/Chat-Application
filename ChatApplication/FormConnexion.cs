@@ -56,7 +56,7 @@ namespace ChatApplication
             user.MotDePasse = txtPassword.Text;
             //string mdpHash = hashMotDePasse.HashMDP(user);
             string data = "02" + user.Pseudo;
-            string reponse = envoiMessage.Connect("127.0.0.1", data);
+            string reponse = envoiMessage.Connect(data);
             Console.WriteLine(reponse);
             //Send the message
             /*byte[] bytes = sendMessage.send(System.Text.Encoding.Unicode.GetBytes(data));

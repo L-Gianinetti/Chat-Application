@@ -30,7 +30,7 @@ namespace ChatApplication
         {
             string contactExistant = "06" + pseudoActif + "," + txtPseudo.Text;
 
-            string contactExistantTrouve = envoiMessage.Connect("127.0.0.1", contactExistant);
+            string contactExistantTrouve = envoiMessage.Connect(contactExistant);
             if(contactExistantTrouve == txtPseudo.Text)
             {
                 MessageBox.Show("Demande de contact envoyée!");

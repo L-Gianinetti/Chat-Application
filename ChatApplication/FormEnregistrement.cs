@@ -33,7 +33,7 @@ namespace ChatApplication
                 }
             }
             string pseudoAVerifier = "05" + txtIdentifiant.Text;
-            string pseudoTrouve = envoiMessage.Connect("127.0.0.1", pseudoAVerifier);
+            string pseudoTrouve = envoiMessage.Connect(pseudoAVerifier);
             if (pseudoTrouve == txtIdentifiant.Text)
             {
                 lblRemarque.Text = "Pseudo déjà existant !";

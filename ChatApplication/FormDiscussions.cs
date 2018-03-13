@@ -27,6 +27,8 @@ namespace ChatApplication
         private void frmDiscussions_Load(object sender, EventArgs e)
         {
             montrerPannel(pnlDiscussions);
+            pnlDiscussionAffichage.Visible = true;
+            pnlDiscussionDemande.Visible = false;
             chargerProfil();
             lstEnvoyees.Enabled = false;
             
@@ -86,7 +88,6 @@ namespace ChatApplication
             pnlDiscussions.Visible = false;
             pnlProfil.Visible = false;
             panelActif.Visible = true;
-            
         }
 
         private void cmdContacts_Click(object sender, EventArgs e)
@@ -119,6 +120,9 @@ namespace ChatApplication
         private void cmdDiscussions_Click(object sender, EventArgs e)
         {
             montrerPannel(pnlDiscussions);
+            pnlDiscussionAffichage.Visible = true;
+            pnlDiscussionDemande.Visible = false;
+            
         }
 
         private void cmdArchives_Click(object sender, EventArgs e)
@@ -238,5 +242,30 @@ namespace ChatApplication
                 }
             }
         }
+
+        private void cmdACreer_Click(object sender, EventArgs e)
+        {
+            FrmDisucssionCreer frmDiscussionCreer = new FrmDisucssionCreer(txtPseudo.Text);
+            frmDiscussionCreer.Show();
+            DialogResult res = new DialogResult();
+            if(res == DialogResult.OK)
+            {
+                frmDiscussionCreer.Close();
+            }
+        }
+
+        private void cmdADemandes_Click(object sender, EventArgs e)
+        {
+            pnlDiscussionDemande.Visible = true;
+            pnlDiscussionAffichage.Visible = false;
+        }
+
+        private void cmdADiscussions_Click(object sender, EventArgs e)
+        {
+            pnlDiscussionDemande.Visible = false;
+            pnlDiscussionAffichage.Visible = true;
+        }
+
+
     }
 }

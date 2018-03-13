@@ -219,6 +219,11 @@ namespace MyTcpListener
                                 byte[] reponse14= System.Text.Encoding.ASCII.GetBytes(infosContact);
                                 stream.Write(reponse14, 0, reponse14.Length);
                                 break;
+                            case "15":
+                                string participants = SeparationSwitchDonnes[1].Substring(0, SeparationSwitchDonnes[1].Length - 3);
+                                int nbrParticipants = int.Parse(SeparationSwitchDonnes[1].Substring(SeparationSwitchDonnes[1].Length - 3, SeparationSwitchDonnes[1].Length - 1));
+                                //TODO ajouter les demandes de contact à tous  les utilisateurs de la discussion et ajouter la demande envoyee a l'utilisateur qui a créé la discussion.
+                                break;
                             default:
                                 break;
                         }

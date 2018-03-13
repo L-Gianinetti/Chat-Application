@@ -38,6 +38,8 @@
             this.cmdCreer = new System.Windows.Forms.Button();
             this.ckbNom = new System.Windows.Forms.CheckBox();
             this.txtNom = new System.Windows.Forms.TextBox();
+            this.cmdRetirer = new System.Windows.Forms.Button();
+            this.cmdVerifier = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblParticipants
@@ -91,6 +93,7 @@
             this.cmdAjouter.TabIndex = 5;
             this.cmdAjouter.Text = "Ajouter";
             this.cmdAjouter.UseVisualStyleBackColor = true;
+            this.cmdAjouter.Click += new System.EventHandler(this.cmdAjouter_Click);
             // 
             // cmdAnnuler
             // 
@@ -103,13 +106,14 @@
             // 
             // cmdCreer
             // 
+            this.cmdCreer.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdCreer.Location = new System.Drawing.Point(518, 371);
             this.cmdCreer.Name = "cmdCreer";
             this.cmdCreer.Size = new System.Drawing.Size(75, 23);
             this.cmdCreer.TabIndex = 7;
             this.cmdCreer.Text = "Créer";
             this.cmdCreer.UseVisualStyleBackColor = true;
-            this.cmdCreer.Click += new System.EventHandler(this.button2_Click);
+            this.cmdCreer.Click += new System.EventHandler(this.cmdCreer_Click);
             // 
             // ckbNom
             // 
@@ -127,12 +131,35 @@
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(100, 20);
             this.txtNom.TabIndex = 9;
+            this.txtNom.TextChanged += new System.EventHandler(this.txtNom_TextChanged);
+            // 
+            // cmdRetirer
+            // 
+            this.cmdRetirer.Location = new System.Drawing.Point(559, 59);
+            this.cmdRetirer.Name = "cmdRetirer";
+            this.cmdRetirer.Size = new System.Drawing.Size(75, 23);
+            this.cmdRetirer.TabIndex = 10;
+            this.cmdRetirer.Text = "Retirer";
+            this.cmdRetirer.UseVisualStyleBackColor = true;
+            this.cmdRetirer.Click += new System.EventHandler(this.cmdRetirer_Click);
+            // 
+            // cmdVerifier
+            // 
+            this.cmdVerifier.Location = new System.Drawing.Point(278, 371);
+            this.cmdVerifier.Name = "cmdVerifier";
+            this.cmdVerifier.Size = new System.Drawing.Size(75, 23);
+            this.cmdVerifier.TabIndex = 11;
+            this.cmdVerifier.Text = "Verifier";
+            this.cmdVerifier.UseVisualStyleBackColor = true;
+            this.cmdVerifier.Click += new System.EventHandler(this.cmdVerifier_Click);
             // 
             // FrmDisucssionCreer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(671, 436);
+            this.Controls.Add(this.cmdVerifier);
+            this.Controls.Add(this.cmdRetirer);
             this.Controls.Add(this.txtNom);
             this.Controls.Add(this.ckbNom);
             this.Controls.Add(this.cmdCreer);
@@ -145,6 +172,7 @@
             this.Controls.Add(this.lblParticipants);
             this.Name = "FrmDisucssionCreer";
             this.Text = "Créer une discussion";
+            this.Load += new System.EventHandler(this.FrmDisucssionCreer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +190,7 @@
         private System.Windows.Forms.Button cmdCreer;
         private System.Windows.Forms.CheckBox ckbNom;
         private System.Windows.Forms.TextBox txtNom;
+        private System.Windows.Forms.Button cmdRetirer;
+        private System.Windows.Forms.Button cmdVerifier;
     }
 }

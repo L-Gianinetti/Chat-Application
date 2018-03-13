@@ -44,6 +44,19 @@
             this.cmdArchiverDiscussions = new System.Windows.Forms.Button();
             this.cmdSupprimerDiscussions = new System.Windows.Forms.Button();
             this.pnlDiscussions = new System.Windows.Forms.Panel();
+            this.pnlDiscussionDemande = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblDemandesDisucssionsEnvoyees = new System.Windows.Forms.Label();
+            this.cmdRefuserGroupe = new System.Windows.Forms.Button();
+            this.cmdAccepterGroupe = new System.Windows.Forms.Button();
+            this.cmdRefuserDiscussion = new System.Windows.Forms.Button();
+            this.cmdAccepterDiscussion = new System.Windows.Forms.Button();
+            this.cboGroupes = new System.Windows.Forms.ComboBox();
+            this.cboDiscussions = new System.Windows.Forms.ComboBox();
+            this.lblGroupes = new System.Windows.Forms.Label();
+            this.lblDiscussions = new System.Windows.Forms.Label();
+            this.lblRemarque = new System.Windows.Forms.Label();
+            this.pnlDiscussionAffichage = new System.Windows.Forms.Panel();
             this.pnlContact = new System.Windows.Forms.Panel();
             this.pnlContactsDemandes = new System.Windows.Forms.Panel();
             this.grbDemandes = new System.Windows.Forms.GroupBox();
@@ -80,9 +93,13 @@
             this.cmdSupprimerArchives = new System.Windows.Forms.Button();
             this.cmdReimporterArchives = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.cmbDemandesDisucssionsEnvoyees = new System.Windows.Forms.ComboBox();
             this.grbMenu.SuspendLayout();
             this.grbActions.SuspendLayout();
             this.pnlDiscussions.SuspendLayout();
+            this.pnlDiscussionDemande.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.pnlDiscussionAffichage.SuspendLayout();
             this.pnlContact.SuspendLayout();
             this.pnlContactsDemandes.SuspendLayout();
             this.grbDemandes.SuspendLayout();
@@ -191,6 +208,7 @@
             this.cmdADemandes.TabIndex = 3;
             this.cmdADemandes.Text = "Mes demandes de discussion";
             this.cmdADemandes.UseVisualStyleBackColor = true;
+            this.cmdADemandes.Click += new System.EventHandler(this.cmdADemandes_Click);
             // 
             // cmdARechercher
             // 
@@ -209,6 +227,7 @@
             this.cmdACreer.TabIndex = 1;
             this.cmdACreer.Text = "Créer une discussion";
             this.cmdACreer.UseVisualStyleBackColor = true;
+            this.cmdACreer.Click += new System.EventHandler(this.cmdACreer_Click);
             // 
             // cmdADiscussions
             // 
@@ -218,18 +237,19 @@
             this.cmdADiscussions.TabIndex = 0;
             this.cmdADiscussions.Text = "Discussions";
             this.cmdADiscussions.UseVisualStyleBackColor = true;
+            this.cmdADiscussions.Click += new System.EventHandler(this.cmdADiscussions_Click);
             // 
             // lstDiscussions
             // 
             this.lstDiscussions.FormattingEnabled = true;
-            this.lstDiscussions.Location = new System.Drawing.Point(19, 109);
+            this.lstDiscussions.Location = new System.Drawing.Point(8, 14);
             this.lstDiscussions.Name = "lstDiscussions";
             this.lstDiscussions.Size = new System.Drawing.Size(521, 329);
             this.lstDiscussions.TabIndex = 3;
             // 
             // cmdArchiverDiscussions
             // 
-            this.cmdArchiverDiscussions.Location = new System.Drawing.Point(597, 194);
+            this.cmdArchiverDiscussions.Location = new System.Drawing.Point(535, 81);
             this.cmdArchiverDiscussions.Name = "cmdArchiverDiscussions";
             this.cmdArchiverDiscussions.Size = new System.Drawing.Size(75, 23);
             this.cmdArchiverDiscussions.TabIndex = 4;
@@ -238,7 +258,7 @@
             // 
             // cmdSupprimerDiscussions
             // 
-            this.cmdSupprimerDiscussions.Location = new System.Drawing.Point(597, 223);
+            this.cmdSupprimerDiscussions.Location = new System.Drawing.Point(535, 110);
             this.cmdSupprimerDiscussions.Name = "cmdSupprimerDiscussions";
             this.cmdSupprimerDiscussions.Size = new System.Drawing.Size(75, 23);
             this.cmdSupprimerDiscussions.TabIndex = 5;
@@ -247,21 +267,148 @@
             // 
             // pnlDiscussions
             // 
+            this.pnlDiscussions.Controls.Add(this.pnlDiscussionDemande);
+            this.pnlDiscussions.Controls.Add(this.pnlDiscussionAffichage);
             this.pnlDiscussions.Controls.Add(this.grbActions);
-            this.pnlDiscussions.Controls.Add(this.cmdArchiverDiscussions);
-            this.pnlDiscussions.Controls.Add(this.cmdSupprimerDiscussions);
-            this.pnlDiscussions.Controls.Add(this.lstDiscussions);
             this.pnlDiscussions.Location = new System.Drawing.Point(201, 12);
             this.pnlDiscussions.Name = "pnlDiscussions";
             this.pnlDiscussions.Size = new System.Drawing.Size(859, 501);
             this.pnlDiscussions.TabIndex = 6;
+            // 
+            // pnlDiscussionDemande
+            // 
+            this.pnlDiscussionDemande.Controls.Add(this.groupBox2);
+            this.pnlDiscussionDemande.Location = new System.Drawing.Point(19, 102);
+            this.pnlDiscussionDemande.Name = "pnlDiscussionDemande";
+            this.pnlDiscussionDemande.Size = new System.Drawing.Size(645, 381);
+            this.pnlDiscussionDemande.TabIndex = 7;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.cmbDemandesDisucssionsEnvoyees);
+            this.groupBox2.Controls.Add(this.lblDemandesDisucssionsEnvoyees);
+            this.groupBox2.Controls.Add(this.cmdRefuserGroupe);
+            this.groupBox2.Controls.Add(this.cmdAccepterGroupe);
+            this.groupBox2.Controls.Add(this.cmdRefuserDiscussion);
+            this.groupBox2.Controls.Add(this.cmdAccepterDiscussion);
+            this.groupBox2.Controls.Add(this.cboGroupes);
+            this.groupBox2.Controls.Add(this.cboDiscussions);
+            this.groupBox2.Controls.Add(this.lblGroupes);
+            this.groupBox2.Controls.Add(this.lblDiscussions);
+            this.groupBox2.Controls.Add(this.lblRemarque);
+            this.groupBox2.Location = new System.Drawing.Point(18, 5);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(598, 373);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Demandes";
+            // 
+            // lblDemandesDisucssionsEnvoyees
+            // 
+            this.lblDemandesDisucssionsEnvoyees.AutoSize = true;
+            this.lblDemandesDisucssionsEnvoyees.Location = new System.Drawing.Point(6, 278);
+            this.lblDemandesDisucssionsEnvoyees.Name = "lblDemandesDisucssionsEnvoyees";
+            this.lblDemandesDisucssionsEnvoyees.Size = new System.Drawing.Size(113, 13);
+            this.lblDemandesDisucssionsEnvoyees.TabIndex = 9;
+            this.lblDemandesDisucssionsEnvoyees.Text = "Demandes envoyées :";
+            // 
+            // cmdRefuserGroupe
+            // 
+            this.cmdRefuserGroupe.Location = new System.Drawing.Point(507, 234);
+            this.cmdRefuserGroupe.Name = "cmdRefuserGroupe";
+            this.cmdRefuserGroupe.Size = new System.Drawing.Size(75, 23);
+            this.cmdRefuserGroupe.TabIndex = 8;
+            this.cmdRefuserGroupe.Text = "Refuser";
+            this.cmdRefuserGroupe.UseVisualStyleBackColor = true;
+            // 
+            // cmdAccepterGroupe
+            // 
+            this.cmdAccepterGroupe.Location = new System.Drawing.Point(401, 234);
+            this.cmdAccepterGroupe.Name = "cmdAccepterGroupe";
+            this.cmdAccepterGroupe.Size = new System.Drawing.Size(75, 23);
+            this.cmdAccepterGroupe.TabIndex = 7;
+            this.cmdAccepterGroupe.Text = "Accepter";
+            this.cmdAccepterGroupe.UseVisualStyleBackColor = true;
+            // 
+            // cmdRefuserDiscussion
+            // 
+            this.cmdRefuserDiscussion.Location = new System.Drawing.Point(507, 136);
+            this.cmdRefuserDiscussion.Name = "cmdRefuserDiscussion";
+            this.cmdRefuserDiscussion.Size = new System.Drawing.Size(75, 23);
+            this.cmdRefuserDiscussion.TabIndex = 6;
+            this.cmdRefuserDiscussion.Text = "Refuser";
+            this.cmdRefuserDiscussion.UseVisualStyleBackColor = true;
+            // 
+            // cmdAccepterDiscussion
+            // 
+            this.cmdAccepterDiscussion.Location = new System.Drawing.Point(401, 136);
+            this.cmdAccepterDiscussion.Name = "cmdAccepterDiscussion";
+            this.cmdAccepterDiscussion.Size = new System.Drawing.Size(75, 23);
+            this.cmdAccepterDiscussion.TabIndex = 5;
+            this.cmdAccepterDiscussion.Text = "Accepter";
+            this.cmdAccepterDiscussion.UseVisualStyleBackColor = true;
+            // 
+            // cboGroupes
+            // 
+            this.cboGroupes.FormattingEnabled = true;
+            this.cboGroupes.Location = new System.Drawing.Point(26, 192);
+            this.cboGroupes.Name = "cboGroupes";
+            this.cboGroupes.Size = new System.Drawing.Size(399, 21);
+            this.cboGroupes.TabIndex = 4;
+            // 
+            // cboDiscussions
+            // 
+            this.cboDiscussions.FormattingEnabled = true;
+            this.cboDiscussions.Location = new System.Drawing.Point(26, 104);
+            this.cboDiscussions.Name = "cboDiscussions";
+            this.cboDiscussions.Size = new System.Drawing.Size(399, 21);
+            this.cboDiscussions.TabIndex = 3;
+            // 
+            // lblGroupes
+            // 
+            this.lblGroupes.AutoSize = true;
+            this.lblGroupes.Location = new System.Drawing.Point(6, 171);
+            this.lblGroupes.Name = "lblGroupes";
+            this.lblGroupes.Size = new System.Drawing.Size(53, 13);
+            this.lblGroupes.TabIndex = 2;
+            this.lblGroupes.Text = "Groupes :";
+            // 
+            // lblDiscussions
+            // 
+            this.lblDiscussions.AutoSize = true;
+            this.lblDiscussions.Location = new System.Drawing.Point(6, 82);
+            this.lblDiscussions.Name = "lblDiscussions";
+            this.lblDiscussions.Size = new System.Drawing.Size(69, 13);
+            this.lblDiscussions.TabIndex = 1;
+            this.lblDiscussions.Text = "Discussions :";
+            // 
+            // lblRemarque
+            // 
+            this.lblRemarque.AutoSize = true;
+            this.lblRemarque.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRemarque.Location = new System.Drawing.Point(6, 32);
+            this.lblRemarque.Name = "lblRemarque";
+            this.lblRemarque.Size = new System.Drawing.Size(553, 13);
+            this.lblRemarque.TabIndex = 0;
+            this.lblRemarque.Text = "Vous avez été ajouté aux discussions suivantes, veuillez les accepter pour pouvoi" +
+    "r y participer :";
+            // 
+            // pnlDiscussionAffichage
+            // 
+            this.pnlDiscussionAffichage.Controls.Add(this.lstDiscussions);
+            this.pnlDiscussionAffichage.Controls.Add(this.cmdArchiverDiscussions);
+            this.pnlDiscussionAffichage.Controls.Add(this.cmdSupprimerDiscussions);
+            this.pnlDiscussionAffichage.Location = new System.Drawing.Point(19, 102);
+            this.pnlDiscussionAffichage.Name = "pnlDiscussionAffichage";
+            this.pnlDiscussionAffichage.Size = new System.Drawing.Size(619, 364);
+            this.pnlDiscussionAffichage.TabIndex = 6;
             // 
             // pnlContact
             // 
             this.pnlContact.Controls.Add(this.pnlContactsDemandes);
             this.pnlContact.Controls.Add(this.pnlContactsListe);
             this.pnlContact.Controls.Add(this.groupBox1);
-            this.pnlContact.Location = new System.Drawing.Point(180, 15);
+            this.pnlContact.Location = new System.Drawing.Point(190, 16);
             this.pnlContact.Name = "pnlContact";
             this.pnlContact.Size = new System.Drawing.Size(672, 479);
             this.pnlContact.TabIndex = 6;
@@ -415,7 +562,7 @@
             // pnlProfil
             // 
             this.pnlProfil.Controls.Add(this.grbProfil);
-            this.pnlProfil.Location = new System.Drawing.Point(174, 13);
+            this.pnlProfil.Location = new System.Drawing.Point(196, 12);
             this.pnlProfil.Name = "pnlProfil";
             this.pnlProfil.Size = new System.Drawing.Size(601, 478);
             this.pnlProfil.TabIndex = 19;
@@ -557,7 +704,7 @@
             // pnlArchives
             // 
             this.pnlArchives.Controls.Add(this.grbArchives);
-            this.pnlArchives.Location = new System.Drawing.Point(1087, 79);
+            this.pnlArchives.Location = new System.Drawing.Point(196, 12);
             this.pnlArchives.Name = "pnlArchives";
             this.pnlArchives.Size = new System.Drawing.Size(859, 529);
             this.pnlArchives.TabIndex = 2;
@@ -600,6 +747,14 @@
             this.listBox1.Size = new System.Drawing.Size(386, 433);
             this.listBox1.TabIndex = 0;
             // 
+            // cmbDemandesDisucssionsEnvoyees
+            // 
+            this.cmbDemandesDisucssionsEnvoyees.FormattingEnabled = true;
+            this.cmbDemandesDisucssionsEnvoyees.Location = new System.Drawing.Point(26, 317);
+            this.cmbDemandesDisucssionsEnvoyees.Name = "cmbDemandesDisucssionsEnvoyees";
+            this.cmbDemandesDisucssionsEnvoyees.Size = new System.Drawing.Size(399, 21);
+            this.cmbDemandesDisucssionsEnvoyees.TabIndex = 10;
+            // 
             // frmDiscussions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -616,6 +771,10 @@
             this.grbMenu.ResumeLayout(false);
             this.grbActions.ResumeLayout(false);
             this.pnlDiscussions.ResumeLayout(false);
+            this.pnlDiscussionDemande.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.pnlDiscussionAffichage.ResumeLayout(false);
             this.pnlContact.ResumeLayout(false);
             this.pnlContactsDemandes.ResumeLayout(false);
             this.grbDemandes.ResumeLayout(false);
@@ -688,5 +847,19 @@
         private System.Windows.Forms.ListBox lstEnvoyees;
         private System.Windows.Forms.Label lblenvoyees;
         private System.Windows.Forms.Label lblrecues;
+        private System.Windows.Forms.Panel pnlDiscussionDemande;
+        private System.Windows.Forms.Panel pnlDiscussionAffichage;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button cmdRefuserGroupe;
+        private System.Windows.Forms.Button cmdAccepterGroupe;
+        private System.Windows.Forms.Button cmdRefuserDiscussion;
+        private System.Windows.Forms.Button cmdAccepterDiscussion;
+        private System.Windows.Forms.ComboBox cboGroupes;
+        private System.Windows.Forms.ComboBox cboDiscussions;
+        private System.Windows.Forms.Label lblGroupes;
+        private System.Windows.Forms.Label lblDiscussions;
+        private System.Windows.Forms.Label lblRemarque;
+        private System.Windows.Forms.Label lblDemandesDisucssionsEnvoyees;
+        private System.Windows.Forms.ComboBox cmbDemandesDisucssionsEnvoyees;
     }
 }

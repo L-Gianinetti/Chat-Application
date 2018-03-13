@@ -134,19 +134,6 @@ namespace MyTcpListener
             string requete = "DELETE FROM contact WHERE fkUser =\"" + idUser + "\" and fkUserContact =\"" + idContact + "\"";
             UpdateOrDelete(requete);
         }
-        /*
-        //TODO Vérifier l'utilité de la méthode SupprimerDemandeContact pourquoi pas simplement utilisé la methode ContactAccepteSupprimerDemandeRecue?
-        /// <summary>
-        /// Supprime une demande de contact selon un statut
-        /// </summary>
-        /// <param name="idUser"></param>
-        /// <param name="idContact"></param>
-        /// <param name="statut"></param>
-        public void SupprimerDemandeContact(int idUser, int idContact, string statut)
-        {
-            string requete = "DELETE FROM demandescontacts where fkUser =\"" + idUser + "\" and fkUserContact =\"" + idContact + "\"and Statut =\"" + statut + "\"";
-            UpdateOrDelete(requete);
-        }*/
 
         //SELECT
 

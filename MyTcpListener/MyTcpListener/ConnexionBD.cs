@@ -104,6 +104,13 @@ namespace MyTcpListener
 
         #region UPDATE
 
+        public void UpdateParticipationDiscussions(int idDiscussion, int idUtilisateur)
+        {
+            string statut = "Participe";
+            string requete = "UPDATE participationdiscussions SET fkUser =\"" +idUtilisateur +"\", fkDiscussion =\"" + idDiscussion +"\" ,statut =\"" + statut + "\" where fkDiscussion =\"" +idDiscussion + "\" and fkUser =\"" + idUtilisateur + "\"";
+            UpdateOrDelete(requete);
+        }
+
         /// <summary>
         /// Met a jour la table contact
         /// </summary>
@@ -305,15 +312,20 @@ namespace MyTcpListener
             return id;
         }
 
-        public string SelectionneIdDiscussionAdministrateur(int idAdministrateur)
+        public string SelectionneNomDiscussion(int idUtilisateur)
         {
-            string requete = "SELECT fkDiscussion from participationdiscussions where fkAdministrateur =\"" + idAdministrateur + "\" GROUP BY fkDiscussion";
+            string statut = "En attente";
+            string requete = "SELECT fkDiscussion from participationdiscussions where fkUser =\"" + idUtilisateur + "\" and statut =\"" + statut + "\"";
             string idDiscussion = SelectSimpleWhile(requete);
-            
+            if(idDiscussion != string.Empty)
+            {
+                idDiscussion = idDiscussion.Substring(0, idDiscussion.Length - 1);
+            }
+
             return idDiscussion;
         }
 
-        public string Select17(int idAdministrateur)
+        public string SelectionneIdUserNomDiscussionEnAttente(int idAdministrateur)
         {
             string statut = "En attente";
             string requete = "SELECT fkUser, fkDiscussion from participationdiscussions where fkAdministrateur =\"" + idAdministrateur + "\" and statut =\"" + statut + "\"";
@@ -321,14 +333,13 @@ namespace MyTcpListener
             return reponse;
         }
 
-        public string SelectionneIdUserEnAttente(int idDiscussion, int idAdministrateur)
+        public string CompteNombreEnAttenteParDiscussion(int idDiscussion)
         {
-            string statut = "En attente";
-            string requete = "SELECT fkUser from participationdiscussions where fkAdministrateur =\"" + idAdministrateur + "\" and fkDiscussion =\"" + idDiscussion + "\" and statut =\"" + statut + "\"";
-            string idUsers = SelectSimpleWhile(requete);
-            idUsers = idUsers.Replace(',', '/');
-            return idUsers;
+            string requete = "SELECT COUNT(fkDiscussion) from participationdiscussions where fkDiscussion =\"" + idDiscussion + "\"";
+            string reponse = SelectSimple(requete);
+            return reponse;
         }
+
         public string UserExistant(User user)
         {
             string _pseudoTrouve = "";
@@ -374,21 +385,6 @@ namespace MyTcpListener
 
         }
 
-
-        
-        /// <summary>
-        /// Selectionne les participants en attente en fonction d'un idDiscussion
-        /// </summary>
-        /// <param name="idDiscussion"></param>
-        /// <returns></returns>
-        public string SelectionnefkUserParticipationDiscussionEnAttente(int idDiscussion)
-        {
-            string statut = "En attente";
-            string idParticipants = string.Empty;
-            string requete = "Select  fkUser from participationdiscussions where fkDiscussion =\"" + idDiscussion + "\" and statut = \"" + statut + "\"";
-            idParticipants = SelectSimpleWhile(requete);
-            return idParticipants;
-        }
 
 
         public bool connexionUser(User user)

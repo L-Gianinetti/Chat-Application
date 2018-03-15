@@ -41,18 +41,6 @@ namespace MyTcpListener
             return donnee;
         }
 
-        public string[] SeparerElementsStringSlash(string donneesASeparer)
-        {
-            int i = 0;
-            string[] donnee = donneesASeparer.Split('/');
-            foreach (string element in donnee)
-            {
-                donnee[i] = element;
-                i++;
-            }
-            return donnee;
-        }
-
         //TODO verifier si classe discussion est nécessaire , surement ?
         //nbrParticipants ne contient pas le createur
         public string CreerDiscussion(string[] donnee, int nbrParticipants)
@@ -90,79 +78,62 @@ namespace MyTcpListener
             }
             return nomExiste;
         }
-
-        public string Test(string[] donnee, int nbrParticipants)
+        public string DemandeRecueNomDiscussion(string pseudoUtilisateur)
         {
-            string[] NomDiscussionIdUser = DemandeDiscussionEnvoyee(donnee, nbrParticipants);
-            string[] idUser;
-            string[] temp;
-            string pseudosUsers = string.Empty;
-            for(int i = 0; i < NomDiscussionIdUser.Count(); i++)
+            utilisateur.Pseudo = pseudoUtilisateur;
+            int idUtilisateur = connexionBD.getFkUser(utilisateur);
+            string idDiscussions = connexionBD.SelectionneNomDiscussion(idUtilisateur);
+            string nomsDiscussion = string.Empty;
+            if (idDiscussions != string.Empty)
             {
-                temp = NomDiscussionIdUser[i].Split(',');
-
-                 idUser = temp[1].Split('/');
-                NomDiscussionIdUser[i] = temp[0] + ",";
-                for (int y = 0; y < idUser.Count(); y++)
+                string[] idDiscussion = idDiscussions.Split(',');
+                
+                string nbrParticipants = string.Empty;
+                for (int i = 0; i < idDiscussion.Count(); i++)
                 {
-                    idUser[y] = connexionBD.getUserPseudo(int.Parse(idUser[y]));
-                    NomDiscussionIdUser[i] +=  idUser[y] + ",";
+                    nbrParticipants = connexionBD.CompteNombreEnAttenteParDiscussion(int.Parse(idDiscussion[i]));
+                    idDiscussion[i] = connexionBD.GetNomDiscussion(int.Parse(idDiscussion[i]));
+                    nomsDiscussion += idDiscussion[i] + "/" + nbrParticipants + ",";
                 }
-                NomDiscussionIdUser[i] = NomDiscussionIdUser[i].Substring(0, NomDiscussionIdUser[i].Length - 1);
-                NomDiscussionIdUser[i] = NomDiscussionIdUser[i].Replace(',', '/');
-                pseudosUsers += NomDiscussionIdUser[i] + ",";
+                nomsDiscussion = nomsDiscussion.Substring(0, nomsDiscussion.Length - 1);
             }
-            pseudosUsers = pseudosUsers.Substring(0, pseudosUsers.Length - 1);
 
-            return pseudosUsers;
+
+            return nomsDiscussion;
         }
-
-        public string Test2(string pseudoAdministrateur)
+        /// <summary>
+        /// Retourne les users par discussions
+        /// </summary>
+        /// <param name="pseudoAdministrateur"></param>
+        /// <returns></returns>
+        public string DemandeEnvoyeePseudoParticipantNomDiscussion(string pseudoAdministrateur)
         {
             administrateur.Pseudo = pseudoAdministrateur;
             int idAdministrateur = connexionBD.getFkUser(administrateur);
             string reponse = string.Empty;
-           string idPseudosIdDiscussions = connexionBD.Select17(idAdministrateur);
-            int count = idPseudosIdDiscussions.TakeWhile(c => c == ',').Count();
-            string[] idPseudoIdDiscussion = idPseudosIdDiscussions.Split(',');
-            for(int i =0; i<idPseudoIdDiscussion.Count(); i++)
+           string idPseudosIdDiscussions = connexionBD.SelectionneIdUserNomDiscussionEnAttente(idAdministrateur);
+            if(idPseudosIdDiscussions != string.Empty)
             {
-                string[] idPseudo = idPseudoIdDiscussion[i].Split('/');
-                if(idPseudo[0] != string.Empty)
+                int count = idPseudosIdDiscussions.TakeWhile(c => c == ',').Count();
+                string[] idPseudoIdDiscussion = idPseudosIdDiscussions.Split(',');
+                for (int i = 0; i < idPseudoIdDiscussion.Count(); i++)
                 {
-                    string pseudo = connexionBD.getUserPseudo(int.Parse(idPseudo[0]));
-                    string nomDisc = connexionBD.GetNomDiscussion(int.Parse(idPseudo[1]));
-                    idPseudoIdDiscussion[i] = pseudo + "/" + nomDisc;
-                    reponse += idPseudoIdDiscussion[i] + ",";
+                    string[] idPseudo = idPseudoIdDiscussion[i].Split('/');
+                    if (idPseudo[0] != string.Empty)
+                    {
+                        string pseudo = connexionBD.getUserPseudo(int.Parse(idPseudo[0]));
+                        string nomDisc = connexionBD.GetNomDiscussion(int.Parse(idPseudo[1]));
+                        idPseudoIdDiscussion[i] = pseudo + "/" + nomDisc;
+                        reponse += idPseudoIdDiscussion[i] + ",";
+                    }
+
+
                 }
-                
-                
+                reponse = reponse.Substring(0, reponse.Length - 1);
             }
-            reponse = reponse.Substring(0, reponse.Length - 1);
+
             
             return reponse;
-        }
-        public string[] DemandeDiscussionEnvoyee(string[] donnee, int nbrParticipants)
-        {
-            string[] donneesDiscussion = SeparerElements(donnee);
-            administrateur.Pseudo = donneesDiscussion[0];
-            int idAdministrateur = connexionBD.getFkUser(administrateur);
-            string idDiscussionsAdministrateur = connexionBD.SelectionneIdDiscussionAdministrateur(idAdministrateur);
-            idDiscussionsAdministrateur = idDiscussionsAdministrateur.Substring(0, idDiscussionsAdministrateur.Length - 1);
-            string[] idDiscussionAdministrateur = SeparerElementsString(idDiscussionsAdministrateur);
-            string[] idUsersNomDiscussion = new string[idDiscussionAdministrateur.Count()];
-            string[] idUserEnvoyee = new string[idDiscussionAdministrateur.Count()];
-            string nomDiscussion = string.Empty;
-            for(int i = 0; i< idDiscussionAdministrateur.Count(); i++)
-            {
-                int idDiscussionAdmin = int.Parse(idDiscussionAdministrateur[i]);
-                idUserEnvoyee[i] = connexionBD.SelectionneIdUserEnAttente(idDiscussionAdmin, idAdministrateur);
-                nomDiscussion = connexionBD.GetNomDiscussion(int.Parse(idDiscussionAdministrateur[i]));
-                idUsersNomDiscussion[i] = nomDiscussion + "," + idUserEnvoyee[i];
-                idUsersNomDiscussion[i] = idUsersNomDiscussion[i].Substring(0, idUsersNomDiscussion[i].Length - 1);
-            }
-            return idUsersNomDiscussion;
-            
         }
 
         /// <summary>
@@ -208,6 +179,14 @@ namespace MyTcpListener
 
             connexionBD.CreerParticipationDisucssion(idUser, idDiscussion, idUser,statut);
             
+        }
+
+        public void ChangerEtatParticipationDiscussion(string nomDiscussion, string PseudoUtilisateur)
+        {
+            string idDiscussion = connexionBD.SelectionneIdDiscussion(nomDiscussion);
+            utilisateur.Pseudo = PseudoUtilisateur;
+            int idUtilisateur = connexionBD.getFkUser(utilisateur);
+            connexionBD.UpdateParticipationDiscussions(int.Parse(idDiscussion), idUtilisateur);
         }
 
         public void CreerParticipationDiscussionParticipant(string[] donnee, int nbrParticipants)

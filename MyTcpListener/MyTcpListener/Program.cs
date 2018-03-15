@@ -253,28 +253,45 @@ namespace MyTcpListener
 
                                 break;
                             case "16":
-                                string participants16 = SeparationSwitchDonnes[1].Substring(0, SeparationSwitchDonnes[1].Length - 2);
-                                string stringNbrParticipants16 = SeparationSwitchDonnes[1].Substring(SeparationSwitchDonnes[1].Length - 2, 2);
-                                int test16 = int.Parse(stringNbrParticipants16.Substring(0, 1));
-                                int test216 = int.Parse(stringNbrParticipants16.Substring(1, 1));
-                                int nbrParticipants16;
-                                if (test16 == 0)
+                                user.Pseudo = SeparationSwitchDonnes[1];
+                                string nomsDiscussionEnAttente = actionDiscussion.DemandeRecueNomDiscussion(user.Pseudo);
+                                if(nomsDiscussionEnAttente != string.Empty)
                                 {
-                                    nbrParticipants16 = test216;
+                                    byte[] reponse16 = System.Text.Encoding.ASCII.GetBytes(nomsDiscussionEnAttente);
+                                    stream.Write(reponse16, 0, reponse16.Length);
                                 }
                                 else
                                 {
-                                    nbrParticipants16 = int.Parse(stringNbrParticipants16);
+                                    byte[] reponse16 = System.Text.Encoding.ASCII.GetBytes(nomsDiscussionEnAttente);
+                                    stream.Write(reponse16, 0, reponse16.Length);
                                 }
-                                string[] test1616 = actionDiscussion.DemandeDiscussionEnvoyee(SeparationSwitchDonnes, nbrParticipants16);
-                                string test161616 = actionDiscussion.Test(SeparationSwitchDonnes, nbrParticipants16);
-                                byte[] reponse16 = System.Text.Encoding.ASCII.GetBytes(test161616);
-                                stream.Write(reponse16, 0, reponse16.Length);
                                 break;
                             case "17":
-                                string utilisateurPseudo = SeparationSwitchDonnes[1];
-                                string test17 = actionDiscussion.Test2(utilisateurPseudo);
-                                //RESTE A RECUPERER LE STRING ET L'AJOUTER A LA CMB DANS DISCUSSION ET SUPPRIMER LE CODE INUTILE DE LA JOURNEE
+                                user.Pseudo = SeparationSwitchDonnes[1];
+                                string test17 = actionDiscussion.DemandeEnvoyeePseudoParticipantNomDiscussion(user.Pseudo);
+                                if(test17 != string.Empty)
+                                {
+                                    byte[] reponse17 = System.Text.Encoding.ASCII.GetBytes(test17);
+                                    stream.Write(reponse17, 0, reponse17.Length);
+                                    //RESTE A RECUPERER LE STRING ET L'AJOUTER A LA CMB DANS DISCUSSION ET SUPPRIMER LE CODE INUTILE DE LA JOURNEE
+                                }
+                                else
+                                {
+                                    byte[] reponse17 = System.Text.Encoding.ASCII.GetBytes(test17);
+                                    stream.Write(reponse17, 0, reponse17.Length);
+                                }
+                                break;
+                            case "18":
+                                string[] donnees18 = SeparationSwitchDonnes[1].Split(',');
+                                user.Pseudo = donnees18[0];
+                                string nomDiscussion18 = donnees18[1];
+                                actionDiscussion.ChangerEtatParticipationDiscussion(nomDiscussion18, user.Pseudo);
+                                break;
+                            case "19":
+                                string[] donnees19 = SeparationSwitchDonnes[1].Split(',');
+                                user.Pseudo = donnees19[0];
+                                string nomDiscussion19 = donnees19[1];
+                                actionDiscussion.ChangerEtatParticipationDiscussion(nomDiscussion19, user.Pseudo);
                                 break;
                             default:
                                 break;

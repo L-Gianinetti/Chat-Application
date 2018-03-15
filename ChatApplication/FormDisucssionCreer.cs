@@ -51,9 +51,8 @@ namespace ChatApplication
             }
 
             string creerDiscussion = "15" + utilisateur.Pseudo + "," + participants + txtNom.Text + nbrParticipants;
-            string creerDiscussionTest = "16" + utilisateur.Pseudo + "," + participants + txtNom.Text + nbrParticipants;
             string reponseCreerDiscussion = envoiMessage.Connect(creerDiscussion);
-           _temporaire = envoiMessage.Connect(creerDiscussionTest);
+
             if(reponseCreerDiscussion == "Discussion creee")
             {
                 MessageBox.Show("La discussion a été crée et les demandes de discussion envoyées");

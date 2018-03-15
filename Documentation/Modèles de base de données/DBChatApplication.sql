@@ -182,35 +182,13 @@ CREATE TABLE IF NOT EXISTS `ChatApplication`.`ParticipationDiscussions` (
     REFERENCES `ChatApplication`.`Discussion` (`idDiscussion`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-    FOREIGN KEY (`fkAdministrateur`)
+    FOREIGN KEY(`fkAdministrateur`)
     REFERENCES `ChatApplication`.`User` (`idUser`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-    
+    ON UPDATE NO ACTION
+    )
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `ChatApplication`.`Administrateur`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ChatApplication`.`Administrateur` (
-  `idAdministrateur` INT NOT NULL AUTO_INCREMENT,
-  `fkDiscussion` INT NOT NULL,
-  `fkUser` INT NOT NULL,
-  PRIMARY KEY (`idAdministrateur`),
-  INDEX `fk_Administrateur_Discussion1_idx` (`fkDiscussion` ASC),
-  INDEX `fk_Administrateur_User1_idx` (`fkUser` ASC),
-  CONSTRAINT `fk_Administrateur_Discussion1`
-    FOREIGN KEY (`fkDiscussion`)
-    REFERENCES `ChatApplication`.`Discussion` (`idDiscussion`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Administrateur_User1`
-    FOREIGN KEY (`fkUser`)
-    REFERENCES `ChatApplication`.`User` (`idUser`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 -- User
 insert into User (idUser, userName, userFirstName, userPseudonym, userDescription, userPassword) values (1, 'Harrower', 'Stanton', 'sharrower0', 'Phasellus sit amet erat.', 'MogLKZKcZQNn');
@@ -1306,17 +1284,6 @@ insert into Message (idMessage, messageContent, sendTime, fkDiscussion, fkUser) 
 insert into Message (idMessage, messageContent, sendTime, fkDiscussion, fkUser) values (999, 'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.', '2017-05-10 07:36:27', 10, 6);
 insert into Message (idMessage, messageContent, sendTime, fkDiscussion, fkUser) values (1000, 'Cras in purus eu magna vulputate luctus.', '2017-04-06 07:51:01', 24, 8);
 
--- Administrateur
-insert into Administrateur (idAdministrateur, fkDiscussion, fkUser) values (1, 15, 5);
-insert into Administrateur (idAdministrateur, fkDiscussion, fkUser) values (2, 36, 7);
-insert into Administrateur (idAdministrateur, fkDiscussion, fkUser) values (3, 28, 7);
-insert into Administrateur (idAdministrateur, fkDiscussion, fkUser) values (4, 22, 6);
-insert into Administrateur (idAdministrateur, fkDiscussion, fkUser) values (5, 5, 4);
-insert into Administrateur (idAdministrateur, fkDiscussion, fkUser) values (6, 7, 4);
-insert into Administrateur (idAdministrateur, fkDiscussion, fkUser) values (7, 48, 4);
-insert into Administrateur (idAdministrateur, fkDiscussion, fkUser) values (8, 49, 8);
-insert into Administrateur (idAdministrateur, fkDiscussion, fkUser) values (9, 45, 7);
-insert into Administrateur (idAdministrateur, fkDiscussion, fkUser) values (10, 5, 4);
 
 -- Category
 insert into Category (idCategory, categoryName) values (1, 'Trash Humpers');

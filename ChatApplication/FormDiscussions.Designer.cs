@@ -337,6 +337,7 @@
             this.cmdAccepterGroupe.TabIndex = 7;
             this.cmdAccepterGroupe.Text = "Accepter";
             this.cmdAccepterGroupe.UseVisualStyleBackColor = true;
+            this.cmdAccepterGroupe.Click += new System.EventHandler(this.cmdAccepterGroupe_Click);
             // 
             // cmdRefuserDiscussion
             // 
@@ -355,6 +356,7 @@
             this.cmdAccepterDiscussion.TabIndex = 5;
             this.cmdAccepterDiscussion.Text = "Accepter";
             this.cmdAccepterDiscussion.UseVisualStyleBackColor = true;
+            this.cmdAccepterDiscussion.Click += new System.EventHandler(this.cmdAccepterDiscussion_Click);
             // 
             // cboGroupes
             // 
@@ -416,7 +418,7 @@
             this.pnlContact.Controls.Add(this.pnlContactsDemandes);
             this.pnlContact.Controls.Add(this.pnlContactsListe);
             this.pnlContact.Controls.Add(this.groupBox1);
-            this.pnlContact.Location = new System.Drawing.Point(264, 531);
+            this.pnlContact.Location = new System.Drawing.Point(228, 557);
             this.pnlContact.Name = "pnlContact";
             this.pnlContact.Size = new System.Drawing.Size(672, 479);
             this.pnlContact.TabIndex = 6;

@@ -260,8 +260,48 @@ namespace ChatApplication
 
             pnlDiscussionDemande.Visible = true;
             pnlDiscussionAffichage.Visible = false;
-            string message = "17" + txtPseudo.Text;
-            string reponse = envoiMessage.Connect(message);
+            string message17 = "17" + txtPseudo.Text;
+            string reponse17 = envoiMessage.Connect(message17);
+            if(reponse17 != string.Empty)
+            {
+                string[] reponseParParticipant = reponse17.Split(',');
+                for (int i = 0; i < reponseParParticipant.Count(); i++)
+                {
+                    string PseudoParticipantNomDiscussion = reponseParParticipant[i].Replace("/", "-");
+                    cmbDemandesDisucssionsEnvoyees.Items.Add(PseudoParticipantNomDiscussion);
+                }
+            }
+
+
+            string message16 = "16" + txtPseudo.Text;
+            string reponse16 = envoiMessage.Connect(message16);
+            if(reponse16 != string.Empty)
+            {
+                            string[] nomsDiscussionEnAttente = reponse16.Split(',');
+            for(int y =0; y < nomsDiscussionEnAttente.Count(); y++)
+            {
+                    string[] separerNomNombreParticipant = nomsDiscussionEnAttente[y].Split('/');
+                    if(int.Parse(separerNomNombreParticipant[1]) > 2)
+                    {
+                        
+                        if (!cboGroupes.Items.Contains(separerNomNombreParticipant[0]))
+                        {
+                            cboGroupes.Items.Add(separerNomNombreParticipant[0]);
+                        }
+
+                    }
+                    else
+                    {
+                        if (!cboDiscussions.Items.Contains(separerNomNombreParticipant[0]))
+                        {
+                            cboDiscussions.Items.Add(separerNomNombreParticipant[0]);
+                        }
+                        
+                    }
+                    
+            }
+            }
+
             /*frmDiscussionCreer = new FrmDisucssionCreer(txtPseudo.Text);
             string temp = FrmDisucssionCreer.Temporaire;
             int count = temp.TakeWhile(c => c == ',').Count();
@@ -279,6 +319,24 @@ namespace ChatApplication
             pnlDiscussionAffichage.Visible = true;
         }
 
+        private void cmdAccepterDiscussion_Click(object sender, EventArgs e)
+        {
+            if(cboDiscussions.SelectedIndex > -1)
+            {
+                string message = "18" + txtPseudo.Text + "," + cboDiscussions.SelectedItem.ToString();
+                string reponse = envoiMessage.Connect(message);
+                cboDiscussions.Items.Remove(cboDiscussions.SelectedItem);
+            }
+        }
 
+        private void cmdAccepterGroupe_Click(object sender, EventArgs e)
+        {
+            if (cboGroupes.SelectedIndex > -1)
+            {
+                string message = "19" + txtPseudo.Text + "," + cboGroupes.SelectedItem.ToString();
+                string reponse = envoiMessage.Connect(message);
+                cboGroupes.Items.Remove(cboGroupes.SelectedItem);
+            }
+        }
     }
 }

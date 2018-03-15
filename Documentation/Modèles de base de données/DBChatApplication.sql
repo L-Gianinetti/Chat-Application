@@ -167,20 +167,26 @@ CREATE TABLE IF NOT EXISTS `ChatApplication`.`ParticipationDiscussions` (
   `idParticipationDiscussions` INT NOT NULL AUTO_INCREMENT,
   `fkUser` INT NOT NULL,
   `fkDiscussion` INT NOT NULL,
+  `fkAdministrateur` INT NOT NULL,
   `statut` ENUM('En attente', 'Participe', 'Supprimé') NOT NULL,
-  PRIMARY KEY (`idDemandesDiscussions`),
-  INDEX `fk_DemandesDiscussions_User1_idx` (`fkUser` ASC),
-  INDEX `fk_DemandesDiscussions_Discussion1_idx` (`fkDiscussion` ASC),
-  CONSTRAINT `fk_DemandesDiscussions_User1`
+  PRIMARY KEY (`idParticipationDiscussions`),
+  INDEX `fk_ParticipationDiscussions_User1_idx` (`fkUser` ASC),
+  INDEX `fk_ParticipationDiscussions_Discussion1_idx` (`fkDiscussion` ASC),
+  CONSTRAINT `fk_ParticipationDiscussions_User1`
     FOREIGN KEY (`fkUser`)
     REFERENCES `ChatApplication`.`User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_DemandesDiscussions_Discussion1`
+  CONSTRAINT `fk_ParticipationDiscussions_Discussion1`
     FOREIGN KEY (`fkDiscussion`)
     REFERENCES `ChatApplication`.`Discussion` (`idDiscussion`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    FOREIGN KEY (`fkAdministrateur`)
+    REFERENCES `ChatApplication`.`User` (`idUser`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+    
 ENGINE = InnoDB;
 
 

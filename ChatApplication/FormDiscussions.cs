@@ -14,6 +14,7 @@ namespace ChatApplication
     {
         User user = new User();
         EnvoiMessage envoiMessage = new EnvoiMessage();
+        FrmDisucssionCreer frmDiscussionCreer;
         public frmDiscussions()
         {
             InitializeComponent();
@@ -256,8 +257,20 @@ namespace ChatApplication
 
         private void cmdADemandes_Click(object sender, EventArgs e)
         {
+
             pnlDiscussionDemande.Visible = true;
             pnlDiscussionAffichage.Visible = false;
+            string message = "17" + txtPseudo.Text;
+            string reponse = envoiMessage.Connect(message);
+            /*frmDiscussionCreer = new FrmDisucssionCreer(txtPseudo.Text);
+            string temp = FrmDisucssionCreer.Temporaire;
+            int count = temp.TakeWhile(c => c == ',').Count();
+            string[] stock = new string[count+1];
+            stock = temp.Split(',');
+            for(int i = 0; i < stock.Count(); i++)
+            {
+                cmbDemandesDisucssionsEnvoyees.Items.Add(stock[i]);
+            }*/
         }
 
         private void cmdADiscussions_Click(object sender, EventArgs e)

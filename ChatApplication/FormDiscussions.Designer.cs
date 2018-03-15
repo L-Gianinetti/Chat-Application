@@ -46,6 +46,7 @@
             this.pnlDiscussions = new System.Windows.Forms.Panel();
             this.pnlDiscussionDemande = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbDemandesDisucssionsEnvoyees = new System.Windows.Forms.ComboBox();
             this.lblDemandesDisucssionsEnvoyees = new System.Windows.Forms.Label();
             this.cmdRefuserGroupe = new System.Windows.Forms.Button();
             this.cmdAccepterGroupe = new System.Windows.Forms.Button();
@@ -93,7 +94,6 @@
             this.cmdSupprimerArchives = new System.Windows.Forms.Button();
             this.cmdReimporterArchives = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.cmbDemandesDisucssionsEnvoyees = new System.Windows.Forms.ComboBox();
             this.grbMenu.SuspendLayout();
             this.grbActions.SuspendLayout();
             this.pnlDiscussions.SuspendLayout();
@@ -303,6 +303,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Demandes";
             // 
+            // cmbDemandesDisucssionsEnvoyees
+            // 
+            this.cmbDemandesDisucssionsEnvoyees.FormattingEnabled = true;
+            this.cmbDemandesDisucssionsEnvoyees.Location = new System.Drawing.Point(26, 317);
+            this.cmbDemandesDisucssionsEnvoyees.Name = "cmbDemandesDisucssionsEnvoyees";
+            this.cmbDemandesDisucssionsEnvoyees.Size = new System.Drawing.Size(399, 21);
+            this.cmbDemandesDisucssionsEnvoyees.TabIndex = 10;
+            // 
             // lblDemandesDisucssionsEnvoyees
             // 
             this.lblDemandesDisucssionsEnvoyees.AutoSize = true;
@@ -408,7 +416,7 @@
             this.pnlContact.Controls.Add(this.pnlContactsDemandes);
             this.pnlContact.Controls.Add(this.pnlContactsListe);
             this.pnlContact.Controls.Add(this.groupBox1);
-            this.pnlContact.Location = new System.Drawing.Point(190, 16);
+            this.pnlContact.Location = new System.Drawing.Point(264, 531);
             this.pnlContact.Name = "pnlContact";
             this.pnlContact.Size = new System.Drawing.Size(672, 479);
             this.pnlContact.TabIndex = 6;
@@ -562,7 +570,7 @@
             // pnlProfil
             // 
             this.pnlProfil.Controls.Add(this.grbProfil);
-            this.pnlProfil.Location = new System.Drawing.Point(196, 12);
+            this.pnlProfil.Location = new System.Drawing.Point(1097, 21);
             this.pnlProfil.Name = "pnlProfil";
             this.pnlProfil.Size = new System.Drawing.Size(601, 478);
             this.pnlProfil.TabIndex = 19;
@@ -704,7 +712,7 @@
             // pnlArchives
             // 
             this.pnlArchives.Controls.Add(this.grbArchives);
-            this.pnlArchives.Location = new System.Drawing.Point(196, 12);
+            this.pnlArchives.Location = new System.Drawing.Point(1097, 531);
             this.pnlArchives.Name = "pnlArchives";
             this.pnlArchives.Size = new System.Drawing.Size(859, 529);
             this.pnlArchives.TabIndex = 2;
@@ -746,14 +754,6 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(386, 433);
             this.listBox1.TabIndex = 0;
-            // 
-            // cmbDemandesDisucssionsEnvoyees
-            // 
-            this.cmbDemandesDisucssionsEnvoyees.FormattingEnabled = true;
-            this.cmbDemandesDisucssionsEnvoyees.Location = new System.Drawing.Point(26, 317);
-            this.cmbDemandesDisucssionsEnvoyees.Name = "cmbDemandesDisucssionsEnvoyees";
-            this.cmbDemandesDisucssionsEnvoyees.Size = new System.Drawing.Size(399, 21);
-            this.cmbDemandesDisucssionsEnvoyees.TabIndex = 10;
             // 
             // frmDiscussions
             // 

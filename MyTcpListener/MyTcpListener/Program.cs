@@ -18,6 +18,7 @@ namespace MyTcpListener
             User user = new User();
             User contact = new User();
             ActionUtilisateur actionUtilisateur = new ActionUtilisateur();
+            ActionDiscussion actionDiscussion = new ActionDiscussion();
             
             
             ConnexionBD connexionBD = new ConnexionBD();
@@ -233,13 +234,47 @@ namespace MyTcpListener
                                 {
                                     nbrParticipants = int.Parse(stringNbrParticipants);
                                 }
-
                                 
-                                actionUtilisateur.CreerDiscussion(SeparationSwitchDonnes, nbrParticipants);
-                                actionUtilisateur.CreerParticipationDiscussionCreateur(SeparationSwitchDonnes, nbrParticipants);
-                                actionUtilisateur.CreerParticipationDiscussionParticipant(SeparationSwitchDonnes, nbrParticipants);
-                                //TODO ajouter les demandes de contact à tous  les utilisateurs de la discussion et ajouter la demande envoyee a l'utilisateur qui a créé la discussion.
+                                byte[] reponse15;
+                                string discussion = actionDiscussion.CreerDiscussion(SeparationSwitchDonnes, nbrParticipants);
+                                if(discussion == "Discussion creee")
+                                {
+                                    actionDiscussion.CreerParticipationDiscussionCreateur(SeparationSwitchDonnes, nbrParticipants);
+                                    actionDiscussion.CreerParticipationDiscussionParticipant(SeparationSwitchDonnes, nbrParticipants);
+                                    reponse15 = System.Text.Encoding.ASCII.GetBytes(discussion);
+                                    stream.Write(reponse15, 0, reponse15.Length);
+                                }
+                                else
+                                {
+                                    reponse15 = System.Text.Encoding.ASCII.GetBytes(discussion);
+                                    stream.Write(reponse15, 0, reponse15.Length);
+                                }
 
+
+                                break;
+                            case "16":
+                                string participants16 = SeparationSwitchDonnes[1].Substring(0, SeparationSwitchDonnes[1].Length - 2);
+                                string stringNbrParticipants16 = SeparationSwitchDonnes[1].Substring(SeparationSwitchDonnes[1].Length - 2, 2);
+                                int test16 = int.Parse(stringNbrParticipants16.Substring(0, 1));
+                                int test216 = int.Parse(stringNbrParticipants16.Substring(1, 1));
+                                int nbrParticipants16;
+                                if (test16 == 0)
+                                {
+                                    nbrParticipants16 = test216;
+                                }
+                                else
+                                {
+                                    nbrParticipants16 = int.Parse(stringNbrParticipants16);
+                                }
+                                string[] test1616 = actionDiscussion.DemandeDiscussionEnvoyee(SeparationSwitchDonnes, nbrParticipants16);
+                                string test161616 = actionDiscussion.Test(SeparationSwitchDonnes, nbrParticipants16);
+                                byte[] reponse16 = System.Text.Encoding.ASCII.GetBytes(test161616);
+                                stream.Write(reponse16, 0, reponse16.Length);
+                                break;
+                            case "17":
+                                string utilisateurPseudo = SeparationSwitchDonnes[1];
+                                string test17 = actionDiscussion.Test2(utilisateurPseudo);
+                                //RESTE A RECUPERER LE STRING ET L'AJOUTER A LA CMB DANS DISCUSSION ET SUPPRIMER LE CODE INUTILE DE LA JOURNEE
                                 break;
                             default:
                                 break;

@@ -12,6 +12,14 @@ namespace ChatApplication
 {
     public partial class FrmDisucssionCreer : Form
     {
+        private static string _temporaire = string.Empty;
+
+        public static string Temporaire
+        {
+            get { return _temporaire; }
+            set { _temporaire = value; }
+        }
+
         EnvoiMessage envoiMessage = new EnvoiMessage();
         User utilisateur = new User();
         public FrmDisucssionCreer()
@@ -43,9 +51,18 @@ namespace ChatApplication
             }
 
             string creerDiscussion = "15" + utilisateur.Pseudo + "," + participants + txtNom.Text + nbrParticipants;
-
+            string creerDiscussionTest = "16" + utilisateur.Pseudo + "," + participants + txtNom.Text + nbrParticipants;
             string reponseCreerDiscussion = envoiMessage.Connect(creerDiscussion);
-
+           _temporaire = envoiMessage.Connect(creerDiscussionTest);
+            if(reponseCreerDiscussion == "Discussion creee")
+            {
+                MessageBox.Show("La discussion a été crée et les demandes de discussion envoyées");
+            }
+            else
+            {
+                MessageBox.Show("Le nom de la discussion existe deja");
+            }
+            
         }
 
         private void FrmDisucssionCreer_Load(object sender, EventArgs e)

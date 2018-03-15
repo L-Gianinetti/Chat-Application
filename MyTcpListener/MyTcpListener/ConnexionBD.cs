@@ -69,6 +69,22 @@ namespace MyTcpListener
 
             return reponse;
         }
+        public string SelectDoubleWhile(string requete)
+        {
+            this.connection.Open();
+            MySqlCommand cmd = this.connection.CreateCommand();
+            cmd.CommandText = requete;
+            string reponse = string.Empty;
+            var cmdReader = cmd.ExecuteReader();
+            while (cmdReader.Read())
+            {
+                reponse += String.Format("{0}", cmdReader[0]) + "/"+ string.Format("{0}", cmdReader[1]) + ",";
+            }
+
+            this.connection.Close();
+            return reponse;
+        }
+    
         public string SelectSimpleWhile(string requete)
         {
             this.connection.Open();
@@ -163,6 +179,20 @@ namespace MyTcpListener
             string requete = "SELECT userPseudonym from user where userPseudonym =\"" + user.Pseudo + "\"";
             string pseudo = SelectSimple(requete);
             return pseudo;
+        }
+
+        public string GetNomDiscussion(int idDiscussion)
+        {
+            string requete = "SELECT discussionName from discussion where idDiscussion =\"" + idDiscussion + "\"";
+            string nomTrouve = SelectSimple(requete);
+            return nomTrouve;
+        }
+
+        public string VerifieNomDiscussion(string nom)
+        {
+            string requete = "SELECT discussionName from discussion where discussionName =\"" + nom + "\"";
+            string nomTrouve = SelectSimple(requete);
+            return nomTrouve;
         }
 
         /// <summary>
@@ -275,7 +305,30 @@ namespace MyTcpListener
             return id;
         }
 
+        public string SelectionneIdDiscussionAdministrateur(int idAdministrateur)
+        {
+            string requete = "SELECT fkDiscussion from participationdiscussions where fkAdministrateur =\"" + idAdministrateur + "\" GROUP BY fkDiscussion";
+            string idDiscussion = SelectSimpleWhile(requete);
+            
+            return idDiscussion;
+        }
 
+        public string Select17(int idAdministrateur)
+        {
+            string statut = "En attente";
+            string requete = "SELECT fkUser, fkDiscussion from participationdiscussions where fkAdministrateur =\"" + idAdministrateur + "\" and statut =\"" + statut + "\"";
+            string reponse = SelectDoubleWhile(requete);
+            return reponse;
+        }
+
+        public string SelectionneIdUserEnAttente(int idDiscussion, int idAdministrateur)
+        {
+            string statut = "En attente";
+            string requete = "SELECT fkUser from participationdiscussions where fkAdministrateur =\"" + idAdministrateur + "\" and fkDiscussion =\"" + idDiscussion + "\" and statut =\"" + statut + "\"";
+            string idUsers = SelectSimpleWhile(requete);
+            idUsers = idUsers.Replace(',', '/');
+            return idUsers;
+        }
         public string UserExistant(User user)
         {
             string _pseudoTrouve = "";
@@ -319,6 +372,22 @@ namespace MyTcpListener
             }
             return _pseudoRetourne;
 
+        }
+
+
+        
+        /// <summary>
+        /// Selectionne les participants en attente en fonction d'un idDiscussion
+        /// </summary>
+        /// <param name="idDiscussion"></param>
+        /// <returns></returns>
+        public string SelectionnefkUserParticipationDiscussionEnAttente(int idDiscussion)
+        {
+            string statut = "En attente";
+            string idParticipants = string.Empty;
+            string requete = "Select  fkUser from participationdiscussions where fkDiscussion =\"" + idDiscussion + "\" and statut = \"" + statut + "\"";
+            idParticipants = SelectSimpleWhile(requete);
+            return idParticipants;
         }
 
 
@@ -366,8 +435,8 @@ namespace MyTcpListener
 
         #region INSERT
         
-
-
+        //TODO REDONDANCE DANS LA BASE DE DONNEE SUPPRIMER LA TABLE DEMANDECONTACT ET AJOUTE UN CHAMP STATUT A LA TABLE CONTACT
+        //TODO AJOUTER LES DEMANDES DE DISCUSSIONS
         //TODO CHANGER LE STATUT QUAND ILS ACCEPTENT LA DEMANDE
         //TODO SUPPRIMER LA PARTICIPATIONDISCUSSION QUAND ILS REFUSENT LA DEMANDE
         //TODO CREER UN ADMINISTRATEUR POUR CHAQUE DISCUSSION, L'ADMIN SERA LE CREATEUR
@@ -375,17 +444,19 @@ namespace MyTcpListener
         //TODO SUPPRIMER LES DISCUSSIONS QUAND ILS LES SUPPRIMENT
         //TODO AJOUTER DANS ARCHIVES QUAND ILS LES ARCHIVENT
         //TODO AJOUTER DANS DISCUSSION QUAND ILS LES ACTUALISENT
-        public void CreerParticipationDisucssion(int idUser, int idDiscussion, string statut)
+        public void CreerParticipationDisucssion(int idUser, int idDiscussion, int idAdministrateur, string statut)
         {
             this.connection.Open();
             MySqlCommand cmd = this.connection.CreateCommand();
-            cmd.CommandText = "INSERT INTO participationdiscussions(fkUser,fkDiscussion,statut) VALUES(@fkUser,@fkDiscussion,@statut)";
+            cmd.CommandText = "INSERT INTO participationdiscussions(fkUser,fkDiscussion,fkAdministrateur,statut) VALUES(@fkUser,@fkDiscussion,@fkAdministrateur,@statut)";
             cmd.Parameters.AddWithValue("@fkUser", idUser);
             cmd.Parameters.AddWithValue("@fkDiscussion", idDiscussion);
+            cmd.Parameters.AddWithValue("@fkAdministrateur", idAdministrateur);
             cmd.Parameters.AddWithValue("@statut", statut);
             cmd.ExecuteNonQuery();
             this.connection.Close();
         }
+
         public void CreerDiscussion(string nom)
         {
             this.connection.Open();
@@ -396,6 +467,7 @@ namespace MyTcpListener
             this.connection.Close();
         }
      
+        
 
         public void ajoutUser(User user)
         {

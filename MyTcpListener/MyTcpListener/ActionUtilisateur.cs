@@ -92,79 +92,11 @@ namespace MyTcpListener
             return contact;
         }
 
-        //TODO verifier si classe discussion est nécessaire , surement ?
-        //nbrParticipants ne contient pas le createur
-        public void CreerDiscussion(string[] donnee, int nbrParticipants)
-        {
-            string nomDiscussion = SeparerNomDiscussion(donnee, nbrParticipants);
-
-            //Ajout de la discussion dans la base de données
-            connexionBD.CreerDiscussion(nomDiscussion);
-        }
 
 
-        /// <summary>
-        /// Permet de récupérer le nom de la discussion lors de sa création
-        /// </summary>
-        /// Utilisé pour insérer les participationDiscussion
-        /// <param name="donnee"></param>
-        /// <param name="nbrParticipants"></param>
-        /// <returns></returns>
-        public string SeparerNomDiscussion(string[] donnee, int nbrParticipants)
-        {
-            //On sépare la chaine de caractères par les virgules
-            string[] donneesDiscussion = SeparerElements(donnee);
-
-            //On récupère la partie qui contient le nom de la discussion et le nombre de participants
-            string nomDiscussionAvecChiffres = donneesDiscussion[nbrParticipants + 1];
-            string nomDiscussion = nomDiscussionAvecChiffres.Substring(0, nomDiscussionAvecChiffres.Length - 2);
-
-            return nomDiscussion;
-        }
-
-        /// <summary>
-        /// Crée la participationDiscussion du créateur de la discussion
-        /// </summary>
-        /// <param name="donnee"></param>
-        /// <param name="nbrParticipants"></param>
-        public void CreerParticipationDiscussionCreateur(string[] donnee, int nbrParticipants)
-        {
-            //On sépare la chaine de caractères par les virgules
-            string[] donneesDiscussion = SeparerElements(donnee);
-
-            //Attribution du pseudo + statut du createur de la discussion
-            utilisateur.Pseudo = donneesDiscussion[0];
-            string statut = "Participe";
-
-            //Recuperation de l'idUser
-            int idUser = connexionBD.getFkUser(utilisateur);
 
 
-            //Recuperation de l'idDiscussion
-            string nomDiscussion = SeparerNomDiscussion(donnee, nbrParticipants);
-            int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDiscussion));
 
-            connexionBD.CreerParticipationDisucssion(idUser, idDiscussion, statut);
-        }
-
-        public void CreerParticipationDiscussionParticipant(string[] donnee, int nbrParticipants)
-        {
-            //On sépare la chaine de caractères par les virgules
-            string[] donneesDiscussion = SeparerElements(donnee);
-            string statut = "En attente";
-            int idUtilisateur;
-            int idDiscussion;
-            string nomDiscussion = string.Empty;
-            for(int i = 0; i < nbrParticipants; i++)
-            {
-                utilisateur.Pseudo = donneesDiscussion[i];
-                idUtilisateur = connexionBD.getFkUser(utilisateur);
-                nomDiscussion = SeparerNomDiscussion(donnee, nbrParticipants);
-                idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDiscussion));
-                connexionBD.CreerParticipationDisucssion(idUtilisateur, idDiscussion, statut);
-                
-            }
-        }
 
         /// <summary>
         /// Ajoute le profil de l'utilisateur dans la base de données

@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionDiscussion.cs" />
     <Compile Include="ActionUtilisateur.cs" />
     <Compile Include="ConnexionBD.cs" />
     <Compile Include="Program.cs" />

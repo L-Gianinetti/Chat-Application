@@ -123,6 +123,18 @@ namespace ChatApplication
             montrerPannel(pnlDiscussions);
             pnlDiscussionAffichage.Visible = true;
             pnlDiscussionDemande.Visible = false;
+
+            string message = "22" + txtPseudo.Text;
+            string reponse = envoiMessage.Connect(message);
+            string[] nomDiscussion = reponse.Split(',');
+            for(int i = 0; i < nomDiscussion.Count(); i++)
+            {
+                if (!lstDiscussions.Items.Contains(nomDiscussion[i]))
+                {
+                    lstDiscussions.Items.Add(nomDiscussion[i]);
+                }
+
+            }
             
         }
 
@@ -317,6 +329,21 @@ namespace ChatApplication
         {
             pnlDiscussionDemande.Visible = false;
             pnlDiscussionAffichage.Visible = true;
+            montrerPannel(pnlDiscussions);
+            pnlDiscussionAffichage.Visible = true;
+            pnlDiscussionDemande.Visible = false;
+
+            string message = "22" + txtPseudo.Text;
+            string reponse = envoiMessage.Connect(message);
+            string[] nomDiscussion = reponse.Split(',');
+            for (int i = 0; i < nomDiscussion.Count(); i++)
+            {
+                if (!lstDiscussions.Items.Contains(nomDiscussion[i]))
+                {
+                    lstDiscussions.Items.Add(nomDiscussion[i]);
+                }
+
+            }
         }
 
         private void cmdAccepterDiscussion_Click(object sender, EventArgs e)
@@ -335,6 +362,26 @@ namespace ChatApplication
             {
                 string message = "19" + txtPseudo.Text + "," + cboGroupes.SelectedItem.ToString();
                 string reponse = envoiMessage.Connect(message);
+                cboGroupes.Items.Remove(cboGroupes.SelectedItem);
+            }
+        }
+
+        private void cmdRefuserDiscussion_Click(object sender, EventArgs e)
+        {
+            if(cboDiscussions.SelectedIndex > -1)
+            {
+                string message = "20" + txtPseudo.Text + "," + cboDiscussions.SelectedItem.ToString();
+                envoiMessage.Connect(message);
+                cboDiscussions.Items.Remove(cboDiscussions.SelectedItem);
+            }
+        }
+
+        private void cmdRefuserGroupe_Click(object sender, EventArgs e)
+        {
+            if (cboGroupes.SelectedIndex > -1)
+            {
+                string message = "21" + txtPseudo.Text + "," + cboGroupes.SelectedItem.ToString();
+                envoiMessage.Connect(message);
                 cboGroupes.Items.Remove(cboGroupes.SelectedItem);
             }
         }

@@ -293,6 +293,25 @@ namespace MyTcpListener
                                 string nomDiscussion19 = donnees19[1];
                                 actionDiscussion.ChangerEtatParticipationDiscussion(nomDiscussion19, user.Pseudo);
                                 break;
+                            case "20":
+                                string[] donnees20 = SeparationSwitchDonnes[1].Split(',');
+                                user.Pseudo = donnees20[0];
+                                string nomDiscussion20 = donnees20[1];
+                                actionDiscussion.SupprimerParticipationDiscussion(nomDiscussion20, user.Pseudo);
+                                break;
+                            case "21":
+                                string[] donnees21 = SeparationSwitchDonnes[1].Split(',');
+                                user.Pseudo = donnees21[0];
+                                string nomDiscussion21 = donnees21[1];
+                                actionDiscussion.SupprimerParticipationDiscussion(nomDiscussion21, user.Pseudo);
+                                break;
+                            case "22":
+                                user.Pseudo = SeparationSwitchDonnes[1];
+                                string test22 = actionDiscussion.DiscussionParticipe(user.Pseudo);
+                                byte[] reponse22 = System.Text.Encoding.ASCII.GetBytes(test22);
+                                stream.Write(reponse22, 0, reponse22.Length);
+                                break;
+
                             default:
                                 break;
                         }

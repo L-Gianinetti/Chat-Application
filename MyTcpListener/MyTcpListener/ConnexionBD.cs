@@ -159,6 +159,12 @@ namespace MyTcpListener
             string requete = "DELETE FROM contact WHERE fkUser =\"" + idUser + "\" and fkUserContact =\"" + idContact + "\"";
             UpdateOrDelete(requete);
         }
+
+        public void SupprimerParticipationDiscussion(int idDiscussion, int idUtilisateur)
+        {
+            string requete = "DELETE FROM participationDiscussions WHERE fkUser =\"" + idUtilisateur + "\" and fkDiscussion =\"" + idDiscussion + "\"";
+            UpdateOrDelete(requete);
+        }
         #endregion
 
         #region SELECT
@@ -175,6 +181,7 @@ namespace MyTcpListener
             string annotation = SelectSimple(requete);
             return annotation;
         }
+
 
         /// <summary>
         /// Selectionne le champ userPseudonym de la table user

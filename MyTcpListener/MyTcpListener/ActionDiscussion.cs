@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyTcpListener
 {
-    class ActionDiscussion
+    public class ActionDiscussion
     {
         User administrateur = new User();
         User utilisateur = new User();
@@ -58,6 +58,26 @@ namespace MyTcpListener
                 reponse = "Discussion creee";
             }
             return reponse;
+        }
+
+        public string DiscussionParticipe(string pseudoUtilisateur)
+        {
+            utilisateur.Pseudo = pseudoUtilisateur;
+            int idUtilisateur = connexionBD.getFkUser(utilisateur);
+            string idDiscussions = connexionBD.SelectionneNomDiscussion(idUtilisateur);
+            string reponse = string.Empty;
+            string[] idDiscussion = idDiscussions.Split(',');
+            for(int i =0; i < idDiscussion.Count(); i++)
+            {
+                idDiscussion[i] = connexionBD.GetNomDiscussion(int.Parse(idDiscussion[i]));
+                reponse += idDiscussion[i] + ",";
+            }
+            if(reponse != string.Empty)
+            {
+                reponse = reponse.Substring(0, reponse.Length - 1);
+            }
+            return reponse;
+
         }
 
         /// <summary>
@@ -181,12 +201,20 @@ namespace MyTcpListener
             
         }
 
-        public void ChangerEtatParticipationDiscussion(string nomDiscussion, string PseudoUtilisateur)
+        public void ChangerEtatParticipationDiscussion(string nomDiscussion, string pseudoUtilisateur)
         {
             string idDiscussion = connexionBD.SelectionneIdDiscussion(nomDiscussion);
-            utilisateur.Pseudo = PseudoUtilisateur;
+            utilisateur.Pseudo = pseudoUtilisateur;
             int idUtilisateur = connexionBD.getFkUser(utilisateur);
             connexionBD.UpdateParticipationDiscussions(int.Parse(idDiscussion), idUtilisateur);
+        }
+
+        public void SupprimerParticipationDiscussion(string nomDiscussion, string pseudoUtilisateur)
+        {
+            utilisateur.Pseudo = pseudoUtilisateur;
+            int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDiscussion));
+            int idUtilisateur = connexionBD.getFkUser(utilisateur);
+            connexionBD.SupprimerParticipationDiscussion(idDiscussion, idUtilisateur);
         }
 
         public void CreerParticipationDiscussionParticipant(string[] donnee, int nbrParticipants)

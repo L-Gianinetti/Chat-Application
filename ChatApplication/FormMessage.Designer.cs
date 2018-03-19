@@ -95,7 +95,6 @@
             this.grbParticipants.TabIndex = 5;
             this.grbParticipants.TabStop = false;
             this.grbParticipants.Text = "Participants";
-            this.grbParticipants.Enter += new System.EventHandler(this.grbParticipants_Enter);
             // 
             // lblParticipants
             // 
@@ -129,7 +128,6 @@
             this.txtMessageAffichage.Name = "txtMessageAffichage";
             this.txtMessageAffichage.Size = new System.Drawing.Size(604, 274);
             this.txtMessageAffichage.TabIndex = 5;
-            this.txtMessageAffichage.TextChanged += new System.EventHandler(this.txtMessageAffichage_TextChanged);
             // 
             // cmdVocal
             // 

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Timers;
+
 
 namespace ChatApplication
 {
@@ -16,9 +16,15 @@ namespace ChatApplication
         User utilisateur = new User();
         string nomDiscussion = string.Empty;
         EnvoiMessage envoiMessage = new EnvoiMessage();
+        static Timer myTimer = new Timer();
+        //static int myCounter = 0;
         public FrmMessage()
         {
             InitializeComponent();
+
+            myTimer += new EventHandler(myTimerTick);
+            myTimer.Interval = 1000;
+            myTimer.Start();
         }
         public FrmMessage(string nom,string pseudo)
         {
@@ -36,10 +42,7 @@ namespace ChatApplication
 
         }
 
-        private void grbParticipants_Enter(object sender, EventArgs e)
-        {
 
-        }
 
         private void cmdEnvoyer_Click(object sender, EventArgs e)
         {
@@ -50,17 +53,12 @@ namespace ChatApplication
             string reponse = envoiMessage.Connect(message);
         }
 
-        public void OnTimed(object sender, ElapsedEventHandler e)
+
+
+        static void myTimerTick(object sender, System.EventArgs e)
         {
 
-        }
 
-        public  void timerTest()
-        {
-            System.Timers.Timer myTimer = new System.Timers.Timer();
-            myTimer.Interval = 1000;
-            myTimer.Elapsed += new ElapsedEventHandler(OnTimed);
-            myTimer.Enabled = true;
         }
     }
 }

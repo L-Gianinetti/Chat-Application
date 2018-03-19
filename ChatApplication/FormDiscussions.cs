@@ -14,7 +14,7 @@ namespace ChatApplication
     {
         User user = new User();
         EnvoiMessage envoiMessage = new EnvoiMessage();
-        FrmDisucssionCreer frmDiscussionCreer;
+        //FrmDisucssionCreer frmDiscussionCreer;
         public frmDiscussions()
         {
             InitializeComponent();

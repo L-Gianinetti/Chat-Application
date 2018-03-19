@@ -58,6 +58,7 @@
             this.lblDiscussions = new System.Windows.Forms.Label();
             this.lblRemarque = new System.Windows.Forms.Label();
             this.pnlDiscussionAffichage = new System.Windows.Forms.Panel();
+            this.cmdOuvrir = new System.Windows.Forms.Button();
             this.pnlContact = new System.Windows.Forms.Panel();
             this.pnlContactsDemandes = new System.Windows.Forms.Panel();
             this.grbDemandes = new System.Windows.Forms.GroupBox();
@@ -278,7 +279,7 @@
             // pnlDiscussionDemande
             // 
             this.pnlDiscussionDemande.Controls.Add(this.groupBox2);
-            this.pnlDiscussionDemande.Location = new System.Drawing.Point(19, 102);
+            this.pnlDiscussionDemande.Location = new System.Drawing.Point(19, 101);
             this.pnlDiscussionDemande.Name = "pnlDiscussionDemande";
             this.pnlDiscussionDemande.Size = new System.Drawing.Size(645, 381);
             this.pnlDiscussionDemande.TabIndex = 7;
@@ -407,6 +408,7 @@
             // 
             // pnlDiscussionAffichage
             // 
+            this.pnlDiscussionAffichage.Controls.Add(this.cmdOuvrir);
             this.pnlDiscussionAffichage.Controls.Add(this.lstDiscussions);
             this.pnlDiscussionAffichage.Controls.Add(this.cmdArchiverDiscussions);
             this.pnlDiscussionAffichage.Controls.Add(this.cmdSupprimerDiscussions);
@@ -415,12 +417,22 @@
             this.pnlDiscussionAffichage.Size = new System.Drawing.Size(619, 364);
             this.pnlDiscussionAffichage.TabIndex = 6;
             // 
+            // cmdOuvrir
+            // 
+            this.cmdOuvrir.Location = new System.Drawing.Point(535, 141);
+            this.cmdOuvrir.Name = "cmdOuvrir";
+            this.cmdOuvrir.Size = new System.Drawing.Size(75, 23);
+            this.cmdOuvrir.TabIndex = 6;
+            this.cmdOuvrir.Text = "Ouvrir";
+            this.cmdOuvrir.UseVisualStyleBackColor = true;
+            this.cmdOuvrir.Click += new System.EventHandler(this.cmdOuvrir_Click);
+            // 
             // pnlContact
             // 
             this.pnlContact.Controls.Add(this.pnlContactsDemandes);
             this.pnlContact.Controls.Add(this.pnlContactsListe);
             this.pnlContact.Controls.Add(this.groupBox1);
-            this.pnlContact.Location = new System.Drawing.Point(193, 376);
+            this.pnlContact.Location = new System.Drawing.Point(193, 12);
             this.pnlContact.Name = "pnlContact";
             this.pnlContact.Size = new System.Drawing.Size(672, 479);
             this.pnlContact.TabIndex = 6;
@@ -865,5 +877,6 @@
         private System.Windows.Forms.Label lblRemarque;
         private System.Windows.Forms.Label lblDemandesDisucssionsEnvoyees;
         private System.Windows.Forms.ComboBox cmbDemandesDisucssionsEnvoyees;
+        private System.Windows.Forms.Button cmdOuvrir;
     }
 }

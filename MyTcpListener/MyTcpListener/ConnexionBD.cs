@@ -347,6 +347,14 @@ namespace MyTcpListener
             return reponse;
         }
 
+        public string GetIdParticipantsDiscussion(string idDiscussion)
+        {
+            string requete = "SELECT fkUser from participationdiscussions where fkDiscussion = \"" + idDiscussion + "\"";
+            string reponse = SelectSimpleWhile(requete);
+            reponse = reponse.Substring(0, reponse.Length - 1);
+            return reponse;
+        }
+
         public string UserExistant(User user)
         {
             string _pseudoTrouve = "";
@@ -471,6 +479,22 @@ namespace MyTcpListener
         }
      
         
+        public void ajouterMessage(string message, DateTime date, int idDiscussion, int idUser)
+        {
+            this.connection.Open();
+
+            MySqlCommand cmd = this.connection.CreateCommand();
+
+            cmd.CommandText = "INSERT INTO message(messageContent,sendTime,fkDiscussion,fkUser) VALUES(@messageContent,@sendTime,@fkDiscussion,@fkUser)";
+
+            cmd.Parameters.AddWithValue("@messageContent", message);
+            cmd.Parameters.AddWithValue("@sendTime", date);
+            cmd.Parameters.AddWithValue("@fkDiscussion", idDiscussion);
+            cmd.Parameters.AddWithValue("@fkUser", idUser);
+
+            cmd.ExecuteNonQuery();
+            this.connection.Close();
+        }
 
         public void ajoutUser(User user)
         {

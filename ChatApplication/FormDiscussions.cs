@@ -385,5 +385,18 @@ namespace ChatApplication
                 cboGroupes.Items.Remove(cboGroupes.SelectedItem);
             }
         }
+
+        private void cmdOuvrir_Click(object sender, EventArgs e)
+        {
+            string nomDiscussion = lstDiscussions.SelectedItem.ToString();
+            FrmMessage frmMessage = new FrmMessage(nomDiscussion, txtPseudo.Text);
+            frmMessage.Show();
+            DialogResult res = new DialogResult();
+            if(res == DialogResult.OK)
+            {
+                frmMessage.Close();
+            }
+
+        }
     }
 }

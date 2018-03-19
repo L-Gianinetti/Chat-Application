@@ -311,7 +311,22 @@ namespace MyTcpListener
                                 byte[] reponse22 = System.Text.Encoding.ASCII.GetBytes(test22);
                                 stream.Write(reponse22, 0, reponse22.Length);
                                 break;
-
+                            case "23":
+                                string nomDiscussion = SeparationSwitchDonnes[1];
+                                string nomsParticipants = actionDiscussion.RetourneNomsParticipantsDiscussion(nomDiscussion);
+                                byte[] reponse23 = System.Text.Encoding.ASCII.GetBytes(nomsParticipants);
+                                stream.Write(reponse23, 0, reponse23.Length);
+                                break;
+                            case "24":
+                                string utilisateurMessageHeure = SeparationSwitchDonnes[1];
+                                string[] messageDecompose = SeparationSwitchDonnes[1].Split(',');
+                                user.Pseudo = messageDecompose[0];
+                                string messageRecu = messageDecompose[1];
+                                messageRecu = messageRecu.Replace('§', ',');
+                                string dateHeure = messageDecompose[2];
+                                string nomDiscussion24 = messageDecompose[3];
+                                actionDiscussion.EnvoiMessage(user.Pseudo,messageRecu,dateHeure,nomDiscussion24);
+                                break;
                             default:
                                 break;
                         }

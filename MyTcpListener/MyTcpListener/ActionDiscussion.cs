@@ -242,5 +242,29 @@ namespace MyTcpListener
             }
         }
 
+        public string RetourneNomsParticipantsDiscussion(string nomDiscussion)
+        {
+            string idDiscussion = connexionBD.SelectionneIdDiscussion(nomDiscussion);
+            string idParticipants = connexionBD.GetIdParticipantsDiscussion(idDiscussion);
+            string[] idParticipant = idParticipants.Split(',');
+            string reponse = string.Empty;
+            for(int i = 0; i< idParticipant.Count(); i++)
+            {
+                idParticipant[i] = connexionBD.getUserPseudo(int.Parse(idParticipant[i]));
+                reponse += idParticipant[i] + ",";
+            }
+            reponse = reponse.Substring(0, reponse.Length - 1);
+            return reponse;
+        }
+
+        public void EnvoiMessage(string pseudo, string message, string date, string nomDiscussion)
+        {
+            utilisateur.Pseudo = pseudo;
+            int idUtilisateur = connexionBD.getFkUser(utilisateur);
+            int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDiscussion));
+
+            DateTime dateTime = DateTime.Parse(date);
+            connexionBD.ajouterMessage(message, dateTime, idDiscussion, idUtilisateur);
+        }
     }
 }

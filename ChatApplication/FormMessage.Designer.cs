@@ -28,13 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.grbMenu = new System.Windows.Forms.GroupBox();
-            this.cmdQuitter = new System.Windows.Forms.Button();
-            this.cmdDiscussions = new System.Windows.Forms.Button();
-            this.cmdDeconnexion = new System.Windows.Forms.Button();
-            this.cmdArchives = new System.Windows.Forms.Button();
-            this.cmdProfil = new System.Windows.Forms.Button();
-            this.cmdContacts = new System.Windows.Forms.Button();
             this.grbActions = new System.Windows.Forms.GroupBox();
             this.cmdASupprimer = new System.Windows.Forms.Button();
             this.cmdAAjouter = new System.Windows.Forms.Button();
@@ -42,93 +35,23 @@
             this.grbParticipants = new System.Windows.Forms.GroupBox();
             this.lblParticipants = new System.Windows.Forms.Label();
             this.grbMessages = new System.Windows.Forms.GroupBox();
+            this.txtMessageAffichage = new System.Windows.Forms.TextBox();
             this.cmdVocal = new System.Windows.Forms.Button();
             this.cmdImage = new System.Windows.Forms.Button();
             this.cmdSmiley = new System.Windows.Forms.Button();
             this.cmdEnvoyer = new System.Windows.Forms.Button();
             this.txtMessageEnvoi = new System.Windows.Forms.TextBox();
-            this.txtMessageAffichage = new System.Windows.Forms.TextBox();
-            this.grbMenu.SuspendLayout();
             this.grbActions.SuspendLayout();
             this.grbParticipants.SuspendLayout();
             this.grbMessages.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // grbMenu
-            // 
-            this.grbMenu.Controls.Add(this.cmdQuitter);
-            this.grbMenu.Controls.Add(this.cmdDiscussions);
-            this.grbMenu.Controls.Add(this.cmdDeconnexion);
-            this.grbMenu.Controls.Add(this.cmdArchives);
-            this.grbMenu.Controls.Add(this.cmdProfil);
-            this.grbMenu.Controls.Add(this.cmdContacts);
-            this.grbMenu.Location = new System.Drawing.Point(12, 12);
-            this.grbMenu.Name = "grbMenu";
-            this.grbMenu.Size = new System.Drawing.Size(111, 466);
-            this.grbMenu.TabIndex = 3;
-            this.grbMenu.TabStop = false;
-            this.grbMenu.Text = "Menu";
-            // 
-            // cmdQuitter
-            // 
-            this.cmdQuitter.Location = new System.Drawing.Point(6, 299);
-            this.cmdQuitter.Name = "cmdQuitter";
-            this.cmdQuitter.Size = new System.Drawing.Size(89, 23);
-            this.cmdQuitter.TabIndex = 4;
-            this.cmdQuitter.Text = "Quitter";
-            this.cmdQuitter.UseVisualStyleBackColor = true;
-            // 
-            // cmdDiscussions
-            // 
-            this.cmdDiscussions.Location = new System.Drawing.Point(7, 136);
-            this.cmdDiscussions.Name = "cmdDiscussions";
-            this.cmdDiscussions.Size = new System.Drawing.Size(88, 23);
-            this.cmdDiscussions.TabIndex = 5;
-            this.cmdDiscussions.Text = "Discussions";
-            this.cmdDiscussions.UseVisualStyleBackColor = true;
-            // 
-            // cmdDeconnexion
-            // 
-            this.cmdDeconnexion.Location = new System.Drawing.Point(7, 243);
-            this.cmdDeconnexion.Name = "cmdDeconnexion";
-            this.cmdDeconnexion.Size = new System.Drawing.Size(88, 23);
-            this.cmdDeconnexion.TabIndex = 2;
-            this.cmdDeconnexion.Text = "Déconnexion";
-            this.cmdDeconnexion.UseVisualStyleBackColor = true;
-            // 
-            // cmdArchives
-            // 
-            this.cmdArchives.Location = new System.Drawing.Point(7, 195);
-            this.cmdArchives.Name = "cmdArchives";
-            this.cmdArchives.Size = new System.Drawing.Size(88, 23);
-            this.cmdArchives.TabIndex = 3;
-            this.cmdArchives.Text = "Archives";
-            this.cmdArchives.UseVisualStyleBackColor = true;
-            // 
-            // cmdProfil
-            // 
-            this.cmdProfil.Location = new System.Drawing.Point(6, 36);
-            this.cmdProfil.Name = "cmdProfil";
-            this.cmdProfil.Size = new System.Drawing.Size(89, 23);
-            this.cmdProfil.TabIndex = 0;
-            this.cmdProfil.Text = "Mon profil";
-            this.cmdProfil.UseVisualStyleBackColor = true;
-            // 
-            // cmdContacts
-            // 
-            this.cmdContacts.Location = new System.Drawing.Point(6, 88);
-            this.cmdContacts.Name = "cmdContacts";
-            this.cmdContacts.Size = new System.Drawing.Size(89, 23);
-            this.cmdContacts.TabIndex = 1;
-            this.cmdContacts.Text = "Contacts";
-            this.cmdContacts.UseVisualStyleBackColor = true;
             // 
             // grbActions
             // 
             this.grbActions.Controls.Add(this.cmdASupprimer);
             this.grbActions.Controls.Add(this.cmdAAjouter);
             this.grbActions.Controls.Add(this.cmdARetour);
-            this.grbActions.Location = new System.Drawing.Point(129, 12);
+            this.grbActions.Location = new System.Drawing.Point(12, 12);
             this.grbActions.Name = "grbActions";
             this.grbActions.Size = new System.Drawing.Size(617, 59);
             this.grbActions.TabIndex = 4;
@@ -155,6 +78,7 @@
             // 
             // cmdARetour
             // 
+            this.cmdARetour.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdARetour.Location = new System.Drawing.Point(44, 20);
             this.cmdARetour.Name = "cmdARetour";
             this.cmdARetour.Size = new System.Drawing.Size(75, 23);
@@ -165,12 +89,13 @@
             // grbParticipants
             // 
             this.grbParticipants.Controls.Add(this.lblParticipants);
-            this.grbParticipants.Location = new System.Drawing.Point(129, 77);
+            this.grbParticipants.Location = new System.Drawing.Point(12, 78);
             this.grbParticipants.Name = "grbParticipants";
             this.grbParticipants.Size = new System.Drawing.Size(617, 46);
             this.grbParticipants.TabIndex = 5;
             this.grbParticipants.TabStop = false;
             this.grbParticipants.Text = "Participants";
+            this.grbParticipants.Enter += new System.EventHandler(this.grbParticipants_Enter);
             // 
             // lblParticipants
             // 
@@ -190,12 +115,21 @@
             this.grbMessages.Controls.Add(this.cmdSmiley);
             this.grbMessages.Controls.Add(this.cmdEnvoyer);
             this.grbMessages.Controls.Add(this.txtMessageEnvoi);
-            this.grbMessages.Location = new System.Drawing.Point(129, 130);
+            this.grbMessages.Location = new System.Drawing.Point(12, 130);
             this.grbMessages.Name = "grbMessages";
             this.grbMessages.Size = new System.Drawing.Size(617, 356);
             this.grbMessages.TabIndex = 5;
             this.grbMessages.TabStop = false;
             this.grbMessages.Text = "Messages";
+            // 
+            // txtMessageAffichage
+            // 
+            this.txtMessageAffichage.Location = new System.Drawing.Point(7, 20);
+            this.txtMessageAffichage.Multiline = true;
+            this.txtMessageAffichage.Name = "txtMessageAffichage";
+            this.txtMessageAffichage.Size = new System.Drawing.Size(604, 274);
+            this.txtMessageAffichage.TabIndex = 5;
+            this.txtMessageAffichage.TextChanged += new System.EventHandler(this.txtMessageAffichage_TextChanged);
             // 
             // cmdVocal
             // 
@@ -233,6 +167,7 @@
             this.cmdEnvoyer.TabIndex = 1;
             this.cmdEnvoyer.Text = "Envoyer";
             this.cmdEnvoyer.UseVisualStyleBackColor = true;
+            this.cmdEnvoyer.Click += new System.EventHandler(this.cmdEnvoyer_Click);
             // 
             // txtMessageEnvoi
             // 
@@ -242,26 +177,17 @@
             this.txtMessageEnvoi.Size = new System.Drawing.Size(364, 46);
             this.txtMessageEnvoi.TabIndex = 0;
             // 
-            // txtMessageAffichage
-            // 
-            this.txtMessageAffichage.Location = new System.Drawing.Point(7, 20);
-            this.txtMessageAffichage.Multiline = true;
-            this.txtMessageAffichage.Name = "txtMessageAffichage";
-            this.txtMessageAffichage.Size = new System.Drawing.Size(604, 274);
-            this.txtMessageAffichage.TabIndex = 5;
-            // 
             // FrmMessage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(758, 498);
+            this.ClientSize = new System.Drawing.Size(656, 526);
             this.Controls.Add(this.grbParticipants);
             this.Controls.Add(this.grbMessages);
             this.Controls.Add(this.grbActions);
-            this.Controls.Add(this.grbMenu);
             this.Name = "FrmMessage";
             this.Text = "Message";
-            this.grbMenu.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.FrmMessage_Load);
             this.grbActions.ResumeLayout(false);
             this.grbParticipants.ResumeLayout(false);
             this.grbParticipants.PerformLayout();
@@ -272,14 +198,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox grbMenu;
-        private System.Windows.Forms.Button cmdQuitter;
-        private System.Windows.Forms.Button cmdDiscussions;
-        private System.Windows.Forms.Button cmdDeconnexion;
-        private System.Windows.Forms.Button cmdArchives;
-        private System.Windows.Forms.Button cmdProfil;
-        private System.Windows.Forms.Button cmdContacts;
         private System.Windows.Forms.GroupBox grbActions;
         private System.Windows.Forms.Button cmdASupprimer;
         private System.Windows.Forms.Button cmdAAjouter;

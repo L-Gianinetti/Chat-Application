@@ -319,9 +319,9 @@ namespace MyTcpListener
             return id;
         }
 
-        public string SelectionneNomDiscussion(int idUtilisateur)
+        public string SelectionneIdDiscussion(int idUtilisateur, string statut)
         {
-            string statut = "En attente";
+            
             string requete = "SELECT fkDiscussion from participationdiscussions where fkUser =\"" + idUtilisateur + "\" and statut =\"" + statut + "\"";
             string idDiscussion = SelectSimpleWhile(requete);
             if(idDiscussion != string.Empty)

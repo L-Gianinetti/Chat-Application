@@ -64,13 +64,17 @@ namespace MyTcpListener
         {
             utilisateur.Pseudo = pseudoUtilisateur;
             int idUtilisateur = connexionBD.getFkUser(utilisateur);
-            string idDiscussions = connexionBD.SelectionneNomDiscussion(idUtilisateur);
+            string idDiscussions = connexionBD.SelectionneIdDiscussion(idUtilisateur, "Participe");
             string reponse = string.Empty;
             string[] idDiscussion = idDiscussions.Split(',');
             for(int i =0; i < idDiscussion.Count(); i++)
             {
-                idDiscussion[i] = connexionBD.GetNomDiscussion(int.Parse(idDiscussion[i]));
-                reponse += idDiscussion[i] + ",";
+                if(idDiscussion[i] != string.Empty)
+                {
+                    idDiscussion[i] = connexionBD.GetNomDiscussion(int.Parse(idDiscussion[i]));
+                    reponse += idDiscussion[i] + ",";
+                }
+
             }
             if(reponse != string.Empty)
             {
@@ -102,7 +106,7 @@ namespace MyTcpListener
         {
             utilisateur.Pseudo = pseudoUtilisateur;
             int idUtilisateur = connexionBD.getFkUser(utilisateur);
-            string idDiscussions = connexionBD.SelectionneNomDiscussion(idUtilisateur);
+            string idDiscussions = connexionBD.SelectionneIdDiscussion(idUtilisateur, "En attente");
             string nomsDiscussion = string.Empty;
             if (idDiscussions != string.Empty)
             {

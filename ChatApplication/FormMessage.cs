@@ -22,15 +22,50 @@ namespace ChatApplication
         {
             InitializeComponent();
 
-            myTimer += new EventHandler(myTimerTick);
+            myTimer.Tick += new EventHandler(myTimerTick);
             myTimer.Interval = 1000;
             myTimer.Start();
         }
+
         public FrmMessage(string nom,string pseudo)
         {
             InitializeComponent();
             nomDiscussion = nom;
             utilisateur.Pseudo = pseudo;
+
+            myTimer.Tick += new EventHandler(myTimerTick);
+            myTimer.Interval = 1000;
+            myTimer.Start();
+        }
+
+        public void myTimerTick(object sender, System.EventArgs e)
+        {
+            string message = "25" + nomDiscussion;
+            string reponse = envoiMessage.Connect(message);
+            
+            if(reponse != string.Empty)
+            {
+                reponse = reponse.Substring(0, reponse.Length - 1);
+                string[] messageRecu = reponse.Split('*');
+                string[] test;
+                for (int i = 0; i < messageRecu.Length; i++)
+                {
+                    test = messageRecu[i].Split('$');
+                    string messageListe = string.Empty;
+                    if(test[0].Length > 10)
+                    {
+                        messageListe = test[0] + " : " + test[1];
+
+                    }
+                    
+                    if (!lstMessages.Items.Contains(messageListe) && messageListe != string.Empty)
+                    {
+                        lstMessages.Items.Add(messageListe);
+                    }
+                    
+                }
+            }
+
         }
 
         private void FrmMessage_Load(object sender, EventArgs e)
@@ -55,10 +90,6 @@ namespace ChatApplication
 
 
 
-        static void myTimerTick(object sender, System.EventArgs e)
-        {
 
-
-        }
     }
 }

@@ -35,12 +35,12 @@
             this.grbParticipants = new System.Windows.Forms.GroupBox();
             this.lblParticipants = new System.Windows.Forms.Label();
             this.grbMessages = new System.Windows.Forms.GroupBox();
-            this.txtMessageAffichage = new System.Windows.Forms.TextBox();
             this.cmdVocal = new System.Windows.Forms.Button();
             this.cmdImage = new System.Windows.Forms.Button();
             this.cmdSmiley = new System.Windows.Forms.Button();
             this.cmdEnvoyer = new System.Windows.Forms.Button();
             this.txtMessageEnvoi = new System.Windows.Forms.TextBox();
+            this.lstMessages = new System.Windows.Forms.ListBox();
             this.grbActions.SuspendLayout();
             this.grbParticipants.SuspendLayout();
             this.grbMessages.SuspendLayout();
@@ -108,7 +108,7 @@
             // 
             // grbMessages
             // 
-            this.grbMessages.Controls.Add(this.txtMessageAffichage);
+            this.grbMessages.Controls.Add(this.lstMessages);
             this.grbMessages.Controls.Add(this.cmdVocal);
             this.grbMessages.Controls.Add(this.cmdImage);
             this.grbMessages.Controls.Add(this.cmdSmiley);
@@ -120,14 +120,6 @@
             this.grbMessages.TabIndex = 5;
             this.grbMessages.TabStop = false;
             this.grbMessages.Text = "Messages";
-            // 
-            // txtMessageAffichage
-            // 
-            this.txtMessageAffichage.Location = new System.Drawing.Point(7, 20);
-            this.txtMessageAffichage.Multiline = true;
-            this.txtMessageAffichage.Name = "txtMessageAffichage";
-            this.txtMessageAffichage.Size = new System.Drawing.Size(604, 274);
-            this.txtMessageAffichage.TabIndex = 5;
             // 
             // cmdVocal
             // 
@@ -175,6 +167,14 @@
             this.txtMessageEnvoi.Size = new System.Drawing.Size(364, 46);
             this.txtMessageEnvoi.TabIndex = 0;
             // 
+            // lstMessages
+            // 
+            this.lstMessages.FormattingEnabled = true;
+            this.lstMessages.Location = new System.Drawing.Point(7, 20);
+            this.lstMessages.Name = "lstMessages";
+            this.lstMessages.Size = new System.Drawing.Size(604, 277);
+            this.lstMessages.TabIndex = 5;
+            // 
             // FrmMessage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,6 +208,6 @@
         private System.Windows.Forms.Button cmdSmiley;
         private System.Windows.Forms.Button cmdEnvoyer;
         private System.Windows.Forms.TextBox txtMessageEnvoi;
-        private System.Windows.Forms.TextBox txtMessageAffichage;
+        private System.Windows.Forms.ListBox lstMessages;
     }
 }

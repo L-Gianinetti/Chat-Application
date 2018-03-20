@@ -84,7 +84,23 @@ namespace MyTcpListener
             this.connection.Close();
             return reponse;
         }
-    
+
+        public string SelectDoubleWhile2(string requete)
+        {
+            this.connection.Open();
+            MySqlCommand cmd = this.connection.CreateCommand();
+            cmd.CommandText = requete;
+            string reponse = string.Empty;
+            var cmdReader = cmd.ExecuteReader();
+            while (cmdReader.Read())
+            {
+                reponse += String.Format("{0}",cmdReader[0]) + " " + String.Format("{0}", cmdReader[1]) + "$" + string.Format("{0}", cmdReader[2]) + "*";
+            }
+
+            this.connection.Close();
+            return reponse;
+        }
+
         public string SelectSimpleWhile(string requete)
         {
             this.connection.Open();
@@ -182,6 +198,24 @@ namespace MyTcpListener
             return annotation;
         }
 
+        public string SelectionneIdUserMessages(int idDiscussion)
+        {
+            string requete = "SELECT fkUser from message where fkDiscussion =\"" + idDiscussion + "\" ORDER BY sendTime";
+            string reponse = SelectSimpleWhile(requete);
+            return reponse;
+        }
+
+        public string SelectionneMessages(int idDiscussion)
+        {
+            string requete = "SELECT sendTime, fkUser, messageContent from message where fkDiscussion =\"" + idDiscussion + "\" ORDER BY sendTime";
+            string reponse = SelectDoubleWhile2(requete);
+            if(reponse != string.Empty)
+            {
+                reponse = reponse.Substring(0, reponse.Length - 1);
+            }
+            
+            return reponse;
+        }
 
         /// <summary>
         /// Selectionne le champ userPseudonym de la table user

@@ -266,5 +266,27 @@ namespace MyTcpListener
             DateTime dateTime = DateTime.Parse(date);
             connexionBD.ajouterMessage(message, dateTime, idDiscussion, idUtilisateur);
         }
+
+        public string actualiserMessages(string nomDiscussion)
+        {
+            int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDiscussion));
+            string messages = connexionBD.SelectionneMessages(idDiscussion);
+            string idUtilisateurs = connexionBD.SelectionneIdUserMessages(idDiscussion);
+            string reponse = string.Empty;
+            if(messages != string.Empty)
+            {
+                string[] message = messages.Split('*');
+                string[] test;
+                string[] test2 = idUtilisateurs.Split(',');
+                for (int i = 0; i < message.Length; i++)
+                {
+                    test = message[i].Split('$');
+                    utilisateur.Pseudo = connexionBD.getUserPseudo(int.Parse(test2[i]));
+                    reponse += test[0] + utilisateur.Pseudo + "$" + test[1] + "*";
+                }
+            }
+
+            return reponse;
+        }
     }
 }

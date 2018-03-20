@@ -327,6 +327,12 @@ namespace MyTcpListener
                                 string nomDiscussion24 = messageDecompose[3];
                                 actionDiscussion.EnvoiMessage(user.Pseudo,messageRecu,dateHeure,nomDiscussion24);
                                 break;
+                            case "25":
+                                string nomDiscussion25 = SeparationSwitchDonnes[1];
+                                string retour25 = actionDiscussion.actualiserMessages(nomDiscussion25);
+                                byte[] reponse25 = System.Text.Encoding.ASCII.GetBytes(retour25);
+                                stream.Write(reponse25, 0, reponse25.Length);
+                                break;
                             default:
                                 break;
                         }

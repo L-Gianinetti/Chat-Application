@@ -35,6 +35,7 @@
             this.lblParticipants = new System.Windows.Forms.Label();
             this.cmdAnnuler = new System.Windows.Forms.Button();
             this.cmdValider = new System.Windows.Forms.Button();
+            this.cmdRetirer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmdAjouter
@@ -45,6 +46,7 @@
             this.cmdAjouter.TabIndex = 10;
             this.cmdAjouter.Text = "Ajouter";
             this.cmdAjouter.UseVisualStyleBackColor = true;
+            this.cmdAjouter.Click += new System.EventHandler(this.cmdAjouter_Click);
             // 
             // cboContacts
             // 
@@ -92,6 +94,7 @@
             // 
             // cmdValider
             // 
+            this.cmdValider.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdValider.Location = new System.Drawing.Point(428, 280);
             this.cmdValider.Name = "cmdValider";
             this.cmdValider.Size = new System.Drawing.Size(75, 23);
@@ -100,11 +103,22 @@
             this.cmdValider.UseVisualStyleBackColor = true;
             this.cmdValider.Click += new System.EventHandler(this.cmdValider_Click);
             // 
+            // cmdRetirer
+            // 
+            this.cmdRetirer.Location = new System.Drawing.Point(366, 42);
+            this.cmdRetirer.Name = "cmdRetirer";
+            this.cmdRetirer.Size = new System.Drawing.Size(75, 23);
+            this.cmdRetirer.TabIndex = 13;
+            this.cmdRetirer.Text = "Retirer";
+            this.cmdRetirer.UseVisualStyleBackColor = true;
+            this.cmdRetirer.Click += new System.EventHandler(this.cmdRetirer_Click);
+            // 
             // FrmDiscussionAjouter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(515, 328);
+            this.Controls.Add(this.cmdRetirer);
             this.Controls.Add(this.cmdValider);
             this.Controls.Add(this.cmdAnnuler);
             this.Controls.Add(this.cmdAjouter);
@@ -129,5 +143,6 @@
         private System.Windows.Forms.Label lblParticipants;
         private System.Windows.Forms.Button cmdAnnuler;
         private System.Windows.Forms.Button cmdValider;
+        private System.Windows.Forms.Button cmdRetirer;
     }
 }

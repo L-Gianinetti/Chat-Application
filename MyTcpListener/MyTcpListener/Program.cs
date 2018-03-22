@@ -40,7 +40,8 @@ namespace MyTcpListener
 
                     //Buffer pour lire les données
                     //Buffer = zone mémoire de taille limitée servant à stocker des données (généralement de façon temporaire)
-                    Byte[] bytes = new byte[256];
+                    //https://stackoverflow.com/questions/3944320/maximum-length-of-byte?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+                    Byte[] bytes = new byte[100000];
                     string data = null;
 
                     //On entre dans la boucle d'écoute
@@ -97,6 +98,7 @@ namespace MyTcpListener
 
                                 byte[] mdpDemande = System.Text.Encoding.ASCII.GetBytes(motDePasse);
                                 stream.Write(mdpDemande, 0, mdpDemande.Length);
+                                
                                 Console.WriteLine("mdpDemande: {0}", mdpDemande);
                                 break;
                             #endregion
@@ -105,6 +107,7 @@ namespace MyTcpListener
                                 string infosProfil = actionUtilisateur.RetourneInfoProfil(SeparationSwitchDonnes);
                                 byte[] infosProfilARetourner = System.Text.Encoding.ASCII.GetBytes(infosProfil);
                                 stream.Write(infosProfilARetourner, 0, infosProfilARetourner.Length);
+                                
                                 Console.WriteLine("Infos profil envoyées : {0}", infosProfilARetourner);
                                 break;
                             #endregion
@@ -115,7 +118,7 @@ namespace MyTcpListener
                                 string updateReussie = "Reussie";
                                 byte[] reponse4 = System.Text.Encoding.ASCII.GetBytes(updateReussie);
                                 stream.Write(reponse4, 0, reponse4.Length);
-
+                                
                                 Console.WriteLine("Update du profil : {0}", updateReussie);
                                 break;
                             #endregion
@@ -126,6 +129,7 @@ namespace MyTcpListener
                                 Console.WriteLine("Pseudo trouvé : {0}", pseudoTrouve);
                                 byte[] pseudoTrouveRetourne = System.Text.Encoding.ASCII.GetBytes(pseudoTrouve);
                                 stream.Write(pseudoTrouveRetourne, 0, pseudoTrouveRetourne.Length);
+                                
                                 break;
                             #endregion
                             #region ajoutContact
@@ -134,6 +138,7 @@ namespace MyTcpListener
 
                                 byte[] contactTrouveRetourne = System.Text.Encoding.ASCII.GetBytes(contactTrouve);
                                 stream.Write(contactTrouveRetourne, 0, contactTrouveRetourne.Length);
+                                
                                 break;
                             #endregion
                             #region demandesEnvoyees
@@ -144,11 +149,13 @@ namespace MyTcpListener
                                 {
                                     byte[] reponse7 = System.Text.Encoding.ASCII.GetBytes(demandesContactEnvoyee);
                                     stream.Write(reponse7, 0, reponse7.Length);
+                                    
                                 }
                                 else
                                 {
                                     byte[] reponse7 = System.Text.Encoding.ASCII.GetBytes("PasDemandesEnvoyees");
                                     stream.Write(reponse7, 0, reponse7.Length);
+                                    
                                 }
                                     
                                 break;
@@ -161,11 +168,13 @@ namespace MyTcpListener
                                 {
                                     byte[] reponse8 = System.Text.Encoding.ASCII.GetBytes(demandesContactRecue);
                                     stream.Write(reponse8, 0, reponse8.Length);
+                                    
                                 }
                                 else
                                 {
                                     byte[] reponse8 = System.Text.Encoding.ASCII.GetBytes("PasDemandesRecues");
                                     stream.Write(reponse8, 0, reponse8.Length);
+                                    
                                 }
 
                                 break;
@@ -176,6 +185,7 @@ namespace MyTcpListener
                                 string contactAjoute = "Contact ajouté !";
                                 byte[] reponse9 = System.Text.Encoding.ASCII.GetBytes(contactAjoute);
                                 stream.Write(reponse9, 0, reponse9.Length);
+                                
                                 break;
                             #endregion
                             #region ajoutContactListeContact
@@ -186,11 +196,13 @@ namespace MyTcpListener
                                 {
                                     reponse10 = System.Text.Encoding.ASCII.GetBytes(listePseudosContacts);
                                     stream.Write(reponse10, 0, reponse10.Length);
+                                    
                                 }
                                 else
                                 {
                                     reponse10 = System.Text.Encoding.ASCII.GetBytes("Pas de contact a ajouter");
                                     stream.Write(reponse10, 0, reponse10.Length);
+                                    
                                 }
                                 break;
                             #endregion
@@ -199,7 +211,8 @@ namespace MyTcpListener
                                 actionUtilisateur.SupprimerDemandeContact(SeparationSwitchDonnes);
                                 string demandeSupprimee = "Demande supprimee";
                                 byte[] reponse11 = System.Text.Encoding.ASCII.GetBytes(demandeSupprimee);
-                                stream.Write(reponse11, 0, reponse11.Length);    
+                                stream.Write(reponse11, 0, reponse11.Length);
+                                
                                 break;
                             #endregion
                             #region supprimerContact
@@ -208,6 +221,7 @@ namespace MyTcpListener
                                 string contactSupprime = "Contact supprime";
                                 byte[] reponse12 = System.Text.Encoding.ASCII.GetBytes(contactSupprime);
                                 stream.Write(reponse12, 0, reponse12.Length);
+                                
                                 break;
                             #endregion  
                             case "13":
@@ -219,6 +233,7 @@ namespace MyTcpListener
                                 string infosContact = infosProfilContact + "," + annotation;                                                                                                                                                                                     
                                 byte[] reponse14= System.Text.Encoding.ASCII.GetBytes(infosContact);
                                 stream.Write(reponse14, 0, reponse14.Length);
+                                
                                 break;
                             case "15":
                                 string participants = SeparationSwitchDonnes[1].Substring(0, SeparationSwitchDonnes[1].Length - 2);
@@ -243,11 +258,13 @@ namespace MyTcpListener
                                     actionDiscussion.CreerParticipationDiscussionParticipant(SeparationSwitchDonnes, nbrParticipants);
                                     reponse15 = System.Text.Encoding.ASCII.GetBytes(discussion);
                                     stream.Write(reponse15, 0, reponse15.Length);
+                                    
                                 }
                                 else
                                 {
                                     reponse15 = System.Text.Encoding.ASCII.GetBytes(discussion);
                                     stream.Write(reponse15, 0, reponse15.Length);
+                                    
                                 }
 
 
@@ -259,11 +276,13 @@ namespace MyTcpListener
                                 {
                                     byte[] reponse16 = System.Text.Encoding.ASCII.GetBytes(nomsDiscussionEnAttente);
                                     stream.Write(reponse16, 0, reponse16.Length);
+                                    
                                 }
                                 else
                                 {
                                     byte[] reponse16 = System.Text.Encoding.ASCII.GetBytes(nomsDiscussionEnAttente);
                                     stream.Write(reponse16, 0, reponse16.Length);
+                                    
                                 }
                                 break;
                             case "17":
@@ -273,12 +292,14 @@ namespace MyTcpListener
                                 {
                                     byte[] reponse17 = System.Text.Encoding.ASCII.GetBytes(test17);
                                     stream.Write(reponse17, 0, reponse17.Length);
+                                    
                                     //RESTE A RECUPERER LE STRING ET L'AJOUTER A LA CMB DANS DISCUSSION ET SUPPRIMER LE CODE INUTILE DE LA JOURNEE
                                 }
                                 else
                                 {
                                     byte[] reponse17 = System.Text.Encoding.ASCII.GetBytes(test17);
                                     stream.Write(reponse17, 0, reponse17.Length);
+                                    
                                 }
                                 break;
                             case "18":
@@ -286,36 +307,42 @@ namespace MyTcpListener
                                 user.Pseudo = donnees18[0];
                                 string nomDiscussion18 = donnees18[1];
                                 actionDiscussion.ChangerEtatParticipationDiscussion(nomDiscussion18, user.Pseudo);
+                                
                                 break;
                             case "19":
                                 string[] donnees19 = SeparationSwitchDonnes[1].Split(',');
                                 user.Pseudo = donnees19[0];
                                 string nomDiscussion19 = donnees19[1];
                                 actionDiscussion.ChangerEtatParticipationDiscussion(nomDiscussion19, user.Pseudo);
+                                
                                 break;
                             case "20":
                                 string[] donnees20 = SeparationSwitchDonnes[1].Split(',');
                                 user.Pseudo = donnees20[0];
                                 string nomDiscussion20 = donnees20[1];
                                 actionDiscussion.SupprimerParticipationDiscussion(nomDiscussion20, user.Pseudo);
+                                
                                 break;
                             case "21":
                                 string[] donnees21 = SeparationSwitchDonnes[1].Split(',');
                                 user.Pseudo = donnees21[0];
                                 string nomDiscussion21 = donnees21[1];
                                 actionDiscussion.SupprimerParticipationDiscussion(nomDiscussion21, user.Pseudo);
+                                
                                 break;
                             case "22":
                                 user.Pseudo = SeparationSwitchDonnes[1];
                                 string test22 = actionDiscussion.DiscussionParticipe(user.Pseudo);
                                 byte[] reponse22 = System.Text.Encoding.ASCII.GetBytes(test22);
                                 stream.Write(reponse22, 0, reponse22.Length);
+                                
                                 break;
                             case "23":
                                 string nomDiscussion = SeparationSwitchDonnes[1];
                                 string nomsParticipants = actionDiscussion.RetourneNomsParticipantsDiscussion(nomDiscussion);
                                 byte[] reponse23 = System.Text.Encoding.ASCII.GetBytes(nomsParticipants);
                                 stream.Write(reponse23, 0, reponse23.Length);
+                                
                                 break;
                             case "24":
                                 string utilisateurMessageHeure = SeparationSwitchDonnes[1];
@@ -326,19 +353,65 @@ namespace MyTcpListener
                                 string dateHeure = messageDecompose[2];
                                 string nomDiscussion24 = messageDecompose[3];
                                 actionDiscussion.EnvoiMessage(user.Pseudo,messageRecu,dateHeure,nomDiscussion24);
+                                
                                 break;
                             case "25":
                                 string nomDiscussion25 = SeparationSwitchDonnes[1];
                                 string retour25 = actionDiscussion.actualiserMessages(nomDiscussion25);
                                 byte[] reponse25 = System.Text.Encoding.ASCII.GetBytes(retour25);
                                 stream.Write(reponse25, 0, reponse25.Length);
+                                
+                                break;
+                            case "26":
+                                string nomDiscussion26 = SeparationSwitchDonnes[1];
+                                string retour26 = actionDiscussion.selectionnePseudoAdministrateur(nomDiscussion26);
+                                byte[] reponse26 = System.Text.Encoding.ASCII.GetBytes(retour26);
+                                stream.Write(reponse26, 0, reponse26.Length); 
+                                break;
+                            case "27":
+                                string nomDiscussion27 = SeparationSwitchDonnes[1];
+                                string retour27 = actionDiscussion.RetourneNomsParticipantsDiscussion(nomDiscussion27);
+                                byte[] reponse27 = System.Text.Encoding.ASCII.GetBytes(retour27);
+                                stream.Write(reponse27, 0, reponse27.Length);
+                                break;
+                            case "28":
+                                string[] message28Decompose = SeparationSwitchDonnes[1].Split(',');
+                                string nomDiscussion28 = message28Decompose[0];
+                                string participants28 = message28Decompose[1];
+                                actionDiscussion.AjouteParticipationDiscussion(nomDiscussion28, participants28);
+                                break;
+                            case "29":
+                                string[] message29Decompose = SeparationSwitchDonnes[1].Split(',');
+                                string nomDiscussion29 = message29Decompose[0];
+                                user.Pseudo = message29Decompose[1];
+                                actionDiscussion.SupprimerParticipationDiscussion(nomDiscussion29, user.Pseudo);
+                                break;
+                            case "30":
+                                string[] message30Decompose = SeparationSwitchDonnes[1].Split(',');
+                                user.Pseudo = message30Decompose[0];
+                                string nomDiscussion30 = message30Decompose[1];
+                                actionDiscussion.SupprimerParticipationDiscussion(nomDiscussion30, user.Pseudo);
+                                actionDiscussion.AjouterArchive(nomDiscussion30, user.Pseudo);
+                                break;
+                            case "31":
+                                user.Pseudo = SeparationSwitchDonnes[1];
+                                string retour31 = actionDiscussion.SelectionneArchives(user.Pseudo);
+                                byte[] reponse31 = System.Text.Encoding.ASCII.GetBytes(retour31);
+                                stream.Write(reponse31, 0, reponse31.Length);
                                 break;
                             default:
                                 break;
                         }
 
                         //Coupe et termine la connexion
-                        client.Close();
+                        if(stream.DataAvailable == false)
+                        {
+                            client.Close();
+                        }
+
+
+                        //stream.Flush();
+                        //stream.Close();
                     }
                 }
                 catch (SocketException e)

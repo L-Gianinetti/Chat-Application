@@ -36,6 +36,7 @@ namespace ChatApplication
             myTimer.Tick += new EventHandler(myTimerTick);
             myTimer.Interval = 1000;
             myTimer.Start();
+            
         }
 
         public void myTimerTick(object sender, System.EventArgs e)
@@ -43,6 +44,8 @@ namespace ChatApplication
             string message = "25" + nomDiscussion;
             string reponse = envoiMessage.Connect(message);
             
+
+
             if(reponse != string.Empty)
             {
                 reponse = reponse.Substring(0, reponse.Length - 1);
@@ -52,7 +55,7 @@ namespace ChatApplication
                 {
                     test = messageRecu[i].Split('$');
                     string messageListe = string.Empty;
-                    if(test[0].Length > 10)
+                    if(test[0].Length > 22)
                     {
                         messageListe = test[0] + " : " + test[1];
 
@@ -75,6 +78,19 @@ namespace ChatApplication
             //string reponse = envoiMessage.Connect(message23);
             lblParticipants.Text = envoiMessage.Connect(message23);
 
+            string message26 = "26" + nomDiscussion;
+            string reponse26 = envoiMessage.Connect(message26);
+            if(reponse26 == utilisateur.Pseudo)
+            {
+                cmdAAjouter.Enabled = true;
+                cmdSmiley.Enabled = true;
+            }
+            else
+            {
+                cmdAAjouter.Enabled = false;
+                cmdASupprimer.Enabled = false;
+            }
+
         }
 
 
@@ -86,10 +102,34 @@ namespace ChatApplication
             txtMessageEnvoi.Text = txtMessageEnvoi.Text.Replace(',', '§');
             string message = "24" + utilisateur.Pseudo + "," + txtMessageEnvoi.Text + "," + dateTime.ToString() + "," + nomDiscussion;
             string reponse = envoiMessage.Connect(message);
+
+           /* myTimer.Tick += new EventHandler(myTimerTick);
+            myTimer.Interval = 1000;
+            myTimer.Start();*/
         }
 
+        private void cmdAAjouter_Click(object sender, EventArgs e)
+        {
+            FrmDiscussionAjouter frmDiscussionAjouter = new FrmDiscussionAjouter(utilisateur.Pseudo, nomDiscussion);
 
+            frmDiscussionAjouter.Show();
+            DialogResult res = new DialogResult();
+            if(res == DialogResult.OK)
+            {
+                frmDiscussionAjouter.Close();
+            }
+        }
 
+        private void cmdASupprimer_Click(object sender, EventArgs e)
+        {
+            FrmDiscussionSupprimer frmDiscussionSupprimer = new FrmDiscussionSupprimer(nomDiscussion);
 
+            frmDiscussionSupprimer.Show();
+            DialogResult res = new DialogResult();
+            if (res == DialogResult.OK)
+            {
+                frmDiscussionSupprimer.Close();
+            }
+        }
     }
 }

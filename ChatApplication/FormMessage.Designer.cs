@@ -35,12 +35,12 @@
             this.grbParticipants = new System.Windows.Forms.GroupBox();
             this.lblParticipants = new System.Windows.Forms.Label();
             this.grbMessages = new System.Windows.Forms.GroupBox();
+            this.lstMessages = new System.Windows.Forms.ListBox();
             this.cmdVocal = new System.Windows.Forms.Button();
             this.cmdImage = new System.Windows.Forms.Button();
             this.cmdSmiley = new System.Windows.Forms.Button();
             this.cmdEnvoyer = new System.Windows.Forms.Button();
             this.txtMessageEnvoi = new System.Windows.Forms.TextBox();
-            this.lstMessages = new System.Windows.Forms.ListBox();
             this.grbActions.SuspendLayout();
             this.grbParticipants.SuspendLayout();
             this.grbMessages.SuspendLayout();
@@ -66,6 +66,7 @@
             this.cmdASupprimer.TabIndex = 2;
             this.cmdASupprimer.Text = "Supprimer";
             this.cmdASupprimer.UseVisualStyleBackColor = true;
+            this.cmdASupprimer.Click += new System.EventHandler(this.cmdASupprimer_Click);
             // 
             // cmdAAjouter
             // 
@@ -75,6 +76,7 @@
             this.cmdAAjouter.TabIndex = 1;
             this.cmdAAjouter.Text = "Ajouter";
             this.cmdAAjouter.UseVisualStyleBackColor = true;
+            this.cmdAAjouter.Click += new System.EventHandler(this.cmdAAjouter_Click);
             // 
             // cmdARetour
             // 
@@ -121,6 +123,14 @@
             this.grbMessages.TabStop = false;
             this.grbMessages.Text = "Messages";
             // 
+            // lstMessages
+            // 
+            this.lstMessages.FormattingEnabled = true;
+            this.lstMessages.Location = new System.Drawing.Point(7, 20);
+            this.lstMessages.Name = "lstMessages";
+            this.lstMessages.Size = new System.Drawing.Size(604, 277);
+            this.lstMessages.TabIndex = 5;
+            // 
             // cmdVocal
             // 
             this.cmdVocal.Location = new System.Drawing.Point(470, 300);
@@ -166,14 +176,6 @@
             this.txtMessageEnvoi.Name = "txtMessageEnvoi";
             this.txtMessageEnvoi.Size = new System.Drawing.Size(364, 46);
             this.txtMessageEnvoi.TabIndex = 0;
-            // 
-            // lstMessages
-            // 
-            this.lstMessages.FormattingEnabled = true;
-            this.lstMessages.Location = new System.Drawing.Point(7, 20);
-            this.lstMessages.Name = "lstMessages";
-            this.lstMessages.Size = new System.Drawing.Size(604, 277);
-            this.lstMessages.TabIndex = 5;
             // 
             // FrmMessage
             // 

@@ -94,7 +94,7 @@
             this.grbArchives = new System.Windows.Forms.GroupBox();
             this.cmdSupprimerArchives = new System.Windows.Forms.Button();
             this.cmdReimporterArchives = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lstArchives = new System.Windows.Forms.ListBox();
             this.grbMenu.SuspendLayout();
             this.grbActions.SuspendLayout();
             this.pnlDiscussions.SuspendLayout();
@@ -256,6 +256,7 @@
             this.cmdArchiverDiscussions.TabIndex = 4;
             this.cmdArchiverDiscussions.Text = "Archiver";
             this.cmdArchiverDiscussions.UseVisualStyleBackColor = true;
+            this.cmdArchiverDiscussions.Click += new System.EventHandler(this.cmdArchiverDiscussions_Click);
             // 
             // cmdSupprimerDiscussions
             // 
@@ -265,13 +266,14 @@
             this.cmdSupprimerDiscussions.TabIndex = 5;
             this.cmdSupprimerDiscussions.Text = "Supprimer";
             this.cmdSupprimerDiscussions.UseVisualStyleBackColor = true;
+            this.cmdSupprimerDiscussions.Click += new System.EventHandler(this.cmdSupprimerDiscussions_Click);
             // 
             // pnlDiscussions
             // 
             this.pnlDiscussions.Controls.Add(this.pnlDiscussionDemande);
             this.pnlDiscussions.Controls.Add(this.pnlDiscussionAffichage);
             this.pnlDiscussions.Controls.Add(this.grbActions);
-            this.pnlDiscussions.Location = new System.Drawing.Point(201, 12);
+            this.pnlDiscussions.Location = new System.Drawing.Point(220, 12);
             this.pnlDiscussions.Name = "pnlDiscussions";
             this.pnlDiscussions.Size = new System.Drawing.Size(859, 501);
             this.pnlDiscussions.TabIndex = 6;
@@ -279,7 +281,7 @@
             // pnlDiscussionDemande
             // 
             this.pnlDiscussionDemande.Controls.Add(this.groupBox2);
-            this.pnlDiscussionDemande.Location = new System.Drawing.Point(19, 101);
+            this.pnlDiscussionDemande.Location = new System.Drawing.Point(19, 102);
             this.pnlDiscussionDemande.Name = "pnlDiscussionDemande";
             this.pnlDiscussionDemande.Size = new System.Drawing.Size(645, 381);
             this.pnlDiscussionDemande.TabIndex = 7;
@@ -432,7 +434,7 @@
             this.pnlContact.Controls.Add(this.pnlContactsDemandes);
             this.pnlContact.Controls.Add(this.pnlContactsListe);
             this.pnlContact.Controls.Add(this.groupBox1);
-            this.pnlContact.Location = new System.Drawing.Point(193, 12);
+            this.pnlContact.Location = new System.Drawing.Point(246, 16);
             this.pnlContact.Name = "pnlContact";
             this.pnlContact.Size = new System.Drawing.Size(672, 479);
             this.pnlContact.TabIndex = 6;
@@ -728,7 +730,7 @@
             // pnlArchives
             // 
             this.pnlArchives.Controls.Add(this.grbArchives);
-            this.pnlArchives.Location = new System.Drawing.Point(1097, 531);
+            this.pnlArchives.Location = new System.Drawing.Point(183, 12);
             this.pnlArchives.Name = "pnlArchives";
             this.pnlArchives.Size = new System.Drawing.Size(859, 529);
             this.pnlArchives.TabIndex = 2;
@@ -737,7 +739,7 @@
             // 
             this.grbArchives.Controls.Add(this.cmdSupprimerArchives);
             this.grbArchives.Controls.Add(this.cmdReimporterArchives);
-            this.grbArchives.Controls.Add(this.listBox1);
+            this.grbArchives.Controls.Add(this.lstArchives);
             this.grbArchives.Location = new System.Drawing.Point(13, 6);
             this.grbArchives.Name = "grbArchives";
             this.grbArchives.Size = new System.Drawing.Size(476, 473);
@@ -763,13 +765,13 @@
             this.cmdReimporterArchives.Text = "Réimporter";
             this.cmdReimporterArchives.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // lstArchives
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(7, 20);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(386, 433);
-            this.listBox1.TabIndex = 0;
+            this.lstArchives.FormattingEnabled = true;
+            this.lstArchives.Location = new System.Drawing.Point(7, 20);
+            this.lstArchives.Name = "lstArchives";
+            this.lstArchives.Size = new System.Drawing.Size(386, 433);
+            this.lstArchives.TabIndex = 0;
             // 
             // frmDiscussions
             // 
@@ -853,7 +855,7 @@
         private System.Windows.Forms.GroupBox grbArchives;
         private System.Windows.Forms.Button cmdSupprimerArchives;
         private System.Windows.Forms.Button cmdReimporterArchives;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lstArchives;
         private System.Windows.Forms.Panel pnlContactsDemandes;
         private System.Windows.Forms.Panel pnlContactsListe;
         private System.Windows.Forms.GroupBox grbDemandes;

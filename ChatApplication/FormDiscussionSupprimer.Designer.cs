@@ -46,6 +46,7 @@
             // 
             // cmdValider
             // 
+            this.cmdValider.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdValider.Location = new System.Drawing.Point(376, 317);
             this.cmdValider.Name = "cmdValider";
             this.cmdValider.Size = new System.Drawing.Size(75, 23);
@@ -78,6 +79,7 @@
             this.cmdSupprimer.TabIndex = 16;
             this.cmdSupprimer.Text = "Supprimer";
             this.cmdSupprimer.UseVisualStyleBackColor = true;
+            this.cmdSupprimer.Click += new System.EventHandler(this.cmdSupprimer_Click);
             // 
             // FrmDiscussionSupprimer
             // 
@@ -91,6 +93,7 @@
             this.Controls.Add(this.cmdAnnuler);
             this.Name = "FrmDiscussionSupprimer";
             this.Text = "Supprimer des contacts de la discussion";
+            this.Load += new System.EventHandler(this.FrmDiscussionSupprimer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -140,7 +140,18 @@ namespace ChatApplication
 
         private void cmdArchives_Click(object sender, EventArgs e)
         {
+            //TODO LES ARCHIVES A FINIR, le chargement des archives fonctionne
             montrerPannel(pnlArchives);
+            string message31 = "31" + txtPseudo.Text;
+            string reponse31 = envoiMessage.Connect(message31);
+            string[] nomDiscussion = reponse31.Split(',');
+            for(int i = 0; i < nomDiscussion.Length; i++)
+            {
+                if (!lstArchives.Items.Contains(nomDiscussion[i]))
+                {
+                    lstArchives.Items.Add(nomDiscussion[i]);
+                }
+            }
         }
         public void chargerProfil()
         {
@@ -396,6 +407,26 @@ namespace ChatApplication
             {
                 frmMessage.Close();
             }
+
+        }
+
+        private void cmdSupprimerDiscussions_Click(object sender, EventArgs e)
+        {
+            if(lstDiscussions.SelectedIndex > -1)
+            {
+                
+            }
+        }
+
+        private void cmdArchiverDiscussions_Click(object sender, EventArgs e)
+        {
+            if(lstDiscussions.SelectedIndex > -1)
+            {
+                string message30 = "30" + txtPseudo.Text + "," + lstDiscussions.SelectedItem.ToString();
+                envoiMessage.Connect(message30);
+                lstDiscussions.Items.Remove(lstDiscussions.SelectedItem);
+            }
+
 
         }
     }

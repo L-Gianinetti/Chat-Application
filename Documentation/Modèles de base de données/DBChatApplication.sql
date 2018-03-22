@@ -150,13 +150,24 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `ChatApplication`.`Archives` (
   `idArchives` INT NOT NULL AUTO_INCREMENT,
   `fkDiscussion` INT NOT NULL,
+  `fkUser` INT NOT NULL,
+  `fkAdministrateur` INT NOT NULL,
   PRIMARY KEY (`idArchives`),
   INDEX `fk_Archives_Discussion1_idx` (`fkDiscussion` ASC),
   CONSTRAINT `fk_Archives_Discussion1`
     FOREIGN KEY (`fkDiscussion`)
     REFERENCES `ChatApplication`.`Discussion` (`idDiscussion`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION,
+    FOREIGN KEY (`fkUser`)
+	REFERENCES `ChatApplication`.`User` (`idUser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+	FOREIGN KEY(`fkAdministrateur`)
+    REFERENCES `ChatApplication`.`User` (`idUser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+    )
 ENGINE = InnoDB;
 
 
@@ -260,27 +271,7 @@ insert into Discussion (idDiscussion, discussionName) values (48, 'Viva');
 insert into Discussion (idDiscussion, discussionName) values (49, 'Dynazzy');
 insert into Discussion (idDiscussion, discussionName) values (50, 'Photobug');
 
--- Archives
-insert into Archives (idArchives, fkDiscussion) values (1, 9);
-insert into Archives (idArchives, fkDiscussion) values (2, 46);
-insert into Archives (idArchives, fkDiscussion) values (3, 6);
-insert into Archives (idArchives, fkDiscussion) values (4, 5);
-insert into Archives (idArchives, fkDiscussion) values (5, 35);
-insert into Archives (idArchives, fkDiscussion) values (6, 43);
-insert into Archives (idArchives, fkDiscussion) values (7, 2);
-insert into Archives (idArchives, fkDiscussion) values (8, 47);
-insert into Archives (idArchives, fkDiscussion) values (9, 45);
-insert into Archives (idArchives, fkDiscussion) values (10, 21);
-insert into Archives (idArchives, fkDiscussion) values (11, 26);
-insert into Archives (idArchives, fkDiscussion) values (12, 44);
-insert into Archives (idArchives, fkDiscussion) values (13, 37);
-insert into Archives (idArchives, fkDiscussion) values (14, 11);
-insert into Archives (idArchives, fkDiscussion) values (15, 18);
-insert into Archives (idArchives, fkDiscussion) values (16, 18);
-insert into Archives (idArchives, fkDiscussion) values (17, 2);
-insert into Archives (idArchives, fkDiscussion) values (18, 16);
-insert into Archives (idArchives, fkDiscussion) values (19, 43);
-insert into Archives (idArchives, fkDiscussion) values (20, 18);
+
 
 -- Message
 insert into Message (idMessage, messageContent, sendTime, fkDiscussion, fkUser) values (1, 'Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.', '2017-11-12 23:39:37', 35, 9);

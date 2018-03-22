@@ -94,7 +94,7 @@ namespace MyTcpListener
             var cmdReader = cmd.ExecuteReader();
             while (cmdReader.Read())
             {
-                reponse += String.Format("{0}",cmdReader[0]) + " " + String.Format("{0}", cmdReader[1]) + "$" + string.Format("{0}", cmdReader[2]) + "*";
+                reponse += String.Format("{0}",cmdReader[0])  + " "+ "$" + string.Format("{0}", cmdReader[1]) + "*";
             }
 
             this.connection.Close();
@@ -207,7 +207,7 @@ namespace MyTcpListener
 
         public string SelectionneMessages(int idDiscussion)
         {
-            string requete = "SELECT sendTime, fkUser, messageContent from message where fkDiscussion =\"" + idDiscussion + "\" ORDER BY sendTime";
+            string requete = "SELECT sendTime, messageContent from message where fkDiscussion =\"" + idDiscussion + "\" ORDER BY sendTime";
             string reponse = SelectDoubleWhile2(requete);
             if(reponse != string.Empty)
             {
@@ -353,6 +353,17 @@ namespace MyTcpListener
             return id;
         }
 
+        public string SelectionneIdArchive(int idUtilisateur)
+        {
+            string requete = "SELECT fkDiscussion from archives where fkUser =\"" + idUtilisateur + "\"";
+            string idDiscussion = SelectSimpleWhile(requete);
+            if (idDiscussion != string.Empty)
+            {
+                idDiscussion = idDiscussion.Substring(0, idDiscussion.Length - 1);
+            }
+
+            return idDiscussion;
+        }
         public string SelectionneIdDiscussion(int idUtilisateur, string statut)
         {
             
@@ -386,6 +397,13 @@ namespace MyTcpListener
             string requete = "SELECT fkUser from participationdiscussions where fkDiscussion = \"" + idDiscussion + "\"";
             string reponse = SelectSimpleWhile(requete);
             reponse = reponse.Substring(0, reponse.Length - 1);
+            return reponse;
+        }
+
+        public string GetIdAdminParticipantsDiscussion(string idDiscussion)
+        {
+            string requete = "SELECT fkAdministrateur from participationdiscussions where fkDiscussion = \"" + idDiscussion + "\"";
+            string reponse = SelectSimple(requete);
             return reponse;
         }
 
@@ -498,6 +516,18 @@ namespace MyTcpListener
             cmd.Parameters.AddWithValue("@fkDiscussion", idDiscussion);
             cmd.Parameters.AddWithValue("@fkAdministrateur", idAdministrateur);
             cmd.Parameters.AddWithValue("@statut", statut);
+            cmd.ExecuteNonQuery();
+            this.connection.Close();
+        }
+
+        public void AjouterArchive(int idDiscussion, int idAdministrateur, int idUtilisateur)
+        {
+            this.connection.Open();
+            MySqlCommand cmd = this.connection.CreateCommand();
+            cmd.CommandText = "INSERT INTO archives(fkDiscussion,fkUser,fkAdministrateur) VALUES(@fkDiscussion,@fkUser,@fkAdministrateur)";
+            cmd.Parameters.AddWithValue("@fkDiscussion", idDiscussion);
+            cmd.Parameters.AddWithValue("@fkUser", idUtilisateur);
+            cmd.Parameters.AddWithValue("@fkAdministrateur", idAdministrateur);
             cmd.ExecuteNonQuery();
             this.connection.Close();
         }

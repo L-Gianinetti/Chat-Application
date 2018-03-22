@@ -36,6 +36,7 @@ namespace ChatApplication
 
                 NetworkStream stream = client.GetStream();
 
+
                 // Envoi le message au serveur tcp connecté
                 stream.Write(data, 0, data.Length);
                 
@@ -44,7 +45,7 @@ namespace ChatApplication
                 // Recois la réponse du serveur
 
                 // Buffer pour stocker la réponse du serveur
-                data = new Byte[256];
+                data = new Byte[100000];
 
                 // string pour stocker la réponse du serveur en ascii
                 String responseData = String.Empty;

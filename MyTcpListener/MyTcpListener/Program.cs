@@ -30,7 +30,7 @@ namespace MyTcpListener
                 {
                     //Attribution du port et de l'adresse IP
                     int port = 4321;
-                    IPAddress localAddr = IPAddress.Parse("127.0.0.1");
+                    IPAddress localAddr = IPAddress.Any;//IPAddress.Parse("172.17.100.145");
 
                     //Attribution du port et de l'adresse au TcpListener
                     server = new TcpListener(localAddr, port);
@@ -399,6 +399,21 @@ namespace MyTcpListener
                                 byte[] reponse31 = System.Text.Encoding.ASCII.GetBytes(retour31);
                                 stream.Write(reponse31, 0, reponse31.Length);
                                 break;
+                            case "32":
+                                string pseudoNomArchives = SeparationSwitchDonnes[1];
+                                string[] pseudoNom = pseudoNomArchives.Split(',');
+                                user.Pseudo = pseudoNom[0];
+                                string nomArchive = pseudoNom[1];
+                                actionDiscussion.SupprimerArchive(user.Pseudo, nomArchive);
+                                break;
+                            case "33":
+                                string pseudoEtNomArchives = SeparationSwitchDonnes[1];
+                                string[] pseudoEtNom = pseudoEtNomArchives.Split(',');
+                                user.Pseudo = pseudoEtNom[0];
+                                string nomArchive33 = pseudoEtNom[1];
+                                actionDiscussion.ImporterArchive(user.Pseudo, nomArchive33);
+                                actionDiscussion.SupprimerArchive(user.Pseudo, nomArchive33);
+                                break; 
                             default:
                                 break;
                         }

@@ -60,6 +60,17 @@ namespace MyTcpListener
             return reponse;
         }
 
+        public void SupprimerArchive(string pseudo, string nom)
+        {
+            utilisateur.Pseudo = pseudo;
+            string nomArchive = nom;
+            int idUtilisateur = connexionBD.getFkUser(utilisateur);
+            int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomArchive));
+            connexionBD.SupprimerArchive(idUtilisateur, idDiscussion);
+        }
+
+
+
         public string SelectionneArchives(string pseudoUtilisateur)
         {
             utilisateur.Pseudo = pseudoUtilisateur;
@@ -359,6 +370,16 @@ namespace MyTcpListener
             int idAdmin = int.Parse(connexionBD.GetIdAdminParticipantsDiscussion(idDiscussion.ToString()));
             int idUtilisateur = connexionBD.getFkUser(utilisateur);
             connexionBD.AjouterArchive(idDiscussion, idAdmin, idUtilisateur);
+        }
+
+        public void ImporterArchive(string pseudo, string nom)
+        {
+            utilisateur.Pseudo = pseudo;
+            string nomDiscussion = nom;
+            int idUtilisateur = connexionBD.getFkUser(utilisateur);
+            int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDiscussion));
+            int idAdministrateur = int.Parse(connexionBD.GetIdAdminParticipantsDiscussion(idDiscussion.ToString()));
+            connexionBD.CreerParticipationDisucssion(idUtilisateur, idDiscussion, idAdministrateur, "Participe");
         }
     }
 }

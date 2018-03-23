@@ -429,5 +429,27 @@ namespace ChatApplication
 
 
         }
+
+        private void cmdSupprimerArchives_Click(object sender, EventArgs e)
+        {
+            if(lstArchives.SelectedIndex > -1)
+            {
+                string message32 = "32" + txtPseudo.Text + "," + lstArchives.SelectedItem.ToString();
+                envoiMessage.Connect(message32);
+                lstArchives.Items.Remove(lstArchives.SelectedItem);
+            }
+
+
+        }
+
+        private void cmdReimporterArchives_Click(object sender, EventArgs e)
+        {
+            if(lstArchives.SelectedIndex > -1)
+            {
+                string message33 = "33" + txtPseudo.Text + "," + lstArchives.SelectedItem.ToString();
+                envoiMessage.Connect(message33);
+                lstArchives.Items.Remove(lstArchives.SelectedItem);
+            }
+        }
     }
 }

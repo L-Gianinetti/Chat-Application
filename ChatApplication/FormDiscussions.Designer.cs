@@ -755,6 +755,7 @@
             this.cmdSupprimerArchives.TabIndex = 2;
             this.cmdSupprimerArchives.Text = "Supprimer";
             this.cmdSupprimerArchives.UseVisualStyleBackColor = true;
+            this.cmdSupprimerArchives.Click += new System.EventHandler(this.cmdSupprimerArchives_Click);
             // 
             // cmdReimporterArchives
             // 
@@ -764,6 +765,7 @@
             this.cmdReimporterArchives.TabIndex = 1;
             this.cmdReimporterArchives.Text = "Réimporter";
             this.cmdReimporterArchives.UseVisualStyleBackColor = true;
+            this.cmdReimporterArchives.Click += new System.EventHandler(this.cmdReimporterArchives_Click);
             // 
             // lstArchives
             // 

@@ -165,6 +165,12 @@ namespace MyTcpListener
             UpdateOrDelete(requete);
         }
 
+        public void SupprimerArchive(int idUser, int idDiscussion)
+        {
+            string requete = "DELETE FROM archives WHERE fkUser =\"" + idUser + "\" and fkDiscussion =\"" + idDiscussion + "\"";
+            UpdateOrDelete(requete);
+        }
+
         /// <summary>
         /// Supprime un contact
         /// </summary>

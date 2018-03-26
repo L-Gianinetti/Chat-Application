@@ -50,7 +50,7 @@ namespace ChatApplication
                 nbrParticipants = "0" + lstParticipants.Items.Count.ToString();
             }
 
-            string creerDiscussion = "15" + utilisateur.Pseudo + "," + participants + txtNom.Text + nbrParticipants;
+            string creerDiscussion = "15" + utilisateur.Pseudo + "$" + txtCategorie.Text +"$" + participants + txtNom.Text + nbrParticipants;
             string reponseCreerDiscussion = envoiMessage.Connect(creerDiscussion);
 
             if(reponseCreerDiscussion == "Discussion creee")
@@ -128,13 +128,25 @@ namespace ChatApplication
 
         private void cmdVerifier_Click(object sender, EventArgs e)
         {
-            if(lstParticipants.Items.Count > 0 && ckbNom.Checked == true)
+            if(lstParticipants.Items.Count > 0 && ckbNom.Checked == true && ckbCategorie.Checked == true)
             {
                 cmdCreer.Enabled = true;
             }
             else
             {
                 cmdCreer.Enabled = false;
+            }
+        }
+
+        private void txtCategorie_TextChanged(object sender, EventArgs e)
+        {
+            if(txtCategorie.Text != string.Empty)
+            {
+                ckbCategorie.Checked = true;
+            }
+            else
+            {
+                ckbCategorie.Checked = false;
             }
         }
     }

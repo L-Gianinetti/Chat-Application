@@ -238,9 +238,13 @@ namespace MyTcpListener
                             case "15":
                                 string participants = SeparationSwitchDonnes[1].Substring(0, SeparationSwitchDonnes[1].Length - 2);
                                 string stringNbrParticipants = SeparationSwitchDonnes[1].Substring(SeparationSwitchDonnes[1].Length -2,2);
+                                string[] categories = participants.Split('$');
+                                string categorie = categories[1];
+                                participants = categories[0] + "," + categories[2];
                                 int test = int.Parse(stringNbrParticipants.Substring(0, 1));
                                 int test2 = int.Parse(stringNbrParticipants.Substring(1, 1));
                                 int nbrParticipants;
+                                SeparationSwitchDonnes[1] = participants + stringNbrParticipants;
                                 if(test == 0)
                                 {
                                     nbrParticipants = test2;
@@ -251,7 +255,7 @@ namespace MyTcpListener
                                 }
                                 
                                 byte[] reponse15;
-                                string discussion = actionDiscussion.CreerDiscussion(SeparationSwitchDonnes, nbrParticipants);
+                                string discussion = actionDiscussion.CreerDiscussion(SeparationSwitchDonnes, nbrParticipants, categorie);
                                 if(discussion == "Discussion creee")
                                 {
                                     actionDiscussion.CreerParticipationDiscussionCreateur(SeparationSwitchDonnes, nbrParticipants);

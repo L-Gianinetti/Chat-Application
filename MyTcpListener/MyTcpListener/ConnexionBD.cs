@@ -330,6 +330,13 @@ namespace MyTcpListener
             return pseudo;
         }
 
+        public string SelectionneIdCategory(string nom)
+        {
+            string requete = "SELECT idCategory from category where categoryName = \"" + nom + "\"";
+            string idCategory = SelectSimple(requete);
+            return idCategory;
+        }
+
         /// <summary>
         /// Utilisé pour ajouter l'administrateur ou les participants a une discussion
         /// </summary>
@@ -538,7 +545,28 @@ namespace MyTcpListener
             this.connection.Close();
         }
 
-        public void CreerDiscussion(string nom)
+        public void AjoutLienCategorieDiscussion(int idDiscussion, int idCategory)
+        {
+            this.connection.Open();
+            MySqlCommand cmd = this.connection.CreateCommand();
+            cmd.CommandText = "INSERT INTO Discussion_has_Category(fkDiscussion, fkCategory) VALUES (@fkDiscussion,@fkCategory)";
+            cmd.Parameters.AddWithValue("@fkDiscussion", idDiscussion);
+            cmd.Parameters.AddWithValue("@fkCategory", idCategory);
+            cmd.ExecuteNonQuery();
+            this.connection.Close();
+        }
+
+        public void AjoutCategorie(string categorie)
+        {
+            this.connection.Open();
+            MySqlCommand cmd = this.connection.CreateCommand();
+            cmd.CommandText = "INSERT INTO category(categoryName) VALUES (@categoryName)";
+            cmd.Parameters.AddWithValue("@categoryName", categorie);
+            cmd.ExecuteNonQuery();
+            this.connection.Close();
+        }
+
+        public void CreerDiscussion(string nom, string categorie)
         {
             this.connection.Open();
             MySqlCommand cmd = this.connection.CreateCommand();

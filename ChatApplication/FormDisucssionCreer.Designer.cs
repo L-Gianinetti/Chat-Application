@@ -40,6 +40,9 @@
             this.txtNom = new System.Windows.Forms.TextBox();
             this.cmdRetirer = new System.Windows.Forms.Button();
             this.cmdVerifier = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtCategorie = new System.Windows.Forms.TextBox();
+            this.ckbCategorie = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lblParticipants
@@ -153,11 +156,42 @@
             this.cmdVerifier.UseVisualStyleBackColor = true;
             this.cmdVerifier.Click += new System.EventHandler(this.cmdVerifier_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(41, 318);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(136, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Categorie de la discussion :";
+            // 
+            // txtCategorie
+            // 
+            this.txtCategorie.Location = new System.Drawing.Point(404, 304);
+            this.txtCategorie.Name = "txtCategorie";
+            this.txtCategorie.Size = new System.Drawing.Size(100, 20);
+            this.txtCategorie.TabIndex = 13;
+            this.txtCategorie.Text = "Par defaut";
+            this.txtCategorie.TextChanged += new System.EventHandler(this.txtCategorie_TextChanged);
+            // 
+            // ckbCategorie
+            // 
+            this.ckbCategorie.AutoSize = true;
+            this.ckbCategorie.Location = new System.Drawing.Point(546, 304);
+            this.ckbCategorie.Name = "ckbCategorie";
+            this.ckbCategorie.Size = new System.Drawing.Size(107, 17);
+            this.ckbCategorie.TabIndex = 14;
+            this.ckbCategorie.Text = "Catégorie rentrée";
+            this.ckbCategorie.UseVisualStyleBackColor = true;
+            // 
             // FrmDisucssionCreer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(671, 436);
+            this.Controls.Add(this.ckbCategorie);
+            this.Controls.Add(this.txtCategorie);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cmdVerifier);
             this.Controls.Add(this.cmdRetirer);
             this.Controls.Add(this.txtNom);
@@ -192,5 +226,8 @@
         private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.Button cmdRetirer;
         private System.Windows.Forms.Button cmdVerifier;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtCategorie;
+        private System.Windows.Forms.CheckBox ckbCategorie;
     }
 }

@@ -451,5 +451,17 @@ namespace ChatApplication
                 lstArchives.Items.Remove(lstArchives.SelectedItem);
             }
         }
+
+        private void cmdARechercher_Click(object sender, EventArgs e)
+        {
+            FrmDiscussionRecherche frmDiscussionRecherche = new FrmDiscussionRecherche();
+            frmDiscussionRecherche.Show();
+            DialogResult res = new DialogResult();
+            if(res == DialogResult.OK)
+            {
+                frmDiscussionRecherche.Close();
+            }
+        }
+
     }
 }

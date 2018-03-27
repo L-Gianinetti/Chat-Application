@@ -43,7 +43,7 @@ namespace MyTcpListener
 
         //TODO verifier si classe discussion est nécessaire , surement ?
         //nbrParticipants ne contient pas le createur
-        public string CreerDiscussion(string[] donnee, int nbrParticipants, string categorie)
+        public string CreerDiscussion(string[] donnee, int nbrParticipants, string categorie, bool publique)
         {
             string nomDiscussion = SeparerNomDiscussion(donnee, nbrParticipants);
             string reponse = string.Empty;
@@ -54,7 +54,7 @@ namespace MyTcpListener
             else
             {
                 //Ajout de la discussion dans la base de données
-                connexionBD.CreerDiscussion(nomDiscussion, categorie);
+                connexionBD.CreerDiscussion(nomDiscussion, publique);
                 
                 connexionBD.AjoutCategorie(categorie);
                 int idCategory = int.Parse(connexionBD.SelectionneIdCategory(categorie));
@@ -257,6 +257,12 @@ namespace MyTcpListener
             int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDiscussion));
             int idUtilisateur = connexionBD.getFkUser(utilisateur);
             connexionBD.SupprimerParticipationDiscussion(idDiscussion, idUtilisateur);
+        }
+
+        public string SelectionneCategorieProposee()
+        {
+            string reponse = connexionBD.SelectionnCategorieProposee();
+            return reponse;
         }
 
         public void CreerInvitationDiscussion(string nomUtilisateur, string nomDiscussion, string nomAdministrateur)

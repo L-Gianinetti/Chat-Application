@@ -25,11 +25,13 @@ namespace ChatApplication
         public FrmDisucssionCreer()
         {
             InitializeComponent();
+            ckbCategorie.Checked = true;
         }
         public FrmDisucssionCreer(string pseudo)
         {
             utilisateur.Pseudo = pseudo;  
             InitializeComponent();
+            ckbCategorie.Checked = true;
         }
         private void cmdCreer_Click(object sender, EventArgs e)
         {
@@ -50,8 +52,19 @@ namespace ChatApplication
                 nbrParticipants = "0" + lstParticipants.Items.Count.ToString();
             }
 
-            string creerDiscussion = "15" + utilisateur.Pseudo + "$" + txtCategorie.Text +"$" + participants + txtNom.Text + nbrParticipants;
-            string reponseCreerDiscussion = envoiMessage.Connect(creerDiscussion);
+            string reponseCreerDiscussion = string.Empty;
+
+            if(ckbPublique.Checked == true)
+            {
+                string creerDiscussion = "151" + utilisateur.Pseudo + "$" + txtCategorie.Text + "$" + participants + txtNom.Text + nbrParticipants;
+                reponseCreerDiscussion = envoiMessage.Connect(creerDiscussion);
+            }
+            else
+            {
+                string creerDiscussion = "15" + utilisateur.Pseudo + "$" + txtCategorie.Text + "$" + participants + txtNom.Text + nbrParticipants;
+                reponseCreerDiscussion = envoiMessage.Connect(creerDiscussion);
+            }
+
 
             if(reponseCreerDiscussion == "Discussion creee")
             {
@@ -149,5 +162,6 @@ namespace ChatApplication
                 ckbCategorie.Checked = false;
             }
         }
+
     }
 }

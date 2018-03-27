@@ -30,7 +30,7 @@ namespace MyTcpListener
                 {
                     //Attribution du port et de l'adresse IP
                     int port = 4321;
-                    IPAddress localAddr = IPAddress.Any;//IPAddress.Parse("172.17.100.145");
+                    IPAddress localAddr = IPAddress.Parse("127.0.0.1");//IPAddress localAddr = IPAddress.Any;
 
                     //Attribution du port et de l'adresse au TcpListener
                     server = new TcpListener(localAddr, port);
@@ -236,40 +236,49 @@ namespace MyTcpListener
                                 
                                 break;
                             case "15":
+                                int nbrParticipants = 0;
+                                string categorie = string.Empty;
+                                bool publique = false;
+                                if(SeparationSwitchDonnes[1].Substring(0,1) == "1")
+                                {
+                                    publique = true;
+                                    SeparationSwitchDonnes[1] = SeparationSwitchDonnes[1].Substring(1, SeparationSwitchDonnes[1].Length - 1);
+                                }
                                 string participants = SeparationSwitchDonnes[1].Substring(0, SeparationSwitchDonnes[1].Length - 2);
-                                string stringNbrParticipants = SeparationSwitchDonnes[1].Substring(SeparationSwitchDonnes[1].Length -2,2);
+                                string stringNbrParticipants = SeparationSwitchDonnes[1].Substring(SeparationSwitchDonnes[1].Length - 2, 2);
                                 string[] categories = participants.Split('$');
-                                string categorie = categories[1];
+                                categorie = categories[1];
                                 participants = categories[0] + "," + categories[2];
                                 int test = int.Parse(stringNbrParticipants.Substring(0, 1));
                                 int test2 = int.Parse(stringNbrParticipants.Substring(1, 1));
-                                int nbrParticipants;
+                                    
                                 SeparationSwitchDonnes[1] = participants + stringNbrParticipants;
-                                if(test == 0)
-                                {
+                                if (test == 0)
+                                { 
                                     nbrParticipants = test2;
                                 }
                                 else
                                 {
                                     nbrParticipants = int.Parse(stringNbrParticipants);
                                 }
-                                
                                 byte[] reponse15;
-                                string discussion = actionDiscussion.CreerDiscussion(SeparationSwitchDonnes, nbrParticipants, categorie);
-                                if(discussion == "Discussion creee")
+                                string discussion = actionDiscussion.CreerDiscussion(SeparationSwitchDonnes, nbrParticipants, categorie, publique);
+                                if (discussion == "Discussion creee")
                                 {
                                     actionDiscussion.CreerParticipationDiscussionCreateur(SeparationSwitchDonnes, nbrParticipants);
                                     actionDiscussion.CreerParticipationDiscussionParticipant(SeparationSwitchDonnes, nbrParticipants);
                                     reponse15 = System.Text.Encoding.ASCII.GetBytes(discussion);
                                     stream.Write(reponse15, 0, reponse15.Length);
-                                    
+
                                 }
                                 else
                                 {
                                     reponse15 = System.Text.Encoding.ASCII.GetBytes(discussion);
                                     stream.Write(reponse15, 0, reponse15.Length);
-                                    
+
                                 }
+                                
+
 
 
                                 break;
@@ -417,7 +426,12 @@ namespace MyTcpListener
                                 string nomArchive33 = pseudoEtNom[1];
                                 actionDiscussion.ImporterArchive(user.Pseudo, nomArchive33);
                                 actionDiscussion.SupprimerArchive(user.Pseudo, nomArchive33);
-                                break; 
+                                break;
+                            case "34":
+                                string retour34 = actionDiscussion.SelectionneCategorieProposee();
+                                byte[] reponse34 = System.Text.Encoding.ASCII.GetBytes(retour34);
+                                stream.Write(reponse34, 0, reponse34.Length);
+                                break;
                             default:
                                 break;
                         }

@@ -43,6 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtCategorie = new System.Windows.Forms.TextBox();
             this.ckbCategorie = new System.Windows.Forms.CheckBox();
+            this.ckbPublique = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lblParticipants
@@ -177,6 +178,7 @@
             // ckbCategorie
             // 
             this.ckbCategorie.AutoSize = true;
+            this.ckbCategorie.Enabled = false;
             this.ckbCategorie.Location = new System.Drawing.Point(546, 304);
             this.ckbCategorie.Name = "ckbCategorie";
             this.ckbCategorie.Size = new System.Drawing.Size(107, 17);
@@ -184,11 +186,22 @@
             this.ckbCategorie.Text = "Catégorie rentrée";
             this.ckbCategorie.UseVisualStyleBackColor = true;
             // 
+            // ckbPublique
+            // 
+            this.ckbPublique.AutoSize = true;
+            this.ckbPublique.Location = new System.Drawing.Point(546, 338);
+            this.ckbPublique.Name = "ckbPublique";
+            this.ckbPublique.Size = new System.Drawing.Size(121, 17);
+            this.ckbPublique.TabIndex = 15;
+            this.ckbPublique.Text = "Discussion Publique";
+            this.ckbPublique.UseVisualStyleBackColor = true;
+            // 
             // FrmDisucssionCreer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(671, 436);
+            this.Controls.Add(this.ckbPublique);
             this.Controls.Add(this.ckbCategorie);
             this.Controls.Add(this.txtCategorie);
             this.Controls.Add(this.label1);
@@ -229,5 +242,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCategorie;
         private System.Windows.Forms.CheckBox ckbCategorie;
+        private System.Windows.Forms.CheckBox ckbPublique;
     }
 }

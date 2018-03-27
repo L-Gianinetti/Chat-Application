@@ -27,7 +27,7 @@ namespace ChatApplication
                 // Crée un tcpClient
                 //connecté à la meme adresse et au meme port que le server spécifié
                 int port = 4321;
-                TcpClient client = new TcpClient("SC-C232-PC14",port);
+                TcpClient client = new TcpClient("127.0.0.1", port); //("SC-C232-PC14",port);
 
                 // Traduit le message ascii envoyé dans un Byte tableau
                 Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);

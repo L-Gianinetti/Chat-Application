@@ -219,6 +219,7 @@
             this.cmdARechercher.TabIndex = 2;
             this.cmdARechercher.Text = "Rechercher un sujet de discussion";
             this.cmdARechercher.UseVisualStyleBackColor = true;
+            this.cmdARechercher.Click += new System.EventHandler(this.cmdARechercher_Click);
             // 
             // cmdACreer
             // 
@@ -434,7 +435,7 @@
             this.pnlContact.Controls.Add(this.pnlContactsDemandes);
             this.pnlContact.Controls.Add(this.pnlContactsListe);
             this.pnlContact.Controls.Add(this.groupBox1);
-            this.pnlContact.Location = new System.Drawing.Point(246, 16);
+            this.pnlContact.Location = new System.Drawing.Point(209, 12);
             this.pnlContact.Name = "pnlContact";
             this.pnlContact.Size = new System.Drawing.Size(672, 479);
             this.pnlContact.TabIndex = 6;
@@ -588,7 +589,7 @@
             // pnlProfil
             // 
             this.pnlProfil.Controls.Add(this.grbProfil);
-            this.pnlProfil.Location = new System.Drawing.Point(1097, 21);
+            this.pnlProfil.Location = new System.Drawing.Point(181, 10);
             this.pnlProfil.Name = "pnlProfil";
             this.pnlProfil.Size = new System.Drawing.Size(601, 478);
             this.pnlProfil.TabIndex = 19;
@@ -730,7 +731,7 @@
             // pnlArchives
             // 
             this.pnlArchives.Controls.Add(this.grbArchives);
-            this.pnlArchives.Location = new System.Drawing.Point(183, 12);
+            this.pnlArchives.Location = new System.Drawing.Point(193, 12);
             this.pnlArchives.Name = "pnlArchives";
             this.pnlArchives.Size = new System.Drawing.Size(859, 529);
             this.pnlArchives.TabIndex = 2;

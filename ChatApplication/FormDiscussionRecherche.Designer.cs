@@ -78,6 +78,7 @@
             // 
             // cmdAnnuler
             // 
+            this.cmdAnnuler.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdAnnuler.Location = new System.Drawing.Point(332, 364);
             this.cmdAnnuler.Name = "cmdAnnuler";
             this.cmdAnnuler.Size = new System.Drawing.Size(75, 23);
@@ -87,6 +88,7 @@
             // 
             // cmdRejoindre
             // 
+            this.cmdRejoindre.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdRejoindre.Location = new System.Drawing.Point(455, 364);
             this.cmdRejoindre.Name = "cmdRejoindre";
             this.cmdRejoindre.Size = new System.Drawing.Size(75, 23);
@@ -133,6 +135,7 @@
             this.Controls.Add(this.lblRemarque);
             this.Name = "FrmDiscussionRecherche";
             this.Text = "Recherche d\'un sujet de discussion";
+            this.Load += new System.EventHandler(this.FrmDiscussionRecherche_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

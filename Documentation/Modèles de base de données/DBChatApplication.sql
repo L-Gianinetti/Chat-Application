@@ -77,6 +77,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `ChatApplication`.`Discussion` (
   `idDiscussion` INT NOT NULL AUTO_INCREMENT,
   `discussionName` VARCHAR(45) NOT NULL,
+  `publique` BOOLEAN NOT NULL,
   PRIMARY KEY (`idDiscussion`)
   )
 ENGINE = InnoDB;
@@ -206,16 +207,7 @@ ENGINE = InnoDB;
 
 
 -- User
-insert into User (idUser, userName, userFirstName, userPseudonym, userDescription, userPassword) values (1, 'Harrower', 'Stanton', 'sharrower0', 'Phasellus sit amet erat.', 'MogLKZKcZQNn');
-insert into User (idUser, userName, userFirstName, userPseudonym, userDescription, userPassword) values (2, 'McDugal', 'Stacee', 'smcdugal1', 'Sed accumsan felis.', 'JPQt8zp57AE');
-insert into User (idUser, userName, userFirstName, userPseudonym, userDescription, userPassword) values (3, 'Hedworth', 'Raychel', 'rhedworth2', 'Duis at velit eu est congue elementum. In hac habitasse platea dictumst.', '4B4Q1hI64');
-insert into User (idUser, userName, userFirstName, userPseudonym, userDescription, userPassword) values (4, 'Dominik', 'Harry', 'hdominik3', 'In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.', 'kGhhFK2vM34');
-insert into User (idUser, userName, userFirstName, userPseudonym, userDescription, userPassword) values (5, 'Benton', 'Ellery', 'ebenton4', 'In blandit ultrices enim.', 'LsQhXf8W');
-insert into User (idUser, userName, userFirstName, userPseudonym, userDescription, userPassword) values (6, 'Forryan', 'Baillie', 'bforryan5', 'Morbi quis tortor id nulla ultrices aliquet.', 'vyxnJnO');
-insert into User (idUser, userName, userFirstName, userPseudonym, userDescription, userPassword) values (7, 'Rowlett', 'Frances', 'frowlett6', 'Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus.', 'tZbDlSHFj1e');
-insert into User (idUser, userName, userFirstName, userPseudonym, userDescription, userPassword) values (8, 'Jaffa', 'Dorrie', 'djaffa7', 'Morbi porttitor lorem id ligula.', 'mcZS8hOso');
-insert into User (idUser, userName, userFirstName, userPseudonym, userDescription, userPassword) values (9, 'Dickey', 'Chloette', 'cdickey8', 'Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius.', 'exOq68pY');
-insert into User (idUser, userName, userFirstName, userPseudonym, userDescription, userPassword) values (10, 'Chavrin', 'Lorant', 'lchavrin9', 'In sagittis dui vel nisl. Duis ac nibh.', 'uZBFt4wz');
+
 
 -- Documentation
 insert into Documentation(idDocumentation, Path) values (1, "P:\\ProjetProgrammation\\Chat\\ChatApplication\\Photos\\");
@@ -230,8 +222,8 @@ insert into Documentation(idDocumentation, Path) values (1, "P:\\ProjetProgramma
 
 
 -- Category
-insert into Category (idCategory, categoryName) values (1, 'Trash Humpers');
-insert into Category (idCategory, categoryName) values (2, 'Johnny Guitar');
-insert into Category (idCategory, categoryName) values (3, 'Chico & Rita');
-insert into Category (idCategory, categoryName) values (4, 'Forbidden');
-insert into Category (idCategory, categoryName) values (5, 'Shot at Glory, A');
+insert into Category (idCategory, categoryName) values (1, 'Sport');
+insert into Category (idCategory, categoryName) values (2, 'Politique');
+insert into Category (idCategory, categoryName) values (3, 'Environnement');
+insert into Category (idCategory, categoryName) values (4, 'Diététique');
+insert into Category (idCategory, categoryName) values (5, 'Programmation');

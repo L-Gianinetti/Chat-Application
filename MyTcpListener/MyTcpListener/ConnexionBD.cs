@@ -204,6 +204,12 @@ namespace MyTcpListener
             return annotation;
         }
 
+        public string SelectionnCategorieProposee()
+        {
+            string requete = "SELECT categoryName from category where idCategory < 10";
+            string reponse = SelectSimpleWhile(requete);
+            return reponse;
+        }
         public string SelectionneIdUserMessages(int idDiscussion)
         {
             string requete = "SELECT fkUser from message where fkDiscussion =\"" + idDiscussion + "\" ORDER BY sendTime";
@@ -566,12 +572,13 @@ namespace MyTcpListener
             this.connection.Close();
         }
 
-        public void CreerDiscussion(string nom, string categorie)
+        public void CreerDiscussion(string nom, bool publique)
         {
             this.connection.Open();
             MySqlCommand cmd = this.connection.CreateCommand();
-            cmd.CommandText = "INSERT INTO discussion(discussionName) VALUES(@discussionName)";
+            cmd.CommandText = "INSERT INTO discussion(discussionName, publique) VALUES(@discussionName,@publique)";
             cmd.Parameters.AddWithValue("@discussionName", nom);
+            cmd.Parameters.AddWithValue("@publique", publique);
             cmd.ExecuteNonQuery();
             this.connection.Close();
         }

@@ -135,7 +135,7 @@ namespace MyTcpListener
                             #region ajoutContact
                             case "06":
                                 string contactTrouve = actionUtilisateur.RetourneContactExistant(SeparationSwitchDonnes);
-
+                                
                                 byte[] contactTrouveRetourne = System.Text.Encoding.ASCII.GetBytes(contactTrouve);
                                 stream.Write(contactTrouveRetourne, 0, contactTrouveRetourne.Length);
                                 
@@ -431,6 +431,33 @@ namespace MyTcpListener
                                 string retour34 = actionDiscussion.SelectionneCategorieProposee();
                                 byte[] reponse34 = System.Text.Encoding.ASCII.GetBytes(retour34);
                                 stream.Write(reponse34, 0, reponse34.Length);
+                                break;
+                            case "35":
+                                string categoriesRecherchees = SeparationSwitchDonnes[1];
+                                
+                                string retour35 = actionDiscussion.SelectionneCategoriesRecherchees(categoriesRecherchees);
+                                byte[] reponse35 = System.Text.Encoding.ASCII.GetBytes(retour35);
+                                stream.Write(reponse35, 0, reponse35.Length);
+                                break;
+                            case "36":
+                                string categorie36 = SeparationSwitchDonnes[1];
+                                string retour36 = actionDiscussion.SelectionneDiscussionsParCategorie(categorie36);
+                                byte[] reponse36 = System.Text.Encoding.ASCII.GetBytes(retour36);
+                                stream.Write(reponse36, 0, reponse36.Length);
+                                break;
+                            case "37":
+                                string[] data37 = SeparationSwitchDonnes[1].Split(',');
+                                string pseudo37 = data37[0];
+                                string nomDiscussion37 = data37[1];
+                                actionDiscussion.AjouteParticipationDiscussionRecherche(nomDiscussion37, pseudo37);
+                                break;
+                            case "38":
+                                string[] data38 = SeparationSwitchDonnes[1].Split(',');
+                                string pseudo38 = data38[0];
+                                string categorie38 = data38[1];
+                                string retour38 = actionDiscussion.SelectionneDiscussionsExistantesParCategorie(categorie38, pseudo38);
+                                byte[] reponse38 = System.Text.Encoding.ASCII.GetBytes(retour38);
+                                stream.Write(reponse38, 0, reponse38.Length);
                                 break;
                             default:
                                 break;

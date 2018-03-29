@@ -33,7 +33,7 @@
             this.lblResultats = new System.Windows.Forms.Label();
             this.lblProposee = new System.Windows.Forms.Label();
             this.cmdAnnuler = new System.Windows.Forms.Button();
-            this.cmdRejoindre = new System.Windows.Forms.Button();
+            this.cmdRechercher = new System.Windows.Forms.Button();
             this.txtRechercher = new System.Windows.Forms.TextBox();
             this.lstResultats = new System.Windows.Forms.ListBox();
             this.lstProposee = new System.Windows.Forms.ListBox();
@@ -86,15 +86,16 @@
             this.cmdAnnuler.Text = "Annuler";
             this.cmdAnnuler.UseVisualStyleBackColor = true;
             // 
-            // cmdRejoindre
+            // cmdRechercher
             // 
-            this.cmdRejoindre.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.cmdRejoindre.Location = new System.Drawing.Point(455, 364);
-            this.cmdRejoindre.Name = "cmdRejoindre";
-            this.cmdRejoindre.Size = new System.Drawing.Size(75, 23);
-            this.cmdRejoindre.TabIndex = 5;
-            this.cmdRejoindre.Text = "Rejoindre";
-            this.cmdRejoindre.UseVisualStyleBackColor = true;
+            this.cmdRechercher.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.cmdRechercher.Location = new System.Drawing.Point(455, 364);
+            this.cmdRechercher.Name = "cmdRechercher";
+            this.cmdRechercher.Size = new System.Drawing.Size(75, 23);
+            this.cmdRechercher.TabIndex = 5;
+            this.cmdRechercher.Text = "Rechercher";
+            this.cmdRechercher.UseVisualStyleBackColor = true;
+            this.cmdRechercher.Click += new System.EventHandler(this.cmdRechercher_Click);
             // 
             // txtRechercher
             // 
@@ -102,6 +103,7 @@
             this.txtRechercher.Name = "txtRechercher";
             this.txtRechercher.Size = new System.Drawing.Size(100, 20);
             this.txtRechercher.TabIndex = 6;
+            this.txtRechercher.TextChanged += new System.EventHandler(this.txtRechercher_TextChanged);
             // 
             // lstResultats
             // 
@@ -110,6 +112,7 @@
             this.lstResultats.Name = "lstResultats";
             this.lstResultats.Size = new System.Drawing.Size(120, 95);
             this.lstResultats.TabIndex = 7;
+            this.lstResultats.SelectedIndexChanged += new System.EventHandler(this.lstResultats_SelectedIndexChanged);
             // 
             // lstProposee
             // 
@@ -118,6 +121,7 @@
             this.lstProposee.Name = "lstProposee";
             this.lstProposee.Size = new System.Drawing.Size(120, 95);
             this.lstProposee.TabIndex = 8;
+            this.lstProposee.SelectedIndexChanged += new System.EventHandler(this.lstProposee_SelectedIndexChanged);
             // 
             // FrmDiscussionRecherche
             // 
@@ -127,7 +131,7 @@
             this.Controls.Add(this.lstProposee);
             this.Controls.Add(this.lstResultats);
             this.Controls.Add(this.txtRechercher);
-            this.Controls.Add(this.cmdRejoindre);
+            this.Controls.Add(this.cmdRechercher);
             this.Controls.Add(this.cmdAnnuler);
             this.Controls.Add(this.lblProposee);
             this.Controls.Add(this.lblResultats);
@@ -148,7 +152,7 @@
         private System.Windows.Forms.Label lblResultats;
         private System.Windows.Forms.Label lblProposee;
         private System.Windows.Forms.Button cmdAnnuler;
-        private System.Windows.Forms.Button cmdRejoindre;
+        private System.Windows.Forms.Button cmdRechercher;
         private System.Windows.Forms.TextBox txtRechercher;
         private System.Windows.Forms.ListBox lstResultats;
         private System.Windows.Forms.ListBox lstProposee;

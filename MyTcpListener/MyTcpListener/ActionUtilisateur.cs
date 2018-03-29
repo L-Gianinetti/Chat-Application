@@ -195,8 +195,22 @@ namespace MyTcpListener
                 string recue = "Recue";
                 int idUser = connexionBD.getFkUser(utilisateur);
                 int idContact = connexionBD.getFkUser(contact);
-                connexionBD.ajoutDemandeContact(idUser, idContact, envoyee);
-                connexionBD.ajoutDemandeContact(idContact, idUser, recue);
+
+                string contactDejaAjoute = connexionBD.SelectionneContactDejaAjoute(idContact,idUser);
+                if(contactDejaAjoute == string.Empty && idUser != idContact)
+                {
+                    connexionBD.ajoutDemandeContact(idUser, idContact, envoyee);
+                    connexionBD.ajoutDemandeContact(idContact, idUser, recue);
+                }
+                else if(idUser == idContact)
+                {
+                    contactExistant = "Vous ne pouvez pas vous ajouter vous meme";
+                }
+                else
+                {
+                    contactExistant = "L'utilisateur fair deja parti de vos contacts";
+                }
+
             }
 
             return contactExistant;

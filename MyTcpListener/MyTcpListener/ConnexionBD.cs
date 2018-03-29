@@ -101,6 +101,22 @@ namespace MyTcpListener
             return reponse;
         }
 
+        public string SelectSimpleWhileLike(string requete, string param, string valeur)
+        {
+            this.connection.Open();
+            MySqlCommand cmd = this.connection.CreateCommand();
+            cmd.CommandText = requete;
+            cmd.Parameters.AddWithValue(param, valeur + "%");
+            string reponse = string.Empty;
+            var cmdReader = cmd.ExecuteReader();
+            while (cmdReader.Read())
+            {
+                reponse += String.Format("{0}", cmdReader[0]) + ",";
+            }
+
+            this.connection.Close();
+            return reponse;
+        }
         public string SelectSimpleWhile(string requete)
         {
             this.connection.Open();
@@ -204,9 +220,31 @@ namespace MyTcpListener
             return annotation;
         }
 
+        public string SelectionneIdDiscussionDejaParticipant(string idDiscussion, int idPseudo)
+        {
+            string requete = "SELECT fkDiscussion from participationdiscussions where fkDiscussion =\"" + idDiscussion + "\" and fkUser =\"" + idPseudo + "\"";
+            string reponse = SelectSimple(requete);
+            return reponse;
+        }
+
+        public string SelectionneIdDiscussionParIdCategorie(int idCategory)
+        {
+            string requete = "SELECT fkDiscussion from discussion_has_category where fkCategory =\"" + idCategory + "\"";
+            string reponse = SelectSimpleWhile(requete);
+            return reponse;
+        }
+
+        public string SelectionneCategoriesRecherchees(string categoriesRecherchees)
+        {
+            string requete =  "SELECT categoryName from category where categoryName LIKE @categoriesRecherchees";
+           
+            string reponse = SelectSimpleWhileLike(requete, "@categoriesRecherchees", categoriesRecherchees);
+            return reponse;
+        }
+
         public string SelectionnCategorieProposee()
         {
-            string requete = "SELECT categoryName from category where idCategory < 10";
+            string requete = "SELECT categoryName from category where idCategory < 11";
             string reponse = SelectSimpleWhile(requete);
             return reponse;
         }
@@ -240,7 +278,12 @@ namespace MyTcpListener
             string pseudo = SelectSimple(requete);
             return pseudo;
         }
-
+        public string GetNomDiscussionPublique(int idDiscussion)
+        {
+            string requete = "SELECT discussionName from discussion where idDiscussion =\"" + idDiscussion + "\" and publique = 1";
+            string nomTrouve = SelectSimple(requete);
+            return nomTrouve;
+        }
         public string GetNomDiscussion(int idDiscussion)
         {
             string requete = "SELECT discussionName from discussion where idDiscussion =\"" + idDiscussion + "\"";
@@ -355,6 +398,12 @@ namespace MyTcpListener
             return idDiscussion;
         }
 
+        public string SelectionneContactDejaAjoute(int idContact, int idUser)
+        {
+            string requete = "SELECT idContact from contact where fkUser =\"" + idUser + "\" and fkUserContact =\"" + idContact + "\"";
+            string reponse = SelectSimple(requete);
+            return reponse;
+        }
         public string SelectionneIdContacts(int idUser)
         {
             string requete = "SELECT fkUserContact from contact where fkUser =\"" + idUser + "\"";

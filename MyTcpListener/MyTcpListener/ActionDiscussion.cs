@@ -259,6 +259,15 @@ namespace MyTcpListener
             connexionBD.SupprimerParticipationDiscussion(idDiscussion, idUtilisateur);
         }
 
+
+
+        public string SelectionneCategoriesRecherchees(string categoriesRecherchees)
+        {
+           string categoriesTrouvees = connexionBD.SelectionneCategoriesRecherchees(categoriesRecherchees);
+            return categoriesTrouvees;
+
+        }
+
         public string SelectionneCategorieProposee()
         {
             string reponse = connexionBD.SelectionnCategorieProposee();
@@ -356,6 +365,23 @@ namespace MyTcpListener
             return utilisateur.Pseudo;
         }
 
+        public void AjouteParticipationDiscussionRecherche(string nomDisc, string participants)
+        {
+            string nomDiscussion = nomDisc;
+            string nomsParticipants = participants;
+            int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDiscussion));
+            int idAdmin = int.Parse(connexionBD.GetIdAdminParticipantsDiscussion(idDiscussion.ToString()));
+            string statut = "Participe";
+            string[] nomParticipant = nomsParticipants.Split('$');
+            for (int i = 0; i < nomParticipant.Length; i++)
+            {
+                utilisateur.Pseudo = nomParticipant[i];
+                int idUtilisateur = connexionBD.getFkUser(utilisateur);
+                connexionBD.CreerParticipationDisucssion(idUtilisateur, idDiscussion, idAdmin, statut);
+            }
+
+        }
+
         public void AjouteParticipationDiscussion(string nomDisc, string participants)
         {
             string nomDiscussion = nomDisc;
@@ -373,6 +399,52 @@ namespace MyTcpListener
 
         }
 
+        public string SelectionneDiscussionsExistantesParCategorie(string categorie, string pseudo)
+        {
+            int idCategorie = int.Parse(connexionBD.SelectionneIdCategory(categorie));
+            string idDiscussions = connexionBD.SelectionneIdDiscussionParIdCategorie(idCategorie);
+            string nomDiscussionDejaParticipant = string.Empty;
+            if (idDiscussions != string.Empty)
+            {
+                idDiscussions = idDiscussions.Substring(0, idDiscussions.Length - 1);
+                string[] idDiscussion = idDiscussions.Split(',');
+
+                utilisateur.Pseudo = pseudo;
+                int idUtilisateur = connexionBD.getFkUser(utilisateur);
+                for (int i = 0; i < idDiscussion.Length; i++)
+                {
+                    string idDiscussionDejaParticipant = connexionBD.SelectionneIdDiscussionDejaParticipant(idDiscussion[i], idUtilisateur);
+                    if (idDiscussionDejaParticipant != string.Empty)
+                    {
+                        nomDiscussionDejaParticipant += connexionBD.GetNomDiscussion(int.Parse(idDiscussionDejaParticipant)) + ",";
+                    }
+
+                }
+                nomDiscussionDejaParticipant = nomDiscussionDejaParticipant.Substring(0, nomDiscussionDejaParticipant.Length - 1);
+                
+            }
+            return nomDiscussionDejaParticipant;
+        }
+
+        public string SelectionneDiscussionsParCategorie(string categorie)
+        {
+            string nomsDiscussions = string.Empty;
+            int idCategorie = int.Parse(connexionBD.SelectionneIdCategory(categorie));
+            string idDiscussions = connexionBD.SelectionneIdDiscussionParIdCategorie(idCategorie);
+            if(idDiscussions != string.Empty)
+            {
+                idDiscussions = idDiscussions.Substring(0, idDiscussions.Length - 1);
+                string[] idDiscussion = idDiscussions.Split(',');
+                
+                for (int i = 0; i < idDiscussion.Length; i++)
+                {
+                    nomsDiscussions += connexionBD.GetNomDiscussion(int.Parse(idDiscussion[i])) + ",";
+                }
+                nomsDiscussions = nomsDiscussions.Substring(0, nomsDiscussions.Length - 1);
+            }
+
+            return nomsDiscussions;
+        }
         public void AjouterArchive(string nomDisc, string pseudoUtilisateur)
         {
             string nomDiscussion = nomDisc;

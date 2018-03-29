@@ -155,6 +155,12 @@
     <Compile Include="FormProfil.Designer.cs">
       <DependentUpon>FormProfil.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRechercheDiscussionCategorie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRechercheDiscussionCategorie.Designer.cs">
+      <DependentUpon>FormRechercheDiscussionCategorie.cs</DependentUpon>
+    </Compile>
     <Compile Include="HashMotDePasse.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Program.cs" />
@@ -207,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormProfil.resx">
       <DependentUpon>FormProfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRechercheDiscussionCategorie.resx">
+      <DependentUpon>FormRechercheDiscussionCategorie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -36,6 +36,14 @@ namespace ChatApplication
                 MessageBox.Show("Demande de contact envoyée!");
                 
             }
+            else if(contactExistantTrouve == "L'utilisateur fair deja parti de vos contacts")
+            {
+                MessageBox.Show("L'utilisateur fait deja parti de vos contacts !");
+            }
+            else if(contactExistantTrouve == "Vous ne pouvez pas vous ajouter vous meme")
+            {
+                MessageBox.Show("Vous ne pouvez pas vous ajouter vous meme !");
+            }
             else
             {
                 MessageBox.Show("Contact inexistant!");

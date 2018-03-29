@@ -454,7 +454,7 @@ namespace ChatApplication
 
         private void cmdARechercher_Click(object sender, EventArgs e)
         {
-            FrmDiscussionRecherche frmDiscussionRecherche = new FrmDiscussionRecherche();
+            FrmDiscussionRecherche frmDiscussionRecherche = new FrmDiscussionRecherche(txtPseudo.Text);
             frmDiscussionRecherche.Show();
             DialogResult res = new DialogResult();
             if(res == DialogResult.OK)

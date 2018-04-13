@@ -38,7 +38,7 @@ namespace ChatApplication
             InitializeComponent();
         }
 
-
+        /*
         private void cmdPhoto_Click(object sender, EventArgs e)
         {
             string fichier;
@@ -61,7 +61,7 @@ namespace ChatApplication
 
             }
         }
-
+        */
 
 
         private void cmdValider_Click(object sender, EventArgs e)
@@ -84,8 +84,8 @@ namespace ChatApplication
 
             //Concaténation et envoi du message au serveur
             //Utilisation d'un nombre au début de la string pour que le serveur sache quelle(s) action(s) il doit effectuer
-            string data = "01" + userEnregistrement.Pseudo + "," + userEnregistrement.MotDePasse + "," + userEnregistrement.Nom + "," + userEnregistrement.Prenom + "," + userEnregistrement.Description;
-            envoiMessage.Connect(data);
+            string message01 = "01" + userEnregistrement.Pseudo + "," + userEnregistrement.MotDePasse + "," + userEnregistrement.Nom + "," + userEnregistrement.Prenom + "," + userEnregistrement.Description;
+            envoiMessage.Connect(message01);
 
         }
 

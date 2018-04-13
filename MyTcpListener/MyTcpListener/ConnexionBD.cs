@@ -272,7 +272,7 @@ namespace MyTcpListener
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public string InfoProfilPseudo(User user)
+        public string RetourneInfoProfilPseudo(User user)
         {
             string requete = "SELECT userPseudonym from user where userPseudonym =\"" + user.Pseudo + "\"";
             string pseudo = SelectSimple(requete);
@@ -303,7 +303,7 @@ namespace MyTcpListener
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public string InfoProfilPrenom(User user)
+        public string RetourneInfoProfilPrenom(User user)
         {
             string requete = "SELECT userFirstName from user where userPseudonym =\"" + user.Pseudo + "\"";
             string prenom = SelectSimple(requete);
@@ -315,7 +315,7 @@ namespace MyTcpListener
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public string InfoProfilNom(User user)
+        public string RetourneInfoProfilNom(User user)
         {
             string requete = "SELECT userName from user where userPseudonym =\"" + user.Pseudo + "\"";
             string nom = SelectSimple(requete);
@@ -323,7 +323,7 @@ namespace MyTcpListener
         }
 
 
-        public string InfoProfilDescription(User user)
+        public string RetourneInfoProfilDescription(User user)
         {
             string requete = "SELECT userDescription from user where userPseudonym =\"" + user.Pseudo + "\"";
             string description = SelectSimple(requete);
@@ -331,7 +331,7 @@ namespace MyTcpListener
         }
 
 
-        public string InfoProfilPhoto(User user)
+        public string RetourneInfoProfilPhoto(User user)
         {
             string requete = "SELECT userPhoto from user where userPseudonym =\"" + user.Pseudo + "\"";
             string photo = SelectSimple(requete);
@@ -355,7 +355,7 @@ namespace MyTcpListener
         }
 
 
-        public int getFkUser(User user)
+        public int retourneIdUser(User user)
         {
             string requete = "SELECT idUser from user where userPseudonym =\"" + user.Pseudo + "\"";
             string id = SelectSimple(requete);
@@ -398,12 +398,31 @@ namespace MyTcpListener
             return idDiscussion;
         }
 
+        /// <summary>
+        /// Selectionne idContact en fonction de fkUser et fkUserContact
+        /// </summary>
+        /// <param name="idContact"></param>
+        /// <param name="idUser"></param>
+        /// <returns></returns>
         public string SelectionneContactDejaAjoute(int idContact, int idUser)
         {
             string requete = "SELECT idContact from contact where fkUser =\"" + idUser + "\" and fkUserContact =\"" + idContact + "\"";
             string reponse = SelectSimple(requete);
             return reponse;
         }
+
+        /// <summary>
+        /// Selectionne les pseudos des contacts en fonction d'un idUtilisateur
+        /// </summary>
+        /// <param name="idUser"></param>
+        /// <returns></returns>
+        public string SelectionnePseudoContact(int idUser)
+        {
+            string requete = "SELECT userPseudonym from contact INNER JOIN user ON fkUserContact = idUser where fkUser =\"" + idUser + "\"";
+            string reponse = SelectSimpleWhile(requete);
+            return reponse;
+        }
+
         public string SelectionneIdContacts(int idUser)
         {
             string requete = "SELECT fkUserContact from contact where fkUser =\"" + idUser + "\"";
@@ -414,9 +433,16 @@ namespace MyTcpListener
 
         //Il faut que la requête retourne tous les resultats pas seulement le premier
         //Ne prend que 1 seul fk en paramètres, peut donc pas retourner plusieurs resultats
-        public string getDemandesFkUserContact(int fk, string statut)
+        /// <summary>
+        /// Retourne les pseudos des contacts en fonction des demandes (recues ou envoyees)
+        /// </summary>
+        /// <param name="fk"></param>
+        /// <param name="statut"></param>
+        /// <returns></returns>
+        public string RetourneDemandesPseudosContacts(int fk, string statut)
         {
-            string requete = "SELECT fkUserContact from demandescontacts where fkUser =\"" + fk + "\" and Statut =\"" + statut + "\"";
+            //string requete = "SELECT fkUserContact from demandescontacts where fkUser =\"" + fk + "\" and Statut =\"" + statut + "\"";
+            string requete = "SELECT userPseudonym from demandescontacts INNER JOIN user ON fkUserContact = idUser where fkUser =\"" + fk + "\" and Statut =\"" + statut + "\"";
             string id = SelectSimpleWhile(requete);
             return id;
         }
@@ -475,7 +501,12 @@ namespace MyTcpListener
             return reponse;
         }
 
-        public string UserExistant(User user)
+        /// <summary>
+        /// Sert a verifier si un pseudo est deja utilisé ou non
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public string UserExisteIl(User user)
         {
             string _pseudoTrouve = "";
             string _pseudoRetourne = "";

@@ -26,6 +26,11 @@ namespace ChatApplication
             pseudoActif = pseudo;
         }
 
+        /// <summary>
+        /// Ajoute le contact si celui ci est un utilisateur existant et n'est pas deja un contact
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdAjouter_Click(object sender, EventArgs e)
         {
             string contactExistant = "06" + pseudoActif + "," + txtPseudo.Text;
@@ -36,7 +41,7 @@ namespace ChatApplication
                 MessageBox.Show("Demande de contact envoyée!");
                 
             }
-            else if(contactExistantTrouve == "L'utilisateur fair deja parti de vos contacts")
+            else if(contactExistantTrouve == "L'utilisateur fait deja parti de vos contacts")
             {
                 MessageBox.Show("L'utilisateur fait deja parti de vos contacts !");
             }

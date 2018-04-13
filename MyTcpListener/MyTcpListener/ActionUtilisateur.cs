@@ -43,6 +43,7 @@ namespace MyTcpListener
         public User AttribueInformationsUtilisateur(string[] donnee, bool motDePasse)
         {
             string[] donneesUtilisateur;
+            //creation 
             if (motDePasse)
             {
                 donneesUtilisateur = SeparerElements(donnee);
@@ -53,6 +54,7 @@ namespace MyTcpListener
                 utilisateur.Prenom = donneesUtilisateur[3];
                 utilisateur.Description = donneesUtilisateur[4];
             }
+            //update
             else
             {
                 donneesUtilisateur = SeparerElements(donnee);
@@ -75,11 +77,9 @@ namespace MyTcpListener
         {
             string[] donneesUtilisateur = SeparerElements(donnee);
             utilisateur.Pseudo = donneesUtilisateur[0];
-
-
-
             return utilisateur;
         }
+
         /// <summary>
         /// Retourne un User contenant seulement le pseudo
         /// </summary>
@@ -125,36 +125,27 @@ namespace MyTcpListener
         /// </summary>
         /// <param name="donnee"></param>
         /// <returns></returns>
-        public string RetourneInfoProfil(string[] donnee)
+        public string RetourneInfoProfil(User user)
         {
-            utilisateur = RetournePseudoUtilisateur(donnee);
-            utilisateur.Nom = connexionBD.InfoProfilNom(utilisateur);
-            utilisateur.Prenom = connexionBD.InfoProfilPrenom(utilisateur);
-            utilisateur.Description = connexionBD.InfoProfilDescription(utilisateur);
+            //utilisateur = RetournePseudoUtilisateur(donnee);
+            utilisateur.Nom = connexionBD.RetourneInfoProfilNom(user);
+            utilisateur.Prenom = connexionBD.RetourneInfoProfilPrenom(user);
+            utilisateur.Description = connexionBD.RetourneInfoProfilDescription(user);
 
             string infosProfil = utilisateur.Nom + "," + utilisateur.Prenom + "," + utilisateur.Description;
 
             return infosProfil;
 
         }
-        public string RetourneInfoProfilContact(string[] donnee)
-        {
-            contact = RetournePseudoContact(donnee);
-            contact.Nom = connexionBD.InfoProfilNom(contact);
-            contact.Prenom = connexionBD.InfoProfilPrenom(contact);
-            contact.Description = connexionBD.InfoProfilDescription(contact);
 
-            string infosProfil = contact.Nom + "," + contact.Prenom + "," + contact.Description;
-
-            return infosProfil;
-        }
         /// <summary>
-        /// Met a jour le profil 
+        /// Attribution informations à un objet User + Met a jour le profil correspondant
         /// </summary>
         /// <param name="donnee"></param>
         public void MiseAJourProfilUtilisateur(string[] donnee)
         {
             bool mdp = false;
+            //attribue les informations du tableau de string à un objet User
             utilisateur = AttribueInformationsUtilisateur(donnee, mdp);
             connexionBD.UpdateProfil(utilisateur);
         }
@@ -163,11 +154,9 @@ namespace MyTcpListener
         /// </summary>
         /// <param name="donnee"></param>
         /// <returns></returns>
-        public string PseudoDejaPris(string[] donnee)
+        public string PseudoDejaPris(User user)
         {
-            utilisateur = RetournePseudoUtilisateur(donnee);
-            string pseudoTrouve = connexionBD.UserExistant(utilisateur);
-
+            string pseudoTrouve = connexionBD.UserExisteIl(user);
             //Si il le pseudo n'est pas dans la BD
             if (pseudoTrouve == "")
             {
@@ -178,8 +167,8 @@ namespace MyTcpListener
 
         }
         /// <summary>
-        /// Retourne le pseudo du contact si celui-ci existe.
-        /// Ajoute la demande chez les 2 utilisateurs
+        /// Retourne le pseudo du contact si celui-ci existe et ajoute la demande chez les 2 utilisateurs.
+        /// Ou retourne une erreur
         /// </summary>
         /// <param name="donnee"></param>
         /// <returns></returns>
@@ -188,17 +177,20 @@ namespace MyTcpListener
             utilisateur= RetournePseudoUtilisateur(donnee);
             contact = RetournePseudoContact(donnee);
 
-            string contactExistant = connexionBD.UserExistant(contact);
+            string contactExistant = connexionBD.UserExisteIl(contact);
+            //Si le contact est un utilisateur existant
             if(contactExistant != string.Empty)
             {
                 string envoyee = "Envoyee";
                 string recue = "Recue";
-                int idUser = connexionBD.getFkUser(utilisateur);
-                int idContact = connexionBD.getFkUser(contact);
+                int idUser = connexionBD.retourneIdUser(utilisateur);
+                int idContact = connexionBD.retourneIdUser(contact);
 
                 string contactDejaAjoute = connexionBD.SelectionneContactDejaAjoute(idContact,idUser);
+                //Si le contact n'est pas deja dans la liste de contact de l'utilisateur et si le contact n'est pas l'utilisateur lui même
                 if(contactDejaAjoute == string.Empty && idUser != idContact)
                 {
+                    //ajout des demandes de contact
                     connexionBD.ajoutDemandeContact(idUser, idContact, envoyee);
                     connexionBD.ajoutDemandeContact(idContact, idUser, recue);
                 }
@@ -208,56 +200,43 @@ namespace MyTcpListener
                 }
                 else
                 {
-                    contactExistant = "L'utilisateur fair deja parti de vos contacts";
+                    contactExistant = "L'utilisateur fait deja parti de vos contacts";
                 }
 
             }
 
             return contactExistant;
         }
+
         /// <summary>
-        /// Retourne les demandes de contact
+        /// Retourne les pseudos des contacts correspondant aux demandes en fonction du statut
         /// </summary>
         /// <param name="donnee"></param>
         /// <param name="statut"></param>
         /// <returns></returns>
-        public string RetourneDemandesContact(string[] donnee, string statut)
-        {
-            utilisateur = RetournePseudoUtilisateur(donnee);
-            
-            int idUtilisateur = connexionBD.getFkUser(utilisateur);
+        public string RetourneDemandesPseudosContact(User user, string statut)
+        {  
+            int idUtilisateur = connexionBD.retourneIdUser(user);
             string fkDemandesContact = string.Empty;
             string pseudosDemandesContact = string.Empty;
-            int i = 0;
+
 
             if (statut == "envoyee")
             {
-                fkDemandesContact = connexionBD.getDemandesFkUserContact(idUtilisateur, statut);
-                
-
+                pseudosDemandesContact = connexionBD.RetourneDemandesPseudosContacts(idUtilisateur, statut);
             }
             else
             {
-                fkDemandesContact = connexionBD.getDemandesFkUserContact(idUtilisateur, statut);
+                pseudosDemandesContact = connexionBD.RetourneDemandesPseudosContacts(idUtilisateur, statut);
             }
 
-            if(fkDemandesContact != string.Empty)
+            if(pseudosDemandesContact != string.Empty)
             {
-                fkDemandesContact = fkDemandesContact.Substring(0, fkDemandesContact.Length - 1);
-                string[] fkDemandesContactSeparees = fkDemandesContact.Split(',');
-                foreach(string element in fkDemandesContactSeparees)
-                {
-                    fkDemandesContactSeparees[i] = element;
-                    fkDemandesContactSeparees[i] = connexionBD.getUserPseudo(int.Parse(fkDemandesContactSeparees[i]));
-                    pseudosDemandesContact += fkDemandesContactSeparees[i] + ",";
-                    i++;
-                }
                 pseudosDemandesContact = pseudosDemandesContact.Substring(0, pseudosDemandesContact.Length - 1);
             }
-            
-
             return pseudosDemandesContact;
         }
+
         /// <summary>
         /// Ajoute le contact pour les 2 utilisateurs et supprime les demandes de contact correspondantes
         /// </summary>
@@ -266,8 +245,8 @@ namespace MyTcpListener
         {
             utilisateur = RetournePseudoUtilisateur(donnee);
             contact = RetournePseudoContact(donnee);
-            int idUtilisateur = connexionBD.getFkUser(utilisateur);
-            int idContact = connexionBD.getFkUser(contact);
+            int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
+            int idContact = connexionBD.retourneIdUser(contact);
 
             connexionBD.SupprimerDemandeContact(idUtilisateur, idContact);
             connexionBD.ContactAccepterAjouterContact(idUtilisateur, idContact);
@@ -281,32 +260,17 @@ namespace MyTcpListener
         /// </summary>
         /// <param name="donnee"></param>
         /// <returns></returns>
-        public string  RetourneContacts(string[] donnee)
+        public string  RetourneContacts(User user)
         {
-            utilisateur = RetournePseudoUtilisateur(donnee);
-            int idUtilisateur = connexionBD.getFkUser(utilisateur);
-            int idContact = 0;
-            int i = 0;
+            int idUtilisateur = connexionBD.retourneIdUser(user);
             string listePseudosContacts = string.Empty;
-            //contient les fkUserContact séparés par des virgules
-            string listeFkUserContact = connexionBD.SelectionneIdContacts(idUtilisateur);
-            
-            if(listeFkUserContact != string.Empty)
+            //contient les pseudos des contacts existants séparés par des virgules
+            string listePseudosContact = connexionBD.SelectionnePseudoContact(idUtilisateur);
+            if(listePseudosContact != string.Empty)
             {
-                listeFkUserContact = listeFkUserContact.Substring(0, listeFkUserContact.Length - 1);
-                string[] tableauFkUserContact = listeFkUserContact.Split(',');
-                foreach(string element in tableauFkUserContact)
-                {
-                    tableauFkUserContact[i] = element;
-                    idContact = int.Parse(tableauFkUserContact[i]);
-                    tableauFkUserContact[i] = connexionBD.getUserPseudo(idContact);
-                    listePseudosContacts += tableauFkUserContact[i] + ",";
-                    i++;
-                }
-                listePseudosContacts = listePseudosContacts.Substring(0, listePseudosContacts.Length - 1);
-                
+                listePseudosContact = listePseudosContact.Substring(0, listePseudosContact.Length - 1);
             }
-            return listePseudosContacts;
+            return listePseudosContact;
         }
         /// <summary>
         /// Supprime la demande chez les 2 utilisateurs
@@ -316,8 +280,8 @@ namespace MyTcpListener
         {
             utilisateur = RetournePseudoUtilisateur(donnee);
             contact = RetournePseudoContact(donnee);
-            int idUtilisateur = connexionBD.getFkUser(utilisateur);
-            int idContact = connexionBD.getFkUser(contact);
+            int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
+            int idContact = connexionBD.retourneIdUser(contact);
 
             //connexionBD.ContactAccepteSupprimerDemandeRecue(idUtilisateur, idContact, statutRecu);
             //connexionBD.ContactAccepteSupprimerDemandeRecue(idContact, idUtilisateur, statutEnvoyee);
@@ -332,8 +296,8 @@ namespace MyTcpListener
         {
             utilisateur = RetournePseudoUtilisateur(donnee);
             contact = RetournePseudoContact(donnee);
-            int idUtilisateur = connexionBD.getFkUser(utilisateur);
-            int idContact = connexionBD.getFkUser(contact);
+            int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
+            int idContact = connexionBD.retourneIdUser(contact);
 
             connexionBD.SupprimerContact(idUtilisateur, idContact);
             connexionBD.SupprimerContact(idContact, idUtilisateur);
@@ -369,8 +333,8 @@ namespace MyTcpListener
             }
             utilisateur = RetournePseudoUtilisateur(donnees);
             contact = RetournePseudoContact(donnees);
-            int idUtilisateur = connexionBD.getFkUser(utilisateur);
-            int idContact = connexionBD.getFkUser(contact);
+            int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
+            int idContact = connexionBD.retourneIdUser(contact);
             string annotation = donnee[2];
             annotation = annotation.Substring(0, annotation.Length / 2);
             connexionBD.MettreAJourContact(idUtilisateur, idContact, annotation);
@@ -380,8 +344,8 @@ namespace MyTcpListener
         {
             utilisateur = RetournePseudoUtilisateur(donnee);
             contact = RetournePseudoContact(donnee);
-            int idUtilisateur = connexionBD.getFkUser(utilisateur);
-            int idContact = connexionBD.getFkUser(contact);
+            int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
+            int idContact = connexionBD.retourneIdUser(contact);
             string annotation = connexionBD.InfoContactAnnotation(idUtilisateur, idContact);
             return annotation;
 

@@ -58,17 +58,6 @@ namespace ChatApplication
             string data = "02" + user.Pseudo;
             string reponse = envoiMessage.Connect(data);
             Console.WriteLine(reponse);
-            //Send the message
-            /*byte[] bytes = sendMessage.send(System.Text.Encoding.Unicode.GetBytes(data));
-
-            TcpClient client = new TcpClient("127.0.0.1", 1234);
-            NetworkStream nwStream = client.GetStream();
-            byte[] bytesToRead = new byte[client.ReceiveBufferSize];
-            int bytesRead = nwStream.Read(bytesToRead, 0, client.ReceiveBufferSize);
-            string reponse = Encoding.ASCII.GetString(bytesToRead, 0, bytesRead);
-            Console.WriteLine("La reponse est : " + reponse);*/
-
-
 
             if (hashMotDePasse.connexionUser(txtPassword.Text, reponse) == true)
             //if(HashTest.Verify(txtPassword.Text, reponse) == true)

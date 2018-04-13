@@ -91,7 +91,6 @@
             this.cmdPhoto.TabIndex = 6;
             this.cmdPhoto.Text = "Parcourir...";
             this.cmdPhoto.UseVisualStyleBackColor = true;
-            this.cmdPhoto.Click += new System.EventHandler(this.cmdPhoto_Click);
             // 
             // cmdValider
             // 

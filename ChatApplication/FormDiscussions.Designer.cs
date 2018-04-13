@@ -274,7 +274,7 @@
             this.pnlDiscussions.Controls.Add(this.pnlDiscussionDemande);
             this.pnlDiscussions.Controls.Add(this.pnlDiscussionAffichage);
             this.pnlDiscussions.Controls.Add(this.grbActions);
-            this.pnlDiscussions.Location = new System.Drawing.Point(220, 12);
+            this.pnlDiscussions.Location = new System.Drawing.Point(203, 534);
             this.pnlDiscussions.Name = "pnlDiscussions";
             this.pnlDiscussions.Size = new System.Drawing.Size(859, 501);
             this.pnlDiscussions.TabIndex = 6;
@@ -432,10 +432,9 @@
             // 
             // pnlContact
             // 
-            this.pnlContact.Controls.Add(this.pnlContactsDemandes);
             this.pnlContact.Controls.Add(this.pnlContactsListe);
             this.pnlContact.Controls.Add(this.groupBox1);
-            this.pnlContact.Location = new System.Drawing.Point(209, 12);
+            this.pnlContact.Location = new System.Drawing.Point(230, 54);
             this.pnlContact.Name = "pnlContact";
             this.pnlContact.Size = new System.Drawing.Size(672, 479);
             this.pnlContact.TabIndex = 6;
@@ -443,7 +442,7 @@
             // pnlContactsDemandes
             // 
             this.pnlContactsDemandes.Controls.Add(this.grbDemandes);
-            this.pnlContactsDemandes.Location = new System.Drawing.Point(13, 94);
+            this.pnlContactsDemandes.Location = new System.Drawing.Point(275, 54);
             this.pnlContactsDemandes.Name = "pnlContactsDemandes";
             this.pnlContactsDemandes.Size = new System.Drawing.Size(614, 379);
             this.pnlContactsDemandes.TabIndex = 19;
@@ -456,7 +455,7 @@
             this.grbDemandes.Controls.Add(this.lstEnvoyees);
             this.grbDemandes.Controls.Add(this.lblenvoyees);
             this.grbDemandes.Controls.Add(this.lblrecues);
-            this.grbDemandes.Location = new System.Drawing.Point(9, 3);
+            this.grbDemandes.Location = new System.Drawing.Point(6, 4);
             this.grbDemandes.Name = "grbDemandes";
             this.grbDemandes.Size = new System.Drawing.Size(602, 372);
             this.grbDemandes.TabIndex = 11;
@@ -520,7 +519,7 @@
             // pnlContactsListe
             // 
             this.pnlContactsListe.Controls.Add(this.lstContacts);
-            this.pnlContactsListe.Location = new System.Drawing.Point(13, 96);
+            this.pnlContactsListe.Location = new System.Drawing.Point(16, 101);
             this.pnlContactsListe.Name = "pnlContactsListe";
             this.pnlContactsListe.Size = new System.Drawing.Size(614, 380);
             this.pnlContactsListe.TabIndex = 19;
@@ -589,7 +588,7 @@
             // pnlProfil
             // 
             this.pnlProfil.Controls.Add(this.grbProfil);
-            this.pnlProfil.Location = new System.Drawing.Point(181, 10);
+            this.pnlProfil.Location = new System.Drawing.Point(693, 593);
             this.pnlProfil.Name = "pnlProfil";
             this.pnlProfil.Size = new System.Drawing.Size(601, 478);
             this.pnlProfil.TabIndex = 19;
@@ -598,7 +597,7 @@
             // 
             this.grbProfil.Controls.Add(this.grbInformations);
             this.grbProfil.Controls.Add(this.grbPhoto);
-            this.grbProfil.Location = new System.Drawing.Point(13, 9);
+            this.grbProfil.Location = new System.Drawing.Point(8, 3);
             this.grbProfil.Name = "grbProfil";
             this.grbProfil.Size = new System.Drawing.Size(572, 462);
             this.grbProfil.TabIndex = 2;
@@ -731,7 +730,7 @@
             // pnlArchives
             // 
             this.pnlArchives.Controls.Add(this.grbArchives);
-            this.pnlArchives.Location = new System.Drawing.Point(193, 12);
+            this.pnlArchives.Location = new System.Drawing.Point(1085, 12);
             this.pnlArchives.Name = "pnlArchives";
             this.pnlArchives.Size = new System.Drawing.Size(859, 529);
             this.pnlArchives.TabIndex = 2;
@@ -781,6 +780,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1175, 659);
+            this.Controls.Add(this.pnlContactsDemandes);
             this.Controls.Add(this.pnlProfil);
             this.Controls.Add(this.pnlArchives);
             this.Controls.Add(this.pnlContact);

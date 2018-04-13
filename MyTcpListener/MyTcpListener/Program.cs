@@ -80,38 +80,43 @@ namespace MyTcpListener
                         SeparationSwitchDonnes[0] = data.Substring(0, 2);
                         SeparationSwitchDonnes[1] = data.Substring(2, data.Length - 2);
                         
-                            
+                        //TODO 04 Check le retour au chat
+                        //TODO 09 Check le retour au chat + (donnee)
                             
                         switch (SeparationSwitchDonnes[0])
                         {
-                            
-                            #region Enregistrement du profil
-                            //Enregistrement du profil
+
+                            #region 01 : Enregistrement du profil
+                            // "01" + userEnregistrement.Pseudo + "," + userEnregistrement.MotDePasse + "," + userEnregistrement.Nom + "," + userEnregistrement.Prenom + "," + userEnregistrement.Description;
                             case "01":
                                 actionUtilisateur.CreationUtilisateur(SeparationSwitchDonnes);
                                 break;
                             #endregion
-                            #region connexion
-                            //Connexion
+                            #region 02 : connexion
+                            // "02" + user.Pseudo
                             case "02":
                                 string motDePasse = actionUtilisateur.RetourneMotDePasse(SeparationSwitchDonnes);
-
                                 byte[] mdpDemande = System.Text.Encoding.ASCII.GetBytes(motDePasse);
                                 stream.Write(mdpDemande, 0, mdpDemande.Length);
                                 
                                 Console.WriteLine("mdpDemande: {0}", mdpDemande);
                                 break;
                             #endregion
-                            #region Chargement du profil
+                            #region 03 : Chargement du profil
+                            // "03" + user.Pseudo
                             case "03":
-                                string infosProfil = actionUtilisateur.RetourneInfoProfil(SeparationSwitchDonnes);
+                                //attribution du pseudo à user
+                                user = actionUtilisateur.RetournePseudoUtilisateur(SeparationSwitchDonnes);
+                                //string contenant les informations du profil de l'utilisateur correspondant à user
+                                string infosProfil = actionUtilisateur.RetourneInfoProfil(user);
                                 byte[] infosProfilARetourner = System.Text.Encoding.ASCII.GetBytes(infosProfil);
                                 stream.Write(infosProfilARetourner, 0, infosProfilARetourner.Length);
                                 
                                 Console.WriteLine("Infos profil envoyées : {0}", infosProfilARetourner);
                                 break;
                             #endregion
-                            #region Mise à jour du profil
+                            #region 04 : Mise à jour du profil
+                            // "04" + user.Pseudo + "," + user.Nom + "," + user.Prenom + "," + user.Description
                             case "04":
                                 actionUtilisateur.MiseAJourProfilUtilisateur(SeparationSwitchDonnes);
 
@@ -122,18 +127,23 @@ namespace MyTcpListener
                                 Console.WriteLine("Update du profil : {0}", updateReussie);
                                 break;
                             #endregion
-                            #region Enregistrement pseudoExistant
+                            #region 05 : Enregistrement, pseudoExistant ?
+                            // "05" + txtIdentifiant.Text 
                             case "05":
-                                string pseudoTrouve = actionUtilisateur.PseudoDejaPris(SeparationSwitchDonnes);
-
+                                //attribution du pseudo à user
+                                user = actionUtilisateur.RetournePseudoUtilisateur(SeparationSwitchDonnes);
+                                //Vérifie si le pseudo est deja utilisé
+                                string pseudoTrouve = actionUtilisateur.PseudoDejaPris(user);
                                 Console.WriteLine("Pseudo trouvé : {0}", pseudoTrouve);
                                 byte[] pseudoTrouveRetourne = System.Text.Encoding.ASCII.GetBytes(pseudoTrouve);
                                 stream.Write(pseudoTrouveRetourne, 0, pseudoTrouveRetourne.Length);
                                 
                                 break;
                             #endregion
-                            #region ajoutContact
+                            #region 06 : ajoutContact
+                            // "06" + pseudoActif + "," + txtPseudo.Text
                             case "06":
+                                //string contenant le contact si celui-ci existe, ou un message d'erreur.
                                 string contactTrouve = actionUtilisateur.RetourneContactExistant(SeparationSwitchDonnes);
                                 
                                 byte[] contactTrouveRetourne = System.Text.Encoding.ASCII.GetBytes(contactTrouve);
@@ -141,9 +151,11 @@ namespace MyTcpListener
                                 
                                 break;
                             #endregion
-                            #region demandesEnvoyees
+                            #region 07 : demandesContactEnvoyees
+                            // "07" + txtPseudo.Text;
                             case "07":
-                                string demandesContactEnvoyee = actionUtilisateur.RetourneDemandesContact(SeparationSwitchDonnes, "envoyee");
+                                user = actionUtilisateur.RetournePseudoUtilisateur(SeparationSwitchDonnes);
+                                string demandesContactEnvoyee = actionUtilisateur.RetourneDemandesPseudosContact(user, "envoyee");
 
                                 if(demandesContactEnvoyee != string.Empty)
                                 {
@@ -160,9 +172,11 @@ namespace MyTcpListener
                                     
                                 break;
                             #endregion
-                            #region demandesRecues
+                            #region 08 : demandesContactRecues
+                            // "08" + txtPseudo.Text
                             case "08":
-                                string demandesContactRecue = actionUtilisateur.RetourneDemandesContact(SeparationSwitchDonnes, "recue");
+                                user = actionUtilisateur.RetournePseudoUtilisateur(SeparationSwitchDonnes);
+                                string demandesContactRecue = actionUtilisateur.RetourneDemandesPseudosContact(user, "recue");
 
                                 if (demandesContactRecue != string.Empty)
                                 {
@@ -179,18 +193,21 @@ namespace MyTcpListener
 
                                 break;
                             #endregion
-                            #region accepterDemande
+                            #region 09 : accepterDemandeContact
+                            // "09" + txtPseudo.Text + "," + selectedItem;
                             case "09":
                                 actionUtilisateur.AccepterDemandeContact(SeparationSwitchDonnes);
                                 string contactAjoute = "Contact ajouté !";
                                 byte[] reponse9 = System.Text.Encoding.ASCII.GetBytes(contactAjoute);
                                 stream.Write(reponse9, 0, reponse9.Length);
-                                
                                 break;
                             #endregion
-                            #region ajoutContactListeContact
+                            #region 10 : ajoutContactListeContact
+                            // "10" + txtPseudo.Text;
                             case "10":
-                                string listePseudosContacts = actionUtilisateur.RetourneContacts(SeparationSwitchDonnes);
+                                user = actionUtilisateur.RetournePseudoUtilisateur(SeparationSwitchDonnes);
+                                //string contenant les pseudos des ocntacts existants séparés par des virgules
+                                string listePseudosContacts = actionUtilisateur.RetourneContacts(user);
                                 byte[] reponse10;
                                 if(listePseudosContacts != string.Empty)
                                 {
@@ -228,7 +245,8 @@ namespace MyTcpListener
                                 actionUtilisateur.ModificationContact(SeparationSwitchDonnes);
                                 break;
                             case "14":
-                                string infosProfilContact = actionUtilisateur.RetourneInfoProfilContact(SeparationSwitchDonnes);
+                                user = actionUtilisateur.RetournePseudoContact(SeparationSwitchDonnes);
+                                string infosProfilContact = actionUtilisateur.RetourneInfoProfil(user);
                                 string annotation = actionUtilisateur.RetourneAnnotationContact(SeparationSwitchDonnes);
                                 string infosContact = infosProfilContact + "," + annotation;                                                                                                                                                                                     
                                 byte[] reponse14= System.Text.Encoding.ASCII.GetBytes(infosContact);

@@ -54,6 +54,10 @@ namespace ChatApplication
             }
 
         }
+
+        /// <summary>
+        /// Permet d'afficher les demandes de contact envoyées
+        /// </summary>
         public void chargerDemandesEnvoyees()
         {
             int i = 0;
@@ -91,6 +95,11 @@ namespace ChatApplication
             panelActif.Visible = true;
         }
 
+        /// <summary>
+        /// Affiche le pannel contact + ajoute les contacts dans la liste
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdContacts_Click(object sender, EventArgs e)
         {
             montrerPannel(pnlContact);
@@ -153,10 +162,16 @@ namespace ChatApplication
                 }
             }
         }
+
+        /// <summary>
+        /// Charge le profil de l'utilisateur actif
+        /// </summary>
         public void chargerProfil()
         {
             user.Pseudo = Properties.Settings.Default.UserActif;
             string msgProfil = "03" + user.Pseudo;
+
+            //Réception d'un string contenant les infos de profil de l'utilisateur séparé par des virgules
             string reponse = envoiMessage.Connect(msgProfil);
             string[] reponses = reponse.Split(',');
 
@@ -170,12 +185,18 @@ namespace ChatApplication
             txtDescription.Text = user.Description;
         }
 
+        /// <summary>
+        /// Mise à jour du profil
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdValiderProfil_Click(object sender, EventArgs e)
         {
             user.Nom = txtNom.Text;
             user.Prenom = txtPrenom.Text;
             user.Description = txtDescription.Text;
             user.Pseudo = txtPseudo.Text;
+            //Envoi des nouvelles informations rentrées au serveur
             string msgValidationProfil = "04" + user.Pseudo + "," + user.Nom + "," + user.Prenom + "," + user.Description;
             string reponse = envoiMessage.Connect(msgValidationProfil);
             if (reponse == "Reussie")
@@ -204,6 +225,11 @@ namespace ChatApplication
             chargerDemandesRecues();
         }
 
+        /// <summary>
+        /// Accepte la demande de contact
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdAccepter_Click(object sender, EventArgs e)
         {
 

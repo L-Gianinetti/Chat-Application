@@ -223,123 +223,144 @@ namespace MyTcpListener
                                 }
                                 break;
                             #endregion
-                            #region refusDemandeContact
+                            #region 11 : refusDemandeContact
+                            // "11" + txtPseudo.Text + "," + selectedItem
                             case "11":
-                                actionUtilisateur.SupprimerDemandeContact(SeparationSwitchDonnes);
+                                //On attribue aux 2 objets User le pseudo de l'utilisateur actif et le pseudo du contact
+                                user = actionUtilisateur.RetournePseudoUtilisateur(SeparationSwitchDonnes);
+                                contact = actionUtilisateur.RetournePseudoContact(SeparationSwitchDonnes);
+                                //On supprime les demandes de contact correspondants aux Users
+                                actionUtilisateur.SupprimerDemandeContact(user, contact);
                                 string demandeSupprimee = "Demande supprimee";
                                 byte[] reponse11 = System.Text.Encoding.ASCII.GetBytes(demandeSupprimee);
                                 stream.Write(reponse11, 0, reponse11.Length);
                                 
                                 break;
                             #endregion
-                            #region supprimerContact
+                            #region 12 : supprimerContact
+                            // "12" + txtPseudo.Text + "," + selectedItem
                             case "12":
-                                actionUtilisateur.SupprimerContact(SeparationSwitchDonnes);
+                                //On attribue aux 2 objets User le pseudo de l'utilisateur actif et le pseudo du contact
+                                user = actionUtilisateur.RetournePseudoUtilisateur(SeparationSwitchDonnes);
+                                contact = actionUtilisateur.RetournePseudoContact(SeparationSwitchDonnes);
+                                //On supprime le contact
+                                actionUtilisateur.SupprimerContact(user, contact);
                                 string contactSupprime = "Contact supprime";
                                 byte[] reponse12 = System.Text.Encoding.ASCII.GetBytes(contactSupprime);
                                 stream.Write(reponse12, 0, reponse12.Length);
                                 
                                 break;
-                            #endregion  
+                            #endregion
+                            #region 13 : ModifierProfilContact
+                            // "13" +  pseudoUtilisateurActif + "," +txtPseudo.Text + "," + txtAnnotation.Text
                             case "13":
                                 actionUtilisateur.ModificationContact(SeparationSwitchDonnes);
                                 break;
+                            #endregion
+                            #region 14 : ChargerProfilContact
+                            // "14" + pseudoUtilisateurActif+ "," + txtPseudo.Text;
                             case "14":
-                                user = actionUtilisateur.RetournePseudoContact(SeparationSwitchDonnes);
-                                string infosProfilContact = actionUtilisateur.RetourneInfoProfil(user);
-                                string annotation = actionUtilisateur.RetourneAnnotationContact(SeparationSwitchDonnes);
+                                contact = actionUtilisateur.RetournePseudoContact(SeparationSwitchDonnes);
+                                user = actionUtilisateur.RetournePseudoUtilisateur(SeparationSwitchDonnes);
+                                //String contenant le nom prenom et description du contact
+                                string infosProfilContact = actionUtilisateur.RetourneInfoProfil(contact);
+                                //String contenant l'annotation du contact
+                                string annotation = actionUtilisateur.RetourneAnnotationContact(user, contact);
                                 string infosContact = infosProfilContact + "," + annotation;                                                                                                                                                                                     
                                 byte[] reponse14= System.Text.Encoding.ASCII.GetBytes(infosContact);
                                 stream.Write(reponse14, 0, reponse14.Length);
-                                
                                 break;
+                            #endregion
+                            #region 15 : CreerDiscussion
+                            //"151" + utilisateur.Pseudo + "$" + txtCategorie.Text + "$" + participants + txtNom.Text + nbrParticipants;
+                            //"15" + utilisateur.Pseudo + "$" + txtCategorie.Text + "$" + participants + txtNom.Text + nbrParticipants;
                             case "15":
                                 int nbrParticipants = 0;
                                 string categorie = string.Empty;
                                 bool publique = false;
+                                //Si le message envoyé par le client commence par 151 (discussion publique)
                                 if(SeparationSwitchDonnes[1].Substring(0,1) == "1")
                                 {
                                     publique = true;
+                                    //Enlève le 1 des données afin de ne garder que les données
                                     SeparationSwitchDonnes[1] = SeparationSwitchDonnes[1].Substring(1, SeparationSwitchDonnes[1].Length - 1);
                                 }
-                                string participants = SeparationSwitchDonnes[1].Substring(0, SeparationSwitchDonnes[1].Length - 2);
+                                string donnees = SeparationSwitchDonnes[1].Substring(0, SeparationSwitchDonnes[1].Length - 2);
+                                //Les 2 derniers chiffres des données correspondent au nombre de participants
                                 string stringNbrParticipants = SeparationSwitchDonnes[1].Substring(SeparationSwitchDonnes[1].Length - 2, 2);
-                                string[] categories = participants.Split('$');
-                                categorie = categories[1];
-                                participants = categories[0] + "," + categories[2];
-                                int test = int.Parse(stringNbrParticipants.Substring(0, 1));
-                                int test2 = int.Parse(stringNbrParticipants.Substring(1, 1));
+                                //Les données sont séparées afin d'etre traitée
+                                string[] donnee15 = donnees.Split('$');
+                                categorie = donnee15[1];
+                                //pseudo de l'utilisateur actif + des autres participants
+                                string participants = donnee15[0] + "," + donnee15[2];
+
+                                //1 variable contenant la dizaine et l'autre l'unité du nombre de participants
+                                int chiffreNbrsParticipants1 = int.Parse(stringNbrParticipants.Substring(0, 1));
+                                int chiffreNbrsParticipants2 = int.Parse(stringNbrParticipants.Substring(1, 1));
                                     
                                 SeparationSwitchDonnes[1] = participants + stringNbrParticipants;
-                                if (test == 0)
+
+                                // Si la dizaine = 0, le nombre de participants = l'unité
+                                if (chiffreNbrsParticipants1 == 0)
                                 { 
-                                    nbrParticipants = test2;
+                                    nbrParticipants = chiffreNbrsParticipants2;
                                 }
                                 else
                                 {
                                     nbrParticipants = int.Parse(stringNbrParticipants);
                                 }
+                          
                                 byte[] reponse15;
+
+                                //Essaye de créer la discussion
                                 string discussion = actionDiscussion.CreerDiscussion(SeparationSwitchDonnes, nbrParticipants, categorie, publique);
+                                //La discussion a été crée
                                 if (discussion == "Discussion creee")
                                 {
+                                    //Création des participations à la discussion
                                     actionDiscussion.CreerParticipationDiscussionCreateur(SeparationSwitchDonnes, nbrParticipants);
                                     actionDiscussion.CreerParticipationDiscussionParticipant(SeparationSwitchDonnes, nbrParticipants);
                                     reponse15 = System.Text.Encoding.ASCII.GetBytes(discussion);
                                     stream.Write(reponse15, 0, reponse15.Length);
-
                                 }
+                                //Le nom de discussion existe deja
                                 else
                                 {
                                     reponse15 = System.Text.Encoding.ASCII.GetBytes(discussion);
                                     stream.Write(reponse15, 0, reponse15.Length);
-
                                 }
-                                
-
-
-
                                 break;
+                            #endregion
+                            #region 16 : DemandeDiscussionRecue
+                            //"16" + txtPseudo.Text
                             case "16":
                                 user.Pseudo = SeparationSwitchDonnes[1];
+                                //string contenant les noms des discussions des demandes en attente + le nbr de participants
                                 string nomsDiscussionEnAttente = actionDiscussion.DemandeRecueNomDiscussion(user.Pseudo);
-                                if(nomsDiscussionEnAttente != string.Empty)
-                                {
-                                    byte[] reponse16 = System.Text.Encoding.ASCII.GetBytes(nomsDiscussionEnAttente);
-                                    stream.Write(reponse16, 0, reponse16.Length);
-                                    
-                                }
-                                else
-                                {
-                                    byte[] reponse16 = System.Text.Encoding.ASCII.GetBytes(nomsDiscussionEnAttente);
-                                    stream.Write(reponse16, 0, reponse16.Length);
-                                    
-                                }
+                                byte[] reponse16 = System.Text.Encoding.ASCII.GetBytes(nomsDiscussionEnAttente);
+                                stream.Write(reponse16, 0, reponse16.Length);
                                 break;
+                            #endregion
+                            #region 17 : DemandeDiscussionEnvoyee
                             case "17":
                                 user.Pseudo = SeparationSwitchDonnes[1];
+                                //string contenant les noms des discussions des demandes envoyées et le pseudo du contact a qui elle a été envoyée
                                 string test17 = actionDiscussion.DemandeEnvoyeePseudoParticipantNomDiscussion(user.Pseudo);
-                                if(test17 != string.Empty)
-                                {
-                                    byte[] reponse17 = System.Text.Encoding.ASCII.GetBytes(test17);
-                                    stream.Write(reponse17, 0, reponse17.Length);
-                                    
-                                    //RESTE A RECUPERER LE STRING ET L'AJOUTER A LA CMB DANS DISCUSSION ET SUPPRIMER LE CODE INUTILE DE LA JOURNEE
-                                }
-                                else
-                                {
-                                    byte[] reponse17 = System.Text.Encoding.ASCII.GetBytes(test17);
-                                    stream.Write(reponse17, 0, reponse17.Length);
-                                    
-                                }
+                                byte[] reponse17 = System.Text.Encoding.ASCII.GetBytes(test17);
+                                stream.Write(reponse17, 0, reponse17.Length);
                                 break;
+                            #endregion
+                            #region 18 : AccepterDiscussionNormale
+                            // "18" + txtPseudo.Text + "," + cboDiscussions.SelectedItem.ToString()
                             case "18":
                                 string[] donnees18 = SeparationSwitchDonnes[1].Split(',');
                                 user.Pseudo = donnees18[0];
                                 string nomDiscussion18 = donnees18[1];
                                 actionDiscussion.ChangerEtatParticipationDiscussion(nomDiscussion18, user.Pseudo);
-                                
                                 break;
+                            #endregion
+                            #region 19 : AccepterDiscussionGroupe
+                            // "19" + txtPseudo.Text + "," + cboGroupes.SelectedItem.ToString();
                             case "19":
                                 string[] donnees19 = SeparationSwitchDonnes[1].Split(',');
                                 user.Pseudo = donnees19[0];
@@ -347,76 +368,104 @@ namespace MyTcpListener
                                 actionDiscussion.ChangerEtatParticipationDiscussion(nomDiscussion19, user.Pseudo);
                                 
                                 break;
+                            #endregion
+                            #region 20 : RefuserDiscussionNormale
+                            // "20" + txtPseudo.Text + "," + cboDiscussions.SelectedItem.ToString();
                             case "20":
                                 string[] donnees20 = SeparationSwitchDonnes[1].Split(',');
                                 user.Pseudo = donnees20[0];
                                 string nomDiscussion20 = donnees20[1];
                                 actionDiscussion.SupprimerParticipationDiscussion(nomDiscussion20, user.Pseudo);
-                                
                                 break;
+                            #endregion
+                            #region 21 : RefuserDiscussionGroupe
+                            // "21" + txtPseudo.Text + "," + cboGroupes.SelectedItem.ToString();
                             case "21":
                                 string[] donnees21 = SeparationSwitchDonnes[1].Split(',');
                                 user.Pseudo = donnees21[0];
                                 string nomDiscussion21 = donnees21[1];
                                 actionDiscussion.SupprimerParticipationDiscussion(nomDiscussion21, user.Pseudo);
-                                
                                 break;
+                            #endregion
+                            #region 22 : ChargerListeDiscussion
+                            // "22" + txtPseudo.Text
                             case "22":
                                 user.Pseudo = SeparationSwitchDonnes[1];
-                                string test22 = actionDiscussion.DiscussionParticipe(user.Pseudo);
+                                string test22 = actionDiscussion.QuellesDiscussionsParticipe(user.Pseudo);
                                 byte[] reponse22 = System.Text.Encoding.ASCII.GetBytes(test22);
                                 stream.Write(reponse22, 0, reponse22.Length);
                                 
                                 break;
+                            #endregion
+                            #region 23 : ChargerListeParticipantsDiscussion
+                            //"23" + nomDiscussion
                             case "23":
                                 string nomDiscussion = SeparationSwitchDonnes[1];
                                 string nomsParticipants = actionDiscussion.RetourneNomsParticipantsDiscussion(nomDiscussion);
                                 byte[] reponse23 = System.Text.Encoding.ASCII.GetBytes(nomsParticipants);
                                 stream.Write(reponse23, 0, reponse23.Length);
-                                
                                 break;
+                            #endregion
+                            #region 24 : EnvoiMessageDiscussion
+                            // "24" + utilisateur.Pseudo + "," + txtMessageEnvoi.Text + "," + dateTime.ToString() + "," + nomDiscussion;
                             case "24":
                                 string utilisateurMessageHeure = SeparationSwitchDonnes[1];
                                 string[] messageDecompose = SeparationSwitchDonnes[1].Split(',');
                                 user.Pseudo = messageDecompose[0];
                                 string messageRecu = messageDecompose[1];
+                                //Le message retrouve sa valeur originale
                                 messageRecu = messageRecu.Replace('§', ',');
                                 string dateHeure = messageDecompose[2];
                                 string nomDiscussion24 = messageDecompose[3];
                                 actionDiscussion.EnvoiMessage(user.Pseudo,messageRecu,dateHeure,nomDiscussion24);
-                                
                                 break;
+                            #endregion
+                            #region 25 : TimerAffichageMessagesDiscussion
+                            // "25" + nomDiscussion;
                             case "25":
                                 string nomDiscussion25 = SeparationSwitchDonnes[1];
                                 string retour25 = actionDiscussion.actualiserMessages(nomDiscussion25);
                                 byte[] reponse25 = System.Text.Encoding.ASCII.GetBytes(retour25);
                                 stream.Write(reponse25, 0, reponse25.Length);
-                                
                                 break;
-                            case "26":
+                            #endregion
+                            #region 26 : AdministrateurDiscussion
+                            // "26" + nomDiscussion;
+                            case "26": 
                                 string nomDiscussion26 = SeparationSwitchDonnes[1];
                                 string retour26 = actionDiscussion.selectionnePseudoAdministrateur(nomDiscussion26);
                                 byte[] reponse26 = System.Text.Encoding.ASCII.GetBytes(retour26);
                                 stream.Write(reponse26, 0, reponse26.Length); 
                                 break;
-                            case "27":
+                            #endregion
+                            #region 27 : 
+                            /*case "27":
                                 string nomDiscussion27 = SeparationSwitchDonnes[1];
                                 string retour27 = actionDiscussion.RetourneNomsParticipantsDiscussion(nomDiscussion27);
                                 byte[] reponse27 = System.Text.Encoding.ASCII.GetBytes(retour27);
                                 stream.Write(reponse27, 0, reponse27.Length);
-                                break;
+                                break;*/
+                            #endregion
+                            #region 28 : AjouteDemandesDiscussions
+                            //"28" + nomDiscussion + "," + listeParticipants
                             case "28":
                                 string[] message28Decompose = SeparationSwitchDonnes[1].Split(',');
                                 string nomDiscussion28 = message28Decompose[0];
                                 string participants28 = message28Decompose[1];
                                 actionDiscussion.AjouteParticipationDiscussion(nomDiscussion28, participants28);
                                 break;
+                            #endregion
+                            #region 29 : SuppressionMembreDiscussion
                             case "29":
+                                // "29" + nomDiscussion +","+lstParticipants.SelectedItem.ToString() ;
                                 string[] message29Decompose = SeparationSwitchDonnes[1].Split(',');
                                 string nomDiscussion29 = message29Decompose[0];
                                 user.Pseudo = message29Decompose[1];
                                 actionDiscussion.SupprimerParticipationDiscussion(nomDiscussion29, user.Pseudo);
                                 break;
+                            #endregion
+                            #region 30 : 
+                            // "30" + txtPseudo.Text + "," + lstDiscussions.SelectedItem.ToString();
                             case "30":
                                 string[] message30Decompose = SeparationSwitchDonnes[1].Split(',');
                                 user.Pseudo = message30Decompose[0];
@@ -424,6 +473,7 @@ namespace MyTcpListener
                                 actionDiscussion.SupprimerParticipationDiscussion(nomDiscussion30, user.Pseudo);
                                 actionDiscussion.AjouterArchive(nomDiscussion30, user.Pseudo);
                                 break;
+                            #endregion
                             case "31":
                                 user.Pseudo = SeparationSwitchDonnes[1];
                                 string retour31 = actionDiscussion.SelectionneArchives(user.Pseudo);

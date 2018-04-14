@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.cmdAnnuler = new System.Windows.Forms.Button();
-            this.cmdValider = new System.Windows.Forms.Button();
             this.lstParticipants = new System.Windows.Forms.ListBox();
             this.lblParticipants = new System.Windows.Forms.Label();
             this.cmdSupprimer = new System.Windows.Forms.Button();
@@ -43,16 +42,6 @@
             this.cmdAnnuler.TabIndex = 7;
             this.cmdAnnuler.Text = "Annuler";
             this.cmdAnnuler.UseVisualStyleBackColor = true;
-            // 
-            // cmdValider
-            // 
-            this.cmdValider.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.cmdValider.Location = new System.Drawing.Point(376, 317);
-            this.cmdValider.Name = "cmdValider";
-            this.cmdValider.Size = new System.Drawing.Size(75, 23);
-            this.cmdValider.TabIndex = 13;
-            this.cmdValider.Text = "Valider";
-            this.cmdValider.UseVisualStyleBackColor = true;
             // 
             // lstParticipants
             // 
@@ -73,7 +62,7 @@
             // 
             // cmdSupprimer
             // 
-            this.cmdSupprimer.Location = new System.Drawing.Point(268, 155);
+            this.cmdSupprimer.Location = new System.Drawing.Point(373, 317);
             this.cmdSupprimer.Name = "cmdSupprimer";
             this.cmdSupprimer.Size = new System.Drawing.Size(75, 23);
             this.cmdSupprimer.TabIndex = 16;
@@ -89,7 +78,6 @@
             this.Controls.Add(this.cmdSupprimer);
             this.Controls.Add(this.lstParticipants);
             this.Controls.Add(this.lblParticipants);
-            this.Controls.Add(this.cmdValider);
             this.Controls.Add(this.cmdAnnuler);
             this.Name = "FrmDiscussionSupprimer";
             this.Text = "Supprimer des contacts de la discussion";
@@ -102,7 +90,6 @@
         #endregion
 
         private System.Windows.Forms.Button cmdAnnuler;
-        private System.Windows.Forms.Button cmdValider;
         private System.Windows.Forms.ListBox lstParticipants;
         private System.Windows.Forms.Label lblParticipants;
         private System.Windows.Forms.Button cmdSupprimer;

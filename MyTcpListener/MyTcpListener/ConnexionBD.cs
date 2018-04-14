@@ -85,6 +85,22 @@ namespace MyTcpListener
             return reponse;
         }
 
+        public string SelectTripleWhile2(string requete)
+        {
+            this.connection.Open();
+            MySqlCommand cmd = this.connection.CreateCommand();
+            cmd.CommandText = requete;
+            string reponse = string.Empty;
+            var cmdReader = cmd.ExecuteReader();
+            while (cmdReader.Read())
+            {
+                reponse += String.Format("{0}", cmdReader[0]) + " " + "$" + string.Format("{0}", cmdReader[1]) + " " + "$" + string.Format("{0}", cmdReader[2])+ "*";
+            }
+
+            this.connection.Close();
+            return reponse;
+        }
+
         public string SelectDoubleWhile2(string requete)
         {
             this.connection.Open();
@@ -136,6 +152,12 @@ namespace MyTcpListener
 
         #region UPDATE
 
+        /// <summary>
+        /// Update le champ statut de participationdiscussions de "En attente" à "Participe"
+        /// </summary>
+        /// Utilisé lorsqu'une demande de discussion est acceptée
+        /// <param name="idDiscussion"></param>
+        /// <param name="idUtilisateur"></param>
         public void UpdateParticipationDiscussions(int idDiscussion, int idUtilisateur)
         {
             string statut = "Participe";
@@ -171,7 +193,7 @@ namespace MyTcpListener
         /// <summary>
         /// Supprime une demande de contact
         /// </summary>
-        /// Est utilisé lorsqu'une demande de contact est acceptée
+        /// Est utilisé lorsqu'une demande de contact est acceptée ou refusée
         /// <param name="idUser"></param>
         /// <param name="idContact"></param>
         public void SupprimerDemandeContact(int idUser, int idContact)
@@ -198,6 +220,12 @@ namespace MyTcpListener
             UpdateOrDelete(requete);
         }
 
+        /// <summary>
+        /// Supprime une demande de participation à une discussion
+        /// </summary>
+        /// Est utilisé lorsqu'une demande de discussion est refusée
+        /// <param name="idDiscussion"></param>
+        /// <param name="idUtilisateur"></param>
         public void SupprimerParticipationDiscussion(int idDiscussion, int idUtilisateur)
         {
             string requete = "DELETE FROM participationDiscussions WHERE fkUser =\"" + idUtilisateur + "\" and fkDiscussion =\"" + idDiscussion + "\"";
@@ -255,10 +283,22 @@ namespace MyTcpListener
             return reponse;
         }
 
+        public string selectionnePseudoAdministrateur(string nomDiscussion)
+        {
+            string requete = "SELECT distinct userPseudonym from participationdiscussions inner join user on idUser = fkAdministrateur inner join discussion on idDiscussion = fkDiscussion where discussionName =\"" + nomDiscussion + "\"";
+            string reponse = SelectSimple(requete);
+            return reponse;
+        }
+
+        /// <summary>
+        /// Retourne tous les messages d'une discussion dans l'ordre d'envoi
+        /// </summary>
+        /// <param name="idDiscussion"></param>
+        /// <returns></returns>
         public string SelectionneMessages(int idDiscussion)
         {
-            string requete = "SELECT sendTime, messageContent from message where fkDiscussion =\"" + idDiscussion + "\" ORDER BY sendTime";
-            string reponse = SelectDoubleWhile2(requete);
+            string requete = "SELECT userPseudonym, sendTime, messageContent from message inner join user on idUser = fkUser where fkDiscussion =\"" + idDiscussion + "\" ORDER BY sendTime";
+            string reponse = SelectTripleWhile2(requete);
             if(reponse != string.Empty)
             {
                 reponse = reponse.Substring(0, reponse.Length - 1);
@@ -458,6 +498,41 @@ namespace MyTcpListener
 
             return idDiscussion;
         }
+
+        public string VerifieCategorie(string categorie)
+        {
+            string requete = "SELECT categoryName from category where categoryName =\"" + categorie + "\"";
+            string reponse = SelectSimple(requete);
+            return reponse;
+        }
+
+        public string SelectionneNomParticipantsDiscussion(string nomDiscussion)
+        {
+            string statut = "Participe";
+            string requete = "SELECT userPseudonym from participationdiscussions inner join user on idUser = fkUser inner join discussion on idDiscussion = fkDiscussion where statut =\"" + statut + "\" and discussionName =\"" + nomDiscussion + "\"";
+            string reponse = SelectSimpleWhile(requete);
+            reponse = reponse.Substring(0, reponse.Length - 1);
+            return reponse;
+        }
+
+        /// <summary>
+        /// Retourne le nom de la discussion auquel participe ou va participer un user
+        /// </summary>
+        /// <param name="idUtilisateur"></param>
+        /// <param name="statut"></param>
+        /// <returns></returns>
+        public string SelectionneNomDiscussion(int idUtilisateur, string statut)
+        {
+            string requete = "SELECT discussionName from participationdiscussions inner join discussion on idDiscussion = fkDiscussion where fkUser =\"" + idUtilisateur + "\" and statut =\"" + statut + "\"";
+            string idDiscussion = SelectSimpleWhile(requete);
+            if (idDiscussion != string.Empty)
+            {
+                idDiscussion = idDiscussion.Substring(0, idDiscussion.Length - 1);
+            }
+
+            return idDiscussion;
+        }
+
         public string SelectionneIdDiscussion(int idUtilisateur, string statut)
         {
             
@@ -469,6 +544,14 @@ namespace MyTcpListener
             }
 
             return idDiscussion;
+        }
+
+        public string SelectionnePseudoUserNomDiscussionEnattente(int idAdministrateur)
+        {
+            string statut = "En attente";
+            string requete = "SELECT userPseudonym, discussionName from participationdiscussions inner join user on fkUser = idUser inner join discussion on idDiscussion = fkDiscussion where fkAdministrateur =\"" + idAdministrateur + "\" and statut =\"" + statut + "\"";
+            string reponse = SelectDoubleWhile(requete);
+            return reponse;
         }
 
         public string SelectionneIdUserNomDiscussionEnAttente(int idAdministrateur)
@@ -494,7 +577,12 @@ namespace MyTcpListener
             return reponse;
         }
 
-        public string GetIdAdminParticipantsDiscussion(string idDiscussion)
+        /// <summary>
+        /// Selectionne l'id de l'administrateur d'une discussion en fonction de l'idDiscussion
+        /// </summary>
+        /// <param name="idDiscussion"></param>
+        /// <returns></returns>
+        public string SelectionneIdAdministrateur(string idDiscussion)
         {
             string requete = "SELECT fkAdministrateur from participationdiscussions where fkDiscussion = \"" + idDiscussion + "\"";
             string reponse = SelectSimple(requete);
@@ -597,15 +685,14 @@ namespace MyTcpListener
 
         #region INSERT
         
-        //TODO REDONDANCE DANS LA BASE DE DONNEE SUPPRIMER LA TABLE DEMANDECONTACT ET AJOUTE UN CHAMP STATUT A LA TABLE CONTACT
-        //TODO AJOUTER LES DEMANDES DE DISCUSSIONS
-        //TODO CHANGER LE STATUT QUAND ILS ACCEPTENT LA DEMANDE
-        //TODO SUPPRIMER LA PARTICIPATIONDISCUSSION QUAND ILS REFUSENT LA DEMANDE
-        //TODO CREER UN ADMINISTRATEUR POUR CHAQUE DISCUSSION, L'ADMIN SERA LE CREATEUR
-        //TODO AJOUTER LES DISCUSSION QUAND ILS ACCEPTENT LA DEMANDE
-        //TODO SUPPRIMER LES DISCUSSIONS QUAND ILS LES SUPPRIMENT
-        //TODO AJOUTER DANS ARCHIVES QUAND ILS LES ARCHIVENT
-        //TODO AJOUTER DANS DISCUSSION QUAND ILS LES ACTUALISENT
+
+        /// <summary>
+        /// Crée la participation à la discussion
+        /// </summary>
+        /// <param name="idUser"></param>
+        /// <param name="idDiscussion"></param>
+        /// <param name="idAdministrateur"></param>
+        /// <param name="statut"></param>
         public void CreerParticipationDisucssion(int idUser, int idDiscussion, int idAdministrateur, string statut)
         {
             this.connection.Open();
@@ -631,6 +718,11 @@ namespace MyTcpListener
             this.connection.Close();
         }
 
+        /// <summary>
+        /// Crée le  lien entre la categorie et la discussion
+        /// </summary>
+        /// <param name="idDiscussion"></param>
+        /// <param name="idCategory"></param>
         public void AjoutLienCategorieDiscussion(int idDiscussion, int idCategory)
         {
             this.connection.Open();
@@ -652,6 +744,11 @@ namespace MyTcpListener
             this.connection.Close();
         }
 
+        /// <summary>
+        /// Crée une discussion
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="publique"></param>
         public void CreerDiscussion(string nom, bool publique)
         {
             this.connection.Open();
@@ -663,7 +760,13 @@ namespace MyTcpListener
             this.connection.Close();
         }
      
-        
+        /// <summary>
+        /// Ajoute un message
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="date"></param>
+        /// <param name="idDiscussion"></param>
+        /// <param name="idUser"></param>
         public void ajouterMessage(string message, DateTime date, int idDiscussion, int idUser)
         {
             this.connection.Open();

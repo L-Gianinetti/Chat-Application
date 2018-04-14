@@ -127,6 +127,11 @@ namespace ChatApplication
             
         }
 
+        /// <summary>
+        /// Affiche la liste de discussions
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdDiscussions_Click(object sender, EventArgs e)
         {
             montrerPannel(pnlDiscussions);
@@ -245,6 +250,11 @@ namespace ChatApplication
 
         }
 
+        /// <summary>
+        /// Refus d'une demande de contact
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdRefuser_Click(object sender, EventArgs e)
         {
             string selectedItem = lstRecues.GetItemText(lstRecues.SelectedItem);
@@ -259,8 +269,14 @@ namespace ChatApplication
             
         }
 
+        /// <summary>
+        /// Permet de supprimer le contact sélectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdASupprimerContacts_Click(object sender, EventArgs e)
         {
+            //Si un contact est sélectionné, on envoi au serveur son pseudo ainsi que celui de l'utilisateur actif pour supprimer le contact
             if(lstContacts.SelectedIndex != -1)
             {
                 string selectedItem = lstContacts.GetItemText(lstContacts.SelectedItem);
@@ -309,6 +325,7 @@ namespace ChatApplication
 
             pnlDiscussionDemande.Visible = true;
             pnlDiscussionAffichage.Visible = false;
+            //Demandes discussion envoyées
             string message17 = "17" + txtPseudo.Text;
             string reponse17 = envoiMessage.Connect(message17);
             if(reponse17 != string.Empty)
@@ -321,45 +338,35 @@ namespace ChatApplication
                 }
             }
 
-
+            //Demandes discussion recues
             string message16 = "16" + txtPseudo.Text;
             string reponse16 = envoiMessage.Connect(message16);
-            if(reponse16 != string.Empty)
+            //Si il y a des demandes recues
+            if (reponse16 != string.Empty)
             {
-                            string[] nomsDiscussionEnAttente = reponse16.Split(',');
-            for(int y =0; y < nomsDiscussionEnAttente.Count(); y++)
-            {
-                    string[] separerNomNombreParticipant = nomsDiscussionEnAttente[y].Split('/');
-                    if(int.Parse(separerNomNombreParticipant[1]) > 2)
-                    {
-                        
-                        if (!cboGroupes.Items.Contains(separerNomNombreParticipant[0]))
+                string[] nomsDiscussionEnAttente = reponse16.Split(',');
+                //Pour chaque demande recue
+                for (int y =0; y < nomsDiscussionEnAttente.Count(); y++)
+                {
+                        string[] separerNomNombreParticipant = nomsDiscussionEnAttente[y].Split('/');
+                        //Si il y a plus de 2 participants --> discussion de groupe
+                        if (int.Parse(separerNomNombreParticipant[1]) > 2)
                         {
-                            cboGroupes.Items.Add(separerNomNombreParticipant[0]);
+                            if (!cboGroupes.Items.Contains(separerNomNombreParticipant[0]))
+                            {
+                                cboGroupes.Items.Add(separerNomNombreParticipant[0]);
+                            }
                         }
-
-                    }
-                    else
-                    {
-                        if (!cboDiscussions.Items.Contains(separerNomNombreParticipant[0]))
+                        // --> discussion "normale"
+                        else
                         {
-                            cboDiscussions.Items.Add(separerNomNombreParticipant[0]);
+                            if (!cboDiscussions.Items.Contains(separerNomNombreParticipant[0]))
+                            {
+                                cboDiscussions.Items.Add(separerNomNombreParticipant[0]);
+                            }
                         }
-                        
-                    }
-                    
+                }
             }
-            }
-
-            /*frmDiscussionCreer = new FrmDisucssionCreer(txtPseudo.Text);
-            string temp = FrmDisucssionCreer.Temporaire;
-            int count = temp.TakeWhile(c => c == ',').Count();
-            string[] stock = new string[count+1];
-            stock = temp.Split(',');
-            for(int i = 0; i < stock.Count(); i++)
-            {
-                cmbDemandesDisucssionsEnvoyees.Items.Add(stock[i]);
-            }*/
         }
 
         private void cmdADiscussions_Click(object sender, EventArgs e)
@@ -383,6 +390,11 @@ namespace ChatApplication
             }
         }
 
+        /// <summary>
+        /// Accepte une discussion "normale"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdAccepterDiscussion_Click(object sender, EventArgs e)
         {
             if(cboDiscussions.SelectedIndex > -1)
@@ -393,6 +405,11 @@ namespace ChatApplication
             }
         }
 
+        /// <summary>
+        /// Accepte une discussion de groupe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdAccepterGroupe_Click(object sender, EventArgs e)
         {
             if (cboGroupes.SelectedIndex > -1)
@@ -444,6 +461,12 @@ namespace ChatApplication
             }
         }
 
+        /// <summary>
+        /// Archive une discussion
+        /// </summary>
+        /// Supprime la discussion et Ajoute une archive
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdArchiverDiscussions_Click(object sender, EventArgs e)
         {
             if(lstDiscussions.SelectedIndex > -1)
@@ -452,8 +475,6 @@ namespace ChatApplication
                 envoiMessage.Connect(message30);
                 lstDiscussions.Items.Remove(lstDiscussions.SelectedItem);
             }
-
-
         }
 
         private void cmdSupprimerArchives_Click(object sender, EventArgs e)

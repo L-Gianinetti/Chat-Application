@@ -26,9 +26,9 @@ namespace ChatApplication
 
         private void FrmDiscussionSupprimer_Load(object sender, EventArgs e)
         {
-            string message27 = "27" + nomDiscussion;
-            string reponse27 = envoiMessage.Connect(message27);
-            string[] nomsParticipants = reponse27.Split(',');
+            string message23 = "23" + nomDiscussion;
+            string reponse23 = envoiMessage.Connect(message23);
+            string[] nomsParticipants = reponse23.Split(',');
             for(int i =0; i < nomsParticipants.Length; i++)
             {
                 if (!lstParticipants.Items.Contains(nomsParticipants[i]))
@@ -41,6 +41,11 @@ namespace ChatApplication
 
         }
 
+        /// <summary>
+        /// Suppresion par l'administrateur d'un des membres d'une discussion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdSupprimer_Click(object sender, EventArgs e)
         {
             if(lstParticipants.SelectedIndex > -1)
@@ -48,8 +53,8 @@ namespace ChatApplication
                 string message29 = "29" + nomDiscussion +","+lstParticipants.SelectedItem.ToString() ;
                 envoiMessage.Connect(message29);
                 lstParticipants.Items.Remove(lstParticipants.SelectedItem);
-
             }
         }
+
     }
 }

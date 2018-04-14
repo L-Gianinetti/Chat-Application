@@ -33,6 +33,12 @@ namespace ChatApplication
             InitializeComponent();
             ckbCategorie.Checked = true;
         }
+
+        /// <summary>
+        /// Creer une discussion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdCreer_Click(object sender, EventArgs e)
         {
             //creation d'une string contenant les participants à la discussion
@@ -54,11 +60,13 @@ namespace ChatApplication
 
             string reponseCreerDiscussion = string.Empty;
 
+            //Envoit au serveur le pseudo de l'utilisateur actif, la categorie, les pseudos des participants, le nom de la dscussion et le nombre de participant
             if(ckbPublique.Checked == true)
             {
                 string creerDiscussion = "151" + utilisateur.Pseudo + "$" + txtCategorie.Text + "$" + participants + txtNom.Text + nbrParticipants;
                 reponseCreerDiscussion = envoiMessage.Connect(creerDiscussion);
             }
+            //Si la discussion n'est pas publique
             else
             {
                 string creerDiscussion = "15" + utilisateur.Pseudo + "$" + txtCategorie.Text + "$" + participants + txtNom.Text + nbrParticipants;

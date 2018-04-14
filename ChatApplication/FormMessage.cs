@@ -43,47 +43,46 @@ namespace ChatApplication
         {
             string message = "25" + nomDiscussion;
             string reponse = envoiMessage.Connect(message);
-            
-
 
             if(reponse != string.Empty)
             {
-                reponse = reponse.Substring(0, reponse.Length - 1);
+                //reponse = reponse.Substring(0, reponse.Length - 1);
+                //Les messages sont séparés par des "*"
                 string[] messageRecu = reponse.Split('*');
                 string[] test;
                 for (int i = 0; i < messageRecu.Length; i++)
                 {
+                    //Les différents éléments du message sont séparés par un "§"
                     test = messageRecu[i].Split('$');
                     string messageListe = string.Empty;
-                    if(test[0].Length > 22)
+                    //Nombre de caractères "minimum" (pseudo, date) avant le début du message
+                    if(test[0].Length > 2 && test[1].Length > 18)
                     {
-                        messageListe = test[0] + " : " + test[1];
-
+                        messageListe = test[0] + " - " + test[1] + " : " + test[2];
                     }
-                    
+                    //afficher une seule fois chaque message
                     if (!lstMessages.Items.Contains(messageListe) && messageListe != string.Empty)
                     {
                         lstMessages.Items.Add(messageListe);
-                    }
-                    
+                    }  
                 }
             }
-
         }
+
 
         private void FrmMessage_Load(object sender, EventArgs e)
         {
-            
+            //Pour afficher la liste des participants
             string message23 = "23" + nomDiscussion;
-            //string reponse = envoiMessage.Connect(message23);
             lblParticipants.Text = envoiMessage.Connect(message23);
 
+            //Pour activer les boutons ajouter et supprimer si l'utilisateur est l'admin de la discussion
             string message26 = "26" + nomDiscussion;
             string reponse26 = envoiMessage.Connect(message26);
             if(reponse26 == utilisateur.Pseudo)
             {
                 cmdAAjouter.Enabled = true;
-                cmdSmiley.Enabled = true;
+                cmdASupprimer.Enabled = true;
             }
             else
             {
@@ -99,13 +98,11 @@ namespace ChatApplication
         {
             DateTime dateTime = DateTime.Now;
             MessageBox.Show(dateTime.ToString());
+            //Remplace les "," par des "§" car je différencie les éléments par une virgule
             txtMessageEnvoi.Text = txtMessageEnvoi.Text.Replace(',', '§');
+            //Envoi du message au serveur pseudo + message + date +nom discussion
             string message = "24" + utilisateur.Pseudo + "," + txtMessageEnvoi.Text + "," + dateTime.ToString() + "," + nomDiscussion;
-            string reponse = envoiMessage.Connect(message);
-
-           /* myTimer.Tick += new EventHandler(myTimerTick);
-            myTimer.Interval = 1000;
-            myTimer.Start();*/
+            envoiMessage.Connect(message);
         }
 
         private void cmdAAjouter_Click(object sender, EventArgs e)

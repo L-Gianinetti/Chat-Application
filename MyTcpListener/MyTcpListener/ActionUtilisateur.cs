@@ -127,7 +127,6 @@ namespace MyTcpListener
         /// <returns></returns>
         public string RetourneInfoProfil(User user)
         {
-            //utilisateur = RetournePseudoUtilisateur(donnee);
             utilisateur.Nom = connexionBD.RetourneInfoProfilNom(user);
             utilisateur.Prenom = connexionBD.RetourneInfoProfilPrenom(user);
             utilisateur.Description = connexionBD.RetourneInfoProfilDescription(user);
@@ -276,32 +275,26 @@ namespace MyTcpListener
         /// Supprime la demande chez les 2 utilisateurs
         /// </summary>
         /// <param name="donnee"></param>
-        public void SupprimerDemandeContact(string[]donnee)
+        public void SupprimerDemandeContact(User user, User contact)
         {
-            utilisateur = RetournePseudoUtilisateur(donnee);
-            contact = RetournePseudoContact(donnee);
-            int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
+            int idUtilisateur = connexionBD.retourneIdUser(user);
             int idContact = connexionBD.retourneIdUser(contact);
-
-            //connexionBD.ContactAccepteSupprimerDemandeRecue(idUtilisateur, idContact, statutRecu);
-            //connexionBD.ContactAccepteSupprimerDemandeRecue(idContact, idUtilisateur, statutEnvoyee);
             connexionBD.SupprimerDemandeContact(idUtilisateur, idContact);
             connexionBD.SupprimerDemandeContact(idContact, idUtilisateur);
         }
+
         /// <summary>
         /// Supprime le contact chez les 2 utilisateurs
         /// </summary>
         /// <param name="donnee"></param>
-        public void SupprimerContact(string[] donnee)
+        public void SupprimerContact(User user, User contact)
         {
-            utilisateur = RetournePseudoUtilisateur(donnee);
-            contact = RetournePseudoContact(donnee);
-            int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
+            int idUtilisateur = connexionBD.retourneIdUser(user);
             int idContact = connexionBD.retourneIdUser(contact);
-
             connexionBD.SupprimerContact(idUtilisateur, idContact);
             connexionBD.SupprimerContact(idContact, idUtilisateur);
         }
+
         public void MiseAJourProfilContact(string[] donnee)
         {
             utilisateur = RetournePseudoUtilisateur(donnee);
@@ -309,22 +302,31 @@ namespace MyTcpListener
 
 
         }
+
+        /// <summary>
+        /// Met à jour la table contact (annotation)
+        /// </summary>
+        /// <param name="donnees"></param>
         public void ModificationContact(string[] donnees)
         {
-            
-            
             //int pour séparer les données
             int i = 0;
-            //int j = 0;
+            
             //tableau contenant les données séparement
             string[] donnee = donnees[1].Split(',');
             foreach (string element in donnee)
             {
+                //Rassemble l'annotation dans une seule case
                 if (i > 1)
                 {
-                    donnee[2] += element;
+                    if(i == 2)
+                    {
+                        donnee[2] = string.Empty;
+                    }
+                    donnee[2] += element + ",";
                     i++;
                 }
+                //Garde les 2 premiers éléments (pseudos) dans une case séparée
                 else
                 {
                     donnee[i] = element;
@@ -336,20 +338,18 @@ namespace MyTcpListener
             int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
             int idContact = connexionBD.retourneIdUser(contact);
             string annotation = donnee[2];
-            annotation = annotation.Substring(0, annotation.Length / 2);
+            annotation = annotation.Substring(0, annotation.Length -1);
+            //Mise à jour du contact
             connexionBD.MettreAJourContact(idUtilisateur, idContact, annotation);
 
         }
-        public string RetourneAnnotationContact(string[] donnee)
+
+        public string RetourneAnnotationContact(User user, User contact)
         {
-            utilisateur = RetournePseudoUtilisateur(donnee);
-            contact = RetournePseudoContact(donnee);
-            int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
+            int idUtilisateur = connexionBD.retourneIdUser(user);
             int idContact = connexionBD.retourneIdUser(contact);
             string annotation = connexionBD.InfoContactAnnotation(idUtilisateur, idContact);
             return annotation;
-
-
         }
     }
 }

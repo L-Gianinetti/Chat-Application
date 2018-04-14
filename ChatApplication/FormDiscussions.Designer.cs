@@ -60,6 +60,13 @@
             this.pnlDiscussionAffichage = new System.Windows.Forms.Panel();
             this.cmdOuvrir = new System.Windows.Forms.Button();
             this.pnlContact = new System.Windows.Forms.Panel();
+            this.pnlContactsListe = new System.Windows.Forms.Panel();
+            this.lstContacts = new System.Windows.Forms.ListBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmdADemandesContacts = new System.Windows.Forms.Button();
+            this.cmdASupprimerContacts = new System.Windows.Forms.Button();
+            this.cmdAModifierContacts = new System.Windows.Forms.Button();
+            this.cmdAAjouterContacts = new System.Windows.Forms.Button();
             this.pnlContactsDemandes = new System.Windows.Forms.Panel();
             this.grbDemandes = new System.Windows.Forms.GroupBox();
             this.cmdAccepter = new System.Windows.Forms.Button();
@@ -68,13 +75,6 @@
             this.lstEnvoyees = new System.Windows.Forms.ListBox();
             this.lblenvoyees = new System.Windows.Forms.Label();
             this.lblrecues = new System.Windows.Forms.Label();
-            this.pnlContactsListe = new System.Windows.Forms.Panel();
-            this.lstContacts = new System.Windows.Forms.ListBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmdADemandesContacts = new System.Windows.Forms.Button();
-            this.cmdASupprimerContacts = new System.Windows.Forms.Button();
-            this.cmdAModifierContacts = new System.Windows.Forms.Button();
-            this.cmdAAjouterContacts = new System.Windows.Forms.Button();
             this.pnlProfil = new System.Windows.Forms.Panel();
             this.grbProfil = new System.Windows.Forms.GroupBox();
             this.grbInformations = new System.Windows.Forms.GroupBox();
@@ -102,10 +102,10 @@
             this.groupBox2.SuspendLayout();
             this.pnlDiscussionAffichage.SuspendLayout();
             this.pnlContact.SuspendLayout();
-            this.pnlContactsDemandes.SuspendLayout();
-            this.grbDemandes.SuspendLayout();
             this.pnlContactsListe.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.pnlContactsDemandes.SuspendLayout();
+            this.grbDemandes.SuspendLayout();
             this.pnlProfil.SuspendLayout();
             this.grbProfil.SuspendLayout();
             this.grbInformations.SuspendLayout();
@@ -274,7 +274,7 @@
             this.pnlDiscussions.Controls.Add(this.pnlDiscussionDemande);
             this.pnlDiscussions.Controls.Add(this.pnlDiscussionAffichage);
             this.pnlDiscussions.Controls.Add(this.grbActions);
-            this.pnlDiscussions.Location = new System.Drawing.Point(203, 534);
+            this.pnlDiscussions.Location = new System.Drawing.Point(176, 12);
             this.pnlDiscussions.Name = "pnlDiscussions";
             this.pnlDiscussions.Size = new System.Drawing.Size(859, 501);
             this.pnlDiscussions.TabIndex = 6;
@@ -434,15 +434,84 @@
             // 
             this.pnlContact.Controls.Add(this.pnlContactsListe);
             this.pnlContact.Controls.Add(this.groupBox1);
-            this.pnlContact.Location = new System.Drawing.Point(230, 54);
+            this.pnlContact.Location = new System.Drawing.Point(165, 21);
             this.pnlContact.Name = "pnlContact";
             this.pnlContact.Size = new System.Drawing.Size(672, 479);
             this.pnlContact.TabIndex = 6;
             // 
+            // pnlContactsListe
+            // 
+            this.pnlContactsListe.Controls.Add(this.lstContacts);
+            this.pnlContactsListe.Location = new System.Drawing.Point(16, 101);
+            this.pnlContactsListe.Name = "pnlContactsListe";
+            this.pnlContactsListe.Size = new System.Drawing.Size(614, 380);
+            this.pnlContactsListe.TabIndex = 19;
+            // 
+            // lstContacts
+            // 
+            this.lstContacts.FormattingEnabled = true;
+            this.lstContacts.Location = new System.Drawing.Point(20, 10);
+            this.lstContacts.Name = "lstContacts";
+            this.lstContacts.Size = new System.Drawing.Size(570, 355);
+            this.lstContacts.TabIndex = 18;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cmdADemandesContacts);
+            this.groupBox1.Controls.Add(this.cmdASupprimerContacts);
+            this.groupBox1.Controls.Add(this.cmdAModifierContacts);
+            this.groupBox1.Controls.Add(this.cmdAAjouterContacts);
+            this.groupBox1.Location = new System.Drawing.Point(13, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(603, 87);
+            this.groupBox1.TabIndex = 17;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Actions";
+            // 
+            // cmdADemandesContacts
+            // 
+            this.cmdADemandesContacts.Location = new System.Drawing.Point(401, 28);
+            this.cmdADemandesContacts.Name = "cmdADemandesContacts";
+            this.cmdADemandesContacts.Size = new System.Drawing.Size(181, 36);
+            this.cmdADemandesContacts.TabIndex = 3;
+            this.cmdADemandesContacts.Text = "Demandes";
+            this.cmdADemandesContacts.UseVisualStyleBackColor = true;
+            this.cmdADemandesContacts.Click += new System.EventHandler(this.cmdADemandesContacts_Click);
+            // 
+            // cmdASupprimerContacts
+            // 
+            this.cmdASupprimerContacts.Location = new System.Drawing.Point(241, 28);
+            this.cmdASupprimerContacts.Name = "cmdASupprimerContacts";
+            this.cmdASupprimerContacts.Size = new System.Drawing.Size(141, 36);
+            this.cmdASupprimerContacts.TabIndex = 2;
+            this.cmdASupprimerContacts.Text = "Supprimer";
+            this.cmdASupprimerContacts.UseVisualStyleBackColor = true;
+            this.cmdASupprimerContacts.Click += new System.EventHandler(this.cmdASupprimerContacts_Click);
+            // 
+            // cmdAModifierContacts
+            // 
+            this.cmdAModifierContacts.Location = new System.Drawing.Point(110, 28);
+            this.cmdAModifierContacts.Name = "cmdAModifierContacts";
+            this.cmdAModifierContacts.Size = new System.Drawing.Size(114, 36);
+            this.cmdAModifierContacts.TabIndex = 1;
+            this.cmdAModifierContacts.Text = "Modifier";
+            this.cmdAModifierContacts.UseVisualStyleBackColor = true;
+            this.cmdAModifierContacts.Click += new System.EventHandler(this.cmdAModifierContacts_Click);
+            // 
+            // cmdAAjouterContacts
+            // 
+            this.cmdAAjouterContacts.Location = new System.Drawing.Point(15, 28);
+            this.cmdAAjouterContacts.Name = "cmdAAjouterContacts";
+            this.cmdAAjouterContacts.Size = new System.Drawing.Size(75, 36);
+            this.cmdAAjouterContacts.TabIndex = 0;
+            this.cmdAAjouterContacts.Text = "Ajouter";
+            this.cmdAAjouterContacts.UseVisualStyleBackColor = true;
+            this.cmdAAjouterContacts.Click += new System.EventHandler(this.cmdAAjouterContacts_Click);
+            // 
             // pnlContactsDemandes
             // 
             this.pnlContactsDemandes.Controls.Add(this.grbDemandes);
-            this.pnlContactsDemandes.Location = new System.Drawing.Point(275, 54);
+            this.pnlContactsDemandes.Location = new System.Drawing.Point(176, 18);
             this.pnlContactsDemandes.Name = "pnlContactsDemandes";
             this.pnlContactsDemandes.Size = new System.Drawing.Size(614, 379);
             this.pnlContactsDemandes.TabIndex = 19;
@@ -516,79 +585,10 @@
             this.lblrecues.TabIndex = 9;
             this.lblrecues.Text = "Demandes reçues :";
             // 
-            // pnlContactsListe
-            // 
-            this.pnlContactsListe.Controls.Add(this.lstContacts);
-            this.pnlContactsListe.Location = new System.Drawing.Point(16, 101);
-            this.pnlContactsListe.Name = "pnlContactsListe";
-            this.pnlContactsListe.Size = new System.Drawing.Size(614, 380);
-            this.pnlContactsListe.TabIndex = 19;
-            // 
-            // lstContacts
-            // 
-            this.lstContacts.FormattingEnabled = true;
-            this.lstContacts.Location = new System.Drawing.Point(20, 10);
-            this.lstContacts.Name = "lstContacts";
-            this.lstContacts.Size = new System.Drawing.Size(570, 355);
-            this.lstContacts.TabIndex = 18;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.cmdADemandesContacts);
-            this.groupBox1.Controls.Add(this.cmdASupprimerContacts);
-            this.groupBox1.Controls.Add(this.cmdAModifierContacts);
-            this.groupBox1.Controls.Add(this.cmdAAjouterContacts);
-            this.groupBox1.Location = new System.Drawing.Point(13, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(603, 87);
-            this.groupBox1.TabIndex = 17;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Actions";
-            // 
-            // cmdADemandesContacts
-            // 
-            this.cmdADemandesContacts.Location = new System.Drawing.Point(401, 28);
-            this.cmdADemandesContacts.Name = "cmdADemandesContacts";
-            this.cmdADemandesContacts.Size = new System.Drawing.Size(181, 36);
-            this.cmdADemandesContacts.TabIndex = 3;
-            this.cmdADemandesContacts.Text = "Demandes";
-            this.cmdADemandesContacts.UseVisualStyleBackColor = true;
-            this.cmdADemandesContacts.Click += new System.EventHandler(this.cmdADemandesContacts_Click);
-            // 
-            // cmdASupprimerContacts
-            // 
-            this.cmdASupprimerContacts.Location = new System.Drawing.Point(241, 28);
-            this.cmdASupprimerContacts.Name = "cmdASupprimerContacts";
-            this.cmdASupprimerContacts.Size = new System.Drawing.Size(141, 36);
-            this.cmdASupprimerContacts.TabIndex = 2;
-            this.cmdASupprimerContacts.Text = "Supprimer";
-            this.cmdASupprimerContacts.UseVisualStyleBackColor = true;
-            this.cmdASupprimerContacts.Click += new System.EventHandler(this.cmdASupprimerContacts_Click);
-            // 
-            // cmdAModifierContacts
-            // 
-            this.cmdAModifierContacts.Location = new System.Drawing.Point(110, 28);
-            this.cmdAModifierContacts.Name = "cmdAModifierContacts";
-            this.cmdAModifierContacts.Size = new System.Drawing.Size(114, 36);
-            this.cmdAModifierContacts.TabIndex = 1;
-            this.cmdAModifierContacts.Text = "Modifier";
-            this.cmdAModifierContacts.UseVisualStyleBackColor = true;
-            this.cmdAModifierContacts.Click += new System.EventHandler(this.cmdAModifierContacts_Click);
-            // 
-            // cmdAAjouterContacts
-            // 
-            this.cmdAAjouterContacts.Location = new System.Drawing.Point(15, 28);
-            this.cmdAAjouterContacts.Name = "cmdAAjouterContacts";
-            this.cmdAAjouterContacts.Size = new System.Drawing.Size(75, 36);
-            this.cmdAAjouterContacts.TabIndex = 0;
-            this.cmdAAjouterContacts.Text = "Ajouter";
-            this.cmdAAjouterContacts.UseVisualStyleBackColor = true;
-            this.cmdAAjouterContacts.Click += new System.EventHandler(this.cmdAAjouterContacts_Click);
-            // 
             // pnlProfil
             // 
             this.pnlProfil.Controls.Add(this.grbProfil);
-            this.pnlProfil.Location = new System.Drawing.Point(693, 593);
+            this.pnlProfil.Location = new System.Drawing.Point(220, 586);
             this.pnlProfil.Name = "pnlProfil";
             this.pnlProfil.Size = new System.Drawing.Size(601, 478);
             this.pnlProfil.TabIndex = 19;
@@ -797,11 +797,11 @@
             this.groupBox2.PerformLayout();
             this.pnlDiscussionAffichage.ResumeLayout(false);
             this.pnlContact.ResumeLayout(false);
+            this.pnlContactsListe.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.pnlContactsDemandes.ResumeLayout(false);
             this.grbDemandes.ResumeLayout(false);
             this.grbDemandes.PerformLayout();
-            this.pnlContactsListe.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.pnlProfil.ResumeLayout(false);
             this.grbProfil.ResumeLayout(false);
             this.grbInformations.ResumeLayout(false);

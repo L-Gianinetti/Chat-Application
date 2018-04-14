@@ -43,20 +43,34 @@ namespace MyTcpListener
 
         //TODO verifier si classe discussion est nécessaire , surement ?
         //nbrParticipants ne contient pas le createur
+        /// <summary>
+        /// Permet de créer une discussion, une categorie et le lien entre les deux
+        /// </summary>
+        /// <param name="donnee"></param>
+        /// <param name="nbrParticipants"></param>
+        /// <param name="categorie"></param>
+        /// <param name="publique"></param>
+        /// <returns></returns>
         public string CreerDiscussion(string[] donnee, int nbrParticipants, string categorie, bool publique)
         {
             string nomDiscussion = SeparerNomDiscussion(donnee, nbrParticipants);
             string reponse = string.Empty;
+            //Vérifie si le nom est disponible
             if (VerifierNomDiscussionExistant(nomDiscussion) == true)
             {
                 reponse = "Nom deja existant";
             }
+            //Si il est disponible
             else
             {
                 //Ajout de la discussion dans la base de données
                 connexionBD.CreerDiscussion(nomDiscussion, publique);
-                
-                connexionBD.AjoutCategorie(categorie);
+                //Si la categorie n'existe pas encore
+                if(connexionBD.VerifieCategorie(categorie) != categorie)
+                {
+                    //Ajout de la categorie dans la base de données
+                    connexionBD.AjoutCategorie(categorie);
+                }
                 int idCategory = int.Parse(connexionBD.SelectionneIdCategory(categorie));
                 int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDiscussion));
                 connexionBD.AjoutLienCategorieDiscussion(idDiscussion, idCategory);
@@ -98,28 +112,17 @@ namespace MyTcpListener
             return reponse;
         }
 
-        public string DiscussionParticipe(string pseudoUtilisateur)
+        /// <summary>
+        /// Retourne les noms de discussions auquel l'utilisateur participe séparés par des virgules
+        /// </summary>
+        /// <param name="pseudoUtilisateur"></param>
+        /// <returns></returns>
+        public string QuellesDiscussionsParticipe(string pseudoUtilisateur)
         {
             utilisateur.Pseudo = pseudoUtilisateur;
             int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
-            string idDiscussions = connexionBD.SelectionneIdDiscussion(idUtilisateur, "Participe");
-            string reponse = string.Empty;
-            string[] idDiscussion = idDiscussions.Split(',');
-            for(int i =0; i < idDiscussion.Count(); i++)
-            {
-                if(idDiscussion[i] != string.Empty)
-                {
-                    idDiscussion[i] = connexionBD.GetNomDiscussion(int.Parse(idDiscussion[i]));
-                    reponse += idDiscussion[i] + ",";
-                }
-
-            }
-            if(reponse != string.Empty)
-            {
-                reponse = reponse.Substring(0, reponse.Length - 1);
-            }
+            string reponse = connexionBD.SelectionneNomDiscussion(idUtilisateur, "Participe");
             return reponse;
-
         }
 
         /// <summary>
@@ -140,31 +143,40 @@ namespace MyTcpListener
             }
             return nomExiste;
         }
+
+        /// <summary>
+        /// Retourne les demandes de discussion recues pour un utilisateur
+        /// </summary>
+        /// <param name="pseudoUtilisateur"></param>
+        /// <returns></returns>
         public string DemandeRecueNomDiscussion(string pseudoUtilisateur)
         {
             utilisateur.Pseudo = pseudoUtilisateur;
             int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
+            //string contenant tous les idDiscussion  des demandes en attente
             string idDiscussions = connexionBD.SelectionneIdDiscussion(idUtilisateur, "En attente");
-            string nomsDiscussion = string.Empty;
+            //string contenant tous les noms des discussions des demandes en attente
+            string nomsDiscussion = connexionBD.SelectionneNomDiscussion(idUtilisateur, "En attente");
+            string reponse = string.Empty;
+            //Si il y a des demandes en attente
             if (idDiscussions != string.Empty)
             {
                 string[] idDiscussion = idDiscussions.Split(',');
-                
+                string[] nomDiscussion = nomsDiscussion.Split(',');
                 string nbrParticipants = string.Empty;
                 for (int i = 0; i < idDiscussion.Count(); i++)
                 {
                     nbrParticipants = connexionBD.CompteNombreEnAttenteParDiscussion(int.Parse(idDiscussion[i]));
-                    idDiscussion[i] = connexionBD.GetNomDiscussion(int.Parse(idDiscussion[i]));
-                    nomsDiscussion += idDiscussion[i] + "/" + nbrParticipants + ",";
+                    //Ajout du nombre de participant, pour que le client sache si c'est une discussion de groupe ou "normale"
+                    reponse += nomDiscussion[i] + "/" + nbrParticipants + ",";
                 }
-                nomsDiscussion = nomsDiscussion.Substring(0, nomsDiscussion.Length - 1);
+                reponse = reponse.Substring(0, reponse.Length - 1);
             }
-
-
-            return nomsDiscussion;
+            return reponse;
         }
+
         /// <summary>
-        /// Retourne les users par discussions
+        /// Retourne le nom de la discussion et le nom du contact, séparé par des virgules pour chaque demande de discussione envoyée
         /// </summary>
         /// <param name="pseudoAdministrateur"></param>
         /// <returns></returns>
@@ -173,29 +185,15 @@ namespace MyTcpListener
             administrateur.Pseudo = pseudoAdministrateur;
             int idAdministrateur = connexionBD.retourneIdUser(administrateur);
             string reponse = string.Empty;
-           string idPseudosIdDiscussions = connexionBD.SelectionneIdUserNomDiscussionEnAttente(idAdministrateur);
-            if(idPseudosIdDiscussions != string.Empty)
+            //string contenant le nom de la discussion et le nom du contact, séparé par des virgules pour chaque demande de discussione envoyée
+            string PseudosNomsDiscussions = connexionBD.SelectionnePseudoUserNomDiscussionEnattente(idAdministrateur);
+            if(PseudosNomsDiscussions != string.Empty)
             {
-                int count = idPseudosIdDiscussions.TakeWhile(c => c == ',').Count();
-                string[] idPseudoIdDiscussion = idPseudosIdDiscussions.Split(',');
-                for (int i = 0; i < idPseudoIdDiscussion.Count(); i++)
-                {
-                    string[] idPseudo = idPseudoIdDiscussion[i].Split('/');
-                    if (idPseudo[0] != string.Empty)
-                    {
-                        string pseudo = connexionBD.getUserPseudo(int.Parse(idPseudo[0]));
-                        string nomDisc = connexionBD.GetNomDiscussion(int.Parse(idPseudo[1]));
-                        idPseudoIdDiscussion[i] = pseudo + "/" + nomDisc;
-                        reponse += idPseudoIdDiscussion[i] + ",";
-                    }
-
-
-                }
-                reponse = reponse.Substring(0, reponse.Length - 1);
+                PseudosNomsDiscussions = PseudosNomsDiscussions.Substring(0, PseudosNomsDiscussions.Length - 1);
             }
 
             
-            return reponse;
+            return PseudosNomsDiscussions;
         }
 
         /// <summary>
@@ -210,7 +208,7 @@ namespace MyTcpListener
             //On sépare la chaine de caractères par les virgules
             string[] donneesDiscussion = SeparerElements(donnee);
 
-            //On récupère la partie qui contient le nom de la discussion et le nombre de participants
+            //La numero de case du tableau correspondant au nom de la discussion sera le nombre du participant +1 sachant que le nombre de participant ne contient pas le créateur
             string nomDiscussionAvecChiffres = donneesDiscussion[nbrParticipants + 1];
             string nomDiscussion = nomDiscussionAvecChiffres.Substring(0, nomDiscussionAvecChiffres.Length - 2);
 
@@ -243,6 +241,12 @@ namespace MyTcpListener
             
         }
 
+        /// <summary>
+        /// Permet de mettre un etat de participation à "Participe"
+        /// </summary>
+        /// Utilisé lorsqu'une demande de discussion est acceptée
+        /// <param name="nomDiscussion"></param>
+        /// <param name="pseudoUtilisateur"></param>
         public void ChangerEtatParticipationDiscussion(string nomDiscussion, string pseudoUtilisateur)
         {
             string idDiscussion = connexionBD.SelectionneIdDiscussion(nomDiscussion);
@@ -251,6 +255,12 @@ namespace MyTcpListener
             connexionBD.UpdateParticipationDiscussions(int.Parse(idDiscussion), idUtilisateur);
         }
 
+        /// <summary>
+        /// Permet de supprimer une participation à la discusison
+        /// </summary>
+        /// Est utilisé lorsqu'une demande de discussion est refusée ou lorsqu'un utilisateur est supprimé d'une discussion
+        /// <param name="nomDiscussion"></param>
+        /// <param name="pseudoUtilisateur"></param>
         public void SupprimerParticipationDiscussion(string nomDiscussion, string pseudoUtilisateur)
         {
             utilisateur.Pseudo = pseudoUtilisateur;
@@ -285,7 +295,11 @@ namespace MyTcpListener
             connexionBD.CreerParticipationDisucssion(idUtilisateur, idDiscussion, idAdmin, statut);
 
         }
-
+        /// <summary>
+        /// Crée la participation à la discussion pour un participant
+        /// </summary>
+        /// <param name="donnee"></param>
+        /// <param name="nbrParticipants"></param>
         public void CreerParticipationDiscussionParticipant(string[] donnee, int nbrParticipants)
         {
             //On sépare la chaine de caractères par les virgules
@@ -296,6 +310,7 @@ namespace MyTcpListener
             administrateur.Pseudo = donneesDiscussion[0];
             int idAdministrateur = connexionBD.retourneIdUser(administrateur);
             string nomDiscussion = string.Empty;
+            //Pour chaque participant on crée une participation à la discussion
             for (int i = 1; i < nbrParticipants+1; i++)
             {
                 utilisateur.Pseudo = donneesDiscussion[i];
@@ -307,21 +322,26 @@ namespace MyTcpListener
             }
         }
 
+
+        /// <summary>
+        /// Retourne les noms des participants à une discussion séparés par des virgules
+        /// </summary>
+        /// <param name="nomDiscussion"></param>
+        /// <returns></returns>
         public string RetourneNomsParticipantsDiscussion(string nomDiscussion)
         {
-            string idDiscussion = connexionBD.SelectionneIdDiscussion(nomDiscussion);
-            string idParticipants = connexionBD.GetIdParticipantsDiscussion(idDiscussion);
-            string[] idParticipant = idParticipants.Split(',');
-            string reponse = string.Empty;
-            for(int i = 0; i< idParticipant.Count(); i++)
-            {
-                idParticipant[i] = connexionBD.getUserPseudo(int.Parse(idParticipant[i]));
-                reponse += idParticipant[i] + ",";
-            }
-            reponse = reponse.Substring(0, reponse.Length - 1);
-            return reponse;
+            string nomsParticipants = connexionBD.SelectionneNomParticipantsDiscussion(nomDiscussion);
+            return nomsParticipants;
         }
 
+        /// <summary>
+        /// Permet d'ajouter un message dans la BD
+        /// </summary>
+        /// Est utilisé chaque fois qu'un message est envoyé
+        /// <param name="pseudo"></param>
+        /// <param name="message"></param>
+        /// <param name="date"></param>
+        /// <param name="nomDiscussion"></param>
         public void EnvoiMessage(string pseudo, string message, string date, string nomDiscussion)
         {
             utilisateur.Pseudo = pseudo;
@@ -332,37 +352,33 @@ namespace MyTcpListener
             connexionBD.ajouterMessage(message, dateTime, idDiscussion, idUtilisateur);
         }
 
+        /// <summary>
+        /// Retourne les messages d'une discussion
+        /// </summary>
+        /// Est appelé chaque fois que le timer tick (toutes les secondes) pour avoir les messages de la discussion instantanément
+        /// <param name="nomDiscussion"></param>
+        /// <returns></returns>
         public string actualiserMessages(string nomDiscussion)
         {
             int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDiscussion));
             string messages = connexionBD.SelectionneMessages(idDiscussion);
-            string idUtilisateurs = connexionBD.SelectionneIdUserMessages(idDiscussion);
-            string reponse = string.Empty;
-            if(messages != string.Empty)
-            {
-                string[] message = messages.Split('*');
-                string[] test;
-                string[] test2 = idUtilisateurs.Split(',');
-                for (int i = 0; i < message.Length; i++)
-                {
-                    test = message[i].Split('$');
-                    utilisateur.Pseudo = connexionBD.getUserPseudo(int.Parse(test2[i]));
-                    reponse += test[0] + utilisateur.Pseudo + "$" + test[1] + "*";
-                }
-            }
-
-            return reponse;
+            return messages;
         }
 
+        /// <summary>
+        /// Retourne le pseudo de l'administrateur d'une discussion en fonction de son nom
+        /// </summary>
+        /// Est utilisé pour activer les boutons réservés à l'administrateur dans une discussion
+        /// <param name="nomDiscussion"></param>
+        /// <returns></returns>
         public string selectionnePseudoAdministrateur(string nomDiscussion)
         {
-            string idDiscussion = connexionBD.SelectionneIdDiscussion(nomDiscussion);
+            /*string idDiscussion = connexionBD.SelectionneIdDiscussion(nomDiscussion);
             int idAdmin = int.Parse(connexionBD.GetIdAdminParticipantsDiscussion(idDiscussion));
 
-            utilisateur.Pseudo = connexionBD.getUserPseudo(idAdmin);
-            
-
-            return utilisateur.Pseudo;
+            utilisateur.Pseudo = connexionBD.getUserPseudo(idAdmin);*/
+            string pseudoAdmin = connexionBD.selectionnePseudoAdministrateur(nomDiscussion);
+            return pseudoAdmin;
         }
 
         public void AjouteParticipationDiscussionRecherche(string nomDisc, string participants)
@@ -370,7 +386,7 @@ namespace MyTcpListener
             string nomDiscussion = nomDisc;
             string nomsParticipants = participants;
             int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDiscussion));
-            int idAdmin = int.Parse(connexionBD.GetIdAdminParticipantsDiscussion(idDiscussion.ToString()));
+            int idAdmin = int.Parse(connexionBD.SelectionneIdAdministrateur(idDiscussion.ToString()));
             string statut = "Participe";
             string[] nomParticipant = nomsParticipants.Split('$');
             for (int i = 0; i < nomParticipant.Length; i++)
@@ -382,14 +398,18 @@ namespace MyTcpListener
 
         }
 
+        /// <summary>
+        /// Envoi les demandes de participation a une discussion lorsqu'un admin ajoute des contacts dans une discussion
+        /// </summary>
+        /// <param name="nomDisc"></param>
+        /// <param name="participants"></param>
         public void AjouteParticipationDiscussion(string nomDisc, string participants)
         {
-            string nomDiscussion = nomDisc;
-            string nomsParticipants = participants;
-            int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDiscussion));
-            int idAdmin = int.Parse(connexionBD.GetIdAdminParticipantsDiscussion(idDiscussion.ToString()));
+            int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDisc));
+            
+            int idAdmin = int.Parse(connexionBD.SelectionneIdAdministrateur(idDiscussion.ToString()));
             string statut = "En attente";
-            string[] nomParticipant = nomsParticipants.Split('$');
+            string[] nomParticipant = participants.Split('$');
             for(int i =0; i < nomParticipant.Length; i++)
             {
                 utilisateur.Pseudo = nomParticipant[i];
@@ -445,12 +465,17 @@ namespace MyTcpListener
 
             return nomsDiscussions;
         }
+
+        /// <summary>
+        /// Ajoute une discusison en archive en fonction d'un nom et du pseudo de l'utilisateur actif
+        /// </summary>
+        /// <param name="nomDisc"></param>
+        /// <param name="pseudoUtilisateur"></param>
         public void AjouterArchive(string nomDisc, string pseudoUtilisateur)
         {
-            string nomDiscussion = nomDisc;
             utilisateur.Pseudo = pseudoUtilisateur;
-            int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDiscussion));
-            int idAdmin = int.Parse(connexionBD.GetIdAdminParticipantsDiscussion(idDiscussion.ToString()));
+            int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDisc));
+            int idAdmin = int.Parse(connexionBD.SelectionneIdAdministrateur(idDiscussion.ToString()));
             int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
             connexionBD.AjouterArchive(idDiscussion, idAdmin, idUtilisateur);
         }
@@ -461,7 +486,7 @@ namespace MyTcpListener
             string nomDiscussion = nom;
             int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
             int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDiscussion));
-            int idAdministrateur = int.Parse(connexionBD.GetIdAdminParticipantsDiscussion(idDiscussion.ToString()));
+            int idAdministrateur = int.Parse(connexionBD.SelectionneIdAdministrateur(idDiscussion.ToString()));
             connexionBD.CreerParticipationDisucssion(idUtilisateur, idDiscussion, idAdministrateur, "Participe");
         }
     }

@@ -25,6 +25,7 @@ namespace ChatApplication
         }
         private void FrmDiscussionRecherche_Load(object sender, EventArgs e)
         {
+            //pour afficher les différentes catégories proposées
             string message = "34";
             string reponse = envoieMessage.Connect(message);
             if(reponse != string.Empty)
@@ -73,6 +74,7 @@ namespace ChatApplication
             else
             {
                 lstResultats.Items.Clear();
+                //Rechercher des categories existantes
                 string message = "35" + txtRechercher.Text;
                 string reponse = envoieMessage.Connect(message);
                 string[] retour = reponse.Split(',');

@@ -152,18 +152,22 @@ namespace ChatApplication
             
         }
 
+        /// <summary>
+        /// Affiche les archives
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdArchives_Click(object sender, EventArgs e)
         {
-            //TODO LES ARCHIVES A FINIR, le chargement des archives fonctionne
             montrerPannel(pnlArchives);
             string message31 = "31" + txtPseudo.Text;
             string reponse31 = envoiMessage.Connect(message31);
-            string[] nomDiscussion = reponse31.Split(',');
-            for(int i = 0; i < nomDiscussion.Length; i++)
+            string[] nomArchive = reponse31.Split(',');
+            for(int i = 0; i < nomArchive.Length; i++)
             {
-                if (!lstArchives.Items.Contains(nomDiscussion[i]))
+                if (!lstArchives.Items.Contains(nomArchive[i]))
                 {
-                    lstArchives.Items.Add(nomDiscussion[i]);
+                    lstArchives.Items.Add(nomArchive[i]);
                 }
             }
         }
@@ -477,6 +481,11 @@ namespace ChatApplication
             }
         }
 
+        /// <summary>
+        /// Supprime définitvement une conversation qui était archivée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdSupprimerArchives_Click(object sender, EventArgs e)
         {
             if(lstArchives.SelectedIndex > -1)
@@ -489,6 +498,11 @@ namespace ChatApplication
 
         }
 
+        /// <summary>
+        /// Remet la discussion archivée dans les discussions courantes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdReimporterArchives_Click(object sender, EventArgs e)
         {
             if(lstArchives.SelectedIndex > -1)

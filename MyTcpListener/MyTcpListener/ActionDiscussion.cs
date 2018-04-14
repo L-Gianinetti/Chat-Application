@@ -79,37 +79,34 @@ namespace MyTcpListener
             return reponse;
         }
 
+        /// <summary>
+        /// Supprime définitivement une discussion archivée en fonction d'un pseudo et d'un nom d'archive
+        /// </summary>
+        /// <param name="pseudo"></param>
+        /// <param name="nom"></param>
         public void SupprimerArchive(string pseudo, string nom)
         {
             utilisateur.Pseudo = pseudo;
-            string nomArchive = nom;
             int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
-            int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomArchive));
+            int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nom));
             connexionBD.SupprimerArchive(idUtilisateur, idDiscussion);
         }
 
 
-
+        /// <summary>
+        /// Selectionne les noms d'archives en fonction d'un pseudo utilisateur
+        /// </summary>
+        /// <param name="pseudoUtilisateur"></param>
+        /// <returns></returns>
         public string SelectionneArchives(string pseudoUtilisateur)
         {
-            utilisateur.Pseudo = pseudoUtilisateur;
-            int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
-            string idDiscussionsFromArchives = connexionBD.SelectionneIdArchive(idUtilisateur);
-            string[] idDiscussionFromArchives = idDiscussionsFromArchives.Split(',');
-            string reponse = string.Empty;
-            for(int i =0; i < idDiscussionFromArchives.Count(); i++)
+            string nomsArchives = connexionBD.SelectionneArchive(pseudoUtilisateur);
+            if(nomsArchives != string.Empty)
             {
-                if(idDiscussionFromArchives[i] != string.Empty)
-                {
-                    idDiscussionFromArchives[i] = connexionBD.GetNomDiscussion(int.Parse(idDiscussionFromArchives[i]));
-                    reponse += idDiscussionFromArchives[i] + ",";
-                }
+                nomsArchives = nomsArchives.Substring(0, nomsArchives.Length - 1);
             }
-            if(reponse != string.Empty)
-            {
-                reponse = reponse.Substring(0, reponse.Length - 1);
-            }
-            return reponse;
+
+            return nomsArchives;
         }
 
         /// <summary>
@@ -381,21 +378,19 @@ namespace MyTcpListener
             return pseudoAdmin;
         }
 
-        public void AjouteParticipationDiscussionRecherche(string nomDisc, string participants)
+        /// <summary>
+        /// Ajoute un participant à une discussion publique --> statut = participe
+        /// </summary>
+        /// <param name="nomDisc"></param>
+        /// <param name="participants"></param>
+        public void AjouteParticipationDiscussionRecherche(string nomDisc, string participant)
         {
-            string nomDiscussion = nomDisc;
-            string nomsParticipants = participants;
-            int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDiscussion));
+            utilisateur.Pseudo = participant;
+            int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDisc));
             int idAdmin = int.Parse(connexionBD.SelectionneIdAdministrateur(idDiscussion.ToString()));
             string statut = "Participe";
-            string[] nomParticipant = nomsParticipants.Split('$');
-            for (int i = 0; i < nomParticipant.Length; i++)
-            {
-                utilisateur.Pseudo = nomParticipant[i];
-                int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
-                connexionBD.CreerParticipationDisucssion(idUtilisateur, idDiscussion, idAdmin, statut);
-            }
-
+            int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
+            connexionBD.CreerParticipationDisucssion(idUtilisateur, idDiscussion, idAdmin, statut);
         }
 
         /// <summary>
@@ -440,7 +435,11 @@ namespace MyTcpListener
                     }
 
                 }
-                nomDiscussionDejaParticipant = nomDiscussionDejaParticipant.Substring(0, nomDiscussionDejaParticipant.Length - 1);
+                if(nomDiscussionDejaParticipant != string.Empty)
+                {
+                    nomDiscussionDejaParticipant = nomDiscussionDejaParticipant.Substring(0, nomDiscussionDejaParticipant.Length - 1);
+                }
+
                 
             }
             return nomDiscussionDejaParticipant;
@@ -448,22 +447,13 @@ namespace MyTcpListener
 
         public string SelectionneDiscussionsParCategorie(string categorie)
         {
-            string nomsDiscussions = string.Empty;
-            int idCategorie = int.Parse(connexionBD.SelectionneIdCategory(categorie));
-            string idDiscussions = connexionBD.SelectionneIdDiscussionParIdCategorie(idCategorie);
-            if(idDiscussions != string.Empty)
+            string nomDiscussions = connexionBD.SelectionneNomDiscussionParCategorie(categorie);
+            if(nomDiscussions != string.Empty)
             {
-                idDiscussions = idDiscussions.Substring(0, idDiscussions.Length - 1);
-                string[] idDiscussion = idDiscussions.Split(',');
-                
-                for (int i = 0; i < idDiscussion.Length; i++)
-                {
-                    nomsDiscussions += connexionBD.GetNomDiscussion(int.Parse(idDiscussion[i])) + ",";
-                }
-                nomsDiscussions = nomsDiscussions.Substring(0, nomsDiscussions.Length - 1);
+                nomDiscussions = nomDiscussions.Substring(0, nomDiscussions.Length - 1);
             }
 
-            return nomsDiscussions;
+            return nomDiscussions;
         }
 
         /// <summary>
@@ -480,12 +470,17 @@ namespace MyTcpListener
             connexionBD.AjouterArchive(idDiscussion, idAdmin, idUtilisateur);
         }
 
+        /// <summary>
+        /// Importe une discussion archivée dans les discussions courantes
+        /// </summary>
+        /// <param name="pseudo"></param>
+        /// <param name="nom"></param>
         public void ImporterArchive(string pseudo, string nom)
         {
             utilisateur.Pseudo = pseudo;
-            string nomDiscussion = nom;
+
             int idUtilisateur = connexionBD.retourneIdUser(utilisateur);
-            int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nomDiscussion));
+            int idDiscussion = int.Parse(connexionBD.SelectionneIdDiscussion(nom));
             int idAdministrateur = int.Parse(connexionBD.SelectionneIdAdministrateur(idDiscussion.ToString()));
             connexionBD.CreerParticipationDisucssion(idUtilisateur, idDiscussion, idAdministrateur, "Participe");
         }

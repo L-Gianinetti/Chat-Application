@@ -48,8 +48,6 @@ namespace ChatApplication
                                 {
                                     lstDiscussions.Items.Add(retour[i]);
                                 }
-
-
                             }
                             else
                             {
@@ -68,6 +66,7 @@ namespace ChatApplication
         {
             if(lstDiscussions.SelectedIndex > -1)
             {
+                //Pour rejoindre une discussion publique
                 string message = "37" + utilisateur.Pseudo + ","+lstDiscussions.SelectedItem.ToString();
                 envoiMessage.Connect(message);
             }

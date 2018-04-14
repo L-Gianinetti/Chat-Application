@@ -255,6 +255,13 @@ namespace MyTcpListener
             return reponse;
         }
 
+        public string SelectionneNomDiscussionParCategorie(string categorie)
+        {
+            string requete = "SELECT discussionName from discussion_has_category inner join discussion on idDiscussion = discussion_has_category.fkDiscussion inner join category on idCategory = discussion_has_category.fkCategory where categoryName =\"" + categorie + "\"";
+            string reponse = SelectSimpleWhile(requete);
+            return reponse;
+        }
+
         public string SelectionneIdDiscussionParIdCategorie(int idCategory)
         {
             string requete = "SELECT fkDiscussion from discussion_has_category where fkCategory =\"" + idCategory + "\"";
@@ -262,6 +269,11 @@ namespace MyTcpListener
             return reponse;
         }
 
+        /// <summary>
+        /// Selectionne les categories correspondants a la chaine de caractère categoriesRecherchees
+        /// </summary>
+        /// <param name="categoriesRecherchees"></param>
+        /// <returns></returns>
         public string SelectionneCategoriesRecherchees(string categoriesRecherchees)
         {
             string requete =  "SELECT categoryName from category where categoryName LIKE @categoriesRecherchees";
@@ -559,6 +571,13 @@ namespace MyTcpListener
             string statut = "En attente";
             string requete = "SELECT fkUser, fkDiscussion from participationdiscussions where fkAdministrateur =\"" + idAdministrateur + "\" and statut =\"" + statut + "\"";
             string reponse = SelectDoubleWhile(requete);
+            return reponse;
+        }
+
+        public string SelectionneArchive(string pseudoUtilisateur)
+        {
+            string requete = "SELECT discussionName from archives inner join discussion on idDiscussion = archives.fkDiscussion inner join user on idUser = archives.fkUser where userPseudonym =\"" + pseudoUtilisateur + "\"";
+            string reponse = SelectSimpleWhile(requete);
             return reponse;
         }
 

@@ -464,7 +464,7 @@ namespace MyTcpListener
                                 actionDiscussion.SupprimerParticipationDiscussion(nomDiscussion29, user.Pseudo);
                                 break;
                             #endregion
-                            #region 30 : 
+                            #region 30 : ArchiverDiscussion
                             // "30" + txtPseudo.Text + "," + lstDiscussions.SelectedItem.ToString();
                             case "30":
                                 string[] message30Decompose = SeparationSwitchDonnes[1].Split(',');
@@ -474,12 +474,17 @@ namespace MyTcpListener
                                 actionDiscussion.AjouterArchive(nomDiscussion30, user.Pseudo);
                                 break;
                             #endregion
+                            #region 31 : ChargerArchives
+                            // "31" + txtPseudo.Text;
                             case "31":
                                 user.Pseudo = SeparationSwitchDonnes[1];
                                 string retour31 = actionDiscussion.SelectionneArchives(user.Pseudo);
                                 byte[] reponse31 = System.Text.Encoding.ASCII.GetBytes(retour31);
                                 stream.Write(reponse31, 0, reponse31.Length);
                                 break;
+                            #endregion
+                            #region 32 : SuppressionDefinitiveArchive
+                            //"32" + txtPseudo.Text + "," + lstArchives.SelectedItem.ToString();
                             case "32":
                                 string pseudoNomArchives = SeparationSwitchDonnes[1];
                                 string[] pseudoNom = pseudoNomArchives.Split(',');
@@ -487,38 +492,56 @@ namespace MyTcpListener
                                 string nomArchive = pseudoNom[1];
                                 actionDiscussion.SupprimerArchive(user.Pseudo, nomArchive);
                                 break;
+                            #endregion
+                            #region 33 : ReimporterArchive
+                            // "33" + txtPseudo.Text + "," + lstArchives.SelectedItem.ToString();
                             case "33":
                                 string pseudoEtNomArchives = SeparationSwitchDonnes[1];
                                 string[] pseudoEtNom = pseudoEtNomArchives.Split(',');
                                 user.Pseudo = pseudoEtNom[0];
                                 string nomArchive33 = pseudoEtNom[1];
+                                //Importe archive dans les discussions courantes
                                 actionDiscussion.ImporterArchive(user.Pseudo, nomArchive33);
+                                //Supprime définitivement l'archive
                                 actionDiscussion.SupprimerArchive(user.Pseudo, nomArchive33);
                                 break;
+                            #endregion
+                            #region 34 : ChargerCategoriesProposées
                             case "34":
+                                //string contenant les categories proposées (les 10 premières catégories)
                                 string retour34 = actionDiscussion.SelectionneCategorieProposee();
                                 byte[] reponse34 = System.Text.Encoding.ASCII.GetBytes(retour34);
                                 stream.Write(reponse34, 0, reponse34.Length);
                                 break;
+                            #endregion
+                            #region 35 : RechercheCategorie
+                            //"35" + txtRechercher.Text;
                             case "35":
                                 string categoriesRecherchees = SeparationSwitchDonnes[1];
-                                
                                 string retour35 = actionDiscussion.SelectionneCategoriesRecherchees(categoriesRecherchees);
                                 byte[] reponse35 = System.Text.Encoding.ASCII.GetBytes(retour35);
                                 stream.Write(reponse35, 0, reponse35.Length);
                                 break;
+                            #endregion
+                            #region 36 : RechercheDiscussionCategorie
+                            // "36" + categorie
                             case "36":
                                 string categorie36 = SeparationSwitchDonnes[1];
                                 string retour36 = actionDiscussion.SelectionneDiscussionsParCategorie(categorie36);
                                 byte[] reponse36 = System.Text.Encoding.ASCII.GetBytes(retour36);
                                 stream.Write(reponse36, 0, reponse36.Length);
                                 break;
+                            #endregion
+                            #region 37 : RejoindreDiscussionPublique
+                            // "37" + utilisateur.Pseudo + ","+lstDiscussions.SelectedItem.ToString();
                             case "37":
                                 string[] data37 = SeparationSwitchDonnes[1].Split(',');
                                 string pseudo37 = data37[0];
                                 string nomDiscussion37 = data37[1];
                                 actionDiscussion.AjouteParticipationDiscussionRecherche(nomDiscussion37, pseudo37);
                                 break;
+                            #endregion
+                            #region 38 : RechercheDiscussionDejaParticipant
                             case "38":
                                 string[] data38 = SeparationSwitchDonnes[1].Split(',');
                                 string pseudo38 = data38[0];
@@ -527,6 +550,7 @@ namespace MyTcpListener
                                 byte[] reponse38 = System.Text.Encoding.ASCII.GetBytes(retour38);
                                 stream.Write(reponse38, 0, reponse38.Length);
                                 break;
+                            #endregion
                             default:
                                 break;
                         }

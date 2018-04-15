@@ -32,6 +32,7 @@ namespace ChatApplication
                     chiffreLettre = false;
                 }
             }
+            
             string pseudoAVerifier = "05" + txtIdentifiant.Text;
             string pseudoTrouve = envoiMessage.Connect(pseudoAVerifier);
             if (pseudoTrouve == txtIdentifiant.Text)
@@ -44,12 +45,6 @@ namespace ChatApplication
                 chkIdentifiant.Checked = true;
                 lblRemarque.Text = "";
             }
-            //L'implémentation du foreach qui vérifie que le pseudo contient uniquement des chiffres et des lettres rempli deja ce role
-            /*else if (txtIdentifiant.Text.Substring(txtIdentifiant.Text.Length-1, 1) == " ")
-            {
-                lblRemarque.Text = "Votre pseudo ne peut finir par un espace !";
-                chkIdentifiant.Checked = false;
-            }*/
             else if (txtIdentifiant.Text.Length < 3)
             {
                 lblRemarque.Text = "Votre pseudo doit contenir au moins 3 caractères !";
@@ -143,7 +138,6 @@ namespace ChatApplication
             frmEnregistrement2 frmEnregistrement2 = new frmEnregistrement2(txtIdentifiant.Text, txtMotDePasse.Text);
             frmEnregistrement2.ShowDialog();
             DialogResult res = frmEnregistrement2.DialogResult;
-
             if(res == DialogResult.OK)
             {
                 frmEnregistrement2.Close();
@@ -153,17 +147,13 @@ namespace ChatApplication
 
         private void txtMotDePasseConfirme_TextChanged(object sender, EventArgs e)
         {
+            cmdSuivant.Enabled = false;
             motsDePasseIdentiques();
-        }
-
-        private void txtIdentifiant_TextChanged(object sender, EventArgs e)
-        {
-
-            // champsRemplisCorrectement();
         }
 
         private void txtMotDePasse_TextChanged(object sender, EventArgs e)
         {
+            cmdSuivant.Enabled = false;
             motDePasseConforme();
             motsDePasseIdentiques();
 
@@ -176,6 +166,11 @@ namespace ChatApplication
         }
 
         private void frmEnregistrement_Load(object sender, EventArgs e)
+        {
+            cmdSuivant.Enabled = false;
+        }
+
+        private void txtIdentifiant_TextChanged(object sender, EventArgs e)
         {
             cmdSuivant.Enabled = false;
         }

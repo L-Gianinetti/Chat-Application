@@ -85,6 +85,7 @@
             this.cmdAnnuler.TabIndex = 4;
             this.cmdAnnuler.Text = "Annuler";
             this.cmdAnnuler.UseVisualStyleBackColor = true;
+            this.cmdAnnuler.Click += new System.EventHandler(this.cmdAnnuler_Click);
             // 
             // cmdRechercher
             // 

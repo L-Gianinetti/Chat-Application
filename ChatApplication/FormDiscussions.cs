@@ -103,7 +103,8 @@ namespace ChatApplication
         private void cmdContacts_Click(object sender, EventArgs e)
         {
             montrerPannel(pnlContact);
-            pnlContactsListe.Visible = true;
+
+            pnlTest.Visible = true;
             pnlContactsDemandes.Visible = false;
             int i = 0;
             string message = "10" + txtPseudo.Text;
@@ -117,9 +118,9 @@ namespace ChatApplication
                 {
                     reponseSeparee[i] = donnee;
                     Console.WriteLine("REPONSE ATTENDUE :" + reponseSeparee[i]);
-                    if (lstContacts.Items.Contains(reponseSeparee[i]) == false)
+                    if (lstTest.Items.Contains(reponseSeparee[i]) == false)
                     {
-                        lstContacts.Items.Add(reponseSeparee[i]);
+                        lstTest.Items.Add(reponseSeparee[i]);
                     }
                 }
             }
@@ -219,16 +220,16 @@ namespace ChatApplication
             FrmContactsAjouter frmContactsAjouter = new FrmContactsAjouter(txtPseudo.Text);
             frmContactsAjouter.Show();
             DialogResult res = frmContactsAjouter.DialogResult;
-
             if(res == DialogResult.OK)
             {
                 frmContactsAjouter.Close();
+                frmContactsAjouter.Dispose();
             }
         }
 
         private void cmdADemandesContacts_Click(object sender, EventArgs e)
         {
-            pnlContactsListe.Visible = false;
+            pnlTest.Visible = false;
             pnlContactsDemandes.Visible = true;
             chargerDemandesEnvoyees();
             chargerDemandesRecues();
@@ -241,17 +242,12 @@ namespace ChatApplication
         /// <param name="e"></param>
         private void cmdAccepter_Click(object sender, EventArgs e)
         {
-
-
             string selectedItem = lstRecues.GetItemText(lstRecues.SelectedItem);
             string message = "09" + txtPseudo.Text + "," + selectedItem;
             string reponse = envoiMessage.Connect(message);
-
             MessageBox.Show(reponse);
-            lstContacts.Items.Add(selectedItem);
+            lstTest.Items.Add(selectedItem);
             lstRecues.Items.Remove(lstRecues.SelectedItem);
-
-
         }
 
         /// <summary>
@@ -270,7 +266,6 @@ namespace ChatApplication
                 lstRecues.Items.Remove(selectedItem);
                 MessageBox.Show("La demande de contact a été supprimée !");
             }
-            
         }
 
         /// <summary>
@@ -281,9 +276,9 @@ namespace ChatApplication
         private void cmdASupprimerContacts_Click(object sender, EventArgs e)
         {
             //Si un contact est sélectionné, on envoi au serveur son pseudo ainsi que celui de l'utilisateur actif pour supprimer le contact
-            if(lstContacts.SelectedIndex != -1)
+            if(lstTest.SelectedIndex != -1)
             {
-                string selectedItem = lstContacts.GetItemText(lstContacts.SelectedItem);
+                string selectedItem = lstTest.GetItemText(lstTest.SelectedItem);
                 string message = "12" + txtPseudo.Text + "," + selectedItem;
 
                 string reponse = envoiMessage.Connect( message);
@@ -291,7 +286,7 @@ namespace ChatApplication
                 if(reponse == "Contact supprime")
                 {
                     MessageBox.Show("Contact supprimé !");
-                    lstContacts.Items.Remove(lstContacts.SelectedItem);
+                    lstTest.Items.Remove(lstTest.SelectedItem);
                 }
             }
 
@@ -299,16 +294,15 @@ namespace ChatApplication
 
         private void cmdAModifierContacts_Click(object sender, EventArgs e)
         {
-            if(lstContacts.SelectedIndex != -1)
+            if(lstTest.SelectedIndex != -1)
             {
-                
-                
-                FrmContactsModifier frmContactsModifier = new FrmContactsModifier(txtPseudo.Text, lstContacts.GetItemText(lstContacts.SelectedItem));
+                FrmContactsModifier frmContactsModifier = new FrmContactsModifier(txtPseudo.Text, lstTest.GetItemText(lstTest.SelectedItem));
                 frmContactsModifier.ShowDialog();
-                DialogResult res = new DialogResult();
+                DialogResult res =  frmContactsModifier.DialogResult;
                 if(res == DialogResult.OK)
                 {
                     frmContactsModifier.Close();
+                    frmContactsModifier.Dispose();
                 }
             }
         }
@@ -317,10 +311,11 @@ namespace ChatApplication
         {
             FrmDisucssionCreer frmDiscussionCreer = new FrmDisucssionCreer(txtPseudo.Text);
             frmDiscussionCreer.Show();
-            DialogResult res = new DialogResult();
+            DialogResult res = frmDiscussionCreer.DialogResult;
             if(res == DialogResult.OK)
             {
                 frmDiscussionCreer.Close();
+                frmDiscussionCreer.Dispose();
             }
         }
 
@@ -449,7 +444,7 @@ namespace ChatApplication
             string nomDiscussion = lstDiscussions.SelectedItem.ToString();
             FrmMessage frmMessage = new FrmMessage(nomDiscussion, txtPseudo.Text);
             frmMessage.Show();
-            DialogResult res = new DialogResult();
+            DialogResult res = frmMessage.DialogResult;
             if(res == DialogResult.OK)
             {
                 frmMessage.Close();
@@ -517,12 +512,20 @@ namespace ChatApplication
         {
             FrmDiscussionRecherche frmDiscussionRecherche = new FrmDiscussionRecherche(txtPseudo.Text);
             frmDiscussionRecherche.Show();
-            DialogResult res = new DialogResult();
+            DialogResult res = frmDiscussionRecherche.DialogResult;
             if(res == DialogResult.OK)
             {
                 frmDiscussionRecherche.Close();
             }
         }
 
+        private void cmdQuitter_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Voulez-vous vraiment quitter ?", "Quitter l'application", MessageBoxButtons.YesNo);
+            if(dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }       
+        }
     }
 }

@@ -38,10 +38,12 @@ namespace ChatApplication
                 string[] retour = reponse.Split(',');
                 for(int i = 0; i < retour.Length; i++)
                 {
+                    //Si la liste ne contient pas encore la discussion
                     if (!lstDiscussions.Items.Contains(retour[i]))
                     {
                         for(int y = 0; y < retour38.Length; y++)
                         {
+                            //Si l'utilisateur ne participe pas deja a cette discussion
                             if(retour38[y] != retour[i])
                             {
                                 if (!lstDiscussions.Items.Contains(retour[i]))
@@ -69,7 +71,9 @@ namespace ChatApplication
                 //Pour rejoindre une discussion publique
                 string message = "37" + utilisateur.Pseudo + ","+lstDiscussions.SelectedItem.ToString();
                 envoiMessage.Connect(message);
+                this.Close();
             }
+            
         }
     }
 }

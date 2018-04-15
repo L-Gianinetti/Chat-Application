@@ -101,12 +101,14 @@
             // 
             // cmdAnnuler
             // 
+            this.cmdAnnuler.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdAnnuler.Location = new System.Drawing.Point(404, 371);
             this.cmdAnnuler.Name = "cmdAnnuler";
             this.cmdAnnuler.Size = new System.Drawing.Size(75, 23);
             this.cmdAnnuler.TabIndex = 6;
             this.cmdAnnuler.Text = "Annuler";
             this.cmdAnnuler.UseVisualStyleBackColor = true;
+            this.cmdAnnuler.Click += new System.EventHandler(this.cmdAnnuler_Click);
             // 
             // cmdCreer
             // 

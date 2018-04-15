@@ -36,17 +36,13 @@ namespace ChatApplication
         {
             frmEnregistrement frmEnregistrement = new frmEnregistrement();
             frmEnregistrement.ShowDialog();
-
-            //frmEnregistrement2 frmEnregistrement2 = new frmEnregistrement2();
-
-            //DialogResult res = frmEnregistrement2.DialogResult;
             DialogResult res = frmEnregistrement.DialogResult;
             if (res == DialogResult.OK)
             {
                 frmEnregistrement.Close();
-                //frmEnregistrement2.Close();
+                frmEnregistrement.Dispose();
             }
-            frmEnregistrement.Dispose();
+            
         }
 
         private void cmdConnexion_Click(object sender, EventArgs e)
@@ -54,36 +50,28 @@ namespace ChatApplication
 
             user.Pseudo = txtIdentifiant.Text;
             user.MotDePasse = txtPassword.Text;
-            //string mdpHash = hashMotDePasse.HashMDP(user);
             string data = "02" + user.Pseudo;
             string reponse = envoiMessage.Connect(data);
             Console.WriteLine(reponse);
 
             if (hashMotDePasse.connexionUser(txtPassword.Text, reponse) == true)
-            //if(HashTest.Verify(txtPassword.Text, reponse) == true)
-            //if(txtPassword.Text == reponse)
             {
-
                 Properties.Settings.Default.UserActif = txtIdentifiant.Text;
                 Properties.Settings.Default.Save();
                 frmDiscussions frmDiscussions = new frmDiscussions();
                 frmDiscussions.ShowDialog();
+                this.Close();
             }
             else
             {
                 MessageBox.Show("Mauvais identifiants !");
             }
-
-
             //https://social.msdn.microsoft.com/Forums/en-US/3f2877ab-0bce-4201-9acb-58df601345dc/how-to-do-remember-me-functionality-in-c-windows-application?forum=netfx64bit
-
             if (chkSeSouvenirDeMoi.Checked == true)
             {
                 Properties.Settings.Default.Identifiant = txtIdentifiant.Text;
                 Properties.Settings.Default.Save();
             }
-
-
         }
     }
 }

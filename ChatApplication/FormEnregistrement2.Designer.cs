@@ -32,18 +32,13 @@
             this.lblPrenom = new System.Windows.Forms.Label();
             this.lblPseudo = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
-            this.cmdPhoto = new System.Windows.Forms.Button();
             this.cmdValider = new System.Windows.Forms.Button();
-            this.grbPhoto = new System.Windows.Forms.GroupBox();
-            this.ptbPhoto = new System.Windows.Forms.PictureBox();
             this.grbInformations = new System.Windows.Forms.GroupBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtPseudo = new System.Windows.Forms.TextBox();
             this.txtPrenom = new System.Windows.Forms.TextBox();
             this.txtNom = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.grbPhoto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).BeginInit();
             this.grbInformations.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,15 +78,6 @@
             this.lblDescription.TabIndex = 4;
             this.lblDescription.Text = "Description :";
             // 
-            // cmdPhoto
-            // 
-            this.cmdPhoto.Location = new System.Drawing.Point(286, 59);
-            this.cmdPhoto.Name = "cmdPhoto";
-            this.cmdPhoto.Size = new System.Drawing.Size(75, 23);
-            this.cmdPhoto.TabIndex = 6;
-            this.cmdPhoto.Text = "Parcourir...";
-            this.cmdPhoto.UseVisualStyleBackColor = true;
-            // 
             // cmdValider
             // 
             this.cmdValider.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -102,26 +88,6 @@
             this.cmdValider.Text = "Valider mon profil";
             this.cmdValider.UseVisualStyleBackColor = true;
             this.cmdValider.Click += new System.EventHandler(this.cmdValider_Click);
-            // 
-            // grbPhoto
-            // 
-            this.grbPhoto.Controls.Add(this.ptbPhoto);
-            this.grbPhoto.Controls.Add(this.cmdPhoto);
-            this.grbPhoto.Location = new System.Drawing.Point(21, 16);
-            this.grbPhoto.Name = "grbPhoto";
-            this.grbPhoto.Size = new System.Drawing.Size(392, 124);
-            this.grbPhoto.TabIndex = 8;
-            this.grbPhoto.TabStop = false;
-            this.grbPhoto.Text = "Photo de profil";
-            // 
-            // ptbPhoto
-            // 
-            this.ptbPhoto.Location = new System.Drawing.Point(9, 19);
-            this.ptbPhoto.Name = "ptbPhoto";
-            this.ptbPhoto.Size = new System.Drawing.Size(102, 99);
-            this.ptbPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbPhoto.TabIndex = 7;
-            this.ptbPhoto.TabStop = false;
             // 
             // grbInformations
             // 
@@ -134,9 +100,9 @@
             this.grbInformations.Controls.Add(this.cmdValider);
             this.grbInformations.Controls.Add(this.lblPseudo);
             this.grbInformations.Controls.Add(this.lblDescription);
-            this.grbInformations.Location = new System.Drawing.Point(21, 146);
+            this.grbInformations.Location = new System.Drawing.Point(21, 12);
             this.grbInformations.Name = "grbInformations";
-            this.grbInformations.Size = new System.Drawing.Size(392, 318);
+            this.grbInformations.Size = new System.Drawing.Size(392, 452);
             this.grbInformations.TabIndex = 9;
             this.grbInformations.TabStop = false;
             this.grbInformations.Text = "Informations du profil";
@@ -181,11 +147,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(475, 503);
             this.Controls.Add(this.grbInformations);
-            this.Controls.Add(this.grbPhoto);
             this.Name = "frmEnregistrement2";
             this.Text = "Enregistrement";
-            this.grbPhoto.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).EndInit();
             this.grbInformations.ResumeLayout(false);
             this.grbInformations.PerformLayout();
             this.ResumeLayout(false);
@@ -197,15 +160,12 @@
         private System.Windows.Forms.Label lblPrenom;
         private System.Windows.Forms.Label lblPseudo;
         private System.Windows.Forms.Label lblDescription;
-        private System.Windows.Forms.Button cmdPhoto;
         private System.Windows.Forms.Button cmdValider;
-        private System.Windows.Forms.GroupBox grbPhoto;
         private System.Windows.Forms.GroupBox grbInformations;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.TextBox txtPseudo;
         private System.Windows.Forms.TextBox txtPrenom;
         private System.Windows.Forms.TextBox txtNom;
-        private System.Windows.Forms.PictureBox ptbPhoto;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

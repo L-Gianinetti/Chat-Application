@@ -271,7 +271,7 @@ namespace MyTcpListener
                                 stream.Write(reponse14, 0, reponse14.Length);
                                 break;
                             #endregion
-                            #region 15 : CreerDiscussion
+                            #region 15 : AjouterDiscussion
                             //"151" + utilisateur.Pseudo + "$" + txtCategorie.Text + "$" + participants + txtNom.Text + nbrParticipants;
                             //"15" + utilisateur.Pseudo + "$" + txtCategorie.Text + "$" + participants + txtNom.Text + nbrParticipants;
                             case "15":
@@ -313,7 +313,7 @@ namespace MyTcpListener
                                 byte[] reponse15;
 
                                 //Essaye de créer la discussion
-                                string discussion = actionDiscussion.CreerDiscussion(SeparationSwitchDonnes, nbrParticipants, categorie, publique);
+                                string discussion = actionDiscussion.AjouterDiscussion(SeparationSwitchDonnes, nbrParticipants, categorie, publique);
                                 //La discussion a été crée
                                 if (discussion == "Discussion creee")
                                 {

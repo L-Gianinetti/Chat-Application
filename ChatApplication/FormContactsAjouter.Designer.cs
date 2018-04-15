@@ -62,15 +62,18 @@
             // 
             // cmdAnnuler
             // 
+            this.cmdAnnuler.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdAnnuler.Location = new System.Drawing.Point(12, 264);
             this.cmdAnnuler.Name = "cmdAnnuler";
             this.cmdAnnuler.Size = new System.Drawing.Size(75, 23);
             this.cmdAnnuler.TabIndex = 3;
             this.cmdAnnuler.Text = "Annuler";
             this.cmdAnnuler.UseVisualStyleBackColor = true;
+            this.cmdAnnuler.Click += new System.EventHandler(this.cmdAnnuler_Click);
             // 
             // cmdAjouter
             // 
+            this.cmdAjouter.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdAjouter.Location = new System.Drawing.Point(223, 264);
             this.cmdAjouter.Name = "cmdAjouter";
             this.cmdAjouter.Size = new System.Drawing.Size(75, 23);

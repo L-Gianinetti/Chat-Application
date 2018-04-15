@@ -36,9 +36,6 @@ namespace ChatApplication
                     lstParticipants.Items.Add(nomsParticipants[i]);
                 }
             }
-
-
-
         }
 
         /// <summary>

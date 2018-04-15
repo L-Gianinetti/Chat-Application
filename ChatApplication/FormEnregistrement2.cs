@@ -38,32 +38,6 @@ namespace ChatApplication
             InitializeComponent();
         }
 
-        /*
-        private void cmdPhoto_Click(object sender, EventArgs e)
-        {
-            string fichier;
-
-            DialogResult result = openFileDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                try
-                {
-                    fichier = openFileDialog1.FileName;
-                    Console.WriteLine(fichier);
-                    ptbPhoto.Image = Image.FromFile(fichier);
-                    imageBytes = File.ReadAllBytes(fichier);
-                }
-                catch (IOException)
-                {
-
-                }
-
-
-            }
-        }
-        */
-
-
         private void cmdValider_Click(object sender, EventArgs e)
         {
             //Attribution des différents champs à l'utilisateur

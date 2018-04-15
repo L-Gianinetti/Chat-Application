@@ -36,10 +36,8 @@
             this.cmdProfil = new System.Windows.Forms.Button();
             this.cmdContacts = new System.Windows.Forms.Button();
             this.grbInformations = new System.Windows.Forms.GroupBox();
-            this.lblPhoto = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.lblDescription = new System.Windows.Forms.Label();
-            this.ptbPhoto = new System.Windows.Forms.PictureBox();
             this.txtPseudo = new System.Windows.Forms.TextBox();
             this.txtPrenom = new System.Windows.Forms.TextBox();
             this.txtNom = new System.Windows.Forms.TextBox();
@@ -54,7 +52,6 @@
             this.lblRemarque = new System.Windows.Forms.Label();
             this.grbMenu.SuspendLayout();
             this.grbInformations.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).BeginInit();
             this.grbAnnotation.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,10 +126,8 @@
             // 
             // grbInformations
             // 
-            this.grbInformations.Controls.Add(this.lblPhoto);
             this.grbInformations.Controls.Add(this.txtDescription);
             this.grbInformations.Controls.Add(this.lblDescription);
-            this.grbInformations.Controls.Add(this.ptbPhoto);
             this.grbInformations.Controls.Add(this.txtPseudo);
             this.grbInformations.Controls.Add(this.txtPrenom);
             this.grbInformations.Controls.Add(this.txtNom);
@@ -146,18 +141,9 @@
             this.grbInformations.TabStop = false;
             this.grbInformations.Text = "Informations";
             // 
-            // lblPhoto
-            // 
-            this.lblPhoto.AutoSize = true;
-            this.lblPhoto.Location = new System.Drawing.Point(12, 35);
-            this.lblPhoto.Name = "lblPhoto";
-            this.lblPhoto.Size = new System.Drawing.Size(41, 13);
-            this.lblPhoto.TabIndex = 20;
-            this.lblPhoto.Text = "Photo :";
-            // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(367, 147);
+            this.txtDescription.Location = new System.Drawing.Point(106, 126);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(174, 106);
@@ -166,38 +152,30 @@
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(273, 150);
+            this.lblDescription.Location = new System.Drawing.Point(12, 129);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(66, 13);
             this.lblDescription.TabIndex = 18;
             this.lblDescription.Text = "Description :";
             // 
-            // ptbPhoto
-            // 
-            this.ptbPhoto.Location = new System.Drawing.Point(12, 54);
-            this.ptbPhoto.Name = "ptbPhoto";
-            this.ptbPhoto.Size = new System.Drawing.Size(150, 135);
-            this.ptbPhoto.TabIndex = 11;
-            this.ptbPhoto.TabStop = false;
-            // 
             // txtPseudo
             // 
             this.txtPseudo.Enabled = false;
-            this.txtPseudo.Location = new System.Drawing.Point(367, 121);
+            this.txtPseudo.Location = new System.Drawing.Point(400, 37);
             this.txtPseudo.Name = "txtPseudo";
             this.txtPseudo.Size = new System.Drawing.Size(100, 20);
             this.txtPseudo.TabIndex = 17;
             // 
             // txtPrenom
             // 
-            this.txtPrenom.Location = new System.Drawing.Point(367, 84);
+            this.txtPrenom.Location = new System.Drawing.Point(106, 65);
             this.txtPrenom.Name = "txtPrenom";
             this.txtPrenom.Size = new System.Drawing.Size(100, 20);
             this.txtPrenom.TabIndex = 16;
             // 
             // txtNom
             // 
-            this.txtNom.Location = new System.Drawing.Point(367, 54);
+            this.txtNom.Location = new System.Drawing.Point(106, 35);
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(100, 20);
             this.txtNom.TabIndex = 15;
@@ -205,7 +183,7 @@
             // lblNom
             // 
             this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(273, 54);
+            this.lblNom.Location = new System.Drawing.Point(12, 35);
             this.lblNom.Name = "lblNom";
             this.lblNom.Size = new System.Drawing.Size(35, 13);
             this.lblNom.TabIndex = 12;
@@ -214,7 +192,7 @@
             // lblPrenom
             // 
             this.lblPrenom.AutoSize = true;
-            this.lblPrenom.Location = new System.Drawing.Point(273, 87);
+            this.lblPrenom.Location = new System.Drawing.Point(12, 68);
             this.lblPrenom.Name = "lblPrenom";
             this.lblPrenom.Size = new System.Drawing.Size(49, 13);
             this.lblPrenom.TabIndex = 13;
@@ -223,7 +201,7 @@
             // lblPseudo
             // 
             this.lblPseudo.AutoSize = true;
-            this.lblPseudo.Location = new System.Drawing.Point(273, 124);
+            this.lblPseudo.Location = new System.Drawing.Point(306, 37);
             this.lblPseudo.Name = "lblPseudo";
             this.lblPseudo.Size = new System.Drawing.Size(74, 13);
             this.lblPseudo.TabIndex = 14;
@@ -256,6 +234,7 @@
             // 
             // cmdAnnuler
             // 
+            this.cmdAnnuler.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdAnnuler.Location = new System.Drawing.Point(425, 157);
             this.cmdAnnuler.Name = "cmdAnnuler";
             this.cmdAnnuler.Size = new System.Drawing.Size(75, 23);
@@ -303,7 +282,6 @@
             this.grbMenu.ResumeLayout(false);
             this.grbInformations.ResumeLayout(false);
             this.grbInformations.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptbPhoto)).EndInit();
             this.grbAnnotation.ResumeLayout(false);
             this.grbAnnotation.PerformLayout();
             this.ResumeLayout(false);
@@ -320,14 +298,12 @@
         private System.Windows.Forms.Button cmdProfil;
         private System.Windows.Forms.Button cmdContacts;
         private System.Windows.Forms.GroupBox grbInformations;
-        private System.Windows.Forms.PictureBox ptbPhoto;
         private System.Windows.Forms.TextBox txtPseudo;
         private System.Windows.Forms.TextBox txtPrenom;
         private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.Label lblPrenom;
         private System.Windows.Forms.Label lblPseudo;
-        private System.Windows.Forms.Label lblPhoto;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.GroupBox grbAnnotation;

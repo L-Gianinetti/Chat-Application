@@ -46,7 +46,6 @@ namespace ChatApplication
 
             if(reponse != string.Empty)
             {
-                //reponse = reponse.Substring(0, reponse.Length - 1);
                 //Les messages sont séparés par des "*"
                 string[] messageRecu = reponse.Split('*');
                 string[] test;
@@ -89,10 +88,7 @@ namespace ChatApplication
                 cmdAAjouter.Enabled = false;
                 cmdASupprimer.Enabled = false;
             }
-
         }
-
-
 
         private void cmdEnvoyer_Click(object sender, EventArgs e)
         {
@@ -120,7 +116,6 @@ namespace ChatApplication
         private void cmdASupprimer_Click(object sender, EventArgs e)
         {
             FrmDiscussionSupprimer frmDiscussionSupprimer = new FrmDiscussionSupprimer(nomDiscussion);
-
             frmDiscussionSupprimer.Show();
             DialogResult res = new DialogResult();
             if (res == DialogResult.OK)

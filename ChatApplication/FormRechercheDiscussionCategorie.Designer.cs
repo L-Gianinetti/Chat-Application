@@ -52,6 +52,7 @@
             // 
             // cmdRejoindre
             // 
+            this.cmdRejoindre.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdRejoindre.Location = new System.Drawing.Point(187, 222);
             this.cmdRejoindre.Name = "cmdRejoindre";
             this.cmdRejoindre.Size = new System.Drawing.Size(75, 23);

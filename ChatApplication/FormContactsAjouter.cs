@@ -55,12 +55,19 @@ namespace ChatApplication
                 user = null;
                 
             }
+
+            this.Close();
         }
 
         public User ajoutDemande()
         {
             user.Pseudo = txtPseudo.Text;
             return user;
+        }
+
+        private void cmdAnnuler_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

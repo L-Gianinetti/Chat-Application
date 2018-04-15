@@ -24,7 +24,10 @@ namespace MyTcpListener
         }
 
         #region CONSTRUCTEURS
-
+        /// <summary>
+        /// Pour tous les update ou delete
+        /// </summary>
+        /// <param name="requete"></param>
         public void UpdateOrDelete(string requete)
         {
             //ouverture de la connexion SQL
@@ -41,6 +44,12 @@ namespace MyTcpListener
 
             this.connection.Close();
         }
+
+        /// <summary>
+        /// Selectionne 1 seul champ 1 seul fois
+        /// </summary>
+        /// <param name="requete"></param>
+        /// <returns></returns>
         public string SelectSimple(string requete)
         {
             //ouverture de la connexion SQL
@@ -69,6 +78,12 @@ namespace MyTcpListener
 
             return reponse;
         }
+
+        /// <summary>
+        /// Selectionne deux champs "plusieurs" fois
+        /// </summary>
+        /// <param name="requete"></param>
+        /// <returns></returns>
         public string SelectDoubleWhile(string requete)
         {
             this.connection.Open();
@@ -85,7 +100,12 @@ namespace MyTcpListener
             return reponse;
         }
 
-        public string SelectTripleWhile2(string requete)
+        /// <summary>
+        /// Selectionne 3 champs "plusieurs" fois
+        /// </summary>
+        /// <param name="requete"></param>
+        /// <returns></returns>
+        public string SelectTripleWhile(string requete)
         {
             this.connection.Open();
             MySqlCommand cmd = this.connection.CreateCommand();
@@ -101,22 +121,13 @@ namespace MyTcpListener
             return reponse;
         }
 
-        public string SelectDoubleWhile2(string requete)
-        {
-            this.connection.Open();
-            MySqlCommand cmd = this.connection.CreateCommand();
-            cmd.CommandText = requete;
-            string reponse = string.Empty;
-            var cmdReader = cmd.ExecuteReader();
-            while (cmdReader.Read())
-            {
-                reponse += String.Format("{0}",cmdReader[0])  + " "+ "$" + string.Format("{0}", cmdReader[1]) + "*";
-            }
-
-            this.connection.Close();
-            return reponse;
-        }
-
+        /// <summary>
+        /// Selectionne un champ "plusieurs" fois + like
+        /// </summary>
+        /// <param name="requete"></param>
+        /// <param name="param"></param>
+        /// <param name="valeur"></param>
+        /// <returns></returns>
         public string SelectSimpleWhileLike(string requete, string param, string valeur)
         {
             this.connection.Open();
@@ -133,6 +144,12 @@ namespace MyTcpListener
             this.connection.Close();
             return reponse;
         }
+
+        /// <summary>
+        /// Selectionne 1 champ "plusieurs" fois
+        /// </summary>
+        /// <param name="requete"></param>
+        /// <returns></returns>
         public string SelectSimpleWhile(string requete)
         {
             this.connection.Open();
@@ -198,11 +215,15 @@ namespace MyTcpListener
         /// <param name="idContact"></param>
         public void SupprimerDemandeContact(int idUser, int idContact)
         {
-
             string requete = "DELETE FROM demandescontacts WHERE fkUser =\"" + idUser + "\" and fkUserContact =\"" + idContact + "\"";
             UpdateOrDelete(requete);
         }
 
+        /// <summary>
+        /// Supprime une archive
+        /// </summary>
+        /// <param name="idUser"></param>
+        /// <param name="idDiscussion"></param>
         public void SupprimerArchive(int idUser, int idDiscussion)
         {
             string requete = "DELETE FROM archives WHERE fkUser =\"" + idUser + "\" and fkDiscussion =\"" + idDiscussion + "\"";
@@ -241,20 +262,32 @@ namespace MyTcpListener
         /// <param name="idUtilisateur"></param>
         /// <param name="idContact"></param>
         /// <returns></returns>
-        public string InfoContactAnnotation(int idUtilisateur, int idContact)
+        public string SelectionneInfoContactAnnotation(int idUtilisateur, int idContact)
         {
             string requete = "SELECT contactNote from contact where fkUser =\"" + idUtilisateur + "\" and fkUserContact =\"" + idContact + "\"";
             string annotation = SelectSimple(requete);
             return annotation;
         }
 
+        /// <summary>
+        /// Selectionne les idDiscussion auquel participe un user
+        /// </summary>
+        /// <param name="idDiscussion"></param>
+        /// <param name="idPseudo"></param>
+        /// <returns></returns>
         public string SelectionneIdDiscussionDejaParticipant(string idDiscussion, int idPseudo)
         {
-            string requete = "SELECT fkDiscussion from participationdiscussions where fkDiscussion =\"" + idDiscussion + "\" and fkUser =\"" + idPseudo + "\"";
+            string statut = "Participe";
+            string requete = "SELECT fkDiscussion from participationdiscussions where fkDiscussion =\"" + idDiscussion + "\" and fkUser =\"" + idPseudo + "\" and statut =\"" + statut + "\"";
             string reponse = SelectSimple(requete);
             return reponse;
         }
 
+        /// <summary>
+        /// Selectionne les noms des discussions correspondants à une categorie
+        /// </summary>
+        /// <param name="categorie"></param>
+        /// <returns></returns>
         public string SelectionneNomDiscussionParCategorie(string categorie)
         {
             string requete = "SELECT discussionName from discussion_has_category inner join discussion on idDiscussion = discussion_has_category.fkDiscussion inner join category on idCategory = discussion_has_category.fkCategory where categoryName =\"" + categorie + "\"";
@@ -262,6 +295,11 @@ namespace MyTcpListener
             return reponse;
         }
 
+        /// <summary>
+        /// Selectionne les ids des discussions correspondants à une categorie
+        /// </summary>
+        /// <param name="idCategory"></param>
+        /// <returns></returns>
         public string SelectionneIdDiscussionParIdCategorie(int idCategory)
         {
             string requete = "SELECT fkDiscussion from discussion_has_category where fkCategory =\"" + idCategory + "\"";
@@ -282,19 +320,22 @@ namespace MyTcpListener
             return reponse;
         }
 
+        /// <summary>
+        /// Selectionne les catégories proposées = les 10 premières catégories
+        /// </summary>
+        /// <returns></returns>
         public string SelectionnCategorieProposee()
         {
             string requete = "SELECT categoryName from category where idCategory < 11";
             string reponse = SelectSimpleWhile(requete);
             return reponse;
         }
-        public string SelectionneIdUserMessages(int idDiscussion)
-        {
-            string requete = "SELECT fkUser from message where fkDiscussion =\"" + idDiscussion + "\" ORDER BY sendTime";
-            string reponse = SelectSimpleWhile(requete);
-            return reponse;
-        }
 
+        /// <summary>
+        /// Selectionne le pseudo de l'administrateur correspondant à un nom de discussion
+        /// </summary>
+        /// <param name="nomDiscussion"></param>
+        /// <returns></returns>
         public string selectionnePseudoAdministrateur(string nomDiscussion)
         {
             string requete = "SELECT distinct userPseudonym from participationdiscussions inner join user on idUser = fkAdministrateur inner join discussion on idDiscussion = fkDiscussion where discussionName =\"" + nomDiscussion + "\"";
@@ -310,39 +351,31 @@ namespace MyTcpListener
         public string SelectionneMessages(int idDiscussion)
         {
             string requete = "SELECT userPseudonym, sendTime, messageContent from message inner join user on idUser = fkUser where fkDiscussion =\"" + idDiscussion + "\" ORDER BY sendTime";
-            string reponse = SelectTripleWhile2(requete);
+            string reponse = SelectTripleWhile(requete);
             if(reponse != string.Empty)
             {
                 reponse = reponse.Substring(0, reponse.Length - 1);
             }
-            
             return reponse;
         }
 
         /// <summary>
-        /// Selectionne le champ userPseudonym de la table user
+        /// Selectionne le nom d'une discussion correspondant à un idDiscussion
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="idDiscussion"></param>
         /// <returns></returns>
-        public string RetourneInfoProfilPseudo(User user)
-        {
-            string requete = "SELECT userPseudonym from user where userPseudonym =\"" + user.Pseudo + "\"";
-            string pseudo = SelectSimple(requete);
-            return pseudo;
-        }
-        public string GetNomDiscussionPublique(int idDiscussion)
-        {
-            string requete = "SELECT discussionName from discussion where idDiscussion =\"" + idDiscussion + "\" and publique = 1";
-            string nomTrouve = SelectSimple(requete);
-            return nomTrouve;
-        }
-        public string GetNomDiscussion(int idDiscussion)
+        public string SelectionneNomDiscussion(int idDiscussion)
         {
             string requete = "SELECT discussionName from discussion where idDiscussion =\"" + idDiscussion + "\"";
             string nomTrouve = SelectSimple(requete);
             return nomTrouve;
         }
 
+        /// <summary>
+        /// Selectionne le nom d'une discussion correspondant à un DiscussionName
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <returns></returns>
         public string VerifieNomDiscussion(string nom)
         {
             string requete = "SELECT discussionName from discussion where discussionName =\"" + nom + "\"";
@@ -351,7 +384,7 @@ namespace MyTcpListener
         }
 
         /// <summary>
-        /// Selectionne le champ userFirstName de la table user
+        /// Selectionne le prenom d'un utilisateur correspondant à un pseudo
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
@@ -363,7 +396,7 @@ namespace MyTcpListener
         }
 
         /// <summary>
-        /// Selectionne le champ userName de la table user
+        /// Selectionne le nom d'un utilisateur correspondant à un pseudo
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
@@ -374,7 +407,11 @@ namespace MyTcpListener
             return nom;
         }
 
-
+        /// <summary>
+        /// Selectionne la description d'un utilisateur correspondant à un pseudo
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public string RetourneInfoProfilDescription(User user)
         {
             string requete = "SELECT userDescription from user where userPseudonym =\"" + user.Pseudo + "\"";
@@ -382,32 +419,24 @@ namespace MyTcpListener
             return description;
         }
 
-
-        public string RetourneInfoProfilPhoto(User user)
-        {
-            string requete = "SELECT userPhoto from user where userPseudonym =\"" + user.Pseudo + "\"";
-            string photo = SelectSimple(requete);
-            return photo;
-        }
-
-
-        public string CheminDocumentation()
-        {
-            string requete = "SELECT path from Documentation";
-            string path = SelectSimple(requete);
-            return path;
-        }
-
-
-        public string GetMotDePasse(User user)
+        /// <summary>
+        /// Selectionne le mot de passe d'un utilisateur correspondant à un pseudo
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public string SelectionneMotDePasse(User user)
         {
             string requete = "SELECT userPassword from user where userPseudonym =\"" + user.Pseudo + "\"";
             string mdp = SelectSimple(requete);
             return mdp;
         }
 
-
-        public int retourneIdUser(User user)
+        /// <summary>
+        /// Selectionne l'id d'un utilisateur correspondant à un pseudo
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public int SelectionneIdUser(User user)
         {
             string requete = "SELECT idUser from user where userPseudonym =\"" + user.Pseudo + "\"";
             string id = SelectSimple(requete);
@@ -415,22 +444,11 @@ namespace MyTcpListener
             return idUtilisateur;
         }
 
-
-        public string getPseudoDemandes(int id)
-        {
-            string requete = "SELECT userPseudonym from user where idUser =\"" + id + "\"";
-            string pseudo = SelectSimple(requete);
-            return pseudo;
-        }
-
-
-        public string getUserPseudo(int fk)
-        {
-            string requete = "SELECT userPseudonym from user where idUser =\"" + fk + "\"";
-            string pseudo = SelectSimple(requete);
-            return pseudo;
-        }
-
+        /// <summary>
+        /// Selectionne l'id d'une catégorie correspondant à un nom de catégorie
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <returns></returns>
         public string SelectionneIdCategory(string nom)
         {
             string requete = "SELECT idCategory from category where categoryName = \"" + nom + "\"";
@@ -439,8 +457,9 @@ namespace MyTcpListener
         }
 
         /// <summary>
-        /// Utilisé pour ajouter l'administrateur ou les participants a une discussion
+        /// Selectionne l'id d'une discussion correspondant à un nom de discussion
         /// </summary>
+        /// Utilisé pour ajouter l'administrateur ou les participants a une discussion
         /// <param name="nom"></param>
         /// <returns></returns>
         public string SelectionneIdDiscussion(string nom)
@@ -475,18 +494,9 @@ namespace MyTcpListener
             return reponse;
         }
 
-        public string SelectionneIdContacts(int idUser)
-        {
-            string requete = "SELECT fkUserContact from contact where fkUser =\"" + idUser + "\"";
-            string idList = SelectSimpleWhile(requete);
-            return idList;
-        }
 
-
-        //Il faut que la requête retourne tous les resultats pas seulement le premier
-        //Ne prend que 1 seul fk en paramètres, peut donc pas retourner plusieurs resultats
         /// <summary>
-        /// Retourne les pseudos des contacts en fonction des demandes (recues ou envoyees)
+        /// Selectionne les pseudos des contacts en fonction des demandes (recues ou envoyees)
         /// </summary>
         /// <param name="fk"></param>
         /// <param name="statut"></param>
@@ -499,25 +509,23 @@ namespace MyTcpListener
             return id;
         }
 
-        public string SelectionneIdArchive(int idUtilisateur)
-        {
-            string requete = "SELECT fkDiscussion from archives where fkUser =\"" + idUtilisateur + "\"";
-            string idDiscussion = SelectSimpleWhile(requete);
-            if (idDiscussion != string.Empty)
-            {
-                idDiscussion = idDiscussion.Substring(0, idDiscussion.Length - 1);
-            }
-
-            return idDiscussion;
-        }
-
-        public string VerifieCategorie(string categorie)
+        /// <summary>
+        /// Selectionne le nom d'une categorie en fonction d'un nom de categorie
+        /// </summary>
+        /// <param name="categorie"></param>
+        /// <returns></returns>
+        public string SelectionneICategorie(string categorie)
         {
             string requete = "SELECT categoryName from category where categoryName =\"" + categorie + "\"";
             string reponse = SelectSimple(requete);
             return reponse;
         }
 
+        /// <summary>
+        /// Selectionne les pseudos des utilisateurs participants à une discussion correspondant à un nom de discussion
+        /// </summary>
+        /// <param name="nomDiscussion"></param>
+        /// <returns></returns>
         public string SelectionneNomParticipantsDiscussion(string nomDiscussion)
         {
             string statut = "Participe";
@@ -528,7 +536,7 @@ namespace MyTcpListener
         }
 
         /// <summary>
-        /// Retourne le nom de la discussion auquel participe ou va participer un user
+        /// Selectionne le nom de la discussion auquel participe ou va participer un user
         /// </summary>
         /// <param name="idUtilisateur"></param>
         /// <param name="statut"></param>
@@ -541,23 +549,31 @@ namespace MyTcpListener
             {
                 idDiscussion = idDiscussion.Substring(0, idDiscussion.Length - 1);
             }
-
             return idDiscussion;
         }
 
+        /// <summary>
+        /// Selectionne les ids des discussions correspondant à un utilisateur et un statut
+        /// </summary>
+        /// <param name="idUtilisateur"></param>
+        /// <param name="statut"></param>
+        /// <returns></returns>
         public string SelectionneIdDiscussion(int idUtilisateur, string statut)
-        {
-            
+        { 
             string requete = "SELECT fkDiscussion from participationdiscussions where fkUser =\"" + idUtilisateur + "\" and statut =\"" + statut + "\"";
             string idDiscussion = SelectSimpleWhile(requete);
             if(idDiscussion != string.Empty)
             {
                 idDiscussion = idDiscussion.Substring(0, idDiscussion.Length - 1);
             }
-
             return idDiscussion;
         }
 
+        /// <summary>
+        /// Selectionne les noms des utilisateurs et des discussions correpsondant à un administrateur
+        /// </summary>
+        /// <param name="idAdministrateur"></param>
+        /// <returns></returns>
         public string SelectionnePseudoUserNomDiscussionEnattente(int idAdministrateur)
         {
             string statut = "En attente";
@@ -566,14 +582,11 @@ namespace MyTcpListener
             return reponse;
         }
 
-        public string SelectionneIdUserNomDiscussionEnAttente(int idAdministrateur)
-        {
-            string statut = "En attente";
-            string requete = "SELECT fkUser, fkDiscussion from participationdiscussions where fkAdministrateur =\"" + idAdministrateur + "\" and statut =\"" + statut + "\"";
-            string reponse = SelectDoubleWhile(requete);
-            return reponse;
-        }
-
+        /// <summary>
+        /// Selectionne le nom des archives correspondant à un utilisateur
+        /// </summary>
+        /// <param name="pseudoUtilisateur"></param>
+        /// <returns></returns>
         public string SelectionneArchive(string pseudoUtilisateur)
         {
             string requete = "SELECT discussionName from archives inner join discussion on idDiscussion = archives.fkDiscussion inner join user on idUser = archives.fkUser where userPseudonym =\"" + pseudoUtilisateur + "\"";
@@ -581,20 +594,18 @@ namespace MyTcpListener
             return reponse;
         }
 
-        public string CompteNombreEnAttenteParDiscussion(int idDiscussion)
+        /// <summary>
+        /// Selectionne le nombre de personne participants à une discussion correspondant à un idDiscussion
+        /// </summary>
+        /// <param name="idDiscussion"></param>
+        /// <returns></returns>
+        public string CompteNombreParDiscussion(int idDiscussion)
         {
             string requete = "SELECT COUNT(fkDiscussion) from participationdiscussions where fkDiscussion =\"" + idDiscussion + "\"";
             string reponse = SelectSimple(requete);
             return reponse;
         }
 
-        public string GetIdParticipantsDiscussion(string idDiscussion)
-        {
-            string requete = "SELECT fkUser from participationdiscussions where fkDiscussion = \"" + idDiscussion + "\"";
-            string reponse = SelectSimpleWhile(requete);
-            reponse = reponse.Substring(0, reponse.Length - 1);
-            return reponse;
-        }
 
         /// <summary>
         /// Selectionne l'id de l'administrateur d'une discussion en fonction de l'idDiscussion
@@ -658,48 +669,6 @@ namespace MyTcpListener
 
         }
 
-
-
-        public bool connexionUser(User user)
-        {
-            bool userExistant;
-
-            //ouverture de la connexion SQL
-            this.connection.Open();
-
-            //Création d'une commande SQL en fonction de l'object connection
-            MySqlCommand cmd = this.connection.CreateCommand();
-
-
-
-            //Requête SQL
-            cmd.CommandText = "SELECT userPassword from user where userPseudonym =\"" + user.Pseudo + "\"";
-
-
-            //Exécution de la commande SQL
-            cmd.ExecuteNonQuery();
-
-            string mdp = string.Empty;
-
-
-            var cmdReader = cmd.ExecuteReader();
-            if (cmdReader.Read())
-            {
-                mdp = String.Format("{0}", cmdReader[0]);
-            }
-            if (VerifMotDePasse(mdp, user))
-            {
-                userExistant = true;
-            }
-            else
-            {
-                userExistant = false;
-            }
-
-            this.connection.Close();
-
-            return userExistant;
-        }
         #endregion
 
         #region INSERT
@@ -712,7 +681,7 @@ namespace MyTcpListener
         /// <param name="idDiscussion"></param>
         /// <param name="idAdministrateur"></param>
         /// <param name="statut"></param>
-        public void CreerParticipationDisucssion(int idUser, int idDiscussion, int idAdministrateur, string statut)
+        public void AjouterParticipationDisucssion(int idUser, int idDiscussion, int idAdministrateur, string statut)
         {
             this.connection.Open();
             MySqlCommand cmd = this.connection.CreateCommand();
@@ -725,6 +694,12 @@ namespace MyTcpListener
             this.connection.Close();
         }
 
+        /// <summary>
+        /// Crée une archive
+        /// </summary>
+        /// <param name="idDiscussion"></param>
+        /// <param name="idAdministrateur"></param>
+        /// <param name="idUtilisateur"></param>
         public void AjouterArchive(int idDiscussion, int idAdministrateur, int idUtilisateur)
         {
             this.connection.Open();
@@ -742,7 +717,7 @@ namespace MyTcpListener
         /// </summary>
         /// <param name="idDiscussion"></param>
         /// <param name="idCategory"></param>
-        public void AjoutLienCategorieDiscussion(int idDiscussion, int idCategory)
+        public void AjouterLienCategorieDiscussion(int idDiscussion, int idCategory)
         {
             this.connection.Open();
             MySqlCommand cmd = this.connection.CreateCommand();
@@ -753,7 +728,11 @@ namespace MyTcpListener
             this.connection.Close();
         }
 
-        public void AjoutCategorie(string categorie)
+        /// <summary>
+        /// Crée une catégorie
+        /// </summary>
+        /// <param name="categorie"></param>
+        public void AjouterDiscussion(string categorie)
         {
             this.connection.Open();
             MySqlCommand cmd = this.connection.CreateCommand();
@@ -768,7 +747,7 @@ namespace MyTcpListener
         /// </summary>
         /// <param name="nom"></param>
         /// <param name="publique"></param>
-        public void CreerDiscussion(string nom, bool publique)
+        public void AjouterDiscussion(string nom, bool publique)
         {
             this.connection.Open();
             MySqlCommand cmd = this.connection.CreateCommand();
@@ -780,13 +759,13 @@ namespace MyTcpListener
         }
      
         /// <summary>
-        /// Ajoute un message
+        /// Crée un message
         /// </summary>
         /// <param name="message"></param>
         /// <param name="date"></param>
         /// <param name="idDiscussion"></param>
         /// <param name="idUser"></param>
-        public void ajouterMessage(string message, DateTime date, int idDiscussion, int idUser)
+        public void AjouterMessage(string message, DateTime date, int idDiscussion, int idUser)
         {
             this.connection.Open();
 
@@ -803,7 +782,11 @@ namespace MyTcpListener
             this.connection.Close();
         }
 
-        public void ajoutUser(User user)
+        /// <summary>
+        /// Crée un utilisateur
+        /// </summary>
+        /// <param name="user"></param>
+        public void AjouterUser(User user)
         {
             //ouverture de la connexion SQL
             this.connection.Open();
@@ -827,51 +810,54 @@ namespace MyTcpListener
             this.connection.Close();
         }
 
-
-        public void ajoutDemandeContact(int fkUser, int fkUserContact, string statut)
+        /// <summary>
+        /// Crée une demande de contact
+        /// </summary>
+        /// <param name="fkUser"></param>
+        /// <param name="fkUserContact"></param>
+        /// <param name="statut"></param>
+        public void AjouterDemandeContact(int fkUser, int fkUserContact, string statut)
         {
-
             //ouverture de la connexion SQL
             this.connection.Open();
-
             //Création d'une commande SQL en fonction de l'object connection
             MySqlCommand cmd = this.connection.CreateCommand();
-
             cmd.CommandText = "INSERT INTO demandescontacts(fkUser,fkUserContact, Statut) VALUES(@fkUser, @fkUserContact,@Statut)";
-
             //utilisation de l'objet contact passé en paramètre
             cmd.Parameters.AddWithValue("@Statut", statut);
             cmd.Parameters.AddWithValue("@fkUser", fkUser);
             cmd.Parameters.AddWithValue("@fkUserContact", fkUserContact);
-
             //Exécution de la commande SQL
             cmd.ExecuteNonQuery();
-
             this.connection.Close();
-
         }
 
-
+        /// <summary>
+        /// Crée un contact
+        /// </summary>
+        /// Utilisé lorsqu'une demande de contact est acceptée
+        /// <param name="idUser"></param>
+        /// <param name="idContact"></param>
         public void ContactAccepterAjouterContact(int idUser, int idContact)
         {
             this.connection.Open();
-
             MySqlCommand cmd2 = this.connection.CreateCommand();
-
             cmd2.CommandText = "INSERT INTO contact(contactNote, fkUser, fkUserContact) VALUES (@contactNote, @fkUser, @fkUserContact)";
             cmd2.Parameters.AddWithValue("@ContactNote", string.Empty);
             cmd2.Parameters.AddWithValue("@fkUser", idUser);
             cmd2.Parameters.AddWithValue("@fkUserContact", idContact);
-
             cmd2.ExecuteNonQuery();
             this.connection.Close();
         }
         #endregion
 
         #region MOT DE PASSE
-        //MOT DE PASSE SUREMENT RIEN A FAIRE LA
 
-
+        /// <summary>
+        /// Permet de hasher le mdp
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public string HashMotDePasse(User user)
         {
             //https://stackoverflow.com/questions/4181198/how-to-hash-a-password/10402129#10402129
@@ -893,7 +879,12 @@ namespace MyTcpListener
             return savedPasswordHash = Convert.ToBase64String(hashBytes);
         }
 
-
+        /// <summary>
+        /// Permet de verifier que le mot de passe entré correpsond à celui de l'utilisateur
+        /// </summary>
+        /// <param name="motDePasse"></param>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public bool VerifMotDePasse(string motDePasse, User user)
         {
             bool motsDePasseCorrects = false;
@@ -932,13 +923,5 @@ namespace MyTcpListener
             return motsDePasseCorrects;
         }
         #endregion
-
-
-
-
-
-
-
-
     }
 }

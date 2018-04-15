@@ -55,39 +55,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administrateur.cs" />
-    <Compile Include="ConnexionBD.cs" />
-    <Compile Include="Discussion.cs" />
     <Compile Include="EnvoiMessage.cs" />
-    <Compile Include="FormArchives.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormArchives.Designer.cs">
-      <DependentUpon>FormArchives.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormConnexion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormConnexion.Designer.cs">
       <DependentUpon>FormConnexion.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormContacts.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormContacts.Designer.cs">
-      <DependentUpon>FormContacts.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormContactsAjouter.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormContactsAjouter.Designer.cs">
       <DependentUpon>FormContactsAjouter.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormContactsDemandes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormContactsDemandes.Designer.cs">
-      <DependentUpon>FormContactsDemandes.cs</DependentUpon>
     </Compile>
     <Compile Include="FormContactsModifier.cs">
       <SubType>Form</SubType>
@@ -100,12 +79,6 @@
     </Compile>
     <Compile Include="FormDiscussionAjouter.Designer.cs">
       <DependentUpon>FormDiscussionAjouter.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormDiscussionDemandes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormDiscussionDemandes.Designer.cs">
-      <DependentUpon>FormDiscussionDemandes.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDiscussionRecherche.cs">
       <SubType>Form</SubType>
@@ -149,12 +122,6 @@
     <Compile Include="FormMessage.Designer.cs">
       <DependentUpon>FormMessage.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormProfil.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormProfil.Designer.cs">
-      <DependentUpon>FormProfil.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormRechercheDiscussionCategorie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,33 +129,20 @@
       <DependentUpon>FormRechercheDiscussionCategorie.cs</DependentUpon>
     </Compile>
     <Compile Include="HashMotDePasse.cs" />
-    <Compile Include="Message.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
-    <EmbeddedResource Include="FormArchives.resx">
-      <DependentUpon>FormArchives.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormConnexion.resx">
       <DependentUpon>FormConnexion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormContacts.resx">
-      <DependentUpon>FormContacts.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormContactsAjouter.resx">
       <DependentUpon>FormContactsAjouter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormContactsDemandes.resx">
-      <DependentUpon>FormContactsDemandes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormContactsModifier.resx">
       <DependentUpon>FormContactsModifier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDiscussionAjouter.resx">
       <DependentUpon>FormDiscussionAjouter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormDiscussionDemandes.resx">
-      <DependentUpon>FormDiscussionDemandes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDiscussionRecherche.resx">
       <DependentUpon>FormDiscussionRecherche.cs</DependentUpon>
@@ -210,9 +164,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMessage.resx">
       <DependentUpon>FormMessage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormProfil.resx">
-      <DependentUpon>FormProfil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRechercheDiscussionCategorie.resx">
       <DependentUpon>FormRechercheDiscussionCategorie.cs</DependentUpon>

@@ -13,7 +13,6 @@ namespace ChatApplication
     public partial class FrmDisucssionCreer : Form
     {
         private static string _temporaire = string.Empty;
-
         public static string Temporaire
         {
             get { return _temporaire; }
@@ -82,18 +81,16 @@ namespace ChatApplication
             {
                 MessageBox.Show("Le nom de la discussion existe deja");
             }
-            
+            this.Close();
         }
 
         private void FrmDisucssionCreer_Load(object sender, EventArgs e)
         {
-            //TODO PENSER A METTRE UN STATUT PUBLIQUE / PRIVE SUR LES DISCUSSIONS
             ckbNom.Checked = false;
             ckbNom.Enabled = false;
             cmdCreer.Enabled = false;
             int i = 0;
             string message = "10" + utilisateur.Pseudo;
-
             string reponse = envoiMessage.Connect(message);
 
             if (reponse != "Pas de contact a ajouter")
@@ -171,5 +168,9 @@ namespace ChatApplication
             }
         }
 
+        private void cmdAnnuler_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

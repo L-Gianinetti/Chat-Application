@@ -39,7 +39,6 @@ namespace ChatApplication
                     }
                 }
             }
-
         }
 
         private void cmdRechercher_Click(object sender, EventArgs e)
@@ -57,7 +56,7 @@ namespace ChatApplication
                 }
                 FrmRechercheDiscussionCategorie frmRechercheDiscussionCategorie = new FrmRechercheDiscussionCategorie(categorie,utilisateur.Pseudo);
                 frmRechercheDiscussionCategorie.Show();
-                DialogResult res = new DialogResult();
+                DialogResult res = frmRechercheDiscussionCategorie.DialogResult;
                 if(res == DialogResult.OK)
                 {
                     frmRechercheDiscussionCategorie.Close();
@@ -97,6 +96,11 @@ namespace ChatApplication
         private void lstProposee_SelectedIndexChanged(object sender, EventArgs e)
         {
                 lstResultats.ClearSelected();
+        }
+
+        private void cmdAnnuler_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

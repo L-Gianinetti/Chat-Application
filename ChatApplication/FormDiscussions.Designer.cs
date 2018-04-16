@@ -614,7 +614,7 @@
             // pnlProfil
             // 
             this.pnlProfil.Controls.Add(this.grbProfil);
-            this.pnlProfil.Location = new System.Drawing.Point(1053, 78);
+            this.pnlProfil.Location = new System.Drawing.Point(126, 10);
             this.pnlProfil.Name = "pnlProfil";
             this.pnlProfil.Size = new System.Drawing.Size(601, 478);
             this.pnlProfil.TabIndex = 19;
@@ -726,7 +726,7 @@
             // pnlArchives
             // 
             this.pnlArchives.Controls.Add(this.grbArchives);
-            this.pnlArchives.Location = new System.Drawing.Point(126, 12);
+            this.pnlArchives.Location = new System.Drawing.Point(129, 12);
             this.pnlArchives.Name = "pnlArchives";
             this.pnlArchives.Size = new System.Drawing.Size(859, 529);
             this.pnlArchives.TabIndex = 2;
@@ -777,8 +777,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1245, 697);
             this.Controls.Add(this.pnlProfil);
-            this.Controls.Add(this.pnlDiscussions);
             this.Controls.Add(this.pnlArchives);
+            this.Controls.Add(this.pnlDiscussions);
             this.Controls.Add(this.pnlContact);
             this.Controls.Add(this.grbMenu);
             this.Name = "frmDiscussions";

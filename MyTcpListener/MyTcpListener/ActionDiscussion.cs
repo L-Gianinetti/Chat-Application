@@ -411,7 +411,6 @@ namespace MyTcpListener
                 int idUtilisateur = connexionBD.SelectionneIdUser(utilisateur);
                 connexionBD.AjouterParticipationDisucssion(idUtilisateur, idDiscussion, idAdmin, statut);
             }
-
         }
 
         public string SelectionneDiscussionsExistantesParCategorie(string categorie, string pseudo)

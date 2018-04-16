@@ -65,7 +65,7 @@ namespace ChatApplication
         private void cmdValider_Click(object sender, EventArgs e)
         {
             string message = "13" +  pseudoUtilisateurActif + "," +txtPseudo.Text + "," + txtAnnotation.Text;
-            string reponse = envoiMessage.Connect(message);
+            envoiMessage.Connect(message);
         }
     }
 }

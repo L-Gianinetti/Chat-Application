@@ -27,6 +27,7 @@ namespace ChatApplication
         private void FrmDiscussionSupprimer_Load(object sender, EventArgs e)
         {
             string message23 = "23" + nomDiscussion;
+            //Le serveur retourne les noms des participants a une discussion séparés par des virgules
             string reponse23 = envoiMessage.Connect(message23);
             string[] nomsParticipants = reponse23.Split(',');
             for(int i =0; i < nomsParticipants.Length; i++)

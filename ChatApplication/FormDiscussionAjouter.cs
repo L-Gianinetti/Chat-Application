@@ -31,8 +31,10 @@ namespace ChatApplication
         {
             string message = "10" + utilisateur.Pseudo;
             string message23 = "23" + nomDiscussion;
+            //Le serveur retourne les participants a la discussion
             string reponse23 = envoiMessage.Connect(message23);
             string[] nomsParticipants = reponse23.Split(',');
+            //Le serveur retourne les contacts séparés par des virgules
             string reponse = envoiMessage.Connect(message);
 
             //Si on a des contacts existants
@@ -91,6 +93,11 @@ namespace ChatApplication
             envoiMessage.Connect(message28);
         }
 
+        /// <summary>
+        /// Ajout d'un contact dans la liste des participants
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdAjouter_Click(object sender, EventArgs e)
         {
             if (cboContacts.SelectedIndex > -1)
@@ -102,6 +109,11 @@ namespace ChatApplication
             }
         }
 
+        /// <summary>
+        /// Retrait d'un participant de la liste des participants
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdRetirer_Click(object sender, EventArgs e)
         {
             if (lstParticipants.SelectedIndex > -1)

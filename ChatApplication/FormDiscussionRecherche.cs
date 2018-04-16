@@ -25,8 +25,10 @@ namespace ChatApplication
         }
         private void FrmDiscussionRecherche_Load(object sender, EventArgs e)
         {
-            //pour afficher les différentes catégories proposées
+            
             string message = "34";
+
+            //Le serveur retourne les catégories proposées (10 premières)
             string reponse = envoieMessage.Connect(message);
             if(reponse != string.Empty)
             {
@@ -54,6 +56,8 @@ namespace ChatApplication
                 {
                     categorie = lstProposee.SelectedItem.ToString();
                 }
+
+                //Ouvre le formulaire de recherche de discussion avec la categorie selectionnee en paramètre
                 FrmRechercheDiscussionCategorie frmRechercheDiscussionCategorie = new FrmRechercheDiscussionCategorie(categorie,utilisateur.Pseudo);
                 frmRechercheDiscussionCategorie.Show();
                 DialogResult res = frmRechercheDiscussionCategorie.DialogResult;
@@ -73,8 +77,9 @@ namespace ChatApplication
             else
             {
                 lstResultats.Items.Clear();
-                //Rechercher des categories existantes
+                
                 string message = "35" + txtRechercher.Text;
+                //Le serveur retourne les catégories correspondantes a la chaine de caractères txtRechercher.Text
                 string reponse = envoieMessage.Connect(message);
                 string[] retour = reponse.Split(',');
                 for (int i = 0; i < retour.Length; i++)

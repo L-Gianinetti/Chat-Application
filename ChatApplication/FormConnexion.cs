@@ -14,7 +14,6 @@ namespace ChatApplication
 {
     public partial class frmConnexion : Form
     {
-        //ConnexionBD connexionBD = new ConnexionBD();
         User user = new User();
         HashMotDePasse hashMotDePasse = new HashMotDePasse();
         EnvoiMessage envoiMessage = new EnvoiMessage();
@@ -25,13 +24,19 @@ namespace ChatApplication
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Permet de remplir txtIdentifiant.Text avec le pseudo de l'utilisateur a la prochaine utilisation
+            //fonctionne pas pour l'instant
             if (Properties.Settings.Default.Identifiant != string.Empty)
             {
                 txtIdentifiant.Text = Properties.Settings.Default.Identifiant;
             }
         }
 
-
+        /// <summary>
+        /// Ouvre frmEnregistrement
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdSEnregistrer_Click(object sender, EventArgs e)
         {
             frmEnregistrement frmEnregistrement = new frmEnregistrement();
@@ -41,24 +46,28 @@ namespace ChatApplication
             {
                 frmEnregistrement.Close();
                 frmEnregistrement.Dispose();
-            }
-            
+            }   
         }
 
+        /// <summary>
+        /// Ouvre le formulaire général si les identifiants rentrés sont corrects
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdConnexion_Click(object sender, EventArgs e)
         {
 
             user.Pseudo = txtIdentifiant.Text;
             user.MotDePasse = txtPassword.Text;
             string data = "02" + user.Pseudo;
-            string reponse = envoiMessage.Connect(data);
-            Console.WriteLine(reponse);
+            //le serveur retourne le mdp correspondant a l'utilisateur
+            string reponse = envoiMessage.Connect(data);  
 
+            //Si le mdp rentré correspond a celui de la BD
             if (hashMotDePasse.connexionUser(txtPassword.Text, reponse) == true)
             {
-                Properties.Settings.Default.UserActif = txtIdentifiant.Text;
-                Properties.Settings.Default.Save();
-                frmDiscussions frmDiscussions = new frmDiscussions();
+                //Ouvre le formulaire général
+                frmDiscussions frmDiscussions = new frmDiscussions(txtIdentifiant.Text);
                 frmDiscussions.ShowDialog();
                 this.Close();
             }
@@ -67,6 +76,8 @@ namespace ChatApplication
                 MessageBox.Show("Mauvais identifiants !");
             }
             //https://social.msdn.microsoft.com/Forums/en-US/3f2877ab-0bce-4201-9acb-58df601345dc/how-to-do-remember-me-functionality-in-c-windows-application?forum=netfx64bit
+
+            //Se souvenir du nom d'utilisateur a la prochaine connexion
             if (chkSeSouvenirDeMoi.Checked == true)
             {
                 Properties.Settings.Default.Identifiant = txtIdentifiant.Text;

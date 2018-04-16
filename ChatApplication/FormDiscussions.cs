@@ -14,10 +14,17 @@ namespace ChatApplication
     {
         User user = new User();
         EnvoiMessage envoiMessage = new EnvoiMessage();
-        //FrmDisucssionCreer frmDiscussionCreer;
+        string pseudo = string.Empty;
+
         public frmDiscussions()
         {
             InitializeComponent();
+        }
+
+        public frmDiscussions(string identifiant)
+        {
+            InitializeComponent();
+            pseudo = identifiant;
         }
 
         private void cmdProfil_Click(object sender, EventArgs e)
@@ -34,10 +41,13 @@ namespace ChatApplication
             lstEnvoyees.Enabled = false;
             
         }
+
+
         public void chargerDemandesRecues()
         {
             int i = 0;
             string demandeRecue = "08" + txtPseudo.Text;
+            //Le serveur retourne les demandes de contact recues
             string reponseDemandeRecue = envoiMessage.Connect(demandeRecue);
             if(reponseDemandeRecue != "PasDemandesRecues")
             {
@@ -109,6 +119,7 @@ namespace ChatApplication
             int i = 0;
             string message = "10" + txtPseudo.Text;
             
+            //Le serveur retourne les contacts séparés par des virgules
             string reponse = envoiMessage.Connect(message);
             
             if(reponse != "Pas de contact a ajouter")
@@ -140,6 +151,7 @@ namespace ChatApplication
             pnlDiscussionDemande.Visible = false;
 
             string message = "22" + txtPseudo.Text;
+            //Le serveur retourne les discussions auxquelles participe l'utilisateur séparés par des virgules
             string reponse = envoiMessage.Connect(message);
             string[] nomDiscussion = reponse.Split(',');
             for(int i = 0; i < nomDiscussion.Count(); i++)
@@ -148,9 +160,7 @@ namespace ChatApplication
                 {
                     lstDiscussions.Items.Add(nomDiscussion[i]);
                 }
-
             }
-            
         }
 
         /// <summary>
@@ -162,6 +172,7 @@ namespace ChatApplication
         {
             montrerPannel(pnlArchives);
             string message31 = "31" + txtPseudo.Text;
+            //Le serveur retourne le nom de toutes les archives séparés par des virgules
             string reponse31 = envoiMessage.Connect(message31);
             string[] nomArchive = reponse31.Split(',');
             for(int i = 0; i < nomArchive.Length; i++)
@@ -178,7 +189,7 @@ namespace ChatApplication
         /// </summary>
         public void chargerProfil()
         {
-            user.Pseudo = Properties.Settings.Default.UserActif;
+            user.Pseudo = pseudo;
             string msgProfil = "03" + user.Pseudo;
 
             //Réception d'un string contenant les infos de profil de l'utilisateur séparé par des virgules
@@ -245,7 +256,6 @@ namespace ChatApplication
             string selectedItem = lstRecues.GetItemText(lstRecues.SelectedItem);
             string message = "09" + txtPseudo.Text + "," + selectedItem;
             string reponse = envoiMessage.Connect(message);
-            MessageBox.Show(reponse);
             lstTest.Items.Add(selectedItem);
             lstRecues.Items.Remove(lstRecues.SelectedItem);
         }
@@ -326,6 +336,7 @@ namespace ChatApplication
             pnlDiscussionAffichage.Visible = false;
             //Demandes discussion envoyées
             string message17 = "17" + txtPseudo.Text;
+            //Le serveur retourne les pseudos + noms discussions des demandes de discussion envoyées
             string reponse17 = envoiMessage.Connect(message17);
             if(reponse17 != string.Empty)
             {
@@ -368,26 +379,7 @@ namespace ChatApplication
             }
         }
 
-        private void cmdADiscussions_Click(object sender, EventArgs e)
-        {
-            pnlDiscussionDemande.Visible = false;
-            pnlDiscussionAffichage.Visible = true;
-            montrerPannel(pnlDiscussions);
-            pnlDiscussionAffichage.Visible = true;
-            pnlDiscussionDemande.Visible = false;
 
-            string message = "22" + txtPseudo.Text;
-            string reponse = envoiMessage.Connect(message);
-            string[] nomDiscussion = reponse.Split(',');
-            for (int i = 0; i < nomDiscussion.Count(); i++)
-            {
-                if (!lstDiscussions.Items.Contains(nomDiscussion[i]))
-                {
-                    lstDiscussions.Items.Add(nomDiscussion[i]);
-                }
-
-            }
-        }
 
         /// <summary>
         /// Accepte une discussion "normale"
@@ -527,5 +519,6 @@ namespace ChatApplication
                 this.Close();
             }       
         }
+
     }
 }

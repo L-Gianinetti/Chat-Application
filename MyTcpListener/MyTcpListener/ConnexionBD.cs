@@ -438,9 +438,14 @@ namespace MyTcpListener
         /// <returns></returns>
         public int SelectionneIdUser(User user)
         {
+            int idUtilisateur = 0 ;
             string requete = "SELECT idUser from user where userPseudonym =\"" + user.Pseudo + "\"";
             string id = SelectSimple(requete);
-            int idUtilisateur = int.Parse(id);
+            if(id != string.Empty)
+            {
+                 idUtilisateur = int.Parse(id);
+            }
+
             return idUtilisateur;
         }
 

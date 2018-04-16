@@ -38,7 +38,6 @@
             this.cmdADemandes = new System.Windows.Forms.Button();
             this.cmdARechercher = new System.Windows.Forms.Button();
             this.cmdACreer = new System.Windows.Forms.Button();
-            this.cmdADiscussions = new System.Windows.Forms.Button();
             this.lstDiscussions = new System.Windows.Forms.ListBox();
             this.cmdArchiverDiscussions = new System.Windows.Forms.Button();
             this.cmdSupprimerDiscussions = new System.Windows.Forms.Button();
@@ -183,13 +182,13 @@
             this.grbActions.Controls.Add(this.cmdADemandes);
             this.grbActions.Controls.Add(this.cmdARechercher);
             this.grbActions.Controls.Add(this.cmdACreer);
-            this.grbActions.Controls.Add(this.cmdADiscussions);
             this.grbActions.Location = new System.Drawing.Point(19, 9);
             this.grbActions.Name = "grbActions";
             this.grbActions.Size = new System.Drawing.Size(603, 87);
             this.grbActions.TabIndex = 2;
             this.grbActions.TabStop = false;
             this.grbActions.Text = "Actions";
+
             // 
             // cmdADemandes
             // 
@@ -220,16 +219,6 @@
             this.cmdACreer.Text = "Créer une discussion";
             this.cmdACreer.UseVisualStyleBackColor = true;
             this.cmdACreer.Click += new System.EventHandler(this.cmdACreer_Click);
-            // 
-            // cmdADiscussions
-            // 
-            this.cmdADiscussions.Location = new System.Drawing.Point(15, 28);
-            this.cmdADiscussions.Name = "cmdADiscussions";
-            this.cmdADiscussions.Size = new System.Drawing.Size(75, 36);
-            this.cmdADiscussions.TabIndex = 0;
-            this.cmdADiscussions.Text = "Discussions";
-            this.cmdADiscussions.UseVisualStyleBackColor = true;
-            this.cmdADiscussions.Click += new System.EventHandler(this.cmdADiscussions_Click);
             // 
             // lstDiscussions
             // 
@@ -614,7 +603,7 @@
             // pnlProfil
             // 
             this.pnlProfil.Controls.Add(this.grbProfil);
-            this.pnlProfil.Location = new System.Drawing.Point(126, 10);
+            this.pnlProfil.Location = new System.Drawing.Point(1116, 424);
             this.pnlProfil.Name = "pnlProfil";
             this.pnlProfil.Size = new System.Drawing.Size(601, 478);
             this.pnlProfil.TabIndex = 19;
@@ -726,7 +715,7 @@
             // pnlArchives
             // 
             this.pnlArchives.Controls.Add(this.grbArchives);
-            this.pnlArchives.Location = new System.Drawing.Point(129, 12);
+            this.pnlArchives.Location = new System.Drawing.Point(1060, 29);
             this.pnlArchives.Name = "pnlArchives";
             this.pnlArchives.Size = new System.Drawing.Size(859, 529);
             this.pnlArchives.TabIndex = 2;
@@ -820,7 +809,6 @@
         private System.Windows.Forms.Button cmdADemandes;
         private System.Windows.Forms.Button cmdARechercher;
         private System.Windows.Forms.Button cmdACreer;
-        private System.Windows.Forms.Button cmdADiscussions;
         private System.Windows.Forms.ListBox lstDiscussions;
         private System.Windows.Forms.Button cmdArchiverDiscussions;
         private System.Windows.Forms.Button cmdSupprimerDiscussions;

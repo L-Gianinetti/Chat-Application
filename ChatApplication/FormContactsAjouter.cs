@@ -35,6 +35,7 @@ namespace ChatApplication
         {
             string contactExistant = "06" + pseudoActif + "," + txtPseudo.Text;
 
+            //Le serveur retourne le pseudo du contact si celui-ci existe, ou un "message d'erreur"
             string contactExistantTrouve = envoiMessage.Connect(contactExistant);
             if(contactExistantTrouve == txtPseudo.Text)
             {
@@ -59,11 +60,11 @@ namespace ChatApplication
             this.Close();
         }
 
-        public User ajoutDemande()
+       /* public User ajoutDemande()
         {
             user.Pseudo = txtPseudo.Text;
             return user;
-        }
+        }*/
 
         private void cmdAnnuler_Click(object sender, EventArgs e)
         {

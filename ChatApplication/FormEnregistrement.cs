@@ -46,7 +46,11 @@ namespace ChatApplication
                 chkIdentifiant.Checked = true;
                 lblRemarque.Text = "";
             }
-            else if (txtIdentifiant.Text.Length < 3)
+            else
+            {
+                lblRemarque.Text = "";
+            }
+            if (txtIdentifiant.Text.Length < 3)
             {
                 lblRemarque.Text = "Votre pseudo doit contenir au moins 3 caractères !";
                 chkIdentifiant.Checked = false;

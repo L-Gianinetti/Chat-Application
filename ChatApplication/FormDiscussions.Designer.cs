@@ -188,7 +188,6 @@
             this.grbActions.TabIndex = 2;
             this.grbActions.TabStop = false;
             this.grbActions.Text = "Actions";
-
             // 
             // cmdADemandes
             // 
@@ -253,7 +252,7 @@
             this.pnlDiscussions.Controls.Add(this.pnlDiscussionDemande);
             this.pnlDiscussions.Controls.Add(this.pnlDiscussionAffichage);
             this.pnlDiscussions.Controls.Add(this.grbActions);
-            this.pnlDiscussions.Location = new System.Drawing.Point(165, 20);
+            this.pnlDiscussions.Location = new System.Drawing.Point(129, 12);
             this.pnlDiscussions.Name = "pnlDiscussions";
             this.pnlDiscussions.Size = new System.Drawing.Size(859, 501);
             this.pnlDiscussions.TabIndex = 6;
@@ -261,7 +260,7 @@
             // pnlDiscussionDemande
             // 
             this.pnlDiscussionDemande.Controls.Add(this.groupBox2);
-            this.pnlDiscussionDemande.Location = new System.Drawing.Point(17, 102);
+            this.pnlDiscussionDemande.Location = new System.Drawing.Point(18, 100);
             this.pnlDiscussionDemande.Name = "pnlDiscussionDemande";
             this.pnlDiscussionDemande.Size = new System.Drawing.Size(645, 381);
             this.pnlDiscussionDemande.TabIndex = 7;
@@ -603,7 +602,7 @@
             // pnlProfil
             // 
             this.pnlProfil.Controls.Add(this.grbProfil);
-            this.pnlProfil.Location = new System.Drawing.Point(1116, 424);
+            this.pnlProfil.Location = new System.Drawing.Point(128, 6);
             this.pnlProfil.Name = "pnlProfil";
             this.pnlProfil.Size = new System.Drawing.Size(601, 478);
             this.pnlProfil.TabIndex = 19;
@@ -715,7 +714,7 @@
             // pnlArchives
             // 
             this.pnlArchives.Controls.Add(this.grbArchives);
-            this.pnlArchives.Location = new System.Drawing.Point(1060, 29);
+            this.pnlArchives.Location = new System.Drawing.Point(128, 10);
             this.pnlArchives.Name = "pnlArchives";
             this.pnlArchives.Size = new System.Drawing.Size(859, 529);
             this.pnlArchives.TabIndex = 2;

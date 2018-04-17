@@ -391,7 +391,7 @@ namespace ChatApplication
             if(cboDiscussions.SelectedIndex > -1)
             {
                 string message = "18" + txtPseudo.Text + "," + cboDiscussions.SelectedItem.ToString();
-                string reponse = envoiMessage.Connect(message);
+                envoiMessage.Connect(message);
                 cboDiscussions.Items.Remove(cboDiscussions.SelectedItem);
             }
         }
@@ -406,7 +406,7 @@ namespace ChatApplication
             if (cboGroupes.SelectedIndex > -1)
             {
                 string message = "19" + txtPseudo.Text + "," + cboGroupes.SelectedItem.ToString();
-                string reponse = envoiMessage.Connect(message);
+                envoiMessage.Connect(message);
                 cboGroupes.Items.Remove(cboGroupes.SelectedItem);
             }
         }
@@ -444,6 +444,7 @@ namespace ChatApplication
 
         }
 
+        //TODO A FAIRE C'EST PAS CODE
         private void cmdSupprimerDiscussions_Click(object sender, EventArgs e)
         {
             if(lstDiscussions.SelectedIndex > -1)
@@ -481,8 +482,6 @@ namespace ChatApplication
                 envoiMessage.Connect(message32);
                 lstArchives.Items.Remove(lstArchives.SelectedItem);
             }
-
-
         }
 
         /// <summary>

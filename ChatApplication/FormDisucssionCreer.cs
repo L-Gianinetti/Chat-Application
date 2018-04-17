@@ -91,6 +91,7 @@ namespace ChatApplication
             cmdCreer.Enabled = false;
             int i = 0;
             string message = "10" + utilisateur.Pseudo;
+            //Retourne les noms des contacts séparés par des virgules
             string reponse = envoiMessage.Connect(message);
 
             if (reponse != "Pas de contact a ajouter")
@@ -99,7 +100,6 @@ namespace ChatApplication
                 foreach (string donnee in reponseSeparee)
                 {
                     reponseSeparee[i] = donnee;
-                    Console.WriteLine("REPONSE ATTENDUE :" + reponseSeparee[i]);
                     if (cboContacts.Items.Contains(reponseSeparee[i]) == false)
                     {
                         cboContacts.Items.Add(reponseSeparee[i]);

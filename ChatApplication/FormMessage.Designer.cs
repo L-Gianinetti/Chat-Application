@@ -36,9 +36,6 @@
             this.lblParticipants = new System.Windows.Forms.Label();
             this.grbMessages = new System.Windows.Forms.GroupBox();
             this.lstMessages = new System.Windows.Forms.ListBox();
-            this.cmdVocal = new System.Windows.Forms.Button();
-            this.cmdImage = new System.Windows.Forms.Button();
-            this.cmdSmiley = new System.Windows.Forms.Button();
             this.cmdEnvoyer = new System.Windows.Forms.Button();
             this.txtMessageEnvoi = new System.Windows.Forms.TextBox();
             this.grbActions.SuspendLayout();
@@ -111,9 +108,6 @@
             // grbMessages
             // 
             this.grbMessages.Controls.Add(this.lstMessages);
-            this.grbMessages.Controls.Add(this.cmdVocal);
-            this.grbMessages.Controls.Add(this.cmdImage);
-            this.grbMessages.Controls.Add(this.cmdSmiley);
             this.grbMessages.Controls.Add(this.cmdEnvoyer);
             this.grbMessages.Controls.Add(this.txtMessageEnvoi);
             this.grbMessages.Location = new System.Drawing.Point(12, 130);
@@ -130,33 +124,6 @@
             this.lstMessages.Name = "lstMessages";
             this.lstMessages.Size = new System.Drawing.Size(604, 277);
             this.lstMessages.TabIndex = 5;
-            // 
-            // cmdVocal
-            // 
-            this.cmdVocal.Location = new System.Drawing.Point(470, 300);
-            this.cmdVocal.Name = "cmdVocal";
-            this.cmdVocal.Size = new System.Drawing.Size(141, 23);
-            this.cmdVocal.TabIndex = 4;
-            this.cmdVocal.Text = "Enregistrement vocal...";
-            this.cmdVocal.UseVisualStyleBackColor = true;
-            // 
-            // cmdImage
-            // 
-            this.cmdImage.Location = new System.Drawing.Point(389, 300);
-            this.cmdImage.Name = "cmdImage";
-            this.cmdImage.Size = new System.Drawing.Size(75, 23);
-            this.cmdImage.TabIndex = 3;
-            this.cmdImage.Text = "Image...";
-            this.cmdImage.UseVisualStyleBackColor = true;
-            // 
-            // cmdSmiley
-            // 
-            this.cmdSmiley.Location = new System.Drawing.Point(389, 325);
-            this.cmdSmiley.Name = "cmdSmiley";
-            this.cmdSmiley.Size = new System.Drawing.Size(75, 23);
-            this.cmdSmiley.TabIndex = 2;
-            this.cmdSmiley.Text = "Smiley...";
-            this.cmdSmiley.UseVisualStyleBackColor = true;
             // 
             // cmdEnvoyer
             // 
@@ -205,9 +172,6 @@
         private System.Windows.Forms.GroupBox grbParticipants;
         private System.Windows.Forms.Label lblParticipants;
         private System.Windows.Forms.GroupBox grbMessages;
-        private System.Windows.Forms.Button cmdVocal;
-        private System.Windows.Forms.Button cmdImage;
-        private System.Windows.Forms.Button cmdSmiley;
         private System.Windows.Forms.Button cmdEnvoyer;
         private System.Windows.Forms.TextBox txtMessageEnvoi;
         private System.Windows.Forms.ListBox lstMessages;

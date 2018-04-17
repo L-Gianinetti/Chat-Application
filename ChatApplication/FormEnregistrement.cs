@@ -34,6 +34,7 @@ namespace ChatApplication
             }
             
             string pseudoAVerifier = "05" + txtIdentifiant.Text;
+            //Le serveur retourne un pseudo si il existe deja, ou un message d'erreur
             string pseudoTrouve = envoiMessage.Connect(pseudoAVerifier);
             if (pseudoTrouve == txtIdentifiant.Text)
             {

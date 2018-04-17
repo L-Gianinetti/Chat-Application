@@ -79,10 +79,7 @@ namespace MyTcpListener
                         string[] SeparationSwitchDonnes = new string[data.Length];
                         SeparationSwitchDonnes[0] = data.Substring(0, 2);
                         SeparationSwitchDonnes[1] = data.Substring(2, data.Length - 2);
-                        
-                        //TODO 04 Check le retour au chat
-                        //TODO 09 Check le retour au chat + (donnee)
-                            
+                                                    
                         switch (SeparationSwitchDonnes[0])
                         {
 

@@ -29,8 +29,10 @@ namespace ChatApplication
         private void FrmRechercheDiscussionCategorie_Load(object sender, EventArgs e)
         {
             string message = "36" + categorie;
+            //Retourne les noms de discussions appartenant a une catégorie
             string reponse = envoiMessage.Connect(message);
             string message38 = "38" + utilisateur.Pseudo + "," +categorie;
+            //Retourne les discussions auxquelles l'utilisateurs participe deja selon une catégorie
             string reponse38 = envoiMessage.Connect(message38);
             string[] retour38 = reponse38.Split(',');
             if(reponse != string.Empty)

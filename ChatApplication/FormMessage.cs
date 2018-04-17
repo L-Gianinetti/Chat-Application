@@ -17,7 +17,7 @@ namespace ChatApplication
         string nomDiscussion = string.Empty;
         EnvoiMessage envoiMessage = new EnvoiMessage();
         static Timer myTimer = new Timer();
-        //static int myCounter = 0;
+
         public FrmMessage()
         {
             InitializeComponent();
@@ -42,6 +42,7 @@ namespace ChatApplication
         public void myTimerTick(object sender, System.EventArgs e)
         {
             string message = "25" + nomDiscussion;
+            //Le serveur retourne tous les messages d'une conversation dans l'ordre chronologie séparés par des "*"
             string reponse = envoiMessage.Connect(message);
 
             if(reponse != string.Empty)
@@ -71,12 +72,14 @@ namespace ChatApplication
 
         private void FrmMessage_Load(object sender, EventArgs e)
         {
-            //Pour afficher la liste des participants
+            
             string message23 = "23" + nomDiscussion;
+            //Le serveur retourne les pseudos des participants d'une discussion
             lblParticipants.Text = envoiMessage.Connect(message23);
 
-            //Pour activer les boutons ajouter et supprimer si l'utilisateur est l'admin de la discussion
+            
             string message26 = "26" + nomDiscussion;
+            //Le serveur retourne le pseudo de l'administrateur de la discussion
             string reponse26 = envoiMessage.Connect(message26);
             if(reponse26 == utilisateur.Pseudo)
             {

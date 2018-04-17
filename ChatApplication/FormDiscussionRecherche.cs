@@ -13,7 +13,7 @@ namespace ChatApplication
     public partial class FrmDiscussionRecherche : Form
     {
         User utilisateur = new User();
-        EnvoiMessage envoieMessage = new EnvoiMessage();
+        EnvoiMessage envoiMessage = new EnvoiMessage();
         public FrmDiscussionRecherche()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace ChatApplication
             string message = "34";
 
             //Le serveur retourne les catégories proposées (10 premières)
-            string reponse = envoieMessage.Connect(message);
+            string reponse = envoiMessage.Connect(message);
             if(reponse != string.Empty)
             {
                 string[] categorie = reponse.Split(',');
@@ -80,7 +80,7 @@ namespace ChatApplication
                 
                 string message = "35" + txtRechercher.Text;
                 //Le serveur retourne les catégories correspondantes a la chaine de caractères txtRechercher.Text
-                string reponse = envoieMessage.Connect(message);
+                string reponse = envoiMessage.Connect(message);
                 string[] retour = reponse.Split(',');
                 for (int i = 0; i < retour.Length; i++)
                 {

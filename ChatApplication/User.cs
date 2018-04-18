@@ -13,7 +13,7 @@ namespace ChatApplication
         protected string _pseudo;
         protected string _description;
         protected string _motDePasse;
-        protected string _photo;
+        
 
         #region accesseurs
 

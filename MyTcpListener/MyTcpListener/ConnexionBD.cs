@@ -188,7 +188,7 @@ namespace MyTcpListener
         /// <param name="idUtilisateur"></param>
         /// <param name="idContact"></param>
         /// <param name="annotation"></param>
-        public void MettreAJourContact(int idUtilisateur, int idContact, string annotation)
+        public void UpdateContact(int idUtilisateur, int idContact, string annotation)
         {
             string requete = "UPDATE contact SET fkUser =\"" + idUtilisateur + "\", fkUserContact =\"" + idContact + "\", contactNote =\"" + annotation + "\" where fkUser =\"" + idUtilisateur + "\" and fkUserContact =\"" + idContact + "\"";
             UpdateOrDelete(requete);

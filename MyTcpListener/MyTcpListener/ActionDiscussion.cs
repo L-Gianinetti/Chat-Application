@@ -15,6 +15,11 @@ namespace MyTcpListener
         User utilisateur = new User();
         ConnexionBD connexionBD = new ConnexionBD();
 
+        /// <summary>
+        /// Permet de séparer les différents éléments envoyés par le client
+        /// </summary>
+        /// <param name="donneesASeparer"></param>
+        /// <returns></returns>
         public string[] SeparerElements(string[] donneesASeparer)
         {
             //int pour séparer les données
@@ -41,7 +46,7 @@ namespace MyTcpListener
             return donnee;
         }
 
-        //TODO verifier si classe discussion est nécessaire , surement ?
+
         //nbrParticipants ne contient pas le createur
         /// <summary>
         /// Permet de créer une discussion, une categorie et le lien entre les deux
@@ -193,10 +198,10 @@ namespace MyTcpListener
             return PseudosNomsDiscussions;
         }
 
+        
         /// <summary>
-        /// Permet de récupérer le nom de la discussion lors de sa création
+        /// Retourne les noms des discussions
         /// </summary>
-        /// Utilisé pour insérer les participationDiscussion
         /// <param name="donnee"></param>
         /// <param name="nbrParticipants"></param>
         /// <returns></returns>
@@ -267,7 +272,11 @@ namespace MyTcpListener
         }
 
 
-
+        /// <summary>
+        /// Retourne les categories correspondantes au string categoriesRecherchees
+        /// </summary>
+        /// <param name="categoriesRecherchees"></param>
+        /// <returns></returns>
         public string SelectionneCategoriesRecherchees(string categoriesRecherchees)
         {
            string categoriesTrouvees = connexionBD.SelectionneCategoriesRecherchees(categoriesRecherchees);
@@ -275,12 +284,22 @@ namespace MyTcpListener
 
         }
 
+        /// <summary>
+        /// Retourne les categories par défaut
+        /// </summary>
+        /// <returns></returns>
         public string SelectionneCategorieProposee()
         {
             string reponse = connexionBD.SelectionnCategorieProposee();
             return reponse;
         }
 
+        /// <summary>
+        /// Permet de creer une invitation a une discussion
+        /// </summary>
+        /// <param name="nomUtilisateur"></param>
+        /// <param name="nomDiscussion"></param>
+        /// <param name="nomAdministrateur"></param>
         public void CreerInvitationDiscussion(string nomUtilisateur, string nomDiscussion, string nomAdministrateur)
         {
             administrateur.Pseudo = nomAdministrateur;
@@ -413,6 +432,12 @@ namespace MyTcpListener
             }
         }
 
+        /// <summary>
+        /// Retourne les discussions auxquelles un utilisateur participe pour une categorie correspondante
+        /// </summary>
+        /// <param name="categorie"></param>
+        /// <param name="pseudo"></param>
+        /// <returns></returns>
         public string SelectionneDiscussionsExistantesParCategorie(string categorie, string pseudo)
         {
             int idCategorie = int.Parse(connexionBD.SelectionneIdCategory(categorie));
@@ -443,6 +468,11 @@ namespace MyTcpListener
             return nomDiscussionDejaParticipant;
         }
 
+        /// <summary>
+        /// Selectionne les discussions existantes pour une categorie correspondante
+        /// </summary>
+        /// <param name="categorie"></param>
+        /// <returns></returns>
         public string SelectionneDiscussionsParCategorie(string categorie)
         {
             string nomDiscussions = connexionBD.SelectionneNomDiscussionParCategorie(categorie);

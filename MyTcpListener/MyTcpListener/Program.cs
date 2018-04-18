@@ -25,7 +25,7 @@ namespace MyTcpListener
             while (true)
             {
                 TcpListener server = null;
-                Reponse reponse = new Reponse();
+                
                 try
                 {
                     //Attribution du port et de l'adresse IP

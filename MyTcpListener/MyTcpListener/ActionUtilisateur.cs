@@ -331,7 +331,7 @@ namespace MyTcpListener
             string annotation = donnee[2];
             annotation = annotation.Substring(0, annotation.Length -1);
             //Mise à jour du contact
-            connexionBD.MettreAJourContact(idUtilisateur, idContact, annotation);
+            connexionBD.UpdateContact(idUtilisateur, idContact, annotation);
 
         }
 

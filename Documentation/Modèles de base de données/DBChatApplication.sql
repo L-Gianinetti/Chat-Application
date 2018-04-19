@@ -6,10 +6,6 @@
 -- -----------------------------------------------------
 -- Schema ChatApplication
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema ChatApplication
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `ChatApplication` DEFAULT CHARACTER SET utf8 ;
 USE `ChatApplication` ;
 
@@ -26,16 +22,6 @@ CREATE TABLE IF NOT EXISTS `ChatApplication`.`User` (
   `userPhoto` VARCHAR(60) NULL,
   PRIMARY KEY (`idUser`))
 ENGINE = InnoDB;
-
---
--- Table `ChatApplication`.`Documentation`
---
-CREATE TABLE IF NOT EXISTS `ChatApplication`.`Documentation` (
-	`idDocumentation` INT NOT NULL AUTO_INCREMENT,
-    `path` VARCHAR(100) NOT NULL,
-    PRIMARY KEY (`idDocumentation`))
-ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `ChatApplication`.`Contact`
@@ -206,24 +192,14 @@ CREATE TABLE IF NOT EXISTS `ChatApplication`.`ParticipationDiscussions` (
 ENGINE = InnoDB;
 
 
--- User
-
-
--- Documentation
-insert into Documentation(idDocumentation, Path) values (1, "P:\\ProjetProgrammation\\Chat\\ChatApplication\\Photos\\");
-
--- Contact
-
-
-
-
-
-
-
-
 -- Category
 insert into Category (idCategory, categoryName) values (1, 'Sport');
 insert into Category (idCategory, categoryName) values (2, 'Politique');
 insert into Category (idCategory, categoryName) values (3, 'Environnement');
-insert into Category (idCategory, categoryName) values (4, 'Diététique');
-insert into Category (idCategory, categoryName) values (5, 'Programmation');
+insert into Category (idCategory, categoryName) values (4, 'Dietetique');
+insert into Category (idCategory, categoryName) values (5, 'Litterature');
+insert into Category (idCategory, categoryName) values (6, 'Cinema');
+insert into Category (idCategory, categoryName) values (7, 'Histoire');
+insert into Category (idCategory, categoryName) values (8, 'France');
+insert into Category (idCategory, categoryName) values (9, 'Vacances');
+insert into Category (idCategory, categoryName) values (10, 'Programmation');

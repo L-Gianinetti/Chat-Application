@@ -97,7 +97,6 @@ namespace MyTcpListener
             connexionBD.SupprimerArchive(idUtilisateur, idDiscussion);
         }
 
-
         /// <summary>
         /// Selectionne les noms d'archives en fonction d'un pseudo utilisateur
         /// </summary>

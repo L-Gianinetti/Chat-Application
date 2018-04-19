@@ -314,8 +314,8 @@ namespace MyTcpListener
         /// <returns></returns>
         public string SelectionneCategoriesRecherchees(string categoriesRecherchees)
         {
+            categoriesRecherchees = "%" + categoriesRecherchees + "%";
             string requete =  "SELECT categoryName from category where categoryName LIKE @categoriesRecherchees";
-           
             string reponse = SelectSimpleWhileLike(requete, "@categoriesRecherchees", categoriesRecherchees);
             return reponse;
         }

@@ -253,11 +253,16 @@ namespace ChatApplication
         /// <param name="e"></param>
         private void cmdAccepter_Click(object sender, EventArgs e)
         {
-            string selectedItem = lstRecues.GetItemText(lstRecues.SelectedItem);
-            string message = "09" + txtPseudo.Text + "," + selectedItem;
-            string reponse = envoiMessage.Connect(message);
-            lstTest.Items.Add(selectedItem);
-            lstRecues.Items.Remove(lstRecues.SelectedItem);
+            if(lstRecues.SelectedIndex > -1)
+            {
+                string selectedItem = lstRecues.GetItemText(lstRecues.SelectedItem);
+                string message = "09" + txtPseudo.Text + "," + selectedItem;
+                string reponse = envoiMessage.Connect(message);
+                lstTest.Items.Add(selectedItem);
+                lstRecues.Items.Remove(lstRecues.SelectedItem);
+                MessageBox.Show("Le contact a été ajouté !");
+            }
+
         }
 
         /// <summary>
@@ -267,15 +272,19 @@ namespace ChatApplication
         /// <param name="e"></param>
         private void cmdRefuser_Click(object sender, EventArgs e)
         {
-            string selectedItem = lstRecues.GetItemText(lstRecues.SelectedItem);
-            string message = "11" + txtPseudo.Text + "," + selectedItem;
-
-            string reponse = envoiMessage.Connect(message);
-            if(reponse == "Demande supprimee")
+            if(lstRecues.SelectedIndex > -1)
             {
-                lstRecues.Items.Remove(selectedItem);
-                MessageBox.Show("La demande de contact a été supprimée !");
+                string selectedItem = lstRecues.GetItemText(lstRecues.SelectedItem);
+                string message = "11" + txtPseudo.Text + "," + selectedItem;
+
+                string reponse = envoiMessage.Connect(message);
+                if (reponse == "Demande supprimee")
+                {
+                    lstRecues.Items.Remove(selectedItem);
+                    MessageBox.Show("La demande de contact a été supprimée !");
+                }
             }
+
         }
 
         /// <summary>
@@ -393,6 +402,7 @@ namespace ChatApplication
                 string message = "18" + txtPseudo.Text + "," + cboDiscussions.SelectedItem.ToString();
                 envoiMessage.Connect(message);
                 cboDiscussions.Items.Remove(cboDiscussions.SelectedItem);
+                cboDiscussions.Text = "";
             }
         }
 
@@ -408,6 +418,7 @@ namespace ChatApplication
                 string message = "19" + txtPseudo.Text + "," + cboGroupes.SelectedItem.ToString();
                 envoiMessage.Connect(message);
                 cboGroupes.Items.Remove(cboGroupes.SelectedItem);
+                cboGroupes.Text = "";
             }
         }
 
@@ -418,6 +429,7 @@ namespace ChatApplication
                 string message = "20" + txtPseudo.Text + "," + cboDiscussions.SelectedItem.ToString();
                 envoiMessage.Connect(message);
                 cboDiscussions.Items.Remove(cboDiscussions.SelectedItem);
+                cboDiscussions.Text = "";
             }
         }
 
@@ -428,20 +440,23 @@ namespace ChatApplication
                 string message = "21" + txtPseudo.Text + "," + cboGroupes.SelectedItem.ToString();
                 envoiMessage.Connect(message);
                 cboGroupes.Items.Remove(cboGroupes.SelectedItem);
+                cboGroupes.Text = "";
             }
         }
 
         private void cmdOuvrir_Click(object sender, EventArgs e)
         {
-            string nomDiscussion = lstDiscussions.SelectedItem.ToString();
-            FrmMessage frmMessage = new FrmMessage(nomDiscussion, txtPseudo.Text);
-            frmMessage.Show();
-            DialogResult res = frmMessage.DialogResult;
-            if(res == DialogResult.OK)
+            if(lstDiscussions.SelectedIndex > -1)
             {
-                frmMessage.Close();
+                string nomDiscussion = lstDiscussions.SelectedItem.ToString();
+                FrmMessage frmMessage = new FrmMessage(nomDiscussion, txtPseudo.Text);
+                frmMessage.Show();
+                DialogResult res = frmMessage.DialogResult;
+                if (res == DialogResult.OK)
+                {
+                    frmMessage.Close();
+                }
             }
-
         }
 
         //TODO A FAIRE C'EST PAS CODE
@@ -449,7 +464,9 @@ namespace ChatApplication
         {
             if(lstDiscussions.SelectedIndex > -1)
             {
-                
+                string message20 = "20" + txtPseudo.Text + "," + lstDiscussions.SelectedItem.ToString();
+                envoiMessage.Connect(message20);
+                lstDiscussions.Items.Remove(lstDiscussions.SelectedItem);
             }
         }
 
@@ -518,6 +535,5 @@ namespace ChatApplication
                 this.Close();
             }       
         }
-
     }
 }

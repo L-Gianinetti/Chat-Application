@@ -1,0 +1,268 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML><HEAD></HEAD><BODY>
+<OBJECT type="text/site properties">
+<param name="FrameName" value="right">
+</OBJECT>
+<UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#acd0c024b0cfab6d3d8092225890cb743"><param name="Name" value="_description"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#a9c3365e5053c0f66401fca07fcfc2051"><param name="Name" value="_motDePasse"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#ad4c3d8a7ac46a0e9a9d21f36f5f93b8e"><param name="Name" value="_nom"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#af0a112ed73ffdda827350e97287083b0"><param name="Name" value="_photo"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#a54d89916097b624ed6d3c1bf1539894c"><param name="Name" value="_prenom"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#a6cee07fdc4973c0ef00f683ed98ba95d"><param name="Name" value="_pseudo"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#add207663da236fd35044cfeffd9aba66"><param name="Name" value="AccepterDemandeContact"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a1d921f899ae9441bc0719700d9b44513"><param name="Name" value="actualiserMessages"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a8e3da5e6be7c46f9d9261d2a9a7e06b5"><param name="Name" value="AjouteParticipationDiscussion"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a0eb0eb018f2d98c01798bccb6062db6c"><param name="Name" value="AjouteParticipationDiscussionRecherche"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a0066401a7fda800aa7af74d387b2bf4a"><param name="Name" value="AjouterArchive"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a0066401a7fda800aa7af74d387b2bf4a"><param name="Name" value="MyTcpListener::ActionDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a0e8503c7d650d91a55390e88bf214e39"><param name="Name" value="MyTcpListener::ConnexionBD"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#aa7867d70fe88fef2182442d8d109ab29"><param name="Name" value="AjouterDemandeContact"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#ae36bbb5a1c326c43335a3d96fa034d44"><param name="Name" value="AjouterDiscussion"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#ae36bbb5a1c326c43335a3d96fa034d44"><param name="Name" value="MyTcpListener::ActionDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a3ceb393d6c2a96c8022234db2afff52a"><param name="Name" value="MyTcpListener::ConnexionBD"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a1849cae287dd7a7061419574f0e31ea7"><param name="Name" value="AjouterLienCategorieDiscussion"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ab492624a041a1a3e14816964fc965d74"><param name="Name" value="AjouterMessage"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#aec7f9d663bb393637cd2566262f58ee7"><param name="Name" value="AjouterParticipationDisucssion"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a7fcb9e85a5088e6b5150318708c18953"><param name="Name" value="AjouterUser"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a534b39690a7194e7f84cd1ddd61e8f7e"><param name="Name" value="AttribueInformationsUtilisateur"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a5b653929d14706bd16de511c7e92ea46"><param name="Name" value="ChangerEtatParticipationDiscussion"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a7a042b399aed6df2087446e8e07e8a14"><param name="Name" value="CompteNombreParDiscussion"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a86dd5e0b5c10a988a147d44796a68916"><param name="Name" value="ContactAccepterAjouterContact"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#ac8d5d5de6b907e6284c60fd4c734566f"><param name="Name" value="CreationUtilisateur"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#ac6d65f986e96a95bbcf181f5dfb79da9"><param name="Name" value="CreerInvitationDiscussion"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#aec8d14d078d2d4edc6e6a4fee1863e8b"><param name="Name" value="CreerParticipationDiscussionCreateur"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#ab9efa921d0ffcdb916ab172f1cb42e5f"><param name="Name" value="CreerParticipationDiscussionParticipant"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#aa844e3e682ec3829baf24f41dba1e716"><param name="Name" value="DemandeEnvoyeePseudoParticipantNomDiscussion"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#ab317eb93058a4bb23e56eaad1970b3b7"><param name="Name" value="DemandeRecueNomDiscussion"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#a4710e33726fecde177ac40b92d20349d"><param name="Name" value="Description"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a15ec5ee39cf8f8055b416c031fd7e9f8"><param name="Name" value="EnvoiMessage"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a0dfbe44fe5bace5e39cd808be9fd7f8a"><param name="Name" value="HashMotDePasse"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#aa1622cd6a394ce72359f3ae3bf6b0854"><param name="Name" value="ImporterArchive"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_my_tcp_listener.html#a6ce234912f6862fc92115356908ef7ac"><param name="Name" value="Main"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a1998e703b20aa0ef9ca9f31fb414b4ae"><param name="Name" value="MiseAJourProfilUtilisateur"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a6cbbe3d77e94fb35812e2676d6885ffc"><param name="Name" value="ModificationContact"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#a5aef6e4cbd633a841566ce88c24d88ad"><param name="Name" value="MotDePasse"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="namespace_my_tcp_listener.html"><param name="Name" value="MyTcpListener"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html"><param name="Name" value="MyTcpListener::ActionDiscussion"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a1d921f899ae9441bc0719700d9b44513"><param name="Name" value="actualiserMessages"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a8e3da5e6be7c46f9d9261d2a9a7e06b5"><param name="Name" value="AjouteParticipationDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a0eb0eb018f2d98c01798bccb6062db6c"><param name="Name" value="AjouteParticipationDiscussionRecherche"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a0066401a7fda800aa7af74d387b2bf4a"><param name="Name" value="AjouterArchive"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#ae36bbb5a1c326c43335a3d96fa034d44"><param name="Name" value="AjouterDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a5b653929d14706bd16de511c7e92ea46"><param name="Name" value="ChangerEtatParticipationDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#ac6d65f986e96a95bbcf181f5dfb79da9"><param name="Name" value="CreerInvitationDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#aec8d14d078d2d4edc6e6a4fee1863e8b"><param name="Name" value="CreerParticipationDiscussionCreateur"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#ab9efa921d0ffcdb916ab172f1cb42e5f"><param name="Name" value="CreerParticipationDiscussionParticipant"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#aa844e3e682ec3829baf24f41dba1e716"><param name="Name" value="DemandeEnvoyeePseudoParticipantNomDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#ab317eb93058a4bb23e56eaad1970b3b7"><param name="Name" value="DemandeRecueNomDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a15ec5ee39cf8f8055b416c031fd7e9f8"><param name="Name" value="EnvoiMessage"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#aa1622cd6a394ce72359f3ae3bf6b0854"><param name="Name" value="ImporterArchive"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#ac795682411e751382dd84495d51f96de"><param name="Name" value="QuellesDiscussionsParticipe"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#aa4d600450a18a7e9af09eb3eb8d367b5"><param name="Name" value="RetourneNomsParticipantsDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#abc8848f4880645054e67d7574d05765b"><param name="Name" value="SelectionneArchives"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a3eccef299b28341e7d167d485f15cb96"><param name="Name" value="SelectionneCategorieProposee"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a6eeba509caff6b12942a25ca2408f226"><param name="Name" value="SelectionneCategoriesRecherchees"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a71af7bc340e45c427b3280693470ed40"><param name="Name" value="SelectionneDiscussionsExistantesParCategorie"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#ad11dc7052c36e505e95ef45fff0cd4d9"><param name="Name" value="SelectionneDiscussionsParCategorie"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a493f1d845ae19645fedea265726bf1bb"><param name="Name" value="selectionnePseudoAdministrateur"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a4802615f851e306ca0cbf0bfd3903c76"><param name="Name" value="SeparerElements"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#aadf1eb5b33b9edb2be9ca77b7d769971"><param name="Name" value="SeparerElementsString"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a8e5b40e6cfcae3659b182b66fe12171b"><param name="Name" value="SeparerNomDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a5ffa9384e354d855afa1d5ec02ccb4ea"><param name="Name" value="SupprimerArchive"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a689b438fd5a133ad36cce05ec294df08"><param name="Name" value="SupprimerParticipationDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#adc9049284cbaa61e41d8922dad43f2c8"><param name="Name" value="VerifierNomDiscussionExistant"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html"><param name="Name" value="MyTcpListener::ActionUtilisateur"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#add207663da236fd35044cfeffd9aba66"><param name="Name" value="AccepterDemandeContact"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a534b39690a7194e7f84cd1ddd61e8f7e"><param name="Name" value="AttribueInformationsUtilisateur"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#ac8d5d5de6b907e6284c60fd4c734566f"><param name="Name" value="CreationUtilisateur"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a1998e703b20aa0ef9ca9f31fb414b4ae"><param name="Name" value="MiseAJourProfilUtilisateur"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a6cbbe3d77e94fb35812e2676d6885ffc"><param name="Name" value="ModificationContact"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a6e858b0a7aca621c80b9a2cd2835e898"><param name="Name" value="PseudoDejaPris"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a3700dd56788068766f88391d1753f630"><param name="Name" value="RetourneAnnotationContact"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a866848fe7d8369951d21a7f3a7566e48"><param name="Name" value="RetourneContactExistant"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a02b807b0e557fe923f71d75344469790"><param name="Name" value="RetourneContacts"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a16f5f28920c174bf0b7ef8c6fde921e3"><param name="Name" value="RetourneDemandesPseudosContact"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a8970876c6ff9a441223adac3eb581cc9"><param name="Name" value="RetourneInfoProfil"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#af7cefa4df9de9cccbd17c7aa2f91189e"><param name="Name" value="RetourneMotDePasse"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a44b32a5028725ccb9a8214e9fa257847"><param name="Name" value="RetournePseudoContact"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#ac69fbd17138f0b2898f42a9dce92cdbe"><param name="Name" value="RetournePseudoUtilisateur"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a2f03b51abe5e7fc0f92a9d1563370c0a"><param name="Name" value="SeparerElements"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a45632a3672ebe7a29ec2554dcb34390b"><param name="Name" value="SupprimerContact"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a34a1814c51ebf427db5dfc11ca166453"><param name="Name" value="SupprimerDemandeContact"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html"><param name="Name" value="MyTcpListener::ConnexionBD"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a0e8503c7d650d91a55390e88bf214e39"><param name="Name" value="AjouterArchive"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#aa7867d70fe88fef2182442d8d109ab29"><param name="Name" value="AjouterDemandeContact"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a3ceb393d6c2a96c8022234db2afff52a"><param name="Name" value="AjouterDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a1849cae287dd7a7061419574f0e31ea7"><param name="Name" value="AjouterLienCategorieDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ab492624a041a1a3e14816964fc965d74"><param name="Name" value="AjouterMessage"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#aec7f9d663bb393637cd2566262f58ee7"><param name="Name" value="AjouterParticipationDisucssion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a7fcb9e85a5088e6b5150318708c18953"><param name="Name" value="AjouterUser"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a7a042b399aed6df2087446e8e07e8a14"><param name="Name" value="CompteNombreParDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a86dd5e0b5c10a988a147d44796a68916"><param name="Name" value="ContactAccepterAjouterContact"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a0dfbe44fe5bace5e39cd808be9fd7f8a"><param name="Name" value="HashMotDePasse"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a4f8713f43102fb366f887a80fe0ec271"><param name="Name" value="RetourneDemandesPseudosContacts"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#aa2dfcb6c336bef59b2dd8b0c7cee2b46"><param name="Name" value="RetourneInfoProfilDescription"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a8f1c81cd1aedef17921985e6cb43b279"><param name="Name" value="RetourneInfoProfilNom"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ac6b116f92180efcf5ecba1a4a32edf66"><param name="Name" value="RetourneInfoProfilPrenom"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ad04b133e85efc537497134907eef655b"><param name="Name" value="SelectDoubleWhile"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ac7a59c158fd5a147dd615a8b76625447"><param name="Name" value="SelectionnCategorieProposee"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ada20a358d41bbee3af5551321eaab296"><param name="Name" value="SelectionneArchive"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a1c2b796931c8fed15e0fbc613cc4f846"><param name="Name" value="SelectionneCategoriesRecherchees"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a564f15ad0930bdf67f5557aeafb59fa0"><param name="Name" value="SelectionneContactDejaAjoute"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a3a0e6f88e215ddb0638f52c60976b6bd"><param name="Name" value="SelectionneICategorie"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a9d193567ac19e2d05ae2284e3fd73255"><param name="Name" value="SelectionneIdAdministrateur"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a41630ed48a541ad93f42b0cd980249ec"><param name="Name" value="SelectionneIdCategory"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a2dcd90126690bfe388cbcf2fb6786df2"><param name="Name" value="SelectionneIdDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a7fa15944f1ed72a3ac8e66e7ece87b4a"><param name="Name" value="SelectionneIdDiscussionDejaParticipant"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ab190fc43bb8f435595b4501610fe0580"><param name="Name" value="SelectionneIdDiscussionParIdCategorie"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ad523dbbf35cd10e674a226c92300395c"><param name="Name" value="SelectionneIdUser"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a1e1724b3d612242d44a042de742a751a"><param name="Name" value="SelectionneInfoContactAnnotation"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#af24512cba4429c131bcc2fd6a9e9417d"><param name="Name" value="SelectionneMessages"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a4de1685c8941f7c17a2321fdd14671ef"><param name="Name" value="SelectionneMotDePasse"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ade06c31355195903b6f5c5d2c1055e90"><param name="Name" value="SelectionneNomDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ac9250187af72e10565f48480ed462c6c"><param name="Name" value="SelectionneNomDiscussionParCategorie"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#aa88be8e52b7859f5ea241d43d8a1f6b3"><param name="Name" value="SelectionneNomParticipantsDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a60b0af723ae2a744320d636a8f807cf4"><param name="Name" value="selectionnePseudoAdministrateur"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#aec824d867b4bc3ff5338f54342455cb0"><param name="Name" value="SelectionnePseudoContact"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a9e862833a3128daeb8f58aa6ef191473"><param name="Name" value="SelectionnePseudoUserNomDiscussionEnattente"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ada3149e61ef79287d4f00f17464757d4"><param name="Name" value="SelectSimple"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a82669ae3c91c642740d00829c4d96dfc"><param name="Name" value="SelectSimpleWhile"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ada7fbd64a666dacbb4fda9598ac4052f"><param name="Name" value="SelectSimpleWhileLike"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a49db204575fc21d64a603d8617a13861"><param name="Name" value="SelectTripleWhile"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a8d3767a269f755eff8623b7ce83433f4"><param name="Name" value="SupprimerArchive"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a3db665731ed8c869f5b4e585be7d7569"><param name="Name" value="SupprimerContact"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a9452ca881c1370706ec097d2768cce0e"><param name="Name" value="SupprimerDemandeContact"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ac19abe42b95e635d85d8a9e7411179d1"><param name="Name" value="SupprimerParticipationDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ac7c92a0d42e3957bcfc03f018873ddfc"><param name="Name" value="UpdateContact"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#af144389b5e58ebf8b07235e3f1282f4f"><param name="Name" value="UpdateOrDelete"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a2bb05f695a1c5deb329133835ba15d8c"><param name="Name" value="UpdateParticipationDiscussions"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ac9256a7556a24e2ef4979cf4869d69d2"><param name="Name" value="UpdateProfil"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a08377f2f4213c2cc7de841b730f0280c"><param name="Name" value="UserExisteIl"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a81525e3cb62eb348ca3e0b670fd5f50e"><param name="Name" value="VerifieNomDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ac202bbd56302d0be2719a5b649f5c9fc"><param name="Name" value="VerifMotDePasse"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_my_tcp_listener.html"><param name="Name" value="MyTcpListener::MyTcpListener"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_my_tcp_listener.html#a6ce234912f6862fc92115356908ef7ac"><param name="Name" value="Main"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html"><param name="Name" value="MyTcpListener::User"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#acd0c024b0cfab6d3d8092225890cb743"><param name="Name" value="_description"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#a9c3365e5053c0f66401fca07fcfc2051"><param name="Name" value="_motDePasse"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#ad4c3d8a7ac46a0e9a9d21f36f5f93b8e"><param name="Name" value="_nom"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#af0a112ed73ffdda827350e97287083b0"><param name="Name" value="_photo"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#a54d89916097b624ed6d3c1bf1539894c"><param name="Name" value="_prenom"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#a6cee07fdc4973c0ef00f683ed98ba95d"><param name="Name" value="_pseudo"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#a4710e33726fecde177ac40b92d20349d"><param name="Name" value="Description"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#a5aef6e4cbd633a841566ce88c24d88ad"><param name="Name" value="MotDePasse"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#abb5447733d6269f565025b800baf9cc0"><param name="Name" value="Nom"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#acdf9b44a59d6da82614a2af134ca41e4"><param name="Name" value="Photo"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#af7dc3c24722dec763154fbd928b38303"><param name="Name" value="Prenom"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#a8611afef69f869b3d59eab5233534db1"><param name="Name" value="Pseudo"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#a72a6871bca68dbb840bead5807504eac"><param name="Name" value="User"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#abb5447733d6269f565025b800baf9cc0"><param name="Name" value="Nom"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#acdf9b44a59d6da82614a2af134ca41e4"><param name="Name" value="Photo"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#af7dc3c24722dec763154fbd928b38303"><param name="Name" value="Prenom"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#a8611afef69f869b3d59eab5233534db1"><param name="Name" value="Pseudo"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a6e858b0a7aca621c80b9a2cd2835e898"><param name="Name" value="PseudoDejaPris"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#ac795682411e751382dd84495d51f96de"><param name="Name" value="QuellesDiscussionsParticipe"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a3700dd56788068766f88391d1753f630"><param name="Name" value="RetourneAnnotationContact"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a866848fe7d8369951d21a7f3a7566e48"><param name="Name" value="RetourneContactExistant"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a02b807b0e557fe923f71d75344469790"><param name="Name" value="RetourneContacts"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a16f5f28920c174bf0b7ef8c6fde921e3"><param name="Name" value="RetourneDemandesPseudosContact"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a4f8713f43102fb366f887a80fe0ec271"><param name="Name" value="RetourneDemandesPseudosContacts"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a8970876c6ff9a441223adac3eb581cc9"><param name="Name" value="RetourneInfoProfil"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#aa2dfcb6c336bef59b2dd8b0c7cee2b46"><param name="Name" value="RetourneInfoProfilDescription"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a8f1c81cd1aedef17921985e6cb43b279"><param name="Name" value="RetourneInfoProfilNom"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ac6b116f92180efcf5ecba1a4a32edf66"><param name="Name" value="RetourneInfoProfilPrenom"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#af7cefa4df9de9cccbd17c7aa2f91189e"><param name="Name" value="RetourneMotDePasse"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#aa4d600450a18a7e9af09eb3eb8d367b5"><param name="Name" value="RetourneNomsParticipantsDiscussion"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a44b32a5028725ccb9a8214e9fa257847"><param name="Name" value="RetournePseudoContact"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#ac69fbd17138f0b2898f42a9dce92cdbe"><param name="Name" value="RetournePseudoUtilisateur"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ad04b133e85efc537497134907eef655b"><param name="Name" value="SelectDoubleWhile"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ac7a59c158fd5a147dd615a8b76625447"><param name="Name" value="SelectionnCategorieProposee"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ada20a358d41bbee3af5551321eaab296"><param name="Name" value="SelectionneArchive"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#abc8848f4880645054e67d7574d05765b"><param name="Name" value="SelectionneArchives"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a3eccef299b28341e7d167d485f15cb96"><param name="Name" value="SelectionneCategorieProposee"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a6eeba509caff6b12942a25ca2408f226"><param name="Name" value="SelectionneCategoriesRecherchees"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a6eeba509caff6b12942a25ca2408f226"><param name="Name" value="MyTcpListener::ActionDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a1c2b796931c8fed15e0fbc613cc4f846"><param name="Name" value="MyTcpListener::ConnexionBD"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a564f15ad0930bdf67f5557aeafb59fa0"><param name="Name" value="SelectionneContactDejaAjoute"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a71af7bc340e45c427b3280693470ed40"><param name="Name" value="SelectionneDiscussionsExistantesParCategorie"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#ad11dc7052c36e505e95ef45fff0cd4d9"><param name="Name" value="SelectionneDiscussionsParCategorie"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a3a0e6f88e215ddb0638f52c60976b6bd"><param name="Name" value="SelectionneICategorie"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a9d193567ac19e2d05ae2284e3fd73255"><param name="Name" value="SelectionneIdAdministrateur"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a41630ed48a541ad93f42b0cd980249ec"><param name="Name" value="SelectionneIdCategory"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a2dcd90126690bfe388cbcf2fb6786df2"><param name="Name" value="SelectionneIdDiscussion"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a7fa15944f1ed72a3ac8e66e7ece87b4a"><param name="Name" value="SelectionneIdDiscussionDejaParticipant"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ab190fc43bb8f435595b4501610fe0580"><param name="Name" value="SelectionneIdDiscussionParIdCategorie"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ad523dbbf35cd10e674a226c92300395c"><param name="Name" value="SelectionneIdUser"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a1e1724b3d612242d44a042de742a751a"><param name="Name" value="SelectionneInfoContactAnnotation"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#af24512cba4429c131bcc2fd6a9e9417d"><param name="Name" value="SelectionneMessages"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a4de1685c8941f7c17a2321fdd14671ef"><param name="Name" value="SelectionneMotDePasse"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ade06c31355195903b6f5c5d2c1055e90"><param name="Name" value="SelectionneNomDiscussion"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ac9250187af72e10565f48480ed462c6c"><param name="Name" value="SelectionneNomDiscussionParCategorie"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#aa88be8e52b7859f5ea241d43d8a1f6b3"><param name="Name" value="SelectionneNomParticipantsDiscussion"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a493f1d845ae19645fedea265726bf1bb"><param name="Name" value="selectionnePseudoAdministrateur"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a493f1d845ae19645fedea265726bf1bb"><param name="Name" value="MyTcpListener::ActionDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a60b0af723ae2a744320d636a8f807cf4"><param name="Name" value="MyTcpListener::ConnexionBD"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#aec824d867b4bc3ff5338f54342455cb0"><param name="Name" value="SelectionnePseudoContact"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a9e862833a3128daeb8f58aa6ef191473"><param name="Name" value="SelectionnePseudoUserNomDiscussionEnattente"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ada3149e61ef79287d4f00f17464757d4"><param name="Name" value="SelectSimple"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a82669ae3c91c642740d00829c4d96dfc"><param name="Name" value="SelectSimpleWhile"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ada7fbd64a666dacbb4fda9598ac4052f"><param name="Name" value="SelectSimpleWhileLike"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a49db204575fc21d64a603d8617a13861"><param name="Name" value="SelectTripleWhile"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a4802615f851e306ca0cbf0bfd3903c76"><param name="Name" value="SeparerElements"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a4802615f851e306ca0cbf0bfd3903c76"><param name="Name" value="MyTcpListener::ActionDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a2f03b51abe5e7fc0f92a9d1563370c0a"><param name="Name" value="MyTcpListener::ActionUtilisateur"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#aadf1eb5b33b9edb2be9ca77b7d769971"><param name="Name" value="SeparerElementsString"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a8e5b40e6cfcae3659b182b66fe12171b"><param name="Name" value="SeparerNomDiscussion"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a5ffa9384e354d855afa1d5ec02ccb4ea"><param name="Name" value="SupprimerArchive"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a5ffa9384e354d855afa1d5ec02ccb4ea"><param name="Name" value="MyTcpListener::ActionDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a8d3767a269f755eff8623b7ce83433f4"><param name="Name" value="MyTcpListener::ConnexionBD"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a45632a3672ebe7a29ec2554dcb34390b"><param name="Name" value="SupprimerContact"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a45632a3672ebe7a29ec2554dcb34390b"><param name="Name" value="MyTcpListener::ActionUtilisateur"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a3db665731ed8c869f5b4e585be7d7569"><param name="Name" value="MyTcpListener::ConnexionBD"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a34a1814c51ebf427db5dfc11ca166453"><param name="Name" value="SupprimerDemandeContact"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_utilisateur.html#a34a1814c51ebf427db5dfc11ca166453"><param name="Name" value="MyTcpListener::ActionUtilisateur"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a9452ca881c1370706ec097d2768cce0e"><param name="Name" value="MyTcpListener::ConnexionBD"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a689b438fd5a133ad36cce05ec294df08"><param name="Name" value="SupprimerParticipationDiscussion"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#a689b438fd5a133ad36cce05ec294df08"><param name="Name" value="MyTcpListener::ActionDiscussion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ac19abe42b95e635d85d8a9e7411179d1"><param name="Name" value="MyTcpListener::ConnexionBD"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ac7c92a0d42e3957bcfc03f018873ddfc"><param name="Name" value="UpdateContact"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#af144389b5e58ebf8b07235e3f1282f4f"><param name="Name" value="UpdateOrDelete"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a2bb05f695a1c5deb329133835ba15d8c"><param name="Name" value="UpdateParticipationDiscussions"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ac9256a7556a24e2ef4979cf4869d69d2"><param name="Name" value="UpdateProfil"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_user.html#a72a6871bca68dbb840bead5807504eac"><param name="Name" value="User"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a08377f2f4213c2cc7de841b730f0280c"><param name="Name" value="UserExisteIl"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#a81525e3cb62eb348ca3e0b670fd5f50e"><param name="Name" value="VerifieNomDiscussion"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_action_discussion.html#adc9049284cbaa61e41d8922dad43f2c8"><param name="Name" value="VerifierNomDiscussionExistant"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_my_tcp_listener_1_1_connexion_b_d.html#ac202bbd56302d0be2719a5b649f5c9fc"><param name="Name" value="VerifMotDePasse"></OBJECT>
+</UL>
+</BODY>
+</HTML>
